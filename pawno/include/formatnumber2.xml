@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet href="file:///E|/SAMP/SeeRPG_NewVersion/pawno/xml/pawndoc.xsl" type="text/xsl"?>
+<doc source="formatnumber2.inc">
+	<assembly>
+		<name>formatnumber2.inc</name>
+	</assembly>
+	<members>
+
+		<!-- enumerations -->
+
+		<!-- constants -->
+		<member name="C:EOS" value="0">
+			<referrer name="FormatNumber"/>
+		</member>
+		<member name="C:cellbits" value="32">
+			<referrer name="FormatNumber"/>
+		</member>
+
+		<!-- variables -->
+
+		<!-- functions -->
+		<member name="M:FormatNumber" syntax="FormatNumber(xVariable, iDecimals, iThousandSeparator, iDecimalPoint, iTag)">
+			<stacksize value="10"/>
+			<dependency name="EOS"/>
+			<dependency name="FormatNumber"/>
+			<dependency name="cellbits"/>
+			<dependency name="format"/>
+			<dependency name="memcpy"/>
+			<dependency name="strcat"/>
+			<dependency name="strfind"/>
+			<dependency name="strins"/>
+			<dependency name="strlen"/>
+			<param name="xVariable">
+				<paraminfo> {_,Float,Text3D,Menu,Text,DB,DBResult,bool,File,hex,bit,bit_byte,Bit} </paraminfo>
+			</param>
+			<param name="iDecimals">
+			</param>
+			<param name="iThousandSeparator">
+			</param>
+			<param name="iDecimalPoint">
+			</param>
+			<param name="iTag">
+			</param>
+		</member>
+		<member name="M:format" syntax="format()">
+			<stacksize value="1"/>
+			<referrer name="FormatNumber"/>
+		</member>
+		<member name="M:memcpy" syntax="memcpy()">
+			<stacksize value="1"/>
+			<referrer name="FormatNumber"/>
+		</member>
+		<member name="M:strcat" syntax="strcat()">
+			<stacksize value="1"/>
+			<referrer name="FormatNumber"/>
+		</member>
+		<member name="M:strfind" syntax="strfind()">
+			<stacksize value="1"/>
+			<referrer name="FormatNumber"/>
+		</member>
+		<member name="M:strins" syntax="strins()">
+			<stacksize value="1"/>
+			<referrer name="FormatNumber"/>
+		</member>
+		<member name="M:strlen" syntax="strlen()">
+			<stacksize value="1"/>
+			<referrer name="FormatNumber"/>
+		</member>
+
+	</members>
+</doc>

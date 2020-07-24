@@ -1,0 +1,8 @@
+[19:20:12] [2006] MySQL server has gone away - [query] UPDATE `jatekosok` SET pOnline = '0'
+
+[19:20:14] [2006] MySQL server has gone away - [query] DELETE FROM `ban` WHERE UIdo!='0' AND UIdo<='1595179210'
+
+[19:20:16] [2006] MySQL server has gone away - [query] SELECT * FROM `kamerak`
+
+[19:20:18] [2006] MySQL server has gone away - [query] SELECT * FROM `sprayek`
+

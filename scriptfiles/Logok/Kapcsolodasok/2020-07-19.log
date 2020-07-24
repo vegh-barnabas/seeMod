@@ -1,0 +1,17 @@
+[00:00:40] [IP: 127.0.0.1][0] Joseph_Fasz csatlakozott | Egyéb: Nincs
+[00:00:44] [IP: 127.0.0.1][0]  belépett - uID: 3 - BID: 6588| Egyéb: Nincs
+[00:01:08] [IP: 127.0.0.1][0]  kilépett [UID: 3] | Egyéb: Leütve (Kilépés)
+[00:06:58] [IP: 127.0.0.1][0] Joseph_Fasz csatlakozott | Egyéb: Nincs
+[00:07:02] [IP: 127.0.0.1][0]  belépett - uID: 3 - BID: 5545| Egyéb: Nincs
+[00:10:12] [IP: 127.0.0.1][0]  csatlakozott | Egyéb: Nincs
+[00:11:20] [IP: 127.0.0.1][0]  csatlakozott | Egyéb: Nincs
+[00:11:29] [IP: ][0]  kilépett [UID: -1] | Egyéb: Hibás jelszó!
+[00:12:45] [IP: 127.0.0.1][0] Vegbel_Fredi csatlakozott | Egyéb: Nincs
+[00:12:55] [IP: 127.0.0.1][0]  belépett - uID: 5268 - BID: 8616| Egyéb: Nincs
+[00:13:14] [IP: 127.0.0.1][0]  kilépett [UID: 5268] | Egyéb: Nincs (Kick/Ban)
+[00:18:50] [IP: 127.0.0.1][0] Vegbel_Fredi csatlakozott | Egyéb: Nincs
+[00:18:58] [IP: 127.0.0.1][0]  belépett - uID: 5268 - BID: 9817| Egyéb: Nincs
+[00:19:49] [IP: 127.0.0.1][0]  kilépett [UID: 5268] | Egyéb: Nincs (Kilépés)
+[19:23:10] [IP: 127.0.0.1][0] Vegbel_Fredi csatlakozott | Egyéb: Nincs
+[19:23:20] [IP: 127.0.0.1][0]  belépett - uID: 5268 - BID: 8847| Egyéb: Nincs
+[19:24:45] [IP: 127.0.0.1][0]  kilépett [UID: 5268] | Egyéb: Nincs (Crash)

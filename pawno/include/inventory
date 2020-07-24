@@ -1,0 +1,2184 @@
+/*
+Project V-Inventory English Version
+Create by NhatNguyen know is VinPure
+-ShowInventory(playerid); // Show Inventory 
+-HideInventory(playerid);
+-AddInventoryItem(playerid,modelid,amount); //
+-RemoveInventoryItem(playerid,clickslot,slotuse,note[]); // clickslot = slot item , note = textdraw inventory[9]
+-RemoveItem(playerid,modelid,amount); // remove item
+-ResetInventory(playerid); // reset all inventory
+-GetPlayerItemAmount(playerid,modelid); // check player id
+-GetItemName(modelid,amount); // get item name
+-GetItemSlotUse(modelid); // slot need to put item
+-CreateItem(Model,Amount,usetext,useitemrot,Float:X, Float:Y, Float:Z,world, interior);
+-SetItemRot(objectid,modelid);
+-DestroyItem(itemid);
+-PickupItem(playerid);
+*/
+/*=========INCLUDE====================*/
+#include <a_samp>
+#include <zcmd>
+#include <sscanf2>
+#include <streamer>
+/*=========DEFINE====================*/
+#define MAX_INVENTOY_SLOTS 50
+#define MAX_DROP_ITEMS 100
+#define DIALOG_ADDITEM 13337
+/*=========KEY====================*/
+#define KEY_PICKUPITEM 2
+#define KEY_OPENINV 65536
+
+#define MAX_RECORDS         (999)
+#define MAX_KEY_LENGTH      (32)
+#define MAX_VAL_LENGTH      (256)
+#define MAX_RECORD_LENGTH   (MAX_KEY_LENGTH + MAX_VAL_LENGTH + 2)
+
+#define __isnull(%0)        (%0[0] == 0||(%0[0] == 1&&%0[1] == 0))
+#define __strcpy(%0,%1,%2)  strcat((%0[0] = '\0', %0), %1, %2)
+#define file_IncVal(%1,%2)  file_SetVal(%1, file_GetVal(%1) + %2)
+
+enum
+{
+	WINDOWS,
+	LINUX
+}
+
+
+static
+File:	ini_CurrentFile,
+		ini_Temp[MAX_RECORD_LENGTH],
+		ini_OsLineEndLen = 2,
+		ini_OsLineEndChar[5],
+bool:	ini_FileOpen,
+		ini_KeyData[MAX_RECORDS][MAX_KEY_LENGTH],
+		ini_ValData[MAX_RECORDS][MAX_VAL_LENGTH];
+/*=========NEW-ENUM====================*/
+new PlayerText:Inventory[14]= {PlayerText:INVALID_TEXT_DRAW, ...};
+new PlayerText:InvItem[50]= {PlayerText:INVALID_TEXT_DRAW, ...};
+enum vinfo
+{
+	MSlot,
+	Slotu,
+	iSlot[MAX_INVENTOY_SLOTS],
+	iAmount[MAX_INVENTOY_SLOTS],
+}
+new InvInfo[MAX_PLAYERS][vinfo];
+enum ItemData
+{
+	ItemID,
+    ItemModel,
+    ItemAmount,
+    ItemObject,
+    Text3D:ItemLabel,
+    Float:ItemPosX,
+    Float:ItemPosY,
+    Float:ItemPosZ,
+    Float:ItemRotX,
+    Float:ItemRotY,
+    Float:ItemRotZ,
+    ItemVWorld,
+    ItemInterior,
+};
+new ItemInfo[MAX_DROP_ITEMS][ItemData];
+/*=========FORWARD====================*/
+forward OnPlayerUseItem(playerid,modelid,amount,clickslot);
+
+public OnFilterScriptInit()
+{
+	print("\n--------------------------------------");
+	print("   Vinpure Inventory Project LOADED");
+	print("--------------------------------------\n");
+	new type = LINUX;
+	fclose(fopen("windows", io_write));
+	if(fexist("WINDOWS"))
+		type = WINDOWS;
+	fremove("windows");
+	if(type == WINDOWS)
+	{
+		ini_OsLineEndLen = 2;
+		ini_OsLineEndChar = "\r\n";
+	}
+	else
+	{
+		ini_OsLineEndLen = 1;
+		ini_OsLineEndChar = "\n";
+	}
+	return 1;
+}
+
+public OnFilterScriptExit()
+{
+	print("\n--------------------------------------");
+	print("   Vinpure Inventory Project UNLOADED");
+	print("--------------------------------------\n");
+	return 1;
+}
+
+CMD:inv(playerid,params[])
+{
+    ShowInventory(playerid);
+	return 1;
+}
+CMD:setslot(playerid,params[])
+{
+	new id,slot;
+	if(sscanf(params,"dd",id,slot)) return SendClientMessage(playerid,-1,"/setslot [playerid] [slot]");
+	if(!IsPlayerConnected(id))return SendClientMessage(playerid,-1,"Player not Connected");
+	if(slot < 0 || slot > 50)return SendClientMessage(playerid,-1,"Slot 1-50");
+	InvInfo[id][MSlot] = slot;
+    return 1;
+}
+CMD:giveweapon(playerid,params[])
+{
+	new id,type,ammo;
+    if(sscanf(params, "ddd",id,type,ammo)) return SendClientMessage(playerid,-1,"USAGE:/giveweapon [playerid] [weapon] [ammo]");
+    if(!IsPlayerConnected(id)) return SendClientMessage(playerid,-1,"Player not connect");
+    GivePlayerWeapon(id,type,ammo);
+	return 1;
+}
+CMD:setskin(playerid,params[])
+{
+	new id,skinid;
+	if(sscanf(params,"dd",id,skinid)) return SendClientMessage(playerid,-1,"/setskin [id] [skinid]");
+	if(!IsPlayerConnected(id)) return SendClientMessage(playerid,-1,"Player not connect");
+	if(skinid < 1|| skinid >299) return SendClientMessage(playerid,-1,"skinid:1->299");
+	SetPlayerSkin(id,skinid);
+	return 1;
+}
+public OnPlayerConnect(playerid)
+{
+	LoadInventoryTextDraw(playerid);
+	LoadInventory(playerid);
+	return 1;
+}
+
+public OnPlayerDisconnect(playerid, reason)
+{
+	SaveInventory(playerid);
+	for(new i =0;i<MAX_INVENTOY_SLOTS;i++) PlayerTextDrawDestroy(playerid,InvItem[i]);
+	for(new i=0;i<14;i++) PlayerTextDrawDestroy(playerid,Inventory[i]);
+	return 1;
+}
+
+public OnPlayerSpawn(playerid)
+{
+	return 1;
+}
+public OnPlayerUseItem(playerid,modelid,amount,clickslot)
+{
+	if(modelid > 320 && modelid <= 372)
+	{
+	    new weaponid =GetModelWeapon(modelid);
+	    GivePlayerWeapon(playerid,weaponid,amount);
+	    SetPVarInt(playerid,"WeaponVar2",0);
+	    RemoveInventoryItem(playerid,clickslot,GetItemSlotUse(modelid),"Equip Weapon");
+	}
+	return 1;
+}
+public OnPlayerSelectDynamicObject(playerid, objectid, modelid, Float:x, Float:y, Float:z)
+{
+	for(new i=0;i<MAX_DROP_ITEMS;i++)
+	{
+	    if(objectid == ItemInfo[i][ItemID] || objectid == ItemInfo[i][ItemObject])
+	    {
+		    if(IsPlayerInRangeOfPoint(playerid,3,ItemInfo[i][ItemPosX],ItemInfo[i][ItemPosY],ItemInfo[i][ItemPosZ]))
+		    {
+		    SetPVarInt(playerid,"LootModel",ItemInfo[i][ItemModel]);
+		    SetPVarInt(playerid,"LootAmount",ItemInfo[i][ItemAmount]);
+		    SetPVarInt(playerid,"LootID",ItemInfo[i][ItemID]);
+		    new string[128];
+		    format(string,sizeof(string),"%s\nSlotuse :%d",GetItemName(ItemInfo[i][ItemModel],ItemInfo[i][ItemAmount]),GetItemSlotUse(ItemInfo[i][ItemModel]));
+		    ShowPlayerDialog(playerid,DIALOG_ADDITEM,0,"LOOTING",string,"Loot","Close");
+			}
+			else
+			{
+			SendClientMessage(playerid,-1,"You not near item");
+			}
+	    }
+	}
+	return 1;
+}
+public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
+{
+    if(dialogid == DIALOG_ADDITEM)
+    {
+	    if(!response)
+		{
+		SetPVarInt(playerid,"LootModel",0);
+	    SetPVarInt(playerid,"LootAmount",0);
+	    SetPVarInt(playerid,"LootID",-1);
+	    ShowInventory(playerid);
+		}
+		else
+		{
+		if(InvInfo[playerid][Slotu] == InvInfo[playerid][MSlot]) return SendClientMessage(playerid,-1,"Inventory Full");
+		new freeslot = InvInfo[playerid][MSlot]-InvInfo[playerid][Slotu];
+		if(freeslot < GetItemSlotUse(GetPVarInt(playerid,"IModelid"))) return SendClientMessage(playerid,-1,"Inventory Full");
+		DestroyItem(GetPVarInt(playerid,"LootID"));
+		AddInventoryItem(playerid,GetPVarInt(playerid,"LootModel"),GetPVarInt(playerid,"LootAmount"));
+		ShowInventory(playerid);
+        SetPVarInt(playerid,"LootModel",0);
+	    SetPVarInt(playerid,"LootAmount",0);
+	    SetPVarInt(playerid,"LootID",-1);
+		}
+    }
+    return 1;
+}
+public OnPlayerClickTextDraw(playerid, Text:clickedid)
+{
+	if(clickedid == Text:INVALID_TEXT_DRAW)
+	{
+	    if(GetPVarInt(playerid,"ShowInventory") == 1)
+	    {
+	    HideInventory(playerid);
+	    }
+	}
+	return 1;
+}
+public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
+{
+	if(GetPVarInt(playerid,"ShowInventory") == 1)
+	{
+		for(new i = 0 ;i<InvInfo[playerid][MSlot];i++)
+		{
+		    if(playertextid == InvItem[i])
+		    {
+			    if(InvInfo[playerid][iSlot][i] != 0)
+				{
+				new s[128];
+				format(s,sizeof(s),"%d:%s",i,GetItemName(InvInfo[playerid][iSlot][i],InvInfo[playerid][iAmount][i]));
+				PlayerTextDrawSetString(playerid,Inventory[9],s);
+				PlayerTextDrawShow(playerid,Inventory[9]);
+				format(s,sizeof(s),"SlotUse:%d",GetItemSlotUse(InvInfo[playerid][iSlot][i]));
+				PlayerTextDrawSetString(playerid,Inventory[10],s);
+				PlayerTextDrawShow(playerid,Inventory[10]);
+				SetPVarInt(playerid,"IModelid",InvInfo[playerid][iSlot][i]);
+				SetPVarInt(playerid,"IAmount",InvInfo[playerid][iAmount][i]);
+				SetPVarInt(playerid,"IClickSlot",i);
+				SetPVarInt(playerid,"WeaponAdd",0);
+		        }
+			}
+		}
+		if(playertextid == Inventory[12])
+		{
+		    HideInventory(playerid);
+		    SelectObject(playerid);
+		    return 1;
+		}
+		if(playertextid == Inventory[5])
+		{
+		    if(GetPlayerWeapon(playerid) != 0)
+		    {
+		    	SetPVarInt(playerid,"IAModelid",GetWeaponModel(GetPlayerWeapon(playerid)));
+				SetPVarInt(playerid,"IAAmount",GetPlayerAmmo(playerid));
+				SetPVarInt(playerid,"IModelid",0);
+				SetPVarInt(playerid,"WeaponAdd",1);
+				new string[128];
+				format(string,sizeof(string),"%s",GetItemName(GetWeaponModel(GetPlayerWeapon(playerid)),GetPlayerAmmo(playerid)));
+				PlayerTextDrawSetString(playerid,Inventory[9],string);
+				PlayerTextDrawShow(playerid,Inventory[9]);
+		    }
+		}
+		if(playertextid == Inventory[11])
+		{
+		    if(GetPVarInt(playerid,"IAModelid") != 0 || GetPVarInt(playerid,"AddItem")!= 0)
+			{
+			    if(GetPVarInt(playerid,"WeaponAdd") == 1)
+			    {
+			    if(InvInfo[playerid][Slotu] == InvInfo[playerid][MSlot])
+			    {
+				PlayerTextDrawSetString(playerid,Inventory[9],"Inventory Full");
+				PlayerTextDrawShow(playerid,Inventory[9]);
+				return 1;
+				}
+				new freeslot = InvInfo[playerid][MSlot]-InvInfo[playerid][Slotu];
+				if(freeslot < GetItemSlotUse(GetPVarInt(playerid,"IModelid")))
+				{
+				PlayerTextDrawSetString(playerid,Inventory[9],"Inventory Full");
+				PlayerTextDrawShow(playerid,Inventory[9]);
+				return 1;
+				}
+				AddInventoryItem(playerid,GetPVarInt(playerid,"IAModelid"),GetPVarInt(playerid,"IAAmount"));
+				RemovePlayerWeapon(playerid,GetModelWeapon(GetPVarInt(playerid,"IAModelid")));
+				ShowInventory(playerid);
+				SetPVarInt(playerid,"WeaponAdd",0);
+				PlayerTextDrawSetString(playerid,Inventory[9],"Add Item");
+				PlayerTextDrawShow(playerid,Inventory[9]);
+				}
+			}
+			else
+      		{
+	      		PlayerTextDrawSetString(playerid,Inventory[9],"Please select Item");
+				PlayerTextDrawShow(playerid,Inventory[9]);
+      		}
+		}
+		if(playertextid == Inventory[4])
+		{
+		    if(GetPVarInt(playerid,"IModelid") != 0)
+      		{
+      		    CallLocalFunction("OnPlayerUseItem","dddd",playerid,GetPVarInt(playerid,"IModelid"),GetPVarInt(playerid,"IAmount"),GetPVarInt(playerid,"IClickSlot"));
+      		    SetPVarInt(playerid,"WeaponAdd",0);
+      		}
+      		else
+      		{
+	      		PlayerTextDrawSetString(playerid,Inventory[9],"Please select Item");
+				PlayerTextDrawShow(playerid,Inventory[9]);
+      		}
+		}
+		if(playertextid == Inventory[7])
+		{
+			if(GetPVarInt(playerid,"IModelid") != 0)
+			{
+			new Float:x,Float:y,Float:z;
+			GetPlayerPos(playerid,x,y,z);
+			CreateItem(GetPVarInt(playerid,"IModelid"),GetPVarInt(playerid,"IAmount"),1,1,x,y,z-0.8,0,0);
+			RemoveInventoryItem(playerid,GetPVarInt(playerid,"IClickSlot"),GetItemSlotUse(GetPVarInt(playerid,"IModelid")),"Drop Item");
+			HideInventory(playerid);
+			}
+			else if(GetPVarInt(playerid,"WeaponAdd") == 1)
+   			{
+   			new Float:x,Float:y,Float:z;
+			GetPlayerPos(playerid,x,y,z);
+			CreateItem(GetPVarInt(playerid,"IAModelid"),GetPVarInt(playerid,"IAAmount"),1,1,x,y,z-0.8,0,0);
+			RemovePlayerWeapon(playerid,GetModelWeapon(GetPVarInt(playerid,"IAModelid")));
+			ShowInventory(playerid);
+   			}
+			else
+      		{
+	      		PlayerTextDrawSetString(playerid,Inventory[9],"Please select Item");
+				PlayerTextDrawShow(playerid,Inventory[9]);
+      		}
+		}
+	}
+	return 1;
+}
+public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
+{
+	if(newkeys == KEY_PICKUPITEM) // key N
+	{
+	PickupItem(playerid);
+	}
+	if(newkeys == KEY_OPENINV)
+	{
+ 	ShowInventory(playerid);
+	}
+	return 1;
+}
+public OnPlayerUpdate(playerid)
+{
+    SetPVarInt(playerid,"WeaponVar",GetPlayerWeapon(playerid));
+    if(GetPVarInt(playerid,"ShowInventory") == 1)
+	{
+		if(GetPVarInt(playerid,"WeaponVar2") != GetPVarInt(playerid,"WeaponVar"))
+		{
+			if(GetPlayerWeapon(playerid) == 0)
+			{
+			PlayerTextDrawHide(playerid,Inventory[5]);
+			}
+			else
+			{
+			PlayerTextDrawSetPreviewModel(playerid,Inventory[5],GetWeaponModel(GetPVarInt(playerid,"WeaponVar")));
+			PlayerTextDrawShow(playerid,Inventory[5]);
+			SetPVarInt(playerid,"WeaponVar2",GetPVarInt(playerid,"WeaponVar"));
+			}
+		}
+
+	}
+}
+/////////////STOCK
+stock ShowInventory(playerid)
+{
+	for(new i =0;i<InvInfo[playerid][MSlot];i++)
+	{
+	    if(InvInfo[playerid][iSlot][i] != 0)
+	    {
+	    PlayerTextDrawSetPreviewModel(playerid, InvItem[i],InvInfo[playerid][iSlot][i]);
+	    PlayerTextDrawShow(playerid,InvItem[i]);
+	    }
+	    else
+	    {
+	    PlayerTextDrawHide(playerid,InvItem[i]);
+	    }
+	}
+	switch(InvInfo[playerid][MSlot])
+	{
+	case 0:PlayerTextDrawSetString(playerid,Inventory[13],"Project V Inventory");
+	case 1..15:PlayerTextDrawSetString(playerid,Inventory[13],"Smersh Backpack");
+	case 16..35:PlayerTextDrawSetString(playerid,Inventory[13],"Hunting Backpack");
+	case 36..50:PlayerTextDrawSetString(playerid,Inventory[13],"Mountain Backpack");
+	}
+	PlayerTextDrawSetPreviewModel(playerid,Inventory[5],GetWeaponModel(GetPVarInt(playerid,"WeaponVar")));
+	PlayerTextDrawSetPreviewModel(playerid,Inventory[4],GetPlayerSkin(playerid));
+	PlayerTextDrawSetString(playerid,Inventory[9],"");
+	PlayerTextDrawSetString(playerid,Inventory[10],"");
+	new s[128];format(s,sizeof(s),"Inventory %d/%d",InvInfo[playerid][Slotu],InvInfo[playerid][MSlot]);
+	PlayerTextDrawSetString(playerid,Inventory[3],s);
+	for(new i =0;i<14;i++)
+	{
+	    PlayerTextDrawShow(playerid,Inventory[i]);
+	}
+	SetPVarInt(playerid,"IAModelid",0);
+	SetPVarInt(playerid,"IAAmount",0);
+	SetPVarInt(playerid,"IModelid",0);
+	SetPVarInt(playerid,"IAmount",0);
+	SetPVarInt(playerid,"IClickSlot",-1);
+	SelectTextDraw(playerid,0xAFAFAFAA);
+	SetPVarInt(playerid,"ShowInventory",1);
+	return 1;
+}
+stock HideInventory(playerid)
+{
+    for(new i =0;i<InvInfo[playerid][MSlot];i++)
+	{
+	    PlayerTextDrawHide(playerid,InvItem[i]);
+	}
+	for(new i =0;i<14;i++)
+	{
+	    PlayerTextDrawHide(playerid,Inventory[i]);
+	}
+    CancelSelectTextDraw(playerid);
+    SetPVarInt(playerid,"ShowInventory",0);
+    SetPVarInt(playerid,"IModelid",0);
+	SetPVarInt(playerid,"IAmount",0);
+	SetPVarInt(playerid,"IClickSlot",-1);
+    return 1;
+}
+stock AddInventoryItem(playerid,modelid,amount)
+{
+	if(InvInfo[playerid][Slotu] == InvInfo[playerid][MSlot]) return SendClientMessage(playerid,-1,"Inventory Full");
+	new freeslot = InvInfo[playerid][MSlot]-InvInfo[playerid][Slotu];
+	if(freeslot < GetItemSlotUse(modelid)) return SendClientMessage(playerid,-1,"Inventory Full");
+	for(new i=0;i<InvInfo[playerid][MSlot];i++)
+	{
+	    if(InvInfo[playerid][iSlot][i] == 0)
+	    {
+	        InvInfo[playerid][iSlot][i] = modelid;
+	        InvInfo[playerid][iAmount][i] = amount;
+	        InvInfo[playerid][Slotu] += GetItemSlotUse(modelid);
+	        break;
+	    }
+	}
+	return 1;
+}
+stock RemovePlayerWeapon( playerid, weaponid )
+{
+    new plyWeapons[ 12 ], plyAmmo[ 12 ];
+
+    for( new slot = 0; slot != 12; slot ++ )
+    {
+        new
+            weap, ammo;
+
+        GetPlayerWeaponData( playerid, slot, weap, ammo );
+        if( weap != weaponid )
+        {
+            GetPlayerWeaponData( playerid, slot, plyWeapons[ slot ], plyAmmo[ slot ] );
+        }
+    }
+    ResetPlayerWeapons(playerid);
+    for( new slot = 0; slot != 12; slot ++ )
+    {
+        GivePlayerWeapon( playerid, plyWeapons[ slot ], plyAmmo[slot] );
+    }
+}
+stock GetPlayerItemAmount(playerid,modelid)
+{
+    for(new i=0;i<InvInfo[playerid][MSlot];i++)
+	{
+		if(InvInfo[playerid][iSlot][i] == modelid)
+		{
+			return InvInfo[playerid][iAmount][i];
+		}
+	}
+	return 0;
+}
+stock RemoveItem(playerid,modelid,amount)
+{
+	for(new i = InvInfo[playerid][MSlot]-1;i>-1;i--)
+	{
+	    if(InvInfo[playerid][iSlot][i] == modelid && InvInfo[playerid][iAmount][i] == amount)
+	    {
+	    InvInfo[playerid][iSlot][i] = 0;
+	    InvInfo[playerid][iAmount][i] = 0;
+	    InvInfo[playerid][Slotu] -= GetItemSlotUse(modelid);
+	    break;
+	    }
+	    else if(InvInfo[playerid][iSlot][i] == modelid && InvInfo[playerid][iAmount][i] > amount)
+	    {
+	    InvInfo[playerid][iAmount][i] -= amount;
+	    break;
+	    }
+
+	}
+	return 1;
+}
+stock RemoveInventoryItem(playerid,clickslot,slotuse,note[])
+{
+    InvInfo[playerid][iSlot][clickslot] = 0;
+    InvInfo[playerid][iAmount][clickslot] = 0;
+    InvInfo[playerid][Slotu] -= slotuse;
+	ShowInventory(playerid);
+	PlayerTextDrawSetString(playerid,Inventory[9],note);
+	PlayerTextDrawShow(playerid,Inventory[9]);
+    return 1;
+}
+stock ResetInventory(playerid)
+{
+	for(new i=0;i<MAX_INVENTORY_SLOTS;i++)
+	{
+		InvInfo[playerid][iSlot][i] = 0;
+		InvInfo[playerid][iAmount][i] = 0;
+		InvInfo[playerid][Slotu] = 0;
+	}
+	return 1;
+}
+stock GetItemName(modelid,amount)
+{
+	new modelname[128];
+    switch(modelid)
+    {
+    case 330..372:
+	{
+	        new weaponid = GetModelWeapon(modelid);
+		    new gunname[32];
+			GetWeaponNameEx(weaponid,gunname,sizeof(gunname));
+			format(modelname, sizeof(modelname), "%s/%d",gunname,amount);
+	}
+    default: format(modelname, sizeof(modelname), "-ITEM-");
+    }
+    return modelname;
+}
+stock GetItemSlotUse(modelid)
+{
+	switch(modelid)
+	{
+	default: return 1;
+	}
+	return 1;
+}
+stock DestroyItem(i)
+{
+	ItemInfo[i][ItemModel] = 0;
+	ItemInfo[i][ItemAmount] = 0;
+	ItemInfo[i][ItemPosX] = 0.0;
+	ItemInfo[i][ItemPosY] = 0.0;
+	ItemInfo[i][ItemPosZ] = 0.0;
+	ItemInfo[i][ItemRotX] = 0.0;
+	ItemInfo[i][ItemRotY] = 0.0;
+	ItemInfo[i][ItemRotZ] = 0.0;
+	ItemInfo[i][ItemVWorld] = 0;
+	ItemInfo[i][ItemInterior] = 0;
+	ItemInfo[i][ItemID] =-1;
+	Delete3DTextLabel(ItemInfo[i][ItemLabel]);
+	DestroyDynamicObject(ItemInfo[i][ItemObject]);
+	return 1;
+}
+stock CreateItem(Model,Amount,showtext,useitemrot,Float:X, Float:Y, Float:Z,world, interior)
+{
+    if(Model != 0)
+    {
+        for(new i = 0; i < sizeof(ItemInfo); i++)
+        {
+            if(ItemInfo[i][ItemPosX] == 0.0 && ItemInfo[i][ItemPosY] == 0.0 && ItemInfo[i][ItemPosZ] == 0.0)
+            {
+                ItemInfo[i][ItemID] = i;
+                ItemInfo[i][ItemModel] = Model;
+                ItemInfo[i][ItemAmount] = Amount;
+                ItemInfo[i][ItemPosX] = X;
+                ItemInfo[i][ItemPosY] = Y;
+                ItemInfo[i][ItemPosZ] = Z;
+                ItemInfo[i][ItemVWorld] = world;
+                ItemInfo[i][ItemInterior] = interior;
+                if(showtext == 1)
+                {
+                ItemInfo[i][ItemLabel] = Create3DTextLabel(GetItemName(Model,Amount),0xAFAFAFAA,X,Y,Z,5.0,world, 0);
+                }
+                ItemInfo[i][ItemObject] = CreateDynamicObject(Model, X, Y, Z,0,0,0, world,interior);
+				if(useitemrot == 1)
+				{
+				SetItemRot(ItemInfo[i][ItemObject],Model);
+				}
+                return 1;
+            }
+        }
+        return 1;
+    }
+    return 1;
+}
+stock SetItemRot(objectid,modelid)
+{
+	switch(modelid)
+	{
+	default: return SetDynamicObjectRot(objectid,0,0,0);
+	}
+	return 1;
+}
+stock PickupItem(playerid)
+{
+    for(new i = 0; i < sizeof(ItemInfo); i++)
+    {
+        if (IsPlayerInRangeOfPoint(playerid, 2.0,ItemInfo[i][ItemPosX],ItemInfo[i][ItemPosY],ItemInfo[i][ItemPosZ]))
+        {
+            if(GetPlayerVirtualWorld(playerid) == ItemInfo[i][ItemVWorld] && GetPlayerInterior(playerid) == ItemInfo[i][ItemInterior])
+            {
+                if(InvInfo[playerid][Slotu] == InvInfo[playerid][MSlot]) return SendClientMessage(playerid,-1,"Inventory Full");
+				new freeslot = InvInfo[playerid][MSlot]-InvInfo[playerid][Slotu];
+				if(freeslot < GetItemSlotUse(ItemInfo[i][ItemModel])) return SendClientMessage(playerid,-1,"Inventory Full");
+                ItemInfo[i][ItemPosX] = 0.0;
+                ItemInfo[i][ItemPosY] = 0.0;
+                ItemInfo[i][ItemPosZ] = 0.0;
+                ItemInfo[i][ItemRotX] = 0.0;
+                ItemInfo[i][ItemRotY] = 0.0;
+                ItemInfo[i][ItemRotZ] = 0.0;
+                ItemInfo[i][ItemID] = -1;
+                AddInventoryItem(playerid,ItemInfo[i][ItemModel],ItemInfo[i][ItemAmount]);
+                Delete3DTextLabel(ItemInfo[i][ItemLabel]);
+                DestroyDynamicObject(ItemInfo[i][ItemObject]);
+                ItemInfo[i][ItemAmount] = 0;
+                ItemInfo[i][ItemModel] = 0;
+                return 1;
+            }
+        }
+    }
+    return 1;
+}
+stock GetName(playerid)
+{
+	new name[MAX_PLAYER_NAME];
+	GetPlayerName(playerid, name, sizeof(name));
+	return name;
+}
+LoadInventory(playerid)
+{
+    new file[64];format(file,sizeof(file),"Inventory/%s.inv",GetName(playerid));
+    new string[128];
+    if(!fexist(file)) return 1;
+	file_Open(file);
+	InvInfo[playerid][MSlot] = file_GetVal("MSlot");
+	InvInfo[playerid][Slotu] = file_GetVal("Slotu");
+	for(new i = 0 ; i < MAX_INVENTOY_SLOTS ; i ++)
+	{
+	format(string,sizeof(string),"Slot%d",i);
+	InvInfo[playerid][iSlot][i] = file_GetVal(string);
+    format(string,sizeof(string),"Amount%d",i);
+	InvInfo[playerid][iAmount][i] = file_GetVal(string);
+	}
+	file_Close();
+	return 1;
+}
+SaveInventory(playerid)
+{
+	new file[64];format(file,sizeof(file),"Inventory/%s.inv",GetName(playerid));
+	new string[128];
+	if(!fexist(file))
+	{
+	file_Create(file);
+	}
+	file_Open(file);
+	file_SetVal("MSlot",InvInfo[playerid][MSlot]);
+	file_SetVal("Slotu",InvInfo[playerid][Slotu]);
+	for(new i = 0 ; i <MAX_INVENTOY_SLOTS ; i ++)
+	{
+		format(string,sizeof(string),"Slot%d",i);
+		file_SetVal(string, InvInfo[playerid][iSlot][i]);
+		format(string,sizeof(string),"Amount%d",i);
+		file_SetVal(string, InvInfo[playerid][iAmount][i]);
+	}
+	file_Save(file);
+	file_Close();
+	return 1;
+}
+stock GetWeaponNameEx(weaponid, weapon[], len = sizeof(weapon))
+{
+    switch (weaponid)
+    {
+        case 15:
+        {
+            return weapon[0] = 0, strcat(weapon, "Hatchet", len), true;
+        }
+        case 18:
+        {
+            return weapon[0] = 0, strcat(weapon, "Molotov Cocktail", len), true;
+        }
+        case 44:
+        {
+            return weapon[0] = 0, strcat(weapon, "Thermal Goggles", len), true;
+        }
+        case 45:
+        {
+            return weapon[0] = 0, strcat(weapon, "Night Vision Goggles", len), true;
+        }
+        default:
+        {
+            return GetWeaponName(weaponid, weapon, len);
+        }
+    }
+    return false;
+}
+stock GetModelWeapon(weaponid)
+{
+    switch(weaponid)
+    {
+        case 331:return  1;
+        case 333:return  2;
+        case 334:return 3;
+        case 335:return 4;
+        case 336:return 5;
+        case 337:return 6;
+        case 338:return 7;
+        case 339:return 8;
+        case 341:return 9;
+        case 321:return 10;
+        case 322:return  11;
+        case 323:return  12;
+        case 324:return   13;
+        case 325:return   14;
+        case 326:return 15;
+        case 342:return   16;
+        case 343:return   17;
+        case 344:return   18;
+        case 346:return   22;
+        case 347:return   23;
+        case 348:return   24;
+        case 349:return   25;
+        case 350:return   26;
+        case 351:return   27;
+        case 352:return   28;
+        case 353:return   29;
+        case 355:return   30;
+        case 356:return   31;
+        case 372:return   32;
+        case 357:return   33;
+        case 358:return   34;
+        case 359:return   35;
+        case 360:return   36;
+        case 361:return   37;
+        case 362:return   38;
+        case 363:return   39;
+        case 364:return   40;
+        case 365:return   41;
+        case 366:return   42;
+        case 367:return   43;
+        case 368:return   44;
+        case 369:return   45;
+        case 371:return   46;
+        default: return -1;
+    }
+    return 0;
+}
+stock GetWeaponModel(weaponid)
+{
+    switch(weaponid)
+    {
+        case 0: return 332;
+        case 1: return 331;
+        case 2: return 333;
+        case 3: return 334;
+        case 4: return 335;
+        case 5: return 336;
+        case 6: return 337;
+        case 7: return 338;
+        case 8: return 339;
+        case 9: return 341;
+        case 10: return 321;
+        case 11: return 322;
+        case 12: return 323;
+        case 13: return 324;
+        case 14: return 325;
+        case 15: return 326;
+        case 16: return 342;
+        case 17: return 343;
+        case 18: return 344;
+        case 22: return 346;
+        case 23: return 347;
+        case 24: return 348;
+        case 25: return 349;
+        case 26: return 350;
+        case 27: return 351;
+        case 28: return 352;
+        case 29: return 353;
+        case 30: return 355;
+        case 31: return 356;
+        case 32: return 372;
+        case 33: return 357;
+        case 34: return 358;
+        case 35: return 359;
+        case 36: return 360;
+        case 37: return 361;
+        case 38: return 362;
+        case 39: return 363;
+        case 40: return 364;
+        case 41: return 365;
+        case 42: return 366;
+        case 43: return 367;
+        case 44: return 368;
+        case 45: return 369;
+        case 46: return 371;
+        default: return -1;
+    }
+    return -1;
+}
+stock LoadInventoryTextDraw(playerid)
+{
+	Inventory[0] = CreatePlayerTextDraw(playerid,179.000000, 349.000000, "_");
+	PlayerTextDrawBackgroundColor(playerid,Inventory[0], 255);
+	PlayerTextDrawFont(playerid,Inventory[0], 1);
+	PlayerTextDrawLetterSize(playerid,Inventory[0], 0.500000, 10.499994);
+	PlayerTextDrawColor(playerid,Inventory[0], -1);
+	PlayerTextDrawSetOutline(playerid,Inventory[0], 0);
+	PlayerTextDrawSetProportional(playerid,Inventory[0], 1);
+	PlayerTextDrawSetShadow(playerid,Inventory[0], 1);
+	PlayerTextDrawUseBox(playerid,Inventory[0], 1);
+	PlayerTextDrawBoxColor(playerid,Inventory[0], 1129075760);
+	PlayerTextDrawTextSize(playerid,Inventory[0], 318.000000, 0.000000);
+	PlayerTextDrawSetSelectable(playerid,Inventory[0], 0);
+
+	Inventory[1] = CreatePlayerTextDraw(playerid,325.000000, 349.000000, "_");
+	PlayerTextDrawBackgroundColor(playerid,Inventory[1], 255);
+	PlayerTextDrawFont(playerid,Inventory[1], 1);
+	PlayerTextDrawLetterSize(playerid,Inventory[1], 0.500000, 10.499994);
+	PlayerTextDrawColor(playerid,Inventory[1], -1);
+	PlayerTextDrawSetOutline(playerid,Inventory[1], 0);
+	PlayerTextDrawSetProportional(playerid,Inventory[1], 1);
+	PlayerTextDrawSetShadow(playerid,Inventory[1], 1);
+	PlayerTextDrawUseBox(playerid,Inventory[1], 1);
+	PlayerTextDrawBoxColor(playerid,Inventory[1], 1129075760);
+	PlayerTextDrawTextSize(playerid,Inventory[1], 472.000000, 0.000000);
+	PlayerTextDrawSetSelectable(playerid,Inventory[1], 0);
+
+	Inventory[2] = CreatePlayerTextDraw(playerid,179.000000, 338.000000, "         Body                                      Weapon");
+	PlayerTextDrawBackgroundColor(playerid,Inventory[2], 255);
+	PlayerTextDrawFont(playerid,Inventory[2], 2);
+	PlayerTextDrawLetterSize(playerid,Inventory[2], 0.130000, 0.699999);
+	PlayerTextDrawColor(playerid,Inventory[2], -1);
+	PlayerTextDrawSetOutline(playerid,Inventory[2], 0);
+	PlayerTextDrawSetProportional(playerid,Inventory[2], 1);
+	PlayerTextDrawSetShadow(playerid,Inventory[2], 1);
+	PlayerTextDrawUseBox(playerid,Inventory[2], 1);
+	PlayerTextDrawBoxColor(playerid,Inventory[2], 255);
+	PlayerTextDrawTextSize(playerid,Inventory[2], 319.000000, 0.000000);
+	PlayerTextDrawSetSelectable(playerid,Inventory[2], 0);
+
+	Inventory[3] = CreatePlayerTextDraw(playerid,325.000000, 338.000000, "Inventory 0/15");
+	PlayerTextDrawBackgroundColor(playerid,Inventory[3], 255);
+	PlayerTextDrawFont(playerid,Inventory[3], 2);
+	PlayerTextDrawLetterSize(playerid,Inventory[3], 0.120000, 0.699999);
+	PlayerTextDrawColor(playerid,Inventory[3], -1);
+	PlayerTextDrawSetOutline(playerid,Inventory[3], 0);
+	PlayerTextDrawSetProportional(playerid,Inventory[3], 1);
+	PlayerTextDrawSetShadow(playerid,Inventory[3], 1);
+	PlayerTextDrawUseBox(playerid,Inventory[3], 1);
+	PlayerTextDrawBoxColor(playerid,Inventory[3], 255);
+	PlayerTextDrawTextSize(playerid,Inventory[3], 472.000000, 0.000000);
+	PlayerTextDrawSetSelectable(playerid,Inventory[3], 0);
+
+	Inventory[4] = CreatePlayerTextDraw(playerid,179.000000, 350.000000, "Skin");
+	PlayerTextDrawBackgroundColor(playerid,Inventory[4], 0);
+	PlayerTextDrawFont(playerid,Inventory[4], 5);
+	PlayerTextDrawLetterSize(playerid,Inventory[4], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,Inventory[4], -1);
+	PlayerTextDrawSetOutline(playerid,Inventory[4], 0);
+	PlayerTextDrawSetProportional(playerid,Inventory[4], 1);
+	PlayerTextDrawSetShadow(playerid,Inventory[4], 1);
+	PlayerTextDrawUseBox(playerid,Inventory[4], 1);
+	PlayerTextDrawBoxColor(playerid,Inventory[4], 0);
+	PlayerTextDrawTextSize(playerid,Inventory[4], 43.000000, 77.000000);
+	PlayerTextDrawSetPreviewModel(playerid, Inventory[4], 24);
+	PlayerTextDrawSetPreviewRot(playerid, Inventory[4], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,Inventory[4], 1);
+
+	Inventory[5] = CreatePlayerTextDraw(playerid,227.000000, 347.000000, "Weaponhand");
+	PlayerTextDrawBackgroundColor(playerid,Inventory[5], 0);
+	PlayerTextDrawFont(playerid,Inventory[5], 5);
+	PlayerTextDrawLetterSize(playerid,Inventory[5], 0.500000, -3.000000);
+	PlayerTextDrawColor(playerid,Inventory[5], -1);
+	PlayerTextDrawSetOutline(playerid,Inventory[5], 0);
+	PlayerTextDrawSetProportional(playerid,Inventory[5], 1);
+	PlayerTextDrawSetShadow(playerid,Inventory[5], 1);
+	PlayerTextDrawUseBox(playerid,Inventory[5], 1);
+	PlayerTextDrawBoxColor(playerid,Inventory[5], 0);
+	PlayerTextDrawTextSize(playerid,Inventory[5], 92.000000, 69.000000);
+	PlayerTextDrawSetPreviewModel(playerid, Inventory[5], 358);
+	PlayerTextDrawSetPreviewRot(playerid, Inventory[5], 0.000000, 0.000000, -44.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,Inventory[5], 1);
+
+	Inventory[6] = CreatePlayerTextDraw(playerid,226.000000, 349.000000, "_");
+	PlayerTextDrawBackgroundColor(playerid,Inventory[6], 255);
+	PlayerTextDrawFont(playerid,Inventory[6], 1);
+	PlayerTextDrawLetterSize(playerid,Inventory[6], 0.500000, 10.499998);
+	PlayerTextDrawColor(playerid,Inventory[6], -1);
+	PlayerTextDrawSetOutline(playerid,Inventory[6], 0);
+	PlayerTextDrawSetProportional(playerid,Inventory[6], 1);
+	PlayerTextDrawSetShadow(playerid,Inventory[6], 1);
+	PlayerTextDrawUseBox(playerid,Inventory[6], 1);
+	PlayerTextDrawBoxColor(playerid,Inventory[6], 255);
+	PlayerTextDrawTextSize(playerid,Inventory[6], 225.000000, 0.000000);
+	PlayerTextDrawSetSelectable(playerid,Inventory[6], 0);
+
+	Inventory[7] = CreatePlayerTextDraw(playerid,178.000000, 427.000000, "LD_BEAT:left");
+	PlayerTextDrawBackgroundColor(playerid,Inventory[7], 255);
+	PlayerTextDrawFont(playerid,Inventory[7], 4);
+	PlayerTextDrawLetterSize(playerid,Inventory[7], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,Inventory[7], -1);
+	PlayerTextDrawSetOutline(playerid,Inventory[7], 0);
+	PlayerTextDrawSetProportional(playerid,Inventory[7], 1);
+	PlayerTextDrawSetShadow(playerid,Inventory[7], 1);
+	PlayerTextDrawUseBox(playerid,Inventory[7], 1);
+	PlayerTextDrawBoxColor(playerid,Inventory[7], 255);
+	PlayerTextDrawTextSize(playerid,Inventory[7], 12.000000, 18.000000);
+	PlayerTextDrawSetSelectable(playerid,Inventory[7], 1);
+
+	Inventory[8] = CreatePlayerTextDraw(playerid,229.000000, 411.000000, "Item");
+	PlayerTextDrawBackgroundColor(playerid,Inventory[8], 255);
+	PlayerTextDrawFont(playerid,Inventory[8], 2);
+	PlayerTextDrawLetterSize(playerid,Inventory[8], 0.210000, 0.499999);
+	PlayerTextDrawColor(playerid,Inventory[8], -1);
+	PlayerTextDrawSetOutline(playerid,Inventory[8], 0);
+	PlayerTextDrawSetProportional(playerid,Inventory[8], 1);
+	PlayerTextDrawSetShadow(playerid,Inventory[8], 1);
+	PlayerTextDrawUseBox(playerid,Inventory[8], 1);
+	PlayerTextDrawBoxColor(playerid,Inventory[8], 255);
+	PlayerTextDrawTextSize(playerid,Inventory[8], 318.000000, 30.000000);
+	PlayerTextDrawSetSelectable(playerid,Inventory[8], 0);
+
+	Inventory[9] = CreatePlayerTextDraw(playerid,230.000000, 420.000000, "");
+	PlayerTextDrawBackgroundColor(playerid,Inventory[9], 0);
+	PlayerTextDrawFont(playerid,Inventory[9], 2);
+	PlayerTextDrawLetterSize(playerid,Inventory[9], 0.140000, 0.799999);
+	PlayerTextDrawColor(playerid,Inventory[9], 255);
+	PlayerTextDrawSetOutline(playerid,Inventory[9], 0);
+	PlayerTextDrawSetProportional(playerid,Inventory[9], 1);
+	PlayerTextDrawSetShadow(playerid,Inventory[9], 1);
+	PlayerTextDrawSetSelectable(playerid,Inventory[9], 0);
+
+	Inventory[10] = CreatePlayerTextDraw(playerid,230.000000, 431.000000, "SlotUse:2");
+	PlayerTextDrawBackgroundColor(playerid,Inventory[10], 0);
+	PlayerTextDrawFont(playerid,Inventory[10], 2);
+	PlayerTextDrawLetterSize(playerid,Inventory[10], 0.140000, 0.799999);
+	PlayerTextDrawColor(playerid,Inventory[10], 255);
+	PlayerTextDrawSetOutline(playerid,Inventory[10], 0);
+	PlayerTextDrawSetProportional(playerid,Inventory[10], 1);
+	PlayerTextDrawSetShadow(playerid,Inventory[10], 1);
+	PlayerTextDrawSetSelectable(playerid,Inventory[10], 0);
+
+	Inventory[11] = CreatePlayerTextDraw(playerid,211.000000, 427.000000, "LD_BEAT:right");
+	PlayerTextDrawBackgroundColor(playerid,Inventory[11], 255);
+	PlayerTextDrawFont(playerid,Inventory[11], 4);
+	PlayerTextDrawLetterSize(playerid,Inventory[11], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,Inventory[11], -1);
+	PlayerTextDrawSetOutline(playerid,Inventory[11], 0);
+	PlayerTextDrawSetProportional(playerid,Inventory[11], 1);
+	PlayerTextDrawSetShadow(playerid,Inventory[11], 1);
+	PlayerTextDrawUseBox(playerid,Inventory[11], 1);
+	PlayerTextDrawBoxColor(playerid,Inventory[11], 255);
+	PlayerTextDrawTextSize(playerid,Inventory[11], 12.000000, 18.000000);
+	PlayerTextDrawSetSelectable(playerid,Inventory[11], 1);
+
+	Inventory[12] = CreatePlayerTextDraw(playerid,195.000000, 426.000000, "hud:arrow");
+	PlayerTextDrawBackgroundColor(playerid,Inventory[12], 255);
+	PlayerTextDrawFont(playerid,Inventory[12], 4);
+	PlayerTextDrawLetterSize(playerid,Inventory[12], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,Inventory[12], -1);
+	PlayerTextDrawSetOutline(playerid,Inventory[12], 0);
+	PlayerTextDrawSetProportional(playerid,Inventory[12], 1);
+	PlayerTextDrawSetShadow(playerid,Inventory[12], 1);
+	PlayerTextDrawUseBox(playerid,Inventory[12], 1);
+	PlayerTextDrawBoxColor(playerid,Inventory[12], 255);
+	PlayerTextDrawTextSize(playerid,Inventory[12], 12.000000, 18.000000);
+	PlayerTextDrawSetSelectable(playerid,Inventory[12], 1);
+
+	Inventory[13] = CreatePlayerTextDraw(playerid,325.000000, 438.000000, "Project V-Inventory");
+	PlayerTextDrawBackgroundColor(playerid,Inventory[13], 255);
+	PlayerTextDrawFont(playerid,Inventory[13], 2);
+	PlayerTextDrawLetterSize(playerid,Inventory[13], 0.120000, 0.699999);
+	PlayerTextDrawColor(playerid,Inventory[13], -1);
+	PlayerTextDrawSetOutline(playerid,Inventory[13], 0);
+	PlayerTextDrawSetProportional(playerid,Inventory[13], 1);
+	PlayerTextDrawSetShadow(playerid,Inventory[13], 1);
+	PlayerTextDrawUseBox(playerid,Inventory[13], 1);
+	PlayerTextDrawBoxColor(playerid,Inventory[13], 255);
+	PlayerTextDrawTextSize(playerid,Inventory[13], 472.000000, 0.000000);
+	PlayerTextDrawSetSelectable(playerid,Inventory[13], 0);
+
+	InvItem[0] = CreatePlayerTextDraw(playerid,324.000000, 348.000000, "Item0");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[0], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[0], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[0], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[0], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[0], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[0], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[0], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[0], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[0], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[0], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[0], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[0], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[0], 1);
+
+	InvItem[1] = CreatePlayerTextDraw(playerid,339.000000, 348.000000, "Item1");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[1], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[1], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[1], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[1], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[1], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[1], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[1], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[1], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[1], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[1], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[1], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[1], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[1], 1);
+
+	InvItem[2] = CreatePlayerTextDraw(playerid,354.000000, 348.000000, "Item2");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[2], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[2], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[2], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[2], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[2], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[2], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[2], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[2], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[2], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[2], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[2], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[2], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[2], 1);
+
+	InvItem[3] = CreatePlayerTextDraw(playerid,369.000000, 348.000000, "Item3");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[3], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[3], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[3], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[3], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[3], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[3], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[3], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[3], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[3], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[3], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[3], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[3], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[3], 1);
+
+	InvItem[4] = CreatePlayerTextDraw(playerid,384.000000, 348.000000, "item4");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[4], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[4], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[4], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[4], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[4], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[4], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[4], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[4], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[4], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[4], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[4], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[4], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[4], 1);
+
+	InvItem[5] = CreatePlayerTextDraw(playerid,399.000000, 348.000000, "item5");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[5], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[5], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[5], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[5], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[5], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[5], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[5], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[5], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[5], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[5], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[5], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[5], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[5], 1);
+
+	InvItem[6] = CreatePlayerTextDraw(playerid,414.000000, 348.000000, "item6");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[6], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[6], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[6], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[6], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[6], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[6], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[6], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[6], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[6], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[6], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[6], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[6], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[6], 1);
+
+	InvItem[7] = CreatePlayerTextDraw(playerid,429.000000, 348.000000, "item7");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[7], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[7], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[7], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[7], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[7], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[7], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[7], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[7], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[7], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[7], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[7], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[7], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[7], 1);
+
+	InvItem[8] = CreatePlayerTextDraw(playerid,444.000000, 348.000000, "item8");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[8], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[8], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[8], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[8], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[8], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[8], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[8], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[8], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[8], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[8], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[8], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[8], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[8], 1);
+
+	InvItem[9] = CreatePlayerTextDraw(playerid,459.000000, 348.000000, "item9");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[9], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[9], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[9], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[9], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[9], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[9], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[9], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[9], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[9], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[9], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[9], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[9], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[9], 1);
+
+	InvItem[10] = CreatePlayerTextDraw(playerid,324.000000, 366.000000, "item10");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[10], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[10], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[10], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[10], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[10], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[10], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[10], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[10], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[10], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[10], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[10], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[10], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[10], 1);
+
+	InvItem[11] = CreatePlayerTextDraw(playerid,339.000000, 366.000000, "item11");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[11], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[11], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[11], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[11], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[11], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[11], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[11], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[11], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[11], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[11], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[11], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[11], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[11], 1);
+
+	InvItem[12] = CreatePlayerTextDraw(playerid,354.000000, 366.000000, "item12");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[12], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[12], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[12], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[12], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[12], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[12], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[12], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[12], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[12], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[12], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[12], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[12], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[12], 1);
+
+	InvItem[13] = CreatePlayerTextDraw(playerid,369.000000, 366.000000, "item13");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[13], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[13], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[13], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[13], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[13], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[13], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[13], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[13], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[13], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[13], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[13], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[13], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[13], 1);
+
+	InvItem[14] = CreatePlayerTextDraw(playerid,384.000000, 366.000000, "item14");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[14], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[14], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[14], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[14], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[14], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[14], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[14], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[14], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[14], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[14], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[14], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[14], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[14], 1);
+
+	InvItem[15] = CreatePlayerTextDraw(playerid,399.000000, 366.000000, "item15");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[15], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[15], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[15], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[15], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[15], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[15], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[15], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[15], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[15], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[15], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[15], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[15], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[15], 1);
+
+	InvItem[16] = CreatePlayerTextDraw(playerid,414.000000, 366.000000, "item16");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[16], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[16], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[16], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[16], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[16], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[16], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[16], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[16], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[16], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[16], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[16], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[16], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[16], 1);
+
+	InvItem[17] = CreatePlayerTextDraw(playerid,429.000000, 366.000000, "item17");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[17], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[17], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[17], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[17], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[17], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[17], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[17], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[17], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[17], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[17], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[17], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[17], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[17], 1);
+
+	InvItem[18] = CreatePlayerTextDraw(playerid,444.000000, 366.000000, "item18");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[18], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[18], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[18], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[18], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[18], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[18], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[18], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[18], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[18], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[18], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[18], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[18], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[18], 1);
+
+	InvItem[19] = CreatePlayerTextDraw(playerid,459.000000, 366.000000, "item19");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[19], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[19], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[19], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[19], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[19], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[19], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[19], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[19], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[19], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[19], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[19], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[19], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[19], 1);
+
+	InvItem[20] = CreatePlayerTextDraw(playerid,324.000000, 384.000000, "item20");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[20], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[20], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[20], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[20], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[20], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[20], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[20], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[20], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[20], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[20], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[20], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[20], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[20], 1);
+
+	InvItem[21] = CreatePlayerTextDraw(playerid,339.000000, 384.000000, "item21");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[21], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[21], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[21], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[21], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[21], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[21], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[21], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[21], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[21], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[21], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[21], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[21], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[21], 1);
+
+	InvItem[22] = CreatePlayerTextDraw(playerid,354.000000, 384.000000, "item22");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[22], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[22], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[22], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[22], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[22], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[22], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[22], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[22], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[22], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[22], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[22], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[22], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[22], 1);
+
+	InvItem[23] = CreatePlayerTextDraw(playerid,369.000000, 384.000000, "item23");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[23], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[23], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[23], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[23], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[23], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[23], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[23], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[23], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[23], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[23], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[23], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[23], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[23], 1);
+
+	InvItem[24] = CreatePlayerTextDraw(playerid,384.000000, 384.000000, "item24");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[24], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[24], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[24], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[24], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[24], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[24], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[24], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[24], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[24], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[24], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[24], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[24], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[24], 1);
+
+	InvItem[25] = CreatePlayerTextDraw(playerid,399.000000, 384.000000, "item25");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[25], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[25], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[25], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[25], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[25], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[25], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[25], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[25], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[25], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[25], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[25], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[25], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[25], 1);
+
+	InvItem[26] = CreatePlayerTextDraw(playerid,414.000000, 384.000000, "item26");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[26], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[26], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[26], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[26], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[26], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[26], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[26], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[26], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[26], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[26], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[26], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[26], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[26], 1);
+
+	InvItem[27] = CreatePlayerTextDraw(playerid,429.000000, 384.000000, "item27");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[27], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[27], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[27], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[27], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[27], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[27], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[27], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[27], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[27], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[27], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[27], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[27], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[27], 1);
+
+	InvItem[28] = CreatePlayerTextDraw(playerid,444.000000, 384.000000, "item28");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[28], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[28], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[28], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[28], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[28], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[28], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[28], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[28], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[28], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[28], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[28], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[28], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[28], 1);
+
+	InvItem[29] = CreatePlayerTextDraw(playerid,459.000000, 384.000000, "item29");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[29], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[29], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[29], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[29], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[29], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[29], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[29], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[29], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[29], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[29], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[29], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[29], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[29], 1);
+
+	InvItem[30] = CreatePlayerTextDraw(playerid,324.000000, 401.000000, "item30");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[30], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[30], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[30], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[30], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[30], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[30], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[30], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[30], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[30], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[30], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[30], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[30], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[30], 1);
+
+	InvItem[31] = CreatePlayerTextDraw(playerid,339.000000, 401.000000, "item31");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[31], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[31], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[31], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[31], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[31], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[31], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[31], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[31], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[31], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[31], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[31], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[31], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[31], 1);
+
+	InvItem[32] = CreatePlayerTextDraw(playerid,354.000000, 401.000000, "item32");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[32], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[32], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[32], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[32], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[32], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[32], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[32], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[32], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[32], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[32], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[32], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[32], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[32], 1);
+
+	InvItem[33] = CreatePlayerTextDraw(playerid,369.000000, 401.000000, "item33");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[33], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[33], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[33], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[33], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[33], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[33], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[33], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[33], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[33], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[33], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[33], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[33], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[33], 1);
+
+	InvItem[34] = CreatePlayerTextDraw(playerid,384.000000, 401.000000, "item34");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[34], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[34], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[34], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[34], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[34], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[34], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[34], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[34], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[34], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[34], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[34], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[34], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[34], 1);
+
+	InvItem[35] = CreatePlayerTextDraw(playerid,399.000000, 401.000000, "item35");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[35], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[35], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[35], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[35], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[35], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[35], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[35], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[35], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[35], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[35], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[35], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[35], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[35], 1);
+
+	InvItem[36] = CreatePlayerTextDraw(playerid,414.000000, 401.000000, "item36");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[36], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[36], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[36], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[36], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[36], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[36], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[36], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[36], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[36], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[36], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[36], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[36], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[36], 1);
+
+	InvItem[37] = CreatePlayerTextDraw(playerid,429.000000, 401.000000, "item37");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[37], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[37], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[37], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[37], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[37], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[37], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[37], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[37], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[37], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[37], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[37], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[37], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[37], 1);
+
+	InvItem[38] = CreatePlayerTextDraw(playerid,444.000000, 401.000000, "item38");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[38], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[38], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[38], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[38], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[38], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[38], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[38], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[38], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[38], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[38], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[38], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[38], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[38], 1);
+
+	InvItem[39] = CreatePlayerTextDraw(playerid,459.000000, 401.000000, "item39");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[39], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[39], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[39], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[39], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[39], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[39], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[39], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[39], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[39], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[39], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[39], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[39], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[39], 1);
+
+	InvItem[40] = CreatePlayerTextDraw(playerid,324.000000, 419.000000, "item40");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[40], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[40], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[40], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[40], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[40], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[40], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[40], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[40], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[40], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[40], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[40], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[40], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[40], 1);
+
+	InvItem[41] = CreatePlayerTextDraw(playerid,339.000000, 419.000000, "item41");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[41], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[41], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[41], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[41], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[41], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[41], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[41], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[41], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[41], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[41], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[41], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[41], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[41], 1);
+
+	InvItem[42] = CreatePlayerTextDraw(playerid,354.000000, 419.000000, "item42");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[42], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[42], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[42], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[42], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[42], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[42], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[42], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[42], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[42], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[42], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[42], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[42], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[42], 1);
+
+	InvItem[43] = CreatePlayerTextDraw(playerid,369.000000, 419.000000, "item43");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[43], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[43], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[43], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[43], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[43], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[43], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[43], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[43], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[43], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[43], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[43], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[43], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[43], 1);
+
+	InvItem[44] = CreatePlayerTextDraw(playerid,384.000000, 419.000000, "item44");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[44], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[44], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[44], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[44], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[44], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[44], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[44], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[44], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[44], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[44], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[44], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[44], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[44], 1);
+
+	InvItem[45] = CreatePlayerTextDraw(playerid,399.000000, 419.000000, "item45");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[45], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[45], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[45], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[45], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[45], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[45], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[45], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[45], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[45], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[45], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[45], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[45], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[45], 1);
+
+	InvItem[46] = CreatePlayerTextDraw(playerid,414.000000, 419.000000, "item46");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[46], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[46], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[46], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[46], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[46], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[46], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[46], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[46], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[46], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[46], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[46], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[46], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[46], 1);
+
+	InvItem[47] = CreatePlayerTextDraw(playerid,429.000000, 419.000000, "item47");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[47], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[47], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[47], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[47], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[47], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[47], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[47], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[47], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[47], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[47], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[47], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[47], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[47], 1);
+
+	InvItem[48] = CreatePlayerTextDraw(playerid,444.000000, 419.000000, "item48");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[48], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[48], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[48], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[48], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[48], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[48], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[48], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[48], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[48], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[48], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[48], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[48], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[48], 1);
+
+	InvItem[49] = CreatePlayerTextDraw(playerid,459.000000, 419.000000, "item49");
+	PlayerTextDrawBackgroundColor(playerid,InvItem[49], -1347440726);
+	PlayerTextDrawFont(playerid,InvItem[49], 5);
+	PlayerTextDrawLetterSize(playerid,InvItem[49], 0.500000, 1.000000);
+	PlayerTextDrawColor(playerid,InvItem[49], -1);
+	PlayerTextDrawSetOutline(playerid,InvItem[49], 0);
+	PlayerTextDrawSetProportional(playerid,InvItem[49], 1);
+	PlayerTextDrawSetShadow(playerid,InvItem[49], 1);
+	PlayerTextDrawUseBox(playerid,InvItem[49], 1);
+	PlayerTextDrawBoxColor(playerid,InvItem[49], 0);
+	PlayerTextDrawTextSize(playerid,InvItem[49], 13.000000, 15.000000);
+	PlayerTextDrawSetPreviewModel(playerid, InvItem[49], 1580);
+	PlayerTextDrawSetPreviewRot(playerid, InvItem[49], 0.000000, 0.000000, 0.000000, 1.000000);
+	PlayerTextDrawSetSelectable(playerid,InvItem[49], 1);
+	return 1;
+}
+
+/*==============================================================================
+
+	File Management
+
+==============================================================================*/
+
+
+stock file_Create(filename[])
+{
+	if(fexist(filename))
+	{
+		printf("ERROR CREATING FILE : '%s' : FILE ALREADY EXISTS", filename);
+		return 0;
+	}
+
+	ini_CurrentFile = fopen(filename, io_write);
+	fclose(ini_CurrentFile);
+
+	return 1;
+}
+
+stock file_Delete(filename[])
+{
+	fremove(filename);
+
+	return 1;
+}
+
+
+/*==============================================================================
+
+	Open and Close
+
+==============================================================================*/
+
+
+stock file_Open(filename[])
+{
+	if(!fexist(filename))
+	{
+		printf("ERROR: file_Open: File '%s' not found.", filename);
+		return 0;
+	}
+	else
+	{
+		ini_CurrentFile = fopen(filename, io_read);
+	}
+
+	new
+		i,
+		delim;
+
+	while(fread(ini_CurrentFile, ini_Temp) && (i < MAX_RECORDS))
+	{
+		if(strlen(ini_Temp) && strfind(ini_Temp, ini_OsLineEndChar) != -1)
+		{
+			strdel(ini_Temp, strlen(ini_Temp) - ini_OsLineEndLen, strlen(ini_Temp));
+		}
+
+		delim = strfind(ini_Temp, "=");
+
+		if(delim != -1)
+		{
+			__strcpy(ini_KeyData[i], ini_Temp, delim + 1);
+			__strcpy(ini_ValData[i], ini_Temp[delim + 1], MAX_VAL_LENGTH);
+
+			if(ini_KeyData[i][delim - 1] == ' ')
+				strdel(ini_KeyData[i], delim - 1, delim);
+
+			if(!ini_ValData[i][0])
+				strdel(ini_ValData[i], -1, 0);
+		}
+		else
+		{
+			ini_KeyData[i][0] = 0;
+			__strcpy(ini_ValData[i], ini_Temp, MAX_VAL_LENGTH);
+		}
+
+		i++;
+	}
+
+	ini_FileOpen = true;
+	ini_Temp[0] = '\0';
+
+	fclose(ini_CurrentFile);
+
+	return 1;
+}
+
+stock file_Save(filename[])
+{
+	if(!fexist(filename))
+	{
+		printf("Error: file_Save: File '%s' not found.", filename);
+		return 0;
+	}
+
+	if(!ini_FileOpen)
+	{
+		print("Error: file_Save: No file has been opened.");
+		return 0;
+	}
+
+	new i;
+
+	ini_CurrentFile = fopen(filename, io_write);
+
+	while(i < MAX_RECORDS)
+	{
+		if(file_IsLineNull(i))
+			break;
+
+		if(file_IsLineMarkedToSkip(i))
+			continue;
+
+		if(file_IsLineComment(i))
+		{
+			__strcpy(ini_Temp, ini_ValData[i], MAX_RECORD_LENGTH);
+			strcat(ini_Temp, ini_OsLineEndChar);
+		}
+		else
+		{
+			format(ini_Temp, MAX_RECORD_LENGTH, "%s = %s%s", ini_KeyData[i], ini_ValData[i], ini_OsLineEndChar);
+		}
+
+		fwrite(ini_CurrentFile, ini_Temp);
+
+		i++;
+	}
+
+	fclose(ini_CurrentFile);
+
+	return 1;
+}
+
+stock file_Close()
+{
+	for(new i; i < MAX_RECORDS; i++)
+	{
+		ini_KeyData[i][0] = '\0';
+		ini_ValData[i][0] = '\0';
+	}
+
+	ini_FileOpen = false;
+	ini_CurrentFile = File:0;
+	ini_Temp[0] = '\0';
+
+	return 1;
+}
+
+
+/*==============================================================================
+
+	Writing
+
+==============================================================================*/
+
+
+stock file_SetStr(key[], value[])
+{
+	if(!ini_FileOpen)
+	{
+		printf("Error: file_SetStr: No file was opened.");
+		return 0;
+	}
+
+	new i = file_FindLine(key);
+
+	__strcpy(ini_KeyData[i], key, MAX_KEY_LENGTH);
+	__strcpy(ini_ValData[i], value, MAX_VAL_LENGTH);
+
+	return 1;
+}
+
+stock file_SetVal(key[], value)
+{
+	if(!ini_FileOpen)
+	{
+		printf("Error: file_SetVal: No file was opened.");
+		return 0;
+	}
+
+	new i = file_FindLine(key);
+
+	__strcpy(ini_KeyData[i], key, MAX_KEY_LENGTH);
+	format(ini_ValData[i], MAX_VAL_LENGTH, "%d", value);
+
+	return 1;
+}
+
+stock file_SetFloat(key[], Float:value)
+{
+	if(!ini_FileOpen)
+	{
+		printf("Error: file_SetFloat: No file was opened.");
+		return 0;
+	}
+
+	new i = file_FindLine(key);
+
+	__strcpy(ini_KeyData[i], key, MAX_KEY_LENGTH);
+	format(ini_ValData[i], MAX_VAL_LENGTH, "%f", value);
+
+	return 1;
+}
+
+stock file_RemoveKey(key[])
+{
+	if(!ini_FileOpen)
+	{
+		printf("Error: file_RemoveKey: No file was opened.");
+		return 0;
+	}
+
+	new i;
+
+	while(i < MAX_RECORDS)
+	{
+		if(file_IsLineNull(i))
+			return 0;
+
+		if(!strcmp(ini_KeyData[i], key))
+		{
+			ini_KeyData[i][0] = 0x1E;
+			ini_ValData[i][0] = 0x1E;
+
+			break;
+		}
+		i++;
+	}
+
+	return 1;
+}
+
+stock file_RenameKey(key[], newname[MAX_KEY_LENGTH])
+{
+	if(!ini_FileOpen)
+	{
+		printf("Error: file_RenameKey: No file was opened.");
+		return 1;
+	}
+
+	new i;
+
+	while(i < MAX_RECORDS)
+	{
+		if(file_IsLineNull(i))
+			return 0;;
+
+		if(!strcmp(ini_KeyData[i], key))
+			break;
+
+		i++;
+	}
+
+	__strcpy(ini_KeyData[i], newname, MAX_KEY_LENGTH);
+
+	return 1;
+}
+
+
+/*==============================================================================
+
+	Reading
+
+==============================================================================*/
+
+
+stock file_GetStr(key[], dest[], len = sizeof(dest))
+{
+	if(!ini_FileOpen)
+	{
+		printf("Error: file_GetStr: No file was opened.");
+		return 0;
+	}
+
+	for(new i; i < MAX_RECORDS; i++)
+	{
+		if(file_IsLineNull(i))
+			break;
+
+		if(!strcmp(ini_KeyData[i], key, false, MAX_KEY_LENGTH))
+		{
+			dest[0] = EOS;
+			strcat(dest, ini_ValData[i], len);
+			return 1;
+		}
+	}
+
+	return 0;
+}
+
+stock file_GetVal(key[])
+{
+	if(!ini_FileOpen)
+	{
+		printf("Error: file_GetVal: No file was opened.");
+		return 0;
+	}
+
+	for(new i; i < MAX_RECORDS; i++)
+	{
+		if(file_IsLineNull(i))
+			break;
+
+		if(!strcmp(ini_KeyData[i], key, false, MAX_KEY_LENGTH))
+			return strval(ini_ValData[i]);
+	}
+
+	return 0;
+}
+
+stock Float:file_GetFloat(key[])
+{
+	if(!ini_FileOpen)
+	{
+		printf("Error: file_GetFloat: No file was opened.");
+		return 0.0;
+	}
+
+	for(new i; i < MAX_RECORDS; i++)
+	{
+		if(file_IsLineNull(i))
+			break;
+
+		if(!strcmp(ini_KeyData[i], key, false, MAX_KEY_LENGTH))
+			return floatstr(ini_ValData[i]);
+	}
+
+	return Float:0.0;
+}
+
+stock file_IsKey(key[])
+{
+	if(!ini_FileOpen)
+	{
+		printf("Error: file_IsKey: No file was opened.");
+		return 0;
+	}
+
+	for(new i; i < MAX_RECORDS; i++)
+	{
+		if(file_IsLineNull(i))
+			break;
+
+		if(!strcmp(ini_KeyData[i], key, false, MAX_KEY_LENGTH))
+			return true;
+	}
+
+	return false;
+}
+
+
+/*==============================================================================
+
+	Internal Functions
+
+==============================================================================*/
+
+
+stock file_PrintAll()
+{
+	if(!ini_FileOpen)
+	{
+		printf("Error: file_PrintAll: No file was opened.");
+		return 0;
+	}
+
+	new i;
+
+	while(i<MAX_RECORDS)
+	{
+		if(file_IsLineMarkedToSkip(i))
+			continue;
+
+		if(file_IsLineNull(i))
+			break;
+
+		printf("[ID:%d] %s = %s", i, ini_KeyData[i], ini_ValData[i]);
+
+		i++;
+	}
+
+	return 1;
+}
+
+stock file_IsLineNull(id)
+{
+	if(__isnull(ini_KeyData[id]) && __isnull(ini_ValData[id]))
+		return 1;
+
+	return 0;
+}
+
+stock file_IsLineMarkedToSkip(id)
+{
+	if(ini_KeyData[id][0] == 0x1E)
+		return 1;
+
+	return 0;
+}
+
+stock file_IsLineComment(id)
+{
+	if(__isnull(ini_KeyData[id]) && !__isnull(ini_ValData[id]))
+		return 1;
+
+	return 0;
+}
+
+stock file_FindLine(key[])
+{
+	new i;
+
+	while(i < MAX_RECORDS)
+	{
+		if(file_IsLineMarkedToSkip(i))
+			continue;
+
+		if(file_IsLineNull(i))
+			break;
+
+		if(!strcmp(ini_KeyData[i], key, false, MAX_KEY_LENGTH))
+			break;
+
+		i++;
+	}
+
+	return i;
+}
