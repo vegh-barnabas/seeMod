@@ -1,2 +1,2 @@
 # seeMod
-Rasheed féle SeeRPG mod bugtalanításokkal és fejlesztésekkel
+SeeRPG mod bugtalanításokkal és fejlesztésekkel
