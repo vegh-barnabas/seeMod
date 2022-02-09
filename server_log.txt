@@ -9714,3 +9714,3343 @@ v0.3.7-R2, (C)2005-2015 SA-MP Team
 [23:32:08] [debug] #4 0048d4db in ?? () from samp-server.exe
 [23:32:08] [debug] #5 0049b4a1 in ?? () from samp-server.exe
 [23:32:08] [debug] #6 0049b4b1 in ?? () from samp-server.exe
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[17:05:57] 
+[17:05:57] Server Plugins
+[17:05:57] --------------
+[17:05:57]  Loading plugin: mysql
+[17:05:57]  >> plugin.mysql: R34 successfully loaded.
+[17:05:57]   Loaded.
+[17:05:57]  Loading plugin: crashdetect
+[17:05:57]   CrashDetect v4.15.1 is OK.
+[17:05:57]   Loaded.
+[17:05:57]  Loading plugin: YSF
+[17:05:57] 
+[17:05:57]  ===============================
+[17:05:57]         YSF - kurta999's version 2.0 loaded
+[17:05:57]    (c) 2008 Alex "Y_Less" Cole - (c) 2010 - 2016 kurta999
+[17:05:57]     Server version: 0.3.7 R2-1 or R2-2
+[17:05:57]     Operating System: Windows
+[17:05:57]     Built on: May 24 2020 at 14:42:02
+[17:05:57]  ===============================
+[17:05:57] 
+[17:05:57]   Loaded.
+[17:05:57]  Loading plugin: streamer
+[17:05:57] 
+
+*** Streamer Plugin v2.9.4 by Incognito loaded ***
+
+[17:05:57]   Loaded.
+[17:05:57]  Loading plugin: sscanf
+[17:05:57] 
+
+[17:05:57]  ===============================
+
+[17:05:57]       sscanf plugin loaded.     
+
+[17:05:57]          Version:  2.8.1        
+
+[17:05:57]    (c) 2012 Alex "Y_Less" Cole  
+
+[17:05:57]  ===============================
+
+[17:05:57]   Loaded.
+[17:05:57]  Loading plugin: cstl
+[17:05:57]   Loaded.
+[17:05:57]  Loading plugin: dns
+[17:05:57] 
+
+*** DNS Plugin v2.4 by Incognito loaded ***
+
+[17:05:57]   Loaded.
+[17:05:57]  Loading plugin: samp-hooks
+[17:05:57] Callback hook's by mrdrifter loaded
+[17:05:57]   Loaded.
+[17:05:57]  Loading plugin: sampp_server
+[17:05:57]   Failed.
+[17:05:57]  Loading plugin: WebSockets
+[17:05:57]   Loaded.
+[17:05:57]  Loaded 9 plugins.
+
+[17:05:57] 
+[17:05:57] Filterscripts
+[17:05:57] ---------------
+[17:05:57]   Loading filterscript 'objectek.amx'...
+[17:05:57]   Unable to load filterscript 'objectek.amx'.
+[17:05:57]   Loaded 0 filterscripts.
+
+[17:05:57]  
+[17:05:57]  
+[17:05:57]  
+[17:05:57]  ======================================= 
+[17:05:57]  |                                     | 
+[17:05:57]  |        YSI version 4.00.0001        | 
+[17:05:57]  |        By Alex "Y_Less" Cole        | 
+[17:05:57]  |                                     | 
+[17:05:57]  ======================================= 
+[17:05:57]  
+[17:05:57] 
+
+[17:05:57] 
+
+[17:05:57] 
+
+[17:05:57] 
+
+[17:05:57] 
+
+[17:05:57] 
+
+[17:05:57] 
+
+[17:05:57] 
+
+[17:05:57] 
+
+[17:05:57] 
+
+[17:05:57] DayRPG v1.7.5 betoltese folyamatban
+[17:05:57] ---------------------------------------------------
+
+[17:05:57] MySQL: Kapcsolodas a MySQL-hez!
+[17:05:57] Szerver indítása... | Házi szerver
+[17:05:57] Adatbázisok ellenõrzése
+[17:05:57] Adatbázisok ellenõrzése megtörtént
+[17:05:57] ---------------------------------------------------
+
+
+[17:05:57] Szerver: Idozitok elinditasa!
+[17:05:57] =============== [ Automatikus mentés! (1x) ] ===============
+[17:05:57] Szerver: Játékosok adatai automatikusan mentve!
+[17:05:57] Szerver: Jármûvek adatai automatikusan mentve!
+[17:05:57] Szerver: Frakciók adatai automatikusan mentve!
+[17:05:57] Szerver: Automaták adatai automatikusan mentve!
+[17:05:57] Szerver: Területek adatai automatikusan mentve!
+[17:05:57] Szerver: Cegek adatai automatikusan mentve!
+[17:05:57] Szerver: Benzinkutak adatai automatikusan mentve!
+[17:05:57] Szerver: Házak adatai automatikusan mentve!
+[17:05:57] Banya objectek betoltve!
+[17:05:57] Szerver: Idozitok elinditasa sikeresen megtortent!
+[17:05:57] Szerver: Automatak betoltese!
+[17:05:57] Szerver: 0 automata sikeresen betoltve!
+[17:05:57] Szerver: Teleportok betöltése!
+[17:05:57] Szerver: 0 teleport sikeresen betöltve!
+[17:05:57] Szerver: Fák sikeresen lerakva!
+[17:05:57] Szerver: 287 aratás object sikeresen betöltve!
+[17:05:57] Banya objectek betoltve!
+[17:05:57] Fegyveres NPC csatlakozása!
+[17:05:58] Fegyveres NPC csatlakozva!
+[17:05:58] Szerver: Botok betoltese folyamatban!
+[17:05:58] [connection] 127.0.0.1:49274 requests connection cookie.
+[17:05:58] [connection] 127.0.0.1:49276 requests connection cookie.
+[17:05:58] [connection] 127.0.0.1:49275 requests connection cookie.
+[17:05:58] [connection] 127.0.0.1:49277 requests connection cookie.
+[17:05:58] [connection] 127.0.0.1:49278 requests connection cookie.
+[17:05:58] Szerver: BoltBotok betöltése megtörtént!
+[17:05:58] Szerver: Botok betöltése!
+[17:05:58] [connection] 127.0.0.1:49279 requests connection cookie.
+[17:05:58] Szerver: BoltBotok betöltése megtörtént!
+[17:05:58] 0 Trafi Betöltve.
+[17:05:58] Heapspace: 255 kilobytes
+[17:05:58] Szerver: Betoltesi ido: 421ms
+[17:05:58] Number of vehicle models: 0
+[17:05:58] MySQL Hiba történt! Részletek a logban (#2006)
+[17:05:58] MySQL Hiba történt! Részletek a logban (#2006)
+[17:05:58] MySQL Hiba történt! Részletek a logban (#2006)
+[17:05:58] MySQL Hiba történt! Részletek a logban (#2006)
+[17:05:58] MySQL Hiba történt! Részletek a logban (#2006)
+[17:05:58] MySQL Hiba történt! Részletek a logban (#2006)
+[17:05:58] MySQL Hiba történt! Részletek a logban (#2006)
+[17:05:58] [connection] 127.0.0.1:49280 requests connection cookie.
+[17:05:58] MySQL Hiba történt! Részletek a logban (#2006)
+[17:05:58] MySQL Hiba történt! Részletek a logban (#2006)
+[17:05:58] MySQL Hiba történt! Részletek a logban (#2006)
+[17:05:58] MySQL Hiba történt! Részletek a logban (#2006)
+[17:05:58] MySQL Hiba történt! Részletek a logban (#2006)
+[17:05:58] MySQL Hiba történt! Részletek a logban (#2006)
+[17:05:58] MySQL Hiba történt! Részletek a logban (#2006)
+[17:05:58] MySQL Hiba történt! Részletek a logban (#2006)
+[17:05:58] MySQL Hiba történt! Részletek a logban (#2006)
+[17:05:58] MySQL Hiba történt! Részletek a logban (#2006)
+[17:05:58] MySQL Hiba történt! Részletek a logban (#2006)
+[17:05:58] MySQL Hiba történt! Részletek a logban (#2006)
+[17:05:58] MySQL Hiba történt! Részletek a logban (#2006)
+[17:05:58] MySQL Hiba történt! Részletek a logban (#2006)
+[17:05:58] [connection] 127.0.0.1:49281 requests connection cookie.
+[17:05:58] [connection] 127.0.0.1:49282 requests connection cookie.
+[17:05:58] [connection] 127.0.0.1:49283 requests connection cookie.
+[17:05:58] [connection] 127.0.0.1:49284 requests connection cookie.
+[17:05:58] [connection] 127.0.0.1:49285 requests connection cookie.
+[17:05:59] [connection] incoming connection: 127.0.0.1:49274 id: 0
+[17:05:59] [connection] incoming connection: 127.0.0.1:49275 id: 1
+[17:05:59] [connection] incoming connection: 127.0.0.1:49276 id: 2
+[17:05:59] [connection] incoming connection: 127.0.0.1:49277 id: 3
+[17:05:59] [connection] incoming connection: 127.0.0.1:49278 id: 4
+[17:05:59] [connection] incoming connection: 127.0.0.1:49279 id: 5
+[17:05:59] [connection] incoming connection: 127.0.0.1:49280 id: 6
+[17:05:59] [connection] incoming connection: 127.0.0.1:49281 id: 7
+[17:05:59] [connection] incoming connection: 127.0.0.1:49282 id: 8
+[17:05:59] [connection] incoming connection: 127.0.0.1:49283 id: 9
+[17:05:59] [connection] incoming connection: 127.0.0.1:49284 id: 10
+[17:05:59] [connection] incoming connection: 127.0.0.1:49285 id: 11
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[17:10:09] 
+[17:10:09] Server Plugins
+[17:10:09] --------------
+[17:10:09]  Loading plugin: mysql
+[17:10:09]  >> plugin.mysql: R34 successfully loaded.
+[17:10:09]   Loaded.
+[17:10:09]  Loading plugin: crashdetect
+[17:10:09]   CrashDetect v4.15.1 is OK.
+[17:10:09]   Loaded.
+[17:10:09]  Loading plugin: YSF
+[17:10:09] 
+[17:10:09]  ===============================
+[17:10:09]         YSF - kurta999's version 2.0 loaded
+[17:10:09]    (c) 2008 Alex "Y_Less" Cole - (c) 2010 - 2016 kurta999
+[17:10:09]     Server version: 0.3.7 R2-1 or R2-2
+[17:10:09]     Operating System: Windows
+[17:10:09]     Built on: May 24 2020 at 14:42:02
+[17:10:09]  ===============================
+[17:10:09] 
+[17:10:09]   Loaded.
+[17:10:09]  Loading plugin: streamer
+[17:10:09] 
+
+*** Streamer Plugin v2.9.4 by Incognito loaded ***
+
+[17:10:09]   Loaded.
+[17:10:09]  Loading plugin: sscanf
+[17:10:09] 
+
+[17:10:09]  ===============================
+
+[17:10:09]       sscanf plugin loaded.     
+
+[17:10:09]          Version:  2.8.1        
+
+[17:10:09]    (c) 2012 Alex "Y_Less" Cole  
+
+[17:10:09]  ===============================
+
+[17:10:09]   Loaded.
+[17:10:09]  Loading plugin: cstl
+[17:10:09]   Loaded.
+[17:10:09]  Loading plugin: dns
+[17:10:09] 
+
+*** DNS Plugin v2.4 by Incognito loaded ***
+
+[17:10:09]   Loaded.
+[17:10:09]  Loading plugin: samp-hooks
+[17:10:09] Callback hook's by mrdrifter loaded
+[17:10:09]   Loaded.
+[17:10:09]  Loading plugin: sampp_server
+[17:10:09]   Failed.
+[17:10:09]  Loading plugin: WebSockets
+[17:10:09]   Loaded.
+[17:10:09]  Loaded 9 plugins.
+
+[17:10:09] 
+[17:10:09] Filterscripts
+[17:10:09] ---------------
+[17:10:09]   Loading filterscript 'objectek.amx'...
+[17:10:09]   Unable to load filterscript 'objectek.amx'.
+[17:10:09]   Loaded 0 filterscripts.
+
+[17:10:09]  
+[17:10:09]  
+[17:10:09]  
+[17:10:09]  ======================================= 
+[17:10:09]  |                                     | 
+[17:10:09]  |        YSI version 4.00.0001        | 
+[17:10:09]  |        By Alex "Y_Less" Cole        | 
+[17:10:09]  |                                     | 
+[17:10:09]  ======================================= 
+[17:10:09]  
+[17:10:09] 
+
+[17:10:09] 
+
+[17:10:09] 
+
+[17:10:09] 
+
+[17:10:09] 
+
+[17:10:09] 
+
+[17:10:09] 
+
+[17:10:09] 
+
+[17:10:09] 
+
+[17:10:09] 
+
+[17:10:09] DayRPG v1.7.5 betoltese folyamatban
+[17:10:09] ---------------------------------------------------
+
+[17:10:09] MySQL: Kapcsolodas a MySQL-hez!
+[17:10:09] Szerver indítása... | Házi szerver
+[17:10:09] Adatbázisok ellenõrzése
+[17:10:09] Adatbázisok ellenõrzése megtörtént
+[17:10:09] ---------------------------------------------------
+
+
+[17:10:09] Szerver: Idozitok elinditasa!
+[17:10:09] =============== [ Automatikus mentés! (1x) ] ===============
+[17:10:09] Szerver: Játékosok adatai automatikusan mentve!
+[17:10:09] Szerver: Jármûvek adatai automatikusan mentve!
+[17:10:09] Szerver: Frakciók adatai automatikusan mentve!
+[17:10:09] Szerver: Automaták adatai automatikusan mentve!
+[17:10:09] Szerver: Területek adatai automatikusan mentve!
+[17:10:09] Szerver: Cegek adatai automatikusan mentve!
+[17:10:09] Szerver: Benzinkutak adatai automatikusan mentve!
+[17:10:09] Szerver: Házak adatai automatikusan mentve!
+[17:10:09] Banya objectek betoltve!
+[17:10:09] Szerver: Idozitok elinditasa sikeresen megtortent!
+[17:10:09] Szerver: Automatak betoltese!
+[17:10:09] Szerver: 0 automata sikeresen betoltve!
+[17:10:09] Szerver: Teleportok betöltése!
+[17:10:09] Szerver: 0 teleport sikeresen betöltve!
+[17:10:09] Szerver: Fák sikeresen lerakva!
+[17:10:09] Szerver: 287 aratás object sikeresen betöltve!
+[17:10:09] Banya objectek betoltve!
+[17:10:09] Fegyveres NPC csatlakozása!
+[17:10:09] Fegyveres NPC csatlakozva!
+[17:10:09] Szerver: Botok betoltese folyamatban!
+[17:10:09] [connection] 127.0.0.1:57182 requests connection cookie.
+[17:10:09] [connection] 127.0.0.1:57183 requests connection cookie.
+[17:10:09] [connection] 127.0.0.1:57184 requests connection cookie.
+[17:10:09] Szerver: BoltBotok betöltése megtörtént!
+[17:10:09] Szerver: Botok betöltése!
+[17:10:09] [connection] 127.0.0.1:57185 requests connection cookie.
+[17:10:09] [connection] 127.0.0.1:57186 requests connection cookie.
+[17:10:09] Szerver: BoltBotok betöltése megtörtént!
+[17:10:09] 0 Trafi Betöltve.
+[17:10:09] Heapspace: 255 kilobytes
+[17:10:09] Szerver: Betoltesi ido: 199ms
+[17:10:09] Number of vehicle models: 0
+[17:10:09] MySQL Hiba történt! Részletek a logban (#2006)
+[17:10:09] MySQL Hiba történt! Részletek a logban (#2006)
+[17:10:09] MySQL Hiba történt! Részletek a logban (#2006)
+[17:10:09] MySQL Hiba történt! Részletek a logban (#2006)
+[17:10:09] MySQL Hiba történt! Részletek a logban (#2006)
+[17:10:09] MySQL Hiba történt! Részletek a logban (#2006)
+[17:10:09] MySQL Hiba történt! Részletek a logban (#2006)
+[17:10:09] MySQL Hiba történt! Részletek a logban (#2006)
+[17:10:09] [connection] 127.0.0.1:57187 requests connection cookie.
+[17:10:09] MySQL Hiba történt! Részletek a logban (#2006)
+[17:10:09] MySQL Hiba történt! Részletek a logban (#2006)
+[17:10:09] MySQL Hiba történt! Részletek a logban (#2006)
+[17:10:09] MySQL Hiba történt! Részletek a logban (#2006)
+[17:10:09] MySQL Hiba történt! Részletek a logban (#2006)
+[17:10:09] MySQL Hiba történt! Részletek a logban (#2006)
+[17:10:09] MySQL Hiba történt! Részletek a logban (#2006)
+[17:10:09] MySQL Hiba történt! Részletek a logban (#2006)
+[17:10:09] [connection] 127.0.0.1:57188 requests connection cookie.
+[17:10:09] MySQL Hiba történt! Részletek a logban (#2006)
+[17:10:09] MySQL Hiba történt! Részletek a logban (#2006)
+[17:10:09] MySQL Hiba történt! Részletek a logban (#2006)
+[17:10:09] MySQL Hiba történt! Részletek a logban (#2006)
+[17:10:09] MySQL Hiba történt! Részletek a logban (#2006)
+[17:10:09] [connection] 127.0.0.1:57189 requests connection cookie.
+[17:10:09] [connection] 127.0.0.1:57190 requests connection cookie.
+[17:10:09] [connection] 127.0.0.1:57191 requests connection cookie.
+[17:10:09] [connection] 127.0.0.1:57192 requests connection cookie.
+[17:10:09] [connection] 127.0.0.1:57193 requests connection cookie.
+[17:10:10] [connection] incoming connection: 127.0.0.1:57182 id: 0
+[17:10:10] [connection] incoming connection: 127.0.0.1:57183 id: 1
+[17:10:10] [connection] incoming connection: 127.0.0.1:57184 id: 2
+[17:10:10] [connection] incoming connection: 127.0.0.1:57185 id: 3
+[17:10:10] [connection] incoming connection: 127.0.0.1:57186 id: 4
+[17:10:10] [connection] incoming connection: 127.0.0.1:57187 id: 5
+[17:10:10] [connection] incoming connection: 127.0.0.1:57188 id: 6
+[17:10:10] [connection] incoming connection: 127.0.0.1:57189 id: 7
+[17:10:10] [connection] incoming connection: 127.0.0.1:57190 id: 8
+[17:10:10] [connection] incoming connection: 127.0.0.1:57191 id: 9
+[17:10:10] [connection] incoming connection: 127.0.0.1:57192 id: 10
+[17:10:10] [connection] incoming connection: 127.0.0.1:57193 id: 11
+[17:11:33] [debug] Server received interrupt signal
+[17:11:33] [debug] Native backtrace:
+[17:11:33] [debug] #0 77634d7c in ?? () from C:\Windows\SYSTEM32\ntdll.dll
+[17:11:33] [debug] #1 76869f4f in ?? () from C:\Windows\System32\KERNELBASE.dll
+[17:11:33] [debug] #2 76869edf in ?? () from C:\Windows\System32\KERNELBASE.dll
+[17:11:33] [debug] #3 0048d53c in ?? () from samp-server.exe
+[17:11:33] [debug] #4 0049b4a1 in ?? () from samp-server.exe
+[17:11:33] [debug] #5 0049b4b1 in ?? () from samp-server.exe
+[17:11:33] --- Server Shutting Down.
+[17:11:33] plugin.mysql: Unloading plugin...
+[17:11:33] plugin.mysql: Plugin unloaded.
+[17:11:33] 
+[17:11:33]  ==============
+[17:11:33]   YSF - kurta999's version 2.0 unloaded
+[17:11:33]  ==============
+[17:11:33] 
+[17:11:33] 
+
+*** Streamer Plugin v2.9.4 by Incognito unloaded ***
+
+[17:11:33] 
+
+[17:11:33]  ===============================
+
+[17:11:33]      sscanf plugin unloaded.    
+
+[17:11:33]  ===============================
+
+[17:11:33] 
+
+*** DNS Plugin v2.4 by Incognito unloaded ***
+
+[17:11:33] Callback hook's by mrdrifter unloaded
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[17:11:37] 
+[17:11:37] Server Plugins
+[17:11:37] --------------
+[17:11:37]  Loading plugin: mysql
+[17:11:37]  >> plugin.mysql: R34 successfully loaded.
+[17:11:37]   Loaded.
+[17:11:37]  Loading plugin: crashdetect
+[17:11:37]   CrashDetect v4.15.1 is OK.
+[17:11:37]   Loaded.
+[17:11:37]  Loading plugin: YSF
+[17:11:37] 
+[17:11:37]  ===============================
+[17:11:37]         YSF - kurta999's version 2.0 loaded
+[17:11:37]    (c) 2008 Alex "Y_Less" Cole - (c) 2010 - 2016 kurta999
+[17:11:37]     Server version: 0.3.7 R2-1 or R2-2
+[17:11:37]     Operating System: Windows
+[17:11:37]     Built on: May 24 2020 at 14:42:02
+[17:11:37]  ===============================
+[17:11:37] 
+[17:11:37]   Loaded.
+[17:11:37]  Loading plugin: streamer
+[17:11:37] 
+
+*** Streamer Plugin v2.9.4 by Incognito loaded ***
+
+[17:11:37]   Loaded.
+[17:11:37]  Loading plugin: sscanf
+[17:11:37] 
+
+[17:11:37]  ===============================
+
+[17:11:37]       sscanf plugin loaded.     
+
+[17:11:37]          Version:  2.8.1        
+
+[17:11:37]    (c) 2012 Alex "Y_Less" Cole  
+
+[17:11:37]  ===============================
+
+[17:11:37]   Loaded.
+[17:11:37]  Loading plugin: cstl
+[17:11:37]   Loaded.
+[17:11:37]  Loading plugin: dns
+[17:11:37] 
+
+*** DNS Plugin v2.4 by Incognito loaded ***
+
+[17:11:37]   Loaded.
+[17:11:37]  Loading plugin: samp-hooks
+[17:11:37] Callback hook's by mrdrifter loaded
+[17:11:37]   Loaded.
+[17:11:37]  Loading plugin: sampp_server
+[17:11:37]   Failed.
+[17:11:37]  Loading plugin: WebSockets
+[17:11:37]   Loaded.
+[17:11:37]  Loaded 9 plugins.
+
+[17:11:37] 
+[17:11:37] Filterscripts
+[17:11:37] ---------------
+[17:11:37]   Loading filterscript 'objectek.amx'...
+[17:11:37]   Unable to load filterscript 'objectek.amx'.
+[17:11:37]   Loaded 0 filterscripts.
+
+[17:11:37]  
+[17:11:37]  
+[17:11:37]  
+[17:11:37]  ======================================= 
+[17:11:37]  |                                     | 
+[17:11:37]  |        YSI version 4.00.0001        | 
+[17:11:37]  |        By Alex "Y_Less" Cole        | 
+[17:11:37]  |                                     | 
+[17:11:37]  ======================================= 
+[17:11:37]  
+[17:11:37] 
+
+[17:11:37] 
+
+[17:11:37] 
+
+[17:11:37] 
+
+[17:11:37] 
+
+[17:11:37] 
+
+[17:11:37] 
+
+[17:11:37] 
+
+[17:11:37] 
+
+[17:11:37] 
+
+[17:11:37] DayRPG v1.7.5 betoltese folyamatban
+[17:11:37] ---------------------------------------------------
+
+[17:11:37] MySQL: Kapcsolodas a MySQL-hez!
+[17:11:37] Szerver indítása... | Házi szerver
+[17:11:37] Adatbázisok ellenõrzése
+[17:11:37] Adatbázisok ellenõrzése megtörtént
+[17:11:37] ---------------------------------------------------
+
+
+[17:11:37] Szerver: Idozitok elinditasa!
+[17:11:37] =============== [ Automatikus mentés! (1x) ] ===============
+[17:11:37] Szerver: Játékosok adatai automatikusan mentve!
+[17:11:37] Szerver: Jármûvek adatai automatikusan mentve!
+[17:11:37] Szerver: Frakciók adatai automatikusan mentve!
+[17:11:37] Szerver: Automaták adatai automatikusan mentve!
+[17:11:37] Szerver: Területek adatai automatikusan mentve!
+[17:11:37] Szerver: Cegek adatai automatikusan mentve!
+[17:11:37] Szerver: Benzinkutak adatai automatikusan mentve!
+[17:11:37] Szerver: Házak adatai automatikusan mentve!
+[17:11:37] Banya objectek betoltve!
+[17:11:37] Szerver: Idozitok elinditasa sikeresen megtortent!
+[17:11:37] Szerver: Automatak betoltese!
+[17:11:37] Szerver: 0 automata sikeresen betoltve!
+[17:11:37] Szerver: Teleportok betöltése!
+[17:11:37] Szerver: 0 teleport sikeresen betöltve!
+[17:11:37] Szerver: Fák sikeresen lerakva!
+[17:11:37] Szerver: 287 aratás object sikeresen betöltve!
+[17:11:37] Banya objectek betoltve!
+[17:11:37] Fegyveres NPC csatlakozása!
+[17:11:37] Fegyveres NPC csatlakozva!
+[17:11:37] Szerver: Botok betoltese folyamatban!
+[17:11:37] [connection] 127.0.0.1:56937 requests connection cookie.
+[17:11:37] [connection] 127.0.0.1:56938 requests connection cookie.
+[17:11:37] [connection] 127.0.0.1:56939 requests connection cookie.
+[17:11:37] [connection] 127.0.0.1:56940 requests connection cookie.
+[17:11:37] [connection] 127.0.0.1:56941 requests connection cookie.
+[17:11:37] Szerver: BoltBotok betöltése megtörtént!
+[17:11:37] Szerver: Botok betöltése!
+[17:11:37] [connection] 127.0.0.1:56942 requests connection cookie.
+[17:11:37] [connection] 127.0.0.1:56943 requests connection cookie.
+[17:11:37] Szerver: BoltBotok betöltése megtörtént!
+[17:11:37] 0 Trafi Betöltve.
+[17:11:37] Heapspace: 255 kilobytes
+[17:11:37] Szerver: Betoltesi ido: 238ms
+[17:11:37] Number of vehicle models: 0
+[17:11:37] MySQL Hiba történt! Részletek a logban (#2006)
+[17:11:37] MySQL Hiba történt! Részletek a logban (#2006)
+[17:11:37] MySQL Hiba történt! Részletek a logban (#2006)
+[17:11:37] MySQL Hiba történt! Részletek a logban (#2006)
+[17:11:37] MySQL Hiba történt! Részletek a logban (#2006)
+[17:11:37] MySQL Hiba történt! Részletek a logban (#2006)
+[17:11:37] MySQL Hiba történt! Részletek a logban (#2006)
+[17:11:37] MySQL Hiba történt! Részletek a logban (#2006)
+[17:11:37] MySQL Hiba történt! Részletek a logban (#2006)
+[17:11:37] MySQL Hiba történt! Részletek a logban (#2006)
+[17:11:37] MySQL Hiba történt! Részletek a logban (#2006)
+[17:11:37] MySQL Hiba történt! Részletek a logban (#2006)
+[17:11:37] MySQL Hiba történt! Részletek a logban (#2006)
+[17:11:37] MySQL Hiba történt! Részletek a logban (#2006)
+[17:11:37] MySQL Hiba történt! Részletek a logban (#2006)
+[17:11:37] MySQL Hiba történt! Részletek a logban (#2006)
+[17:11:37] MySQL Hiba történt! Részletek a logban (#2006)
+[17:11:37] MySQL Hiba történt! Részletek a logban (#2006)
+[17:11:37] MySQL Hiba történt! Részletek a logban (#2006)
+[17:11:37] [connection] 127.0.0.1:56944 requests connection cookie.
+[17:11:37] MySQL Hiba történt! Részletek a logban (#2006)
+[17:11:37] MySQL Hiba történt! Részletek a logban (#2006)
+[17:11:37] [connection] 127.0.0.1:56945 requests connection cookie.
+[17:11:37] [connection] 127.0.0.1:56946 requests connection cookie.
+[17:11:37] [connection] 127.0.0.1:56947 requests connection cookie.
+[17:11:37] [connection] 127.0.0.1:56948 requests connection cookie.
+[17:11:38] [connection] incoming connection: 127.0.0.1:56937 id: 0
+[17:11:38] [connection] incoming connection: 127.0.0.1:56938 id: 1
+[17:11:38] [connection] incoming connection: 127.0.0.1:56939 id: 2
+[17:11:38] [connection] incoming connection: 127.0.0.1:56940 id: 3
+[17:11:38] [connection] incoming connection: 127.0.0.1:56941 id: 4
+[17:11:38] [connection] incoming connection: 127.0.0.1:56942 id: 5
+[17:11:38] [connection] incoming connection: 127.0.0.1:56943 id: 6
+[17:11:38] [connection] incoming connection: 127.0.0.1:56944 id: 7
+[17:11:38] [connection] incoming connection: 127.0.0.1:56945 id: 8
+[17:11:38] [connection] incoming connection: 127.0.0.1:56946 id: 9
+[17:11:38] [connection] incoming connection: 127.0.0.1:56947 id: 10
+[17:11:38] [connection] incoming connection: 127.0.0.1:56948 id: 11
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[17:11:43] 
+[17:11:44] Server Plugins
+[17:11:44] --------------
+[17:11:44]  Loading plugin: mysql
+[17:11:44]  >> plugin.mysql: R34 successfully loaded.
+[17:11:44]   Loaded.
+[17:11:44]  Loading plugin: crashdetect
+[17:11:44]   CrashDetect v4.15.1 is OK.
+[17:11:44]   Loaded.
+[17:11:44]  Loading plugin: YSF
+[17:11:44] 
+[17:11:44]  ===============================
+[17:11:44]         YSF - kurta999's version 2.0 loaded
+[17:11:44]    (c) 2008 Alex "Y_Less" Cole - (c) 2010 - 2016 kurta999
+[17:11:44]     Server version: 0.3.7 R2-1 or R2-2
+[17:11:44]     Operating System: Windows
+[17:11:44]     Built on: May 24 2020 at 14:42:02
+[17:11:44]  ===============================
+[17:11:44] 
+[17:11:44]   Loaded.
+[17:11:44]  Loading plugin: streamer
+[17:11:44] 
+
+*** Streamer Plugin v2.9.4 by Incognito loaded ***
+
+[17:11:44]   Loaded.
+[17:11:44]  Loading plugin: sscanf
+[17:11:44] 
+
+[17:11:44]  ===============================
+
+[17:11:44]       sscanf plugin loaded.     
+
+[17:11:44]          Version:  2.8.1        
+
+[17:11:44]    (c) 2012 Alex "Y_Less" Cole  
+
+[17:11:44]  ===============================
+
+[17:11:44]   Loaded.
+[17:11:44]  Loading plugin: cstl
+[17:11:44]   Loaded.
+[17:11:44]  Loading plugin: dns
+[17:11:44] 
+
+*** DNS Plugin v2.4 by Incognito loaded ***
+
+[17:11:44]   Loaded.
+[17:11:44]  Loading plugin: samp-hooks
+[17:11:44] Callback hook's by mrdrifter loaded
+[17:11:44]   Loaded.
+[17:11:44]  Loading plugin: sampp_server
+[17:11:44]   Failed.
+[17:11:44]  Loading plugin: WebSockets
+[17:11:44]   Loaded.
+[17:11:44]  Loaded 9 plugins.
+
+[17:11:44] 
+[17:11:44] Filterscripts
+[17:11:44] ---------------
+[17:11:44]   Loading filterscript 'objectek.amx'...
+[17:11:44]   Unable to load filterscript 'objectek.amx'.
+[17:11:44]   Loaded 0 filterscripts.
+
+[17:11:44]  
+[17:11:44]  
+[17:11:44]  
+[17:11:44]  ======================================= 
+[17:11:44]  |                                     | 
+[17:11:44]  |        YSI version 4.00.0001        | 
+[17:11:44]  |        By Alex "Y_Less" Cole        | 
+[17:11:44]  |                                     | 
+[17:11:44]  ======================================= 
+[17:11:44]  
+[17:11:44] 
+
+[17:11:44] 
+
+[17:11:44] 
+
+[17:11:44] 
+
+[17:11:44] 
+
+[17:11:44] 
+
+[17:11:44] 
+
+[17:11:44] 
+
+[17:11:44] 
+
+[17:11:44] 
+
+[17:11:44] DayRPG v1.7.5 betoltese folyamatban
+[17:11:44] ---------------------------------------------------
+
+[17:11:44] MySQL: Kapcsolodas a MySQL-hez!
+[17:11:44] Szerver indítása... | Házi szerver
+[17:11:44] Adatbázisok ellenõrzése
+[17:11:44] Adatbázisok ellenõrzése megtörtént
+[17:11:44] ---------------------------------------------------
+
+
+[17:11:44] Szerver: Idozitok elinditasa!
+[17:11:44] =============== [ Automatikus mentés! (1x) ] ===============
+[17:11:44] Szerver: Játékosok adatai automatikusan mentve!
+[17:11:44] Szerver: Jármûvek adatai automatikusan mentve!
+[17:11:44] Szerver: Frakciók adatai automatikusan mentve!
+[17:11:44] Szerver: Automaták adatai automatikusan mentve!
+[17:11:44] Szerver: Területek adatai automatikusan mentve!
+[17:11:44] Szerver: Cegek adatai automatikusan mentve!
+[17:11:44] Szerver: Benzinkutak adatai automatikusan mentve!
+[17:11:44] Szerver: Házak adatai automatikusan mentve!
+[17:11:44] Banya objectek betoltve!
+[17:11:44] Szerver: Idozitok elinditasa sikeresen megtortent!
+[17:11:44] Szerver: Automatak betoltese!
+[17:11:44] Szerver: 0 automata sikeresen betoltve!
+[17:11:44] Szerver: Teleportok betöltése!
+[17:11:44] Szerver: 0 teleport sikeresen betöltve!
+[17:11:44] Szerver: Fák sikeresen lerakva!
+[17:11:44] Szerver: 287 aratás object sikeresen betöltve!
+[17:11:44] Banya objectek betoltve!
+[17:11:44] Fegyveres NPC csatlakozása!
+[17:11:44] Fegyveres NPC csatlakozva!
+[17:11:44] Szerver: Botok betoltese folyamatban!
+[17:11:44] [connection] 127.0.0.1:59025 requests connection cookie.
+[17:11:44] [connection] 127.0.0.1:59026 requests connection cookie.
+[17:11:44] [connection] 127.0.0.1:59027 requests connection cookie.
+[17:11:44] [connection] 127.0.0.1:59028 requests connection cookie.
+[17:11:44] Szerver: BoltBotok betöltése megtörtént!
+[17:11:44] Szerver: Botok betöltése!
+[17:11:44] [connection] 127.0.0.1:59029 requests connection cookie.
+[17:11:44] Szerver: BoltBotok betöltése megtörtént!
+[17:11:44] 0 Trafi Betöltve.
+[17:11:44] Heapspace: 255 kilobytes
+[17:11:44] Szerver: Betoltesi ido: 214ms
+[17:11:44] Number of vehicle models: 0
+[17:11:44] MySQL Hiba történt! Részletek a logban (#2006)
+[17:11:44] MySQL Hiba történt! Részletek a logban (#2006)
+[17:11:44] MySQL Hiba történt! Részletek a logban (#2006)
+[17:11:44] [connection] 127.0.0.1:59030 requests connection cookie.
+[17:11:44] MySQL Hiba történt! Részletek a logban (#2006)
+[17:11:44] MySQL Hiba történt! Részletek a logban (#2006)
+[17:11:44] MySQL Hiba történt! Részletek a logban (#2006)
+[17:11:44] MySQL Hiba történt! Részletek a logban (#2006)
+[17:11:44] MySQL Hiba történt! Részletek a logban (#2006)
+[17:11:44] MySQL Hiba történt! Részletek a logban (#2006)
+[17:11:44] MySQL Hiba történt! Részletek a logban (#2006)
+[17:11:44] MySQL Hiba történt! Részletek a logban (#2006)
+[17:11:44] MySQL Hiba történt! Részletek a logban (#2006)
+[17:11:44] MySQL Hiba történt! Részletek a logban (#2006)
+[17:11:44] [connection] 127.0.0.1:59031 requests connection cookie.
+[17:11:44] MySQL Hiba történt! Részletek a logban (#2006)
+[17:11:44] MySQL Hiba történt! Részletek a logban (#2006)
+[17:11:44] MySQL Hiba történt! Részletek a logban (#2006)
+[17:11:44] MySQL Hiba történt! Részletek a logban (#2006)
+[17:11:44] MySQL Hiba történt! Részletek a logban (#2006)
+[17:11:44] MySQL Hiba történt! Részletek a logban (#2006)
+[17:11:44] MySQL Hiba történt! Részletek a logban (#2006)
+[17:11:44] MySQL Hiba történt! Részletek a logban (#2006)
+[17:11:44] [connection] 127.0.0.1:59033 requests connection cookie.
+[17:11:44] [connection] 127.0.0.1:59032 requests connection cookie.
+[17:11:44] [connection] 127.0.0.1:59034 requests connection cookie.
+[17:11:44] [connection] 127.0.0.1:59035 requests connection cookie.
+[17:11:44] [connection] 127.0.0.1:59036 requests connection cookie.
+[17:11:45] [connection] incoming connection: 127.0.0.1:59025 id: 0
+[17:11:45] [connection] incoming connection: 127.0.0.1:59026 id: 1
+[17:11:45] [connection] incoming connection: 127.0.0.1:59027 id: 2
+[17:11:45] [connection] incoming connection: 127.0.0.1:59028 id: 3
+[17:11:45] [connection] incoming connection: 127.0.0.1:59029 id: 4
+[17:11:45] [connection] incoming connection: 127.0.0.1:59030 id: 5
+[17:11:45] [connection] incoming connection: 127.0.0.1:59031 id: 6
+[17:11:45] [connection] incoming connection: 127.0.0.1:59032 id: 7
+[17:11:45] [connection] incoming connection: 127.0.0.1:59033 id: 8
+[17:11:45] [connection] incoming connection: 127.0.0.1:59034 id: 9
+[17:11:45] [connection] incoming connection: 127.0.0.1:59035 id: 10
+[17:11:45] [connection] incoming connection: 127.0.0.1:59036 id: 11
+[17:12:02] [debug] Server received interrupt signal
+[17:12:02] [debug] Native backtrace:
+[17:12:02] [debug] #0 77634d7c in ?? () from C:\Windows\SYSTEM32\ntdll.dll
+[17:12:02] [debug] #1 76869f4f in ?? () from C:\Windows\System32\KERNELBASE.dll
+[17:12:02] [debug] #2 76869edf in ?? () from C:\Windows\System32\KERNELBASE.dll
+[17:12:02] [debug] #3 0048d53c in ?? () from samp-server.exe
+[17:12:02] [debug] #4 0049b4a1 in ?? () from samp-server.exe
+[17:12:02] [debug] #5 0049b4b1 in ?? () from samp-server.exe
+[17:12:02] --- Server Shutting Down.
+[17:12:03] plugin.mysql: Unloading plugin...
+[17:12:03] plugin.mysql: Plugin unloaded.
+[17:12:03] 
+[17:12:03]  ==============
+[17:12:03]   YSF - kurta999's version 2.0 unloaded
+[17:12:03]  ==============
+[17:12:03] 
+[17:12:03] 
+
+*** Streamer Plugin v2.9.4 by Incognito unloaded ***
+
+[17:12:03] 
+
+[17:12:03]  ===============================
+
+[17:12:03]      sscanf plugin unloaded.    
+
+[17:12:03]  ===============================
+
+[17:12:03] 
+
+*** DNS Plugin v2.4 by Incognito unloaded ***
+
+[17:12:03] Callback hook's by mrdrifter unloaded
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[17:12:03] 
+[17:12:03] Server Plugins
+[17:12:03] --------------
+[17:12:03]  Loading plugin: mysql
+[17:12:03]  >> plugin.mysql: R34 successfully loaded.
+[17:12:03]   Loaded.
+[17:12:03]  Loading plugin: crashdetect
+[17:12:03]   CrashDetect v4.15.1 is OK.
+[17:12:03]   Loaded.
+[17:12:03]  Loading plugin: YSF
+[17:12:03] 
+[17:12:03]  ===============================
+[17:12:03]         YSF - kurta999's version 2.0 loaded
+[17:12:03]    (c) 2008 Alex "Y_Less" Cole - (c) 2010 - 2016 kurta999
+[17:12:03]     Server version: 0.3.7 R2-1 or R2-2
+[17:12:03]     Operating System: Windows
+[17:12:03]     Built on: May 24 2020 at 14:42:02
+[17:12:03]  ===============================
+[17:12:03] 
+[17:12:03]   Loaded.
+[17:12:03]  Loading plugin: streamer
+[17:12:03] 
+
+*** Streamer Plugin v2.9.4 by Incognito loaded ***
+
+[17:12:03]   Loaded.
+[17:12:03]  Loading plugin: sscanf
+[17:12:03] 
+
+[17:12:03]  ===============================
+
+[17:12:03]       sscanf plugin loaded.     
+
+[17:12:03]          Version:  2.8.1        
+
+[17:12:03]    (c) 2012 Alex "Y_Less" Cole  
+
+[17:12:03]  ===============================
+
+[17:12:03]   Loaded.
+[17:12:03]  Loading plugin: cstl
+[17:12:03]   Loaded.
+[17:12:03]  Loading plugin: dns
+[17:12:03] 
+
+*** DNS Plugin v2.4 by Incognito loaded ***
+
+[17:12:03]   Loaded.
+[17:12:03]  Loading plugin: samp-hooks
+[17:12:03] Callback hook's by mrdrifter loaded
+[17:12:03]   Loaded.
+[17:12:03]  Loading plugin: sampp_server
+[17:12:03]   Failed.
+[17:12:03]  Loading plugin: WebSockets
+[17:12:03]   Loaded.
+[17:12:03]  Loaded 9 plugins.
+
+[17:12:03] 
+[17:12:03] Filterscripts
+[17:12:03] ---------------
+[17:12:03]   Loading filterscript 'objectek.amx'...
+[17:12:03]   Unable to load filterscript 'objectek.amx'.
+[17:12:03]   Loaded 0 filterscripts.
+
+[17:12:03]  
+[17:12:03]  
+[17:12:03]  
+[17:12:03]  ======================================= 
+[17:12:03]  |                                     | 
+[17:12:03]  |        YSI version 4.00.0001        | 
+[17:12:03]  |        By Alex "Y_Less" Cole        | 
+[17:12:03]  |                                     | 
+[17:12:03]  ======================================= 
+[17:12:03]  
+[17:12:04] 
+
+[17:12:04] 
+
+[17:12:04] 
+
+[17:12:04] 
+
+[17:12:04] 
+
+[17:12:04] 
+
+[17:12:04] 
+
+[17:12:04] 
+
+[17:12:04] 
+
+[17:12:04] 
+
+[17:12:04] DayRPG v1.7.5 betoltese folyamatban
+[17:12:04] ---------------------------------------------------
+
+[17:12:04] MySQL: Kapcsolodas a MySQL-hez!
+[17:12:04] Szerver indítása... | Házi szerver
+[17:12:04] Adatbázisok ellenõrzése
+[17:12:04] Adatbázisok ellenõrzése megtörtént
+[17:12:04] ---------------------------------------------------
+
+
+[17:12:04] Szerver: Idozitok elinditasa!
+[17:12:04] =============== [ Automatikus mentés! (1x) ] ===============
+[17:12:04] Szerver: Játékosok adatai automatikusan mentve!
+[17:12:04] Szerver: Jármûvek adatai automatikusan mentve!
+[17:12:04] Szerver: Frakciók adatai automatikusan mentve!
+[17:12:04] Szerver: Automaták adatai automatikusan mentve!
+[17:12:04] Szerver: Területek adatai automatikusan mentve!
+[17:12:04] Szerver: Cegek adatai automatikusan mentve!
+[17:12:04] Szerver: Benzinkutak adatai automatikusan mentve!
+[17:12:04] Szerver: Házak adatai automatikusan mentve!
+[17:12:04] Banya objectek betoltve!
+[17:12:04] Szerver: Idozitok elinditasa sikeresen megtortent!
+[17:12:04] Szerver: Automatak betoltese!
+[17:12:04] Szerver: 0 automata sikeresen betoltve!
+[17:12:04] Szerver: Teleportok betöltése!
+[17:12:04] Szerver: 0 teleport sikeresen betöltve!
+[17:12:04] Szerver: Fák sikeresen lerakva!
+[17:12:04] Szerver: 287 aratás object sikeresen betöltve!
+[17:12:04] Banya objectek betoltve!
+[17:12:04] Fegyveres NPC csatlakozása!
+[17:12:04] Fegyveres NPC csatlakozva!
+[17:12:04] Szerver: Botok betoltese folyamatban!
+[17:12:04] [connection] 127.0.0.1:54994 requests connection cookie.
+[17:12:04] [connection] 127.0.0.1:54995 requests connection cookie.
+[17:12:04] [connection] 127.0.0.1:54996 requests connection cookie.
+[17:12:04] Szerver: BoltBotok betöltése megtörtént!
+[17:12:04] Szerver: Botok betöltése!
+[17:12:04] [connection] 127.0.0.1:54997 requests connection cookie.
+[17:12:04] [connection] 127.0.0.1:54998 requests connection cookie.
+[17:12:04] Szerver: BoltBotok betöltése megtörtént!
+[17:12:04] 0 Trafi Betöltve.
+[17:12:04] Heapspace: 255 kilobytes
+[17:12:04] Szerver: Betoltesi ido: 207ms
+[17:12:04] Number of vehicle models: 0
+[17:12:04] MySQL Hiba történt! Részletek a logban (#2006)
+[17:12:04] MySQL Hiba történt! Részletek a logban (#2006)
+[17:12:04] MySQL Hiba történt! Részletek a logban (#2006)
+[17:12:04] MySQL Hiba történt! Részletek a logban (#2006)
+[17:12:04] MySQL Hiba történt! Részletek a logban (#2006)
+[17:12:04] MySQL Hiba történt! Részletek a logban (#2006)
+[17:12:04] MySQL Hiba történt! Részletek a logban (#2006)
+[17:12:04] MySQL Hiba történt! Részletek a logban (#2006)
+[17:12:04] [connection] 127.0.0.1:54999 requests connection cookie.
+[17:12:04] MySQL Hiba történt! Részletek a logban (#2006)
+[17:12:04] MySQL Hiba történt! Részletek a logban (#2006)
+[17:12:04] MySQL Hiba történt! Részletek a logban (#2006)
+[17:12:04] MySQL Hiba történt! Részletek a logban (#2006)
+[17:12:04] [connection] 127.0.0.1:55001 requests connection cookie.
+[17:12:04] MySQL Hiba történt! Részletek a logban (#2006)
+[17:12:04] [connection] 127.0.0.1:55000 requests connection cookie.
+[17:12:04] MySQL Hiba történt! Részletek a logban (#2006)
+[17:12:04] MySQL Hiba történt! Részletek a logban (#2006)
+[17:12:04] MySQL Hiba történt! Részletek a logban (#2006)
+[17:12:04] MySQL Hiba történt! Részletek a logban (#2006)
+[17:12:04] MySQL Hiba történt! Részletek a logban (#2006)
+[17:12:04] MySQL Hiba történt! Részletek a logban (#2006)
+[17:12:04] MySQL Hiba történt! Részletek a logban (#2006)
+[17:12:04] MySQL Hiba történt! Részletek a logban (#2006)
+[17:12:04] [connection] 127.0.0.1:55002 requests connection cookie.
+[17:12:04] [connection] 127.0.0.1:55003 requests connection cookie.
+[17:12:04] [connection] 127.0.0.1:55004 requests connection cookie.
+[17:12:04] [connection] 127.0.0.1:55005 requests connection cookie.
+[17:12:05] [connection] incoming connection: 127.0.0.1:54994 id: 0
+[17:12:05] [connection] incoming connection: 127.0.0.1:54995 id: 1
+[17:12:05] [connection] incoming connection: 127.0.0.1:54996 id: 2
+[17:12:05] [connection] incoming connection: 127.0.0.1:54997 id: 3
+[17:12:05] [connection] incoming connection: 127.0.0.1:54998 id: 4
+[17:12:05] [connection] incoming connection: 127.0.0.1:54999 id: 5
+[17:12:05] [connection] incoming connection: 127.0.0.1:55000 id: 6
+[17:12:05] [connection] incoming connection: 127.0.0.1:55001 id: 7
+[17:12:05] [connection] incoming connection: 127.0.0.1:55002 id: 8
+[17:12:05] [connection] incoming connection: 127.0.0.1:55003 id: 9
+[17:12:05] [connection] incoming connection: 127.0.0.1:55004 id: 10
+[17:12:05] [connection] incoming connection: 127.0.0.1:55005 id: 11
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[17:17:22] 
+[17:17:22] Server Plugins
+[17:17:22] --------------
+[17:17:22]  Loading plugin: mysql
+[17:17:22]  >> plugin.mysql: R39-6 successfully loaded.
+[17:17:22]   Loaded.
+[17:17:22]  Loading plugin: crashdetect
+[17:17:22]   CrashDetect v4.15.1 is OK.
+[17:17:22]   Loaded.
+[17:17:22]  Loading plugin: YSF
+[17:17:22] 
+[17:17:22]  ===============================
+[17:17:22]         YSF - kurta999's version 2.0 loaded
+[17:17:22]    (c) 2008 Alex "Y_Less" Cole - (c) 2010 - 2016 kurta999
+[17:17:22]     Server version: 0.3.7 R2-1 or R2-2
+[17:17:22]     Operating System: Windows
+[17:17:22]     Built on: May 24 2020 at 14:42:02
+[17:17:22]  ===============================
+[17:17:22] 
+[17:17:22]   Loaded.
+[17:17:22]  Loading plugin: streamer
+[17:17:22] 
+
+*** Streamer Plugin v2.9.4 by Incognito loaded ***
+
+[17:17:22]   Loaded.
+[17:17:22]  Loading plugin: sscanf
+[17:17:22] 
+
+[17:17:22]  ===============================
+
+[17:17:22]       sscanf plugin loaded.     
+
+[17:17:22]          Version:  2.8.1        
+
+[17:17:22]    (c) 2012 Alex "Y_Less" Cole  
+
+[17:17:22]  ===============================
+
+[17:17:22]   Loaded.
+[17:17:22]  Loading plugin: cstl
+[17:17:22]   Loaded.
+[17:17:22]  Loading plugin: dns
+[17:17:22] 
+
+*** DNS Plugin v2.4 by Incognito loaded ***
+
+[17:17:22]   Loaded.
+[17:17:22]  Loading plugin: samp-hooks
+[17:17:22] Callback hook's by mrdrifter loaded
+[17:17:22]   Loaded.
+[17:17:22]  Loading plugin: sampp_server
+[17:17:22]   Failed.
+[17:17:22]  Loading plugin: WebSockets
+[17:17:22]   Loaded.
+[17:17:22]  Loaded 9 plugins.
+
+[17:17:22] 
+[17:17:22] Filterscripts
+[17:17:22] ---------------
+[17:17:22]   Loading filterscript 'objectek.amx'...
+[17:17:22]   Unable to load filterscript 'objectek.amx'.
+[17:17:22]   Loaded 0 filterscripts.
+
+[17:17:22]  
+[17:17:22]  
+[17:17:22]  
+[17:17:22]  ======================================= 
+[17:17:22]  |                                     | 
+[17:17:22]  |        YSI version 4.00.0001        | 
+[17:17:22]  |        By Alex "Y_Less" Cole        | 
+[17:17:22]  |                                     | 
+[17:17:22]  ======================================= 
+[17:17:22]  
+[17:17:22] 
+
+[17:17:22] 
+
+[17:17:22] 
+
+[17:17:22] 
+
+[17:17:22] 
+
+[17:17:22] 
+
+[17:17:22] 
+
+[17:17:22] 
+
+[17:17:22] 
+
+[17:17:22] 
+
+[17:17:22] DayRPG v1.7.5 betoltese folyamatban
+[17:17:22] ---------------------------------------------------
+
+[17:17:22] MySQL: Kapcsolodas a MySQL-hez!
+[17:17:22] Szerver indítása... | Házi szerver
+[17:17:22] Adatbázisok ellenõrzése
+[17:17:22] Adatbázisok ellenõrzése megtörtént
+[17:17:22] ---------------------------------------------------
+
+
+[17:17:22] Szerver: Idozitok elinditasa!
+[17:17:22] =============== [ Automatikus mentés! (1x) ] ===============
+[17:17:22] Szerver: Játékosok adatai automatikusan mentve!
+[17:17:22] Szerver: Jármûvek adatai automatikusan mentve!
+[17:17:22] Szerver: Frakciók adatai automatikusan mentve!
+[17:17:22] Szerver: Automaták adatai automatikusan mentve!
+[17:17:22] Szerver: Területek adatai automatikusan mentve!
+[17:17:22] Szerver: Cegek adatai automatikusan mentve!
+[17:17:22] Szerver: Benzinkutak adatai automatikusan mentve!
+[17:17:22] Szerver: Házak adatai automatikusan mentve!
+[17:17:22] Banya objectek betoltve!
+[17:17:22] Szerver: Idozitok elinditasa sikeresen megtortent!
+[17:17:22] Szerver: Automatak betoltese!
+[17:17:22] Szerver: 0 automata sikeresen betoltve!
+[17:17:22] Szerver: Teleportok betöltése!
+[17:17:22] Szerver: 0 teleport sikeresen betöltve!
+[17:17:22] Szerver: Fák sikeresen lerakva!
+[17:17:22] Szerver: 287 aratás object sikeresen betöltve!
+[17:17:22] Banya objectek betoltve!
+[17:17:22] Fegyveres NPC csatlakozása!
+[17:17:22] Fegyveres NPC csatlakozva!
+[17:17:22] Szerver: Botok betoltese folyamatban!
+[17:17:22] [connection] 127.0.0.1:58394 requests connection cookie.
+[17:17:22] [connection] 127.0.0.1:58395 requests connection cookie.
+[17:17:22] [connection] 127.0.0.1:58396 requests connection cookie.
+[17:17:22] [connection] 127.0.0.1:58397 requests connection cookie.
+[17:17:22] Szerver: BoltBotok betöltése megtörtént!
+[17:17:22] Szerver: Botok betöltése!
+[17:17:22] [connection] 127.0.0.1:58398 requests connection cookie.
+[17:17:22] Szerver: BoltBotok betöltése megtörtént!
+[17:17:22] 0 Trafi Betöltve.
+[17:17:22] [connection] 127.0.0.1:58399 requests connection cookie.
+[17:17:22] Heapspace: 255 kilobytes
+[17:17:22] Szerver: Betoltesi ido: 211ms
+[17:17:22] Number of vehicle models: 0
+[17:17:22] Szerver: CCTV Kamerák betöltése!
+[17:17:22] Szerver: 17 CCTV Kamera Sikeresen betöltve!
+[17:17:22] Szerver: Grafitik betöltése!
+[17:17:22] Szerver: 47 Grafiti Sikeresen betöltve!
+[17:17:22] Szerver: Drink pontok betöltése!
+[17:17:22] Szerver: 10 Drink pontok betöltve!
+[17:17:22] Szerver: Jármûvek betöltése!
+[17:17:22] [connection] 127.0.0.1:58400 requests connection cookie.
+[17:17:22] [connection] 127.0.0.1:58401 requests connection cookie.
+[17:17:22] [connection] 127.0.0.1:58402 requests connection cookie.
+[17:17:23] [connection] 127.0.0.1:58403 requests connection cookie.
+[17:17:23] [connection] 127.0.0.1:58404 requests connection cookie.
+[17:17:23] [connection] 127.0.0.1:58405 requests connection cookie.
+[17:17:23] Szerver: 704 jármû sikeresen betöltve!
+[17:17:23] Szerver: Házak betöltése!
+[17:17:23] Szerver: 126 ház sikeresen betöltve!
+[17:17:23] Szerver: Garázsok betöltése!
+[17:17:23] Szerver: 17 garázs sikeresen betöltve!
+[17:17:23] Szerver: Frakciók betöltése!
+[17:17:23] Szerver: 19 frakció sikeresen betöltve!
+[17:17:23] Szerver: Területek betöltése!
+[17:17:23] Szerver: 10 terület sikeresen betöltve!
+[17:17:23] Szerver: GPS Koordináták betöltése!
+[17:17:23] Szerver: 42 GPS koordináta lett betöltve!
+[17:17:23] Szerver: Benzinkútak betöltése!
+[17:17:23] Szerver: 104 benzinkút sikeresen betöltve!
+[17:17:23] Szerver: Eldobtt Cuccok Betöltése!
+[17:17:23] Szerver: 692 eldobott cucc betöltve!
+[17:17:23] Szerver: Teleportok betöltése!
+[17:17:23] Szerver: 10 teleport sikeresen betöltve!
+[17:17:23] Szerver: Kapuk betöltése!
+[17:17:23] Szerver: 223 kapu sikeresen betöltve!
+[17:17:23] Szerver: 304 bútor sikeresen betöltve!
+[17:17:23] Szerver: Jarmuadatok betoltese!
+[17:17:23] Szerver: 0 jarmuadat sikeresen betoltve!
+[17:17:23] Szerver: Cegek betoltese!
+[17:17:23] Szerver: 11 ceg sikeresen betoltve!
+[17:17:23] Szerver: 3DTextLabelek betöltése!
+[17:17:23] Szerver: 8 3DTextLabel betöltve!
+[17:17:23] Szerver: Ajtók betöltése!
+[17:17:23] Szerver: 0 ajtó sikeresen betöltve!
+[17:17:23] Szerver: Tûz pozíciók betöltése!
+[17:17:23] Nincs betöltendõ tûz! (numrows==0)
+[17:17:23] Szerver: 0 tûz pozíció sikeresen betöltve!
+[17:17:23] [connection] incoming connection: 127.0.0.1:58394 id: 0
+[17:17:23] [connection] incoming connection: 127.0.0.1:58396 id: 1
+[17:17:23] [connection] incoming connection: 127.0.0.1:58395 id: 2
+[17:17:23] [connection] incoming connection: 127.0.0.1:58397 id: 3
+[17:17:23] [connection] incoming connection: 127.0.0.1:58398 id: 4
+[17:17:23] [connection] incoming connection: 127.0.0.1:58399 id: 5
+[17:17:23] [connection] incoming connection: 127.0.0.1:58400 id: 6
+[17:17:23] [connection] incoming connection: 127.0.0.1:58401 id: 7
+[17:17:24] [connection] incoming connection: 127.0.0.1:58402 id: 8
+[17:17:24] [connection] incoming connection: 127.0.0.1:58403 id: 9
+[17:17:24] [connection] incoming connection: 127.0.0.1:58404 id: 10
+[17:17:24] [connection] incoming connection: 127.0.0.1:58405 id: 11
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[17:17:42] 
+[17:17:42] Server Plugins
+[17:17:42] --------------
+[17:17:42]  Loading plugin: mysql
+[17:17:42]  >> plugin.mysql: R39-6 successfully loaded.
+[17:17:42]   Loaded.
+[17:17:42]  Loading plugin: crashdetect
+[17:17:42]   CrashDetect v4.15.1 is OK.
+[17:17:42]   Loaded.
+[17:17:42]  Loading plugin: YSF
+[17:17:42] 
+[17:17:42]  ===============================
+[17:17:42]         YSF - kurta999's version 2.0 loaded
+[17:17:42]    (c) 2008 Alex "Y_Less" Cole - (c) 2010 - 2016 kurta999
+[17:17:42]     Server version: 0.3.7 R2-1 or R2-2
+[17:17:42]     Operating System: Windows
+[17:17:42]     Built on: May 24 2020 at 14:42:02
+[17:17:42]  ===============================
+[17:17:42] 
+[17:17:42]   Loaded.
+[17:17:42]  Loading plugin: streamer
+[17:17:42] 
+
+*** Streamer Plugin v2.9.4 by Incognito loaded ***
+
+[17:17:42]   Loaded.
+[17:17:42]  Loading plugin: sscanf
+[17:17:42] 
+
+[17:17:42]  ===============================
+
+[17:17:42]       sscanf plugin loaded.     
+
+[17:17:42]          Version:  2.8.1        
+
+[17:17:42]    (c) 2012 Alex "Y_Less" Cole  
+
+[17:17:42]  ===============================
+
+[17:17:42]   Loaded.
+[17:17:42]  Loading plugin: cstl
+[17:17:42]   Loaded.
+[17:17:42]  Loading plugin: dns
+[17:17:42] 
+
+*** DNS Plugin v2.4 by Incognito loaded ***
+
+[17:17:42]   Loaded.
+[17:17:42]  Loading plugin: samp-hooks
+[17:17:42] Callback hook's by mrdrifter loaded
+[17:17:42]   Loaded.
+[17:17:42]  Loading plugin: sampp_server
+[17:17:42]   Failed.
+[17:17:42]  Loading plugin: WebSockets
+[17:17:42]   Loaded.
+[17:17:42]  Loaded 9 plugins.
+
+[17:17:42] 
+[17:17:42] Filterscripts
+[17:17:42] ---------------
+[17:17:42]   Loading filterscript 'objectek.amx'...
+[17:17:42]   Unable to load filterscript 'objectek.amx'.
+[17:17:42]   Loaded 0 filterscripts.
+
+[17:17:42]  
+[17:17:42]  
+[17:17:42]  
+[17:17:42]  ======================================= 
+[17:17:42]  |                                     | 
+[17:17:42]  |        YSI version 4.00.0001        | 
+[17:17:42]  |        By Alex "Y_Less" Cole        | 
+[17:17:42]  |                                     | 
+[17:17:42]  ======================================= 
+[17:17:42]  
+[17:17:42] 
+
+[17:17:42] 
+
+[17:17:42] 
+
+[17:17:42] 
+
+[17:17:42] 
+
+[17:17:42] 
+
+[17:17:42] 
+
+[17:17:42] 
+
+[17:17:42] 
+
+[17:17:42] 
+
+[17:17:42] DayRPG v1.7.5 betoltese folyamatban
+[17:17:42] ---------------------------------------------------
+
+[17:17:42] MySQL: Kapcsolodas a MySQL-hez!
+[17:17:42] Szerver indítása... | Házi szerver
+[17:17:42] Adatbázisok ellenõrzése
+[17:17:42] Adatbázisok ellenõrzése megtörtént
+[17:17:42] ---------------------------------------------------
+
+
+[17:17:42] Szerver: Idozitok elinditasa!
+[17:17:42] =============== [ Automatikus mentés! (1x) ] ===============
+[17:17:42] Szerver: Játékosok adatai automatikusan mentve!
+[17:17:42] Szerver: Jármûvek adatai automatikusan mentve!
+[17:17:42] Szerver: Frakciók adatai automatikusan mentve!
+[17:17:42] Szerver: Automaták adatai automatikusan mentve!
+[17:17:42] Szerver: Területek adatai automatikusan mentve!
+[17:17:42] Szerver: Cegek adatai automatikusan mentve!
+[17:17:42] Szerver: Benzinkutak adatai automatikusan mentve!
+[17:17:42] Szerver: Házak adatai automatikusan mentve!
+[17:17:42] Banya objectek betoltve!
+[17:17:42] Szerver: Idozitok elinditasa sikeresen megtortent!
+[17:17:42] Szerver: Automatak betoltese!
+[17:17:42] Szerver: 0 automata sikeresen betoltve!
+[17:17:42] Szerver: Teleportok betöltése!
+[17:17:42] Szerver: 0 teleport sikeresen betöltve!
+[17:17:42] Szerver: Fák sikeresen lerakva!
+[17:17:42] Szerver: 287 aratás object sikeresen betöltve!
+[17:17:42] Banya objectek betoltve!
+[17:17:42] Fegyveres NPC csatlakozása!
+[17:17:42] Fegyveres NPC csatlakozva!
+[17:17:42] Szerver: Botok betoltese folyamatban!
+[17:17:42] [connection] 127.0.0.1:50456 requests connection cookie.
+[17:17:42] [connection] 127.0.0.1:50457 requests connection cookie.
+[17:17:42] [connection] 127.0.0.1:50458 requests connection cookie.
+[17:17:42] Szerver: BoltBotok betöltése megtörtént!
+[17:17:42] [connection] 127.0.0.1:50459 requests connection cookie.
+[17:17:42] [connection] 127.0.0.1:50460 requests connection cookie.
+[17:17:42] Szerver: Botok betöltése!
+[17:17:42] [connection] 127.0.0.1:50461 requests connection cookie.
+[17:17:42] Szerver: BoltBotok betöltése megtörtént!
+[17:17:42] 0 Trafi Betöltve.
+[17:17:42] Heapspace: 255 kilobytes
+[17:17:42] Szerver: Betoltesi ido: 215ms
+[17:17:42] Number of vehicle models: 0
+[17:17:42] Szerver: CCTV Kamerák betöltése!
+[17:17:42] Szerver: 17 CCTV Kamera Sikeresen betöltve!
+[17:17:42] Szerver: Grafitik betöltése!
+[17:17:42] Szerver: 47 Grafiti Sikeresen betöltve!
+[17:17:42] Szerver: Drink pontok betöltése!
+[17:17:42] Szerver: 10 Drink pontok betöltve!
+[17:17:42] Szerver: Jármûvek betöltése!
+[17:17:42] [connection] 127.0.0.1:50462 requests connection cookie.
+[17:17:42] [connection] 127.0.0.1:50463 requests connection cookie.
+[17:17:42] [connection] 127.0.0.1:50465 requests connection cookie.
+[17:17:42] [connection] 127.0.0.1:50464 requests connection cookie.
+[17:17:42] [connection] 127.0.0.1:50466 requests connection cookie.
+[17:17:42] [connection] 127.0.0.1:50467 requests connection cookie.
+[17:17:42] Szerver: 704 jármû sikeresen betöltve!
+[17:17:42] Szerver: Házak betöltése!
+[17:17:43] Szerver: 126 ház sikeresen betöltve!
+[17:17:43] Szerver: Garázsok betöltése!
+[17:17:43] Szerver: 17 garázs sikeresen betöltve!
+[17:17:43] Szerver: Frakciók betöltése!
+[17:17:43] Szerver: 19 frakció sikeresen betöltve!
+[17:17:43] Szerver: Területek betöltése!
+[17:17:43] Szerver: 10 terület sikeresen betöltve!
+[17:17:43] Szerver: GPS Koordináták betöltése!
+[17:17:43] Szerver: 42 GPS koordináta lett betöltve!
+[17:17:43] Szerver: Benzinkútak betöltése!
+[17:17:43] Szerver: 104 benzinkút sikeresen betöltve!
+[17:17:43] Szerver: Eldobtt Cuccok Betöltése!
+[17:17:43] Szerver: 692 eldobott cucc betöltve!
+[17:17:43] Szerver: Teleportok betöltése!
+[17:17:43] Szerver: 10 teleport sikeresen betöltve!
+[17:17:43] Szerver: Kapuk betöltése!
+[17:17:43] Szerver: 223 kapu sikeresen betöltve!
+[17:17:43] Szerver: 304 bútor sikeresen betöltve!
+[17:17:43] Szerver: Jarmuadatok betoltese!
+[17:17:43] Szerver: 0 jarmuadat sikeresen betoltve!
+[17:17:43] Szerver: Cegek betoltese!
+[17:17:43] Szerver: 11 ceg sikeresen betoltve!
+[17:17:43] Szerver: 3DTextLabelek betöltése!
+[17:17:43] Szerver: 8 3DTextLabel betöltve!
+[17:17:43] Szerver: Ajtók betöltése!
+[17:17:43] Szerver: 0 ajtó sikeresen betöltve!
+[17:17:43] Szerver: Tûz pozíciók betöltése!
+[17:17:43] Nincs betöltendõ tûz! (numrows==0)
+[17:17:43] Szerver: 0 tûz pozíció sikeresen betöltve!
+[17:17:43] [connection] incoming connection: 127.0.0.1:50456 id: 0
+[17:17:43] [connection] incoming connection: 127.0.0.1:50457 id: 1
+[17:17:43] [connection] incoming connection: 127.0.0.1:50458 id: 2
+[17:17:43] [connection] incoming connection: 127.0.0.1:50459 id: 3
+[17:17:43] [connection] incoming connection: 127.0.0.1:50460 id: 4
+[17:17:43] [connection] incoming connection: 127.0.0.1:50461 id: 5
+[17:17:43] [connection] incoming connection: 127.0.0.1:50462 id: 6
+[17:17:43] [connection] incoming connection: 127.0.0.1:50463 id: 7
+[17:17:43] [connection] incoming connection: 127.0.0.1:50464 id: 8
+[17:17:43] [connection] incoming connection: 127.0.0.1:50465 id: 9
+[17:17:43] [connection] incoming connection: 127.0.0.1:50466 id: 10
+[17:17:43] [connection] incoming connection: 127.0.0.1:50467 id: 11
+[17:20:50] [debug] Server received interrupt signal
+[17:20:51] [debug] Native backtrace:
+[17:20:51] [debug] #0 77634d7c in ?? () from C:\Windows\SYSTEM32\ntdll.dll
+[17:20:51] [debug] #1 76869f4f in ?? () from C:\Windows\System32\KERNELBASE.dll
+[17:20:51] [debug] #2 76869edf in ?? () from C:\Windows\System32\KERNELBASE.dll
+[17:20:51] [debug] #3 0048d53c in ?? () from samp-server.exe
+[17:20:51] [debug] #4 0049b4a1 in ?? () from samp-server.exe
+[17:20:51] [debug] #5 0049b4b1 in ?? () from samp-server.exe
+[17:20:51] --- Server Shutting Down.
+[17:20:51] plugin.mysql: Unloading plugin...
+[17:20:51] plugin.mysql: Plugin unloaded.
+[17:20:51] 
+[17:20:51]  ==============
+[17:20:51]   YSF - kurta999's version 2.0 unloaded
+[17:20:51]  ==============
+[17:20:51] 
+[17:20:51] 
+
+*** Streamer Plugin v2.9.4 by Incognito unloaded ***
+
+[17:20:51] 
+
+[17:20:51]  ===============================
+
+[17:20:51]      sscanf plugin unloaded.    
+
+[17:20:51]  ===============================
+
+[17:20:51] 
+
+*** DNS Plugin v2.4 by Incognito unloaded ***
+
+[17:20:51] Callback hook's by mrdrifter unloaded
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[17:20:53] 
+[17:20:53] Server Plugins
+[17:20:53] --------------
+[17:20:53]  Loading plugin: mysql
+[17:20:53]  >> plugin.mysql: R39-6 successfully loaded.
+[17:20:53]   Loaded.
+[17:20:53]  Loading plugin: crashdetect
+[17:20:53]   CrashDetect v4.15.1 is OK.
+[17:20:53]   Loaded.
+[17:20:53]  Loading plugin: YSF
+[17:20:53] 
+[17:20:53]  ===============================
+[17:20:53]         YSF - kurta999's version 2.0 loaded
+[17:20:53]    (c) 2008 Alex "Y_Less" Cole - (c) 2010 - 2016 kurta999
+[17:20:53]     Server version: 0.3.7 R2-1 or R2-2
+[17:20:53]     Operating System: Windows
+[17:20:53]     Built on: May 24 2020 at 14:42:02
+[17:20:53]  ===============================
+[17:20:53] 
+[17:20:53]   Loaded.
+[17:20:53]  Loading plugin: streamer
+[17:20:53] 
+
+*** Streamer Plugin v2.9.4 by Incognito loaded ***
+
+[17:20:53]   Loaded.
+[17:20:53]  Loading plugin: sscanf
+[17:20:53] 
+
+[17:20:53]  ===============================
+
+[17:20:53]       sscanf plugin loaded.     
+
+[17:20:53]          Version:  2.8.1        
+
+[17:20:53]    (c) 2012 Alex "Y_Less" Cole  
+
+[17:20:53]  ===============================
+
+[17:20:53]   Loaded.
+[17:20:53]  Loading plugin: cstl
+[17:20:53]   Loaded.
+[17:20:53]  Loading plugin: dns
+[17:20:53] 
+
+*** DNS Plugin v2.4 by Incognito loaded ***
+
+[17:20:53]   Loaded.
+[17:20:53]  Loading plugin: samp-hooks
+[17:20:53] Callback hook's by mrdrifter loaded
+[17:20:53]   Loaded.
+[17:20:53]  Loading plugin: sampp_server
+[17:20:53]   Failed.
+[17:20:53]  Loading plugin: WebSockets
+[17:20:53]   Loaded.
+[17:20:53]  Loaded 9 plugins.
+
+[17:20:53] 
+[17:20:53] Filterscripts
+[17:20:53] ---------------
+[17:20:53]   Loading filterscript 'objectek.amx'...
+[17:20:53]   Unable to load filterscript 'objectek.amx'.
+[17:20:53]   Loaded 0 filterscripts.
+
+[17:20:53]  
+[17:20:53]  
+[17:20:53]  
+[17:20:53]  ======================================= 
+[17:20:53]  |                                     | 
+[17:20:53]  |        YSI version 4.00.0001        | 
+[17:20:53]  |        By Alex "Y_Less" Cole        | 
+[17:20:53]  |                                     | 
+[17:20:53]  ======================================= 
+[17:20:53]  
+[17:20:53] 
+
+[17:20:53] 
+
+[17:20:53] 
+
+[17:20:53] 
+
+[17:20:53] 
+
+[17:20:53] 
+
+[17:20:53] 
+
+[17:20:53] 
+
+[17:20:53] 
+
+[17:20:53] 
+
+[17:20:53] DayRPG v1.7.5 betoltese folyamatban
+[17:20:53] ---------------------------------------------------
+
+[17:20:53] MySQL: Kapcsolodas a MySQL-hez!
+[17:20:53] Szerver indítása... | Házi szerver
+[17:20:53] Adatbázisok ellenõrzése
+[17:20:53] Adatbázisok ellenõrzése megtörtént
+[17:20:53] ---------------------------------------------------
+
+
+[17:20:53] Szerver: Idozitok elinditasa!
+[17:20:53] =============== [ Automatikus mentés! (1x) ] ===============
+[17:20:53] Szerver: Játékosok adatai automatikusan mentve!
+[17:20:53] Szerver: Jármûvek adatai automatikusan mentve!
+[17:20:53] Szerver: Frakciók adatai automatikusan mentve!
+[17:20:53] Szerver: Automaták adatai automatikusan mentve!
+[17:20:53] Szerver: Területek adatai automatikusan mentve!
+[17:20:53] Szerver: Cegek adatai automatikusan mentve!
+[17:20:53] Szerver: Benzinkutak adatai automatikusan mentve!
+[17:20:53] Szerver: Házak adatai automatikusan mentve!
+[17:20:53] Banya objectek betoltve!
+[17:20:53] Szerver: Idozitok elinditasa sikeresen megtortent!
+[17:20:53] Szerver: Automatak betoltese!
+[17:20:53] Szerver: 0 automata sikeresen betoltve!
+[17:20:53] Szerver: Teleportok betöltése!
+[17:20:53] Szerver: 0 teleport sikeresen betöltve!
+[17:20:53] Szerver: Fák sikeresen lerakva!
+[17:20:53] Szerver: 287 aratás object sikeresen betöltve!
+[17:20:53] Banya objectek betoltve!
+[17:20:53] Fegyveres NPC csatlakozása!
+[17:20:54] Fegyveres NPC csatlakozva!
+[17:20:54] Szerver: Botok betoltese folyamatban!
+[17:20:54] [connection] 127.0.0.1:61640 requests connection cookie.
+[17:20:54] [connection] 127.0.0.1:61641 requests connection cookie.
+[17:20:54] [connection] 127.0.0.1:61642 requests connection cookie.
+[17:20:54] [connection] 127.0.0.1:61643 requests connection cookie.
+[17:20:54] [connection] 127.0.0.1:61644 requests connection cookie.
+[17:20:54] Szerver: BoltBotok betöltése megtörtént!
+[17:20:54] Szerver: Botok betöltése!
+[17:20:54] [connection] 127.0.0.1:61645 requests connection cookie.
+[17:20:54] Szerver: BoltBotok betöltése megtörtént!
+[17:20:54] [connection] 127.0.0.1:61646 requests connection cookie.
+[17:20:54] 0 Trafi Betöltve.
+[17:20:54] Heapspace: 255 kilobytes
+[17:20:54] Szerver: Betoltesi ido: 429ms
+[17:20:54] Number of vehicle models: 0
+[17:20:54] Szerver: CCTV Kamerák betöltése!
+[17:20:54] Szerver: 17 CCTV Kamera Sikeresen betöltve!
+[17:20:54] Szerver: Grafitik betöltése!
+[17:20:54] Szerver: 47 Grafiti Sikeresen betöltve!
+[17:20:54] Szerver: Drink pontok betöltése!
+[17:20:54] Szerver: 10 Drink pontok betöltve!
+[17:20:54] Szerver: Jármûvek betöltése!
+[17:20:54] [connection] 127.0.0.1:61647 requests connection cookie.
+[17:20:54] [connection] 127.0.0.1:61648 requests connection cookie.
+[17:20:54] [connection] 127.0.0.1:61649 requests connection cookie.
+[17:20:54] [connection] 127.0.0.1:61651 requests connection cookie.
+[17:20:54] [connection] 127.0.0.1:61650 requests connection cookie.
+[17:20:54] Szerver: 704 jármû sikeresen betöltve!
+[17:20:54] Szerver: Házak betöltése!
+[17:20:54] Szerver: 126 ház sikeresen betöltve!
+[17:20:54] Szerver: Garázsok betöltése!
+[17:20:54] Szerver: 17 garázs sikeresen betöltve!
+[17:20:54] Szerver: Frakciók betöltése!
+[17:20:54] Szerver: 19 frakció sikeresen betöltve!
+[17:20:54] Szerver: Területek betöltése!
+[17:20:54] Szerver: 10 terület sikeresen betöltve!
+[17:20:54] Szerver: GPS Koordináták betöltése!
+[17:20:54] Szerver: 42 GPS koordináta lett betöltve!
+[17:20:54] Szerver: Benzinkútak betöltése!
+[17:20:54] Szerver: 104 benzinkút sikeresen betöltve!
+[17:20:54] Szerver: Eldobtt Cuccok Betöltése!
+[17:20:54] Szerver: 692 eldobott cucc betöltve!
+[17:20:54] Szerver: Teleportok betöltése!
+[17:20:54] Szerver: 10 teleport sikeresen betöltve!
+[17:20:54] Szerver: Kapuk betöltése!
+[17:20:54] Szerver: 223 kapu sikeresen betöltve!
+[17:20:54] Szerver: 304 bútor sikeresen betöltve!
+[17:20:54] Szerver: Jarmuadatok betoltese!
+[17:20:54] Szerver: 0 jarmuadat sikeresen betoltve!
+[17:20:54] Szerver: Cegek betoltese!
+[17:20:54] Szerver: 11 ceg sikeresen betoltve!
+[17:20:54] Szerver: 3DTextLabelek betöltése!
+[17:20:54] Szerver: 8 3DTextLabel betöltve!
+[17:20:54] Szerver: Ajtók betöltése!
+[17:20:54] Szerver: 0 ajtó sikeresen betöltve!
+[17:20:54] Szerver: Tûz pozíciók betöltése!
+[17:20:54] Nincs betöltendõ tûz! (numrows==0)
+[17:20:54] Szerver: 0 tûz pozíció sikeresen betöltve!
+[17:20:55] [connection] incoming connection: 127.0.0.1:61640 id: 0
+[17:20:55] [connection] incoming connection: 127.0.0.1:61641 id: 1
+[17:20:55] [connection] incoming connection: 127.0.0.1:61642 id: 2
+[17:20:55] [connection] incoming connection: 127.0.0.1:61643 id: 3
+[17:20:55] [connection] incoming connection: 127.0.0.1:61644 id: 4
+[17:20:55] [connection] incoming connection: 127.0.0.1:61645 id: 5
+[17:20:55] [connection] incoming connection: 127.0.0.1:61646 id: 6
+[17:20:55] [connection] incoming connection: 127.0.0.1:61647 id: 7
+[17:20:55] [connection] incoming connection: 127.0.0.1:61648 id: 8
+[17:20:55] [connection] incoming connection: 127.0.0.1:61649 id: 9
+[17:20:55] [connection] incoming connection: 127.0.0.1:61650 id: 10
+[17:20:55] [connection] incoming connection: 127.0.0.1:61651 id: 11
+[17:21:57] [debug] Server received interrupt signal
+[17:21:57] [debug] Native backtrace:
+[17:21:57] [debug] #0 77634d7c in ?? () from C:\Windows\SYSTEM32\ntdll.dll
+[17:21:57] [debug] #1 76869f4f in ?? () from C:\Windows\System32\KERNELBASE.dll
+[17:21:57] [debug] #2 76869edf in ?? () from C:\Windows\System32\KERNELBASE.dll
+[17:21:57] [debug] #3 0048d53c in ?? () from samp-server.exe
+[17:21:57] [debug] #4 0049b4a1 in ?? () from samp-server.exe
+[17:21:57] [debug] #5 0049b4b1 in ?? () from samp-server.exe
+[17:21:57] --- Server Shutting Down.
+[17:21:57] plugin.mysql: Unloading plugin...
+[17:21:57] plugin.mysql: Plugin unloaded.
+[17:21:57] 
+[17:21:57]  ==============
+[17:21:57]   YSF - kurta999's version 2.0 unloaded
+[17:21:57]  ==============
+[17:21:57] 
+[17:21:57] 
+
+*** Streamer Plugin v2.9.4 by Incognito unloaded ***
+
+[17:21:57] 
+
+[17:21:57]  ===============================
+
+[17:21:57]      sscanf plugin unloaded.    
+
+[17:21:57]  ===============================
+
+[17:21:57] 
+
+*** DNS Plugin v2.4 by Incognito unloaded ***
+
+[17:21:57] Callback hook's by mrdrifter unloaded
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[17:22:12] 
+[17:22:12] Server Plugins
+[17:22:12] --------------
+[17:22:12]  Loading plugin: mysql
+[17:22:12]  >> plugin.mysql: R39-6 successfully loaded.
+[17:22:12]   Loaded.
+[17:22:12]  Loading plugin: crashdetect
+[17:22:12]   CrashDetect v4.15.1 is OK.
+[17:22:12]   Loaded.
+[17:22:12]  Loading plugin: YSF
+[17:22:12] 
+[17:22:12]  ===============================
+[17:22:12]         YSF - kurta999's version 2.0 loaded
+[17:22:12]    (c) 2008 Alex "Y_Less" Cole - (c) 2010 - 2016 kurta999
+[17:22:12]     Server version: 0.3.7 R2-1 or R2-2
+[17:22:12]     Operating System: Windows
+[17:22:12]     Built on: May 24 2020 at 14:42:02
+[17:22:12]  ===============================
+[17:22:12] 
+[17:22:12]   Loaded.
+[17:22:12]  Loading plugin: streamer
+[17:22:12] 
+
+*** Streamer Plugin v2.9.4 by Incognito loaded ***
+
+[17:22:12]   Loaded.
+[17:22:12]  Loading plugin: sscanf
+[17:22:12] 
+
+[17:22:12]  ===============================
+
+[17:22:12]       sscanf plugin loaded.     
+
+[17:22:12]          Version:  2.8.1        
+
+[17:22:12]    (c) 2012 Alex "Y_Less" Cole  
+
+[17:22:12]  ===============================
+
+[17:22:12]   Loaded.
+[17:22:12]  Loading plugin: cstl
+[17:22:12]   Loaded.
+[17:22:12]  Loading plugin: dns
+[17:22:12] 
+
+*** DNS Plugin v2.4 by Incognito loaded ***
+
+[17:22:12]   Loaded.
+[17:22:12]  Loading plugin: samp-hooks
+[17:22:12] Callback hook's by mrdrifter loaded
+[17:22:12]   Loaded.
+[17:22:12]  Loading plugin: sampp_server
+[17:22:13] [SA-MP+] Loaded
+[17:22:13]   Loaded.
+[17:22:13]  Loading plugin: WebSockets
+[17:22:13]   Loaded.
+[17:22:13]  Loaded 10 plugins.
+
+[17:22:13] 
+[17:22:13] Filterscripts
+[17:22:13] ---------------
+[17:22:13]   Loading filterscript 'objectek.amx'...
+[17:22:13]   Unable to load filterscript 'objectek.amx'.
+[17:22:13]   Loaded 0 filterscripts.
+
+[17:22:13]  
+[17:22:13]  
+[17:22:13]  
+[17:22:13]  ======================================= 
+[17:22:13]  |                                     | 
+[17:22:13]  |        YSI version 4.00.0001        | 
+[17:22:13]  |        By Alex "Y_Less" Cole        | 
+[17:22:13]  |                                     | 
+[17:22:13]  ======================================= 
+[17:22:13]  
+[17:22:13] 
+
+[17:22:13] 
+
+[17:22:13] 
+
+[17:22:13] 
+
+[17:22:13] 
+
+[17:22:13] 
+
+[17:22:13] 
+
+[17:22:13] 
+
+[17:22:13] 
+
+[17:22:13] 
+
+[17:22:13] DayRPG v1.7.5 betoltese folyamatban
+[17:22:13] ---------------------------------------------------
+
+[17:22:13] MySQL: Kapcsolodas a MySQL-hez!
+[17:22:13] Szerver indítása... | Házi szerver
+[17:22:13] Adatbázisok ellenõrzése
+[17:22:13] Adatbázisok ellenõrzése megtörtént
+[17:22:13] ---------------------------------------------------
+
+
+[17:22:13] Szerver: Idozitok elinditasa!
+[17:22:13] =============== [ Automatikus mentés! (1x) ] ===============
+[17:22:13] Szerver: Játékosok adatai automatikusan mentve!
+[17:22:13] Szerver: Jármûvek adatai automatikusan mentve!
+[17:22:13] Szerver: Frakciók adatai automatikusan mentve!
+[17:22:13] Szerver: Automaták adatai automatikusan mentve!
+[17:22:13] Szerver: Területek adatai automatikusan mentve!
+[17:22:13] Szerver: Cegek adatai automatikusan mentve!
+[17:22:13] Szerver: Benzinkutak adatai automatikusan mentve!
+[17:22:13] Szerver: Házak adatai automatikusan mentve!
+[17:22:13] Banya objectek betoltve!
+[17:22:13] Szerver: Idozitok elinditasa sikeresen megtortent!
+[17:22:13] Szerver: Automatak betoltese!
+[17:22:13] Szerver: 0 automata sikeresen betoltve!
+[17:22:13] Szerver: Teleportok betöltése!
+[17:22:13] Szerver: 0 teleport sikeresen betöltve!
+[17:22:13] Szerver: Fák sikeresen lerakva!
+[17:22:13] Szerver: 287 aratás object sikeresen betöltve!
+[17:22:13] Banya objectek betoltve!
+[17:22:13] Fegyveres NPC csatlakozása!
+[17:22:13] Fegyveres NPC csatlakozva!
+[17:22:13] Szerver: Botok betoltese folyamatban!
+[17:22:13] [connection] 127.0.0.1:59845 requests connection cookie.
+[17:22:13] [connection] 127.0.0.1:59846 requests connection cookie.
+[17:22:13] [connection] 127.0.0.1:59847 requests connection cookie.
+[17:22:13] [connection] 127.0.0.1:59848 requests connection cookie.
+[17:22:13] [connection] 127.0.0.1:59849 requests connection cookie.
+[17:22:13] Szerver: BoltBotok betöltése megtörtént!
+[17:22:13] Szerver: Botok betöltése!
+[17:22:13] [connection] 127.0.0.1:59850 requests connection cookie.
+[17:22:13] Szerver: BoltBotok betöltése megtörtént!
+[17:22:13] 0 Trafi Betöltve.
+[17:22:13] Heapspace: 255 kilobytes
+[17:22:13] Szerver: Betoltesi ido: 242ms
+[17:22:13] Number of vehicle models: 0
+[17:22:13] Szerver: CCTV Kamerák betöltése!
+[17:22:13] [connection] 127.0.0.1:59851 requests connection cookie.
+[17:22:13] Szerver: 17 CCTV Kamera Sikeresen betöltve!
+[17:22:13] Szerver: Grafitik betöltése!
+[17:22:13] Szerver: 47 Grafiti Sikeresen betöltve!
+[17:22:13] Szerver: Drink pontok betöltése!
+[17:22:13] Szerver: 10 Drink pontok betöltve!
+[17:22:13] Szerver: Jármûvek betöltése!
+[17:22:13] [connection] 127.0.0.1:59852 requests connection cookie.
+[17:22:13] [connection] 127.0.0.1:59853 requests connection cookie.
+[17:22:13] [connection] 127.0.0.1:59854 requests connection cookie.
+[17:22:13] [connection] 127.0.0.1:59855 requests connection cookie.
+[17:22:13] [connection] 127.0.0.1:59856 requests connection cookie.
+[17:22:14] Szerver: 704 jármû sikeresen betöltve!
+[17:22:14] Szerver: Házak betöltése!
+[17:22:14] Szerver: 126 ház sikeresen betöltve!
+[17:22:14] Szerver: Garázsok betöltése!
+[17:22:14] Szerver: 17 garázs sikeresen betöltve!
+[17:22:14] Szerver: Frakciók betöltése!
+[17:22:14] Szerver: 19 frakció sikeresen betöltve!
+[17:22:14] Szerver: Területek betöltése!
+[17:22:14] Szerver: 10 terület sikeresen betöltve!
+[17:22:14] Szerver: GPS Koordináták betöltése!
+[17:22:14] Szerver: 42 GPS koordináta lett betöltve!
+[17:22:14] Szerver: Benzinkútak betöltése!
+[17:22:14] Szerver: 104 benzinkút sikeresen betöltve!
+[17:22:14] Szerver: Eldobtt Cuccok Betöltése!
+[17:22:14] Szerver: 692 eldobott cucc betöltve!
+[17:22:14] Szerver: Teleportok betöltése!
+[17:22:14] Szerver: 10 teleport sikeresen betöltve!
+[17:22:14] Szerver: Kapuk betöltése!
+[17:22:14] Szerver: 223 kapu sikeresen betöltve!
+[17:22:14] Szerver: 304 bútor sikeresen betöltve!
+[17:22:14] Szerver: Jarmuadatok betoltese!
+[17:22:14] Szerver: 0 jarmuadat sikeresen betoltve!
+[17:22:14] Szerver: Cegek betoltese!
+[17:22:14] Szerver: 11 ceg sikeresen betoltve!
+[17:22:14] Szerver: 3DTextLabelek betöltése!
+[17:22:14] Szerver: 8 3DTextLabel betöltve!
+[17:22:14] Szerver: Ajtók betöltése!
+[17:22:14] Szerver: 0 ajtó sikeresen betöltve!
+[17:22:14] Szerver: Tûz pozíciók betöltése!
+[17:22:14] Nincs betöltendõ tûz! (numrows==0)
+[17:22:14] Szerver: 0 tûz pozíció sikeresen betöltve!
+[17:22:14] [connection] incoming connection: 127.0.0.1:59845 id: 0
+[17:22:14] [connection] incoming connection: 127.0.0.1:59847 id: 1
+[17:22:14] [connection] incoming connection: 127.0.0.1:59846 id: 2
+[17:22:14] [connection] incoming connection: 127.0.0.1:59848 id: 3
+[17:22:14] [connection] incoming connection: 127.0.0.1:59849 id: 4
+[17:22:14] [connection] incoming connection: 127.0.0.1:59850 id: 5
+[17:22:14] [connection] incoming connection: 127.0.0.1:59851 id: 6
+[17:22:14] [connection] incoming connection: 127.0.0.1:59852 id: 7
+[17:22:14] [connection] incoming connection: 127.0.0.1:59853 id: 8
+[17:22:14] [connection] incoming connection: 127.0.0.1:59854 id: 9
+[17:22:14] [connection] incoming connection: 127.0.0.1:59855 id: 10
+[17:22:14] [connection] incoming connection: 127.0.0.1:59856 id: 11
+[17:22:28] [debug] Server received interrupt signal
+[17:22:28] [debug] Native backtrace:
+[17:22:28] [debug] #0 77634d7c in ?? () from C:\Windows\SYSTEM32\ntdll.dll
+[17:22:28] [debug] #1 76869f4f in ?? () from C:\Windows\System32\KERNELBASE.dll
+[17:22:28] [debug] #2 76869edf in ?? () from C:\Windows\System32\KERNELBASE.dll
+[17:22:28] [debug] #3 0048d53c in ?? () from samp-server.exe
+[17:22:28] [debug] #4 0049b4a1 in ?? () from samp-server.exe
+[17:22:28] [debug] #5 0049b4b1 in ?? () from samp-server.exe
+[17:22:28] --- Server Shutting Down.
+[17:22:28] plugin.mysql: Unloading plugin...
+[17:22:28] plugin.mysql: Plugin unloaded.
+[17:22:28] 
+[17:22:28]  ==============
+[17:22:28]   YSF - kurta999's version 2.0 unloaded
+[17:22:28]  ==============
+[17:22:28] 
+[17:22:28] 
+
+*** Streamer Plugin v2.9.4 by Incognito unloaded ***
+
+[17:22:28] 
+
+[17:22:28]  ===============================
+
+[17:22:28]      sscanf plugin unloaded.    
+
+[17:22:28]  ===============================
+
+[17:22:28] 
+
+*** DNS Plugin v2.4 by Incognito unloaded ***
+
+[17:22:28] Callback hook's by mrdrifter unloaded
+[17:22:28] [SA-MP+] Unloaded
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[17:32:18] 
+[17:32:18] Server Plugins
+[17:32:18] --------------
+[17:32:18]  Loading plugin: mysql
+[17:32:18]  >> plugin.mysql: R39-6 successfully loaded.
+[17:32:18]   Loaded.
+[17:32:18]  Loading plugin: crashdetect
+[17:32:18]   CrashDetect v4.15.1 is OK.
+[17:32:18]   Loaded.
+[17:32:18]  Loading plugin: YSF
+[17:32:18] 
+[17:32:18]  ===============================
+[17:32:18]         YSF - kurta999's version 2.0 loaded
+[17:32:18]    (c) 2008 Alex "Y_Less" Cole - (c) 2010 - 2016 kurta999
+[17:32:18]     Server version: 0.3.7 R2-1 or R2-2
+[17:32:18]     Operating System: Windows
+[17:32:18]     Built on: May 24 2020 at 14:42:02
+[17:32:18]  ===============================
+[17:32:18] 
+[17:32:18]   Loaded.
+[17:32:18]  Loading plugin: streamer
+[17:32:18] 
+
+*** Streamer Plugin v2.9.4 by Incognito loaded ***
+
+[17:32:18]   Loaded.
+[17:32:18]  Loading plugin: sscanf
+[17:32:18] 
+
+[17:32:18]  ===============================
+
+[17:32:18]       sscanf plugin loaded.     
+
+[17:32:18]          Version:  2.8.1        
+
+[17:32:18]    (c) 2012 Alex "Y_Less" Cole  
+
+[17:32:18]  ===============================
+
+[17:32:18]   Loaded.
+[17:32:18]  Loading plugin: cstl
+[17:32:18]   Loaded.
+[17:32:18]  Loading plugin: dns
+[17:32:18] 
+
+*** DNS Plugin v2.4 by Incognito loaded ***
+
+[17:32:18]   Loaded.
+[17:32:18]  Loading plugin: samp-hooks
+[17:32:18] Callback hook's by mrdrifter loaded
+[17:32:18]   Loaded.
+[17:32:18]  Loading plugin: sampp_server
+[17:32:18] [SA-MP+] Loaded
+[17:32:18]   Loaded.
+[17:32:18]  Loading plugin: WebSockets
+[17:32:18]   Loaded.
+[17:32:18]  Loading plugin: MapAndreas
+[17:32:18]   Loaded.
+[17:32:18]  Loading plugin: ColAndreas
+[17:32:18] *********************
+[17:32:18] ** Created By:     **
+[17:32:18] ** [uL]Chris42O    **
+[17:32:18] ** [uL]Slice       **
+[17:32:18] ** [uL]Pottus      **
+[17:32:18] *********************
+[17:32:18] No collision data found.
+[17:32:18] *********************
+[17:32:18]   ColAndreas Loaded
+[17:32:18]    v1.4.0
+[17:32:18] *********************
+[17:32:18]   Loaded.
+[17:32:18]  Loading plugin: FCNPC
+[17:32:18] 
+[17:32:18] -------------------------------------------------
+[17:32:18]      FCNPC - Fully Controllable NPC v2.0.4
+[17:32:18]             Windows SA-MP 0.3.7 R2
+[17:32:18]            Nov 17 2021 at 02:36:40
+[17:32:18] 
+[17:32:18]   Author:       OrMisicL (2013 - 2015)
+[17:32:18]   Continued by: ziggi    (2016 - present)
+[17:32:18] 
+[17:32:18]   See full credits in the README.md file
+[17:32:18] -------------------------------------------------
+[17:32:18] 
+[17:32:18] Loading...
+[17:32:18] 
+[17:32:18] -------------------------------------------------
+[17:32:18]    ColAndreasv1.4.0
+[17:32:18] 
+[17:32:18]    Created By:
+[17:32:18]      [uL]Chris42O
+[17:32:18]      [uL]Slice
+[17:32:18]      [uL]Pottus
+[17:32:18] -------------------------------------------------
+[17:32:18] 
+[17:32:18] Loading...
+[17:32:18] ColAndreas v1.4.0 Loaded.
+[17:32:18]   Loaded.
+[17:32:18]  Loaded 13 plugins.
+
+[17:32:18] 
+[17:32:18] Filterscripts
+[17:32:18] ---------------
+[17:32:18]   Loading filterscript 'objectek.amx'...
+[17:32:18]   Unable to load filterscript 'objectek.amx'.
+[17:32:18]   Loaded 0 filterscripts.
+
+[17:32:18] No collision data found.
+[17:32:18] [FCNPC] Warning: Unable to create NPCs. The maxnpc limit in server.cfg is 0.
+[17:32:18]  
+[17:32:18]  
+[17:32:18]  
+[17:32:18]  ======================================= 
+[17:32:18]  |                                     | 
+[17:32:18]  |        YSI version 4.00.0001        | 
+[17:32:18]  |        By Alex "Y_Less" Cole        | 
+[17:32:18]  |                                     | 
+[17:32:18]  ======================================= 
+[17:32:18]  
+[17:32:18] 
+
+[17:32:18] 
+
+[17:32:18] 
+
+[17:32:18] 
+
+[17:32:18] 
+
+[17:32:18] 
+
+[17:32:18] 
+
+[17:32:18] 
+
+[17:32:18] 
+
+[17:32:18] 
+
+[17:32:18] SeeRPG v2.0.0 betoltese folyamatban
+[17:32:18] ---------------------------------------------------
+
+[17:32:18] MySQL: Kapcsolodas a MySQL-hez!
+[17:32:18] Szerver indítása... | Házi szerver
+[17:32:18] Adatbázisok ellenõrzése
+[17:32:18] Adatbázisok ellenõrzése megtörtént
+[17:32:18] ---------------------------------------------------
+
+
+[17:32:18] Szerver: Idozitok elinditasa!
+[17:32:18] =============== [ Automatikus mentés! (1x) ] ===============
+[17:32:18] Szerver: Játékosok adatai automatikusan mentve!
+[17:32:18] Szerver: Jármûvek adatai automatikusan mentve!
+[17:32:18] Szerver: Frakciók adatai automatikusan mentve!
+[17:32:18] Szerver: Automaták adatai automatikusan mentve!
+[17:32:18] Szerver: Területek adatai automatikusan mentve!
+[17:32:18] Szerver: Cegek adatai automatikusan mentve!
+[17:32:18] Szerver: Benzinkutak adatai automatikusan mentve!
+[17:32:18] Szerver: Házak adatai automatikusan mentve!
+[17:32:18] Banya objectek betoltve!
+[17:32:18] Szerver: Idozitok elinditasa sikeresen megtortent!
+[17:32:18] Szerver: Automatak betoltese!
+[17:32:18] Szerver: 0 automata sikeresen betoltve!
+[17:32:18] Szerver: Teleportok betöltése!
+[17:32:18] Szerver: 0 teleport sikeresen betöltve!
+[17:32:18] Szerver: Fák sikeresen lerakva!
+[17:32:18] Szerver: 287 aratás object sikeresen betöltve!
+[17:32:18] Banya objectek betoltve!
+[17:32:18] Szerver: Botok betöltése!
+[17:32:18] [FCNPC] Error: NPC 'bankbot_0' not created. Name 'bankbot_0' is invalid or the maxnpc limit in server.cfg has been reached.
+[17:32:18] Szerver: Botok betöltése megtörtént!
+[17:32:18] Fegyveres NPC csatlakozása!
+[17:32:18] Fegyveres NPC csatlakozva!
+[17:32:18] Szerver: Botok betoltese folyamatban!
+[17:32:18] [connection] 127.0.0.1:59342 requests connection cookie.
+[17:32:18] [connection] 127.0.0.1:59343 requests connection cookie.
+[17:32:18] [connection] 127.0.0.1:59344 requests connection cookie.
+[17:32:18] [connection] 127.0.0.1:59345 requests connection cookie.
+[17:32:18] Szerver: BoltBotok betöltése megtörtént!
+[17:32:18] Szerver: Botok betöltése!
+[17:32:18] [connection] 127.0.0.1:59346 requests connection cookie.
+[17:32:18] Szerver: BoltBotok betöltése megtörtént!
+[17:32:18] 0 Trafi Betöltve.
+[17:32:18] Heapspace: 255 kilobytes
+[17:32:18] Szerver: Betoltesi ido: 230ms
+[17:32:18] Number of vehicle models: 0
+[17:32:18] Szerver: CCTV Kamerák betöltése!
+[17:32:18] [connection] 127.0.0.1:59347 requests connection cookie.
+[17:32:18] Szerver: 17 CCTV Kamera Sikeresen betöltve!
+[17:32:18] Szerver: Grafitik betöltése!
+[17:32:18] Szerver: 47 Grafiti Sikeresen betöltve!
+[17:32:18] Szerver: Drink pontok betöltése!
+[17:32:18] Szerver: 10 Drink pontok betöltve!
+[17:32:18] Szerver: Jármûvek betöltése!
+[17:32:19] [connection] 127.0.0.1:59348 requests connection cookie.
+[17:32:19] [connection] 127.0.0.1:59349 requests connection cookie.
+[17:32:19] [connection] 127.0.0.1:59350 requests connection cookie.
+[17:32:19] [connection] 127.0.0.1:59353 requests connection cookie.
+[17:32:19] [connection] 127.0.0.1:59351 requests connection cookie.
+[17:32:19] [connection] 127.0.0.1:59352 requests connection cookie.
+[17:32:19] Szerver: 704 jármû sikeresen betöltve!
+[17:32:19] Szerver: Házak betöltése!
+[17:32:19] Szerver: 126 ház sikeresen betöltve!
+[17:32:19] Szerver: Garázsok betöltése!
+[17:32:19] Szerver: 17 garázs sikeresen betöltve!
+[17:32:19] Szerver: Frakciók betöltése!
+[17:32:19] Szerver: 19 frakció sikeresen betöltve!
+[17:32:19] Szerver: Területek betöltése!
+[17:32:19] Szerver: 10 terület sikeresen betöltve!
+[17:32:19] Szerver: GPS Koordináták betöltése!
+[17:32:19] Szerver: 42 GPS koordináta lett betöltve!
+[17:32:19] Szerver: Benzinkútak betöltése!
+[17:32:19] Szerver: 104 benzinkút sikeresen betöltve!
+[17:32:19] Szerver: Eldobtt Cuccok Betöltése!
+[17:32:20] Szerver: 692 eldobott cucc betöltve!
+[17:32:20] Szerver: Teleportok betöltése!
+[17:32:20] Szerver: 10 teleport sikeresen betöltve!
+[17:32:20] Szerver: Kapuk betöltése!
+[17:32:20] Szerver: 223 kapu sikeresen betöltve!
+[17:32:20] Szerver: 304 bútor sikeresen betöltve!
+[17:32:20] Szerver: Jarmuadatok betoltese!
+[17:32:20] Szerver: 0 jarmuadat sikeresen betoltve!
+[17:32:20] Szerver: Cegek betoltese!
+[17:32:20] Szerver: 11 ceg sikeresen betoltve!
+[17:32:20] Szerver: 3DTextLabelek betöltése!
+[17:32:20] Szerver: 8 3DTextLabel betöltve!
+[17:32:20] Szerver: Ajtók betöltése!
+[17:32:20] Szerver: 0 ajtó sikeresen betöltve!
+[17:32:20] Szerver: Tûz pozíciók betöltése!
+[17:32:20] Nincs betöltendõ tûz! (numrows==0)
+[17:32:20] Szerver: 0 tûz pozíció sikeresen betöltve!
+[17:32:20] [connection] incoming connection: 127.0.0.1:59342 id: 0
+[17:32:20] [connection] incoming connection: 127.0.0.1:59343 id: 1
+[17:32:20] [connection] incoming connection: 127.0.0.1:59344 id: 2
+[17:32:20] [connection] incoming connection: 127.0.0.1:59345 id: 3
+[17:32:20] [connection] incoming connection: 127.0.0.1:59346 id: 4
+[17:32:20] [connection] incoming connection: 127.0.0.1:59347 id: 5
+[17:32:20] [connection] incoming connection: 127.0.0.1:59348 id: 6
+[17:32:20] [connection] incoming connection: 127.0.0.1:59349 id: 7
+[17:32:20] [connection] incoming connection: 127.0.0.1:59350 id: 8
+[17:32:20] [connection] incoming connection: 127.0.0.1:59353 id: 9
+[17:32:20] [connection] incoming connection: 127.0.0.1:59351 id: 10
+[17:32:20] [connection] incoming connection: 127.0.0.1:59352 id: 11
+[17:32:38] [debug] Server received interrupt signal
+[17:32:38] [debug] Native backtrace:
+[17:32:38] [debug] #0 77634d7c in ?? () from C:\Windows\SYSTEM32\ntdll.dll
+[17:32:38] [debug] #1 76869f4f in ?? () from C:\Windows\System32\KERNELBASE.dll
+[17:32:38] [debug] #2 76869edf in ?? () from C:\Windows\System32\KERNELBASE.dll
+[17:32:38] [debug] #3 0048d53c in ?? () from samp-server.exe
+[17:32:38] [debug] #4 0049b4a1 in ?? () from samp-server.exe
+[17:32:38] [debug] #5 0049b4b1 in ?? () from samp-server.exe
+[17:32:38] --- Server Shutting Down.
+[17:32:38] plugin.mysql: Unloading plugin...
+[17:32:38] plugin.mysql: Plugin unloaded.
+[17:32:38] 
+[17:32:38]  ==============
+[17:32:38]   YSF - kurta999's version 2.0 unloaded
+[17:32:38]  ==============
+[17:32:38] 
+[17:32:38] 
+
+*** Streamer Plugin v2.9.4 by Incognito unloaded ***
+
+[17:32:38] 
+
+[17:32:38]  ===============================
+
+[17:32:38]      sscanf plugin unloaded.    
+
+[17:32:38]  ===============================
+
+[17:32:38] 
+
+*** DNS Plugin v2.4 by Incognito unloaded ***
+
+[17:32:38] Callback hook's by mrdrifter unloaded
+[17:32:38] [SA-MP+] Unloaded
+[17:32:38] *********************
+[17:32:38] *ColAndreas Unloaded*
+[17:32:38] *********************
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[17:32:46] 
+[17:32:46] Server Plugins
+[17:32:46] --------------
+[17:32:46]  Loading plugin: mysql
+[17:32:46]  >> plugin.mysql: R39-6 successfully loaded.
+[17:32:46]   Loaded.
+[17:32:46]  Loading plugin: crashdetect
+[17:32:46]   CrashDetect v4.15.1 is OK.
+[17:32:46]   Loaded.
+[17:32:46]  Loading plugin: YSF
+[17:32:46] 
+[17:32:46]  ===============================
+[17:32:46]         YSF - kurta999's version 2.0 loaded
+[17:32:46]    (c) 2008 Alex "Y_Less" Cole - (c) 2010 - 2016 kurta999
+[17:32:46]     Server version: 0.3.7 R2-1 or R2-2
+[17:32:46]     Operating System: Windows
+[17:32:46]     Built on: May 24 2020 at 14:42:02
+[17:32:46]  ===============================
+[17:32:46] 
+[17:32:46]   Loaded.
+[17:32:46]  Loading plugin: streamer
+[17:32:46] 
+
+*** Streamer Plugin v2.9.4 by Incognito loaded ***
+
+[17:32:46]   Loaded.
+[17:32:46]  Loading plugin: sscanf
+[17:32:46] 
+
+[17:32:46]  ===============================
+
+[17:32:46]       sscanf plugin loaded.     
+
+[17:32:46]          Version:  2.8.1        
+
+[17:32:46]    (c) 2012 Alex "Y_Less" Cole  
+
+[17:32:46]  ===============================
+
+[17:32:46]   Loaded.
+[17:32:46]  Loading plugin: cstl
+[17:32:46]   Loaded.
+[17:32:46]  Loading plugin: dns
+[17:32:46] 
+
+*** DNS Plugin v2.4 by Incognito loaded ***
+
+[17:32:46]   Loaded.
+[17:32:46]  Loading plugin: samp-hooks
+[17:32:46] Callback hook's by mrdrifter loaded
+[17:32:46]   Loaded.
+[17:32:46]  Loading plugin: sampp_server
+[17:32:46] [SA-MP+] Loaded
+[17:32:46]   Loaded.
+[17:32:46]  Loading plugin: WebSockets
+[17:32:46]   Loaded.
+[17:32:46]  Loading plugin: MapAndreas
+[17:32:46]   Loaded.
+[17:32:46]  Loading plugin: ColAndreas
+[17:32:46] *********************
+[17:32:46] ** Created By:     **
+[17:32:46] ** [uL]Chris42O    **
+[17:32:46] ** [uL]Slice       **
+[17:32:46] ** [uL]Pottus      **
+[17:32:46] *********************
+[17:32:46] No collision data found.
+[17:32:46] *********************
+[17:32:46]   ColAndreas Loaded
+[17:32:46]    v1.4.0
+[17:32:46] *********************
+[17:32:46]   Loaded.
+[17:32:46]  Loading plugin: FCNPC
+[17:32:46] 
+[17:32:46] -------------------------------------------------
+[17:32:46]      FCNPC - Fully Controllable NPC v2.0.4
+[17:32:46]             Windows SA-MP 0.3.7 R2
+[17:32:46]            Nov 17 2021 at 02:36:40
+[17:32:46] 
+[17:32:46]   Author:       OrMisicL (2013 - 2015)
+[17:32:46]   Continued by: ziggi    (2016 - present)
+[17:32:46] 
+[17:32:46]   See full credits in the README.md file
+[17:32:46] -------------------------------------------------
+[17:32:46] 
+[17:32:46] Loading...
+[17:32:46] 
+[17:32:46] -------------------------------------------------
+[17:32:46]    ColAndreasv1.4.0
+[17:32:46] 
+[17:32:46]    Created By:
+[17:32:46]      [uL]Chris42O
+[17:32:46]      [uL]Slice
+[17:32:46]      [uL]Pottus
+[17:32:46] -------------------------------------------------
+[17:32:46] 
+[17:32:46] Loading...
+[17:32:46] ColAndreas v1.4.0 Loaded.
+[17:32:46]   Loaded.
+[17:32:46]  Loaded 13 plugins.
+
+[17:32:46] 
+[17:32:46] Filterscripts
+[17:32:46] ---------------
+[17:32:46]   Loading filterscript 'objectek.amx'...
+[17:32:46]   Unable to load filterscript 'objectek.amx'.
+[17:32:46]   Loaded 0 filterscripts.
+
+[17:32:46] No collision data found.
+[17:32:46]  
+[17:32:46]  
+[17:32:46]  
+[17:32:46]  ======================================= 
+[17:32:46]  |                                     | 
+[17:32:46]  |        YSI version 4.00.0001        | 
+[17:32:46]  |        By Alex "Y_Less" Cole        | 
+[17:32:46]  |                                     | 
+[17:32:46]  ======================================= 
+[17:32:46]  
+[17:32:46] 
+
+[17:32:46] 
+
+[17:32:46] 
+
+[17:32:46] 
+
+[17:32:46] 
+
+[17:32:46] 
+
+[17:32:46] 
+
+[17:32:46] 
+
+[17:32:46] 
+
+[17:32:46] 
+
+[17:32:46] SeeRPG v2.0.0 betoltese folyamatban
+[17:32:46] ---------------------------------------------------
+
+[17:32:46] MySQL: Kapcsolodas a MySQL-hez!
+[17:32:46] Szerver indítása... | Házi szerver
+[17:32:46] Adatbázisok ellenõrzése
+[17:32:46] Adatbázisok ellenõrzése megtörtént
+[17:32:46] ---------------------------------------------------
+
+
+[17:32:46] Szerver: Idozitok elinditasa!
+[17:32:46] =============== [ Automatikus mentés! (1x) ] ===============
+[17:32:46] Szerver: Játékosok adatai automatikusan mentve!
+[17:32:46] Szerver: Jármûvek adatai automatikusan mentve!
+[17:32:46] Szerver: Frakciók adatai automatikusan mentve!
+[17:32:46] Szerver: Automaták adatai automatikusan mentve!
+[17:32:46] Szerver: Területek adatai automatikusan mentve!
+[17:32:46] Szerver: Cegek adatai automatikusan mentve!
+[17:32:46] Szerver: Benzinkutak adatai automatikusan mentve!
+[17:32:46] Szerver: Házak adatai automatikusan mentve!
+[17:32:46] Banya objectek betoltve!
+[17:32:46] Szerver: Idozitok elinditasa sikeresen megtortent!
+[17:32:46] Szerver: Automatak betoltese!
+[17:32:46] Szerver: 0 automata sikeresen betoltve!
+[17:32:46] Szerver: Teleportok betöltése!
+[17:32:46] Szerver: 0 teleport sikeresen betöltve!
+[17:32:46] Szerver: Fák sikeresen lerakva!
+[17:32:46] Szerver: 287 aratás object sikeresen betöltve!
+[17:32:46] Banya objectek betoltve!
+[17:32:46] Szerver: Botok betöltése!
+[17:32:46] [npc:join] bankbot_0 has joined the server (49:127.0.0.1)
+[17:32:46] *** YSI Warning: y_malloc set up via "CallLocalFunction", memory corruption is a remote possibility
+[17:32:46] Szerver: Botok betöltése megtörtént!
+[17:32:46] Fegyveres NPC csatlakozása!
+[17:32:46] Fegyveres NPC csatlakozva!
+[17:32:46] Szerver: Botok betoltese folyamatban!
+[17:32:46] [connection] 127.0.0.1:58526 requests connection cookie.
+[17:32:46] [connection] 127.0.0.1:58527 requests connection cookie.
+[17:32:46] [connection] 127.0.0.1:58528 requests connection cookie.
+[17:32:46] Szerver: BoltBotok betöltése megtörtént!
+[17:32:46] Szerver: Botok betöltése!
+[17:32:46] [connection] 127.0.0.1:58529 requests connection cookie.
+[17:32:46] [connection] 127.0.0.1:58530 requests connection cookie.
+[17:32:46] Szerver: BoltBotok betöltése megtörtént!
+[17:32:46] 0 Trafi Betöltve.
+[17:32:46] Heapspace: 255 kilobytes
+[17:32:46] Szerver: Betoltesi ido: 279ms
+[17:32:46] Number of vehicle models: 0
+[17:32:46] Szerver: CCTV Kamerák betöltése!
+[17:32:46] [connection] 127.0.0.1:58531 requests connection cookie.
+[17:32:46] [connection] 127.0.0.1:58532 requests connection cookie.
+[17:32:46] Szerver: 17 CCTV Kamera Sikeresen betöltve!
+[17:32:46] Szerver: Grafitik betöltése!
+[17:32:46] Szerver: 47 Grafiti Sikeresen betöltve!
+[17:32:46] Szerver: Drink pontok betöltése!
+[17:32:46] Szerver: 10 Drink pontok betöltve!
+[17:32:46] Szerver: Jármûvek betöltése!
+[17:32:46] [connection] 127.0.0.1:58533 requests connection cookie.
+[17:32:46] [connection] 127.0.0.1:58534 requests connection cookie.
+[17:32:46] [connection] 127.0.0.1:58535 requests connection cookie.
+[17:32:46] [connection] 127.0.0.1:58536 requests connection cookie.
+[17:32:46] [connection] 127.0.0.1:58537 requests connection cookie.
+[17:32:47] Szerver: 704 jármû sikeresen betöltve!
+[17:32:47] Szerver: Házak betöltése!
+[17:32:47] Szerver: 126 ház sikeresen betöltve!
+[17:32:47] Szerver: Garázsok betöltése!
+[17:32:47] Szerver: 17 garázs sikeresen betöltve!
+[17:32:47] Szerver: Frakciók betöltése!
+[17:32:47] Szerver: 19 frakció sikeresen betöltve!
+[17:32:47] Szerver: Területek betöltése!
+[17:32:47] Szerver: 10 terület sikeresen betöltve!
+[17:32:47] Szerver: GPS Koordináták betöltése!
+[17:32:47] Szerver: 42 GPS koordináta lett betöltve!
+[17:32:47] Szerver: Benzinkútak betöltése!
+[17:32:47] Szerver: 104 benzinkút sikeresen betöltve!
+[17:32:47] Szerver: Eldobtt Cuccok Betöltése!
+[17:32:47] Szerver: 692 eldobott cucc betöltve!
+[17:32:47] Szerver: Teleportok betöltése!
+[17:32:47] Szerver: 10 teleport sikeresen betöltve!
+[17:32:47] Szerver: Kapuk betöltése!
+[17:32:47] Szerver: 223 kapu sikeresen betöltve!
+[17:32:47] Szerver: 304 bútor sikeresen betöltve!
+[17:32:47] Szerver: Jarmuadatok betoltese!
+[17:32:47] Szerver: 0 jarmuadat sikeresen betoltve!
+[17:32:47] Szerver: Cegek betoltese!
+[17:32:47] Szerver: 11 ceg sikeresen betoltve!
+[17:32:47] Szerver: 3DTextLabelek betöltése!
+[17:32:47] Szerver: 8 3DTextLabel betöltve!
+[17:32:47] Szerver: Ajtók betöltése!
+[17:32:47] Szerver: 0 ajtó sikeresen betöltve!
+[17:32:47] Szerver: Tûz pozíciók betöltése!
+[17:32:47] Nincs betöltendõ tûz! (numrows==0)
+[17:32:47] Szerver: 0 tûz pozíció sikeresen betöltve!
+[17:32:47] [connection] incoming connection: 127.0.0.1:58526 id: 0
+[17:32:47] [connection] incoming connection: 127.0.0.1:58527 id: 1
+[17:32:47] [connection] incoming connection: 127.0.0.1:58528 id: 2
+[17:32:47] [connection] incoming connection: 127.0.0.1:58529 id: 3
+[17:32:47] [connection] incoming connection: 127.0.0.1:58530 id: 4
+[17:32:47] [connection] incoming connection: 127.0.0.1:58532 id: 5
+[17:32:47] [connection] incoming connection: 127.0.0.1:58531 id: 6
+[17:32:47] [connection] incoming connection: 127.0.0.1:58533 id: 7
+[17:32:47] [connection] incoming connection: 127.0.0.1:58534 id: 8
+[17:32:47] [connection] incoming connection: 127.0.0.1:58535 id: 9
+[17:32:47] [connection] incoming connection: 127.0.0.1:58536 id: 10
+[17:32:47] Elõzõ: 8 | Most: 9
+[17:32:47] Szögecske: 181 | 7
+[17:32:47] Szögecske: 359 | 10
+[17:32:47] Randomo: 1
+[17:32:47] Hova: 10
+[17:32:47] [connection] incoming connection: 127.0.0.1:58537 id: 11
+[17:32:48] [npc:join] [NPC]Dwayne_Harrison has joined the server (0:127.0.0.1)
+[17:32:48] [npc:join] [NPC]boltbot_0 has joined the server (1:127.0.0.1)
+[17:32:48] [npc:join] [NPC]boltbot_1 has joined the server (2:127.0.0.1)
+[17:32:48] [npc:join] [NPC]boltbot_2 has joined the server (3:127.0.0.1)
+[17:32:48] [npc:join] [NPC]boltbot_3 has joined the server (4:127.0.0.1)
+[17:32:48] [npc:join] [NPC]boltbot_5 has joined the server (5:127.0.0.1)
+[17:32:48] [npc:join] [NPC]boltbot_4 has joined the server (6:127.0.0.1)
+[17:32:48] [npc:join] [NPC]boltbot_6 has joined the server (7:127.0.0.1)
+[17:32:48] [npc:join] [NPC]boltbot_7 has joined the server (8:127.0.0.1)
+[17:32:48] [npc:join] [NPC]boltbot_8 has joined the server (9:127.0.0.1)
+[17:32:48] [npc:join] [NPC]boltbot_9 has joined the server (10:127.0.0.1)
+[17:32:48] [npc:join] [NPC]bankbot_0 has joined the server (11:127.0.0.1)
+[17:32:49] Elõzõ: 9 | Most: 10
+[17:32:49] Szögecske: 180 | 7
+[17:32:49] Szögecske: 180 | 8
+[17:32:49] Szögecske: 91 | 11
+[17:32:49] Randomo: 1
+[17:32:49] Hova: 8
+[17:32:51] Elõzõ: 10 | Most: 8
+[17:32:51] Szögecske: 181 | 7
+[17:32:51] Szögecske: 0 | 9
+[17:32:51] Randomo: 1
+[17:32:51] Hova: 9
+[17:32:52] Elõzõ: 8 | Most: 9
+[17:32:52] Szögecske: 181 | 7
+[17:32:52] Szögecske: 359 | 10
+[17:32:52] Randomo: 1
+[17:32:52] Hova: 10
+[17:32:52] Elõzõ: 9 | Most: 10
+[17:32:52] Szögecske: 180 | 7
+[17:32:52] Szögecske: 180 | 8
+[17:32:52] Szögecske: 91 | 11
+[17:32:52] Randomo: 2
+[17:32:52] Hova: 11
+[17:32:53] Elõzõ: 10 | Most: 11
+[17:32:53] Szögecske: 0 | 12
+[17:32:53] Szögecske: 0 | 13
+[17:32:53] Szögecske: 0 | 14
+[17:32:53] Randomo: 1
+[17:32:53] Hova: 13
+[17:32:55] Elõzõ: 11 | Most: 13
+[17:32:55] Szögecske: 181 | 12
+[17:32:55] Szögecske: 1 | 14
+[17:32:55] Randomo: 1
+[17:32:55] Hova: 14
+[17:32:56] Elõzõ: 13 | Most: 14
+[17:32:56] Szögecske: 270 | 0
+[17:32:56] Szögecske: 90 | 3
+[17:32:56] Szögecske: 180 | 11
+[17:32:56] Szögecske: 181 | 12
+[17:32:56] Randomo: 3
+[17:32:56] Hova: 12
+[17:32:57] Elõzõ: 14 | Most: 12
+[17:32:57] Szögecske: 180 | 11
+[17:32:57] Szögecske: 1 | 13
+[17:32:57] Randomo: 0
+[17:32:57] Hova: 11
+[17:32:58] Elõzõ: 12 | Most: 11
+[17:32:58] Szögecske: 271 | 10
+[17:32:58] Szögecske: 0 | 13
+[17:32:58] Szögecske: 0 | 14
+[17:32:58] Randomo: 1
+[17:32:58] Hova: 13
+[17:33:00] Elõzõ: 11 | Most: 13
+[17:33:00] Szögecske: 181 | 12
+[17:33:00] Szögecske: 1 | 14
+[17:33:00] Randomo: 0
+[17:33:00] Hova: 12
+[17:33:00] Elõzõ: 13 | Most: 12
+[17:33:00] Szögecske: 180 | 11
+[17:33:00] Szögecske: 1 | 14
+[17:33:00] Randomo: 0
+[17:33:00] Hova: 11
+[17:33:02] Elõzõ: 12 | Most: 11
+[17:33:02] Szögecske: 271 | 10
+[17:33:02] Szögecske: 0 | 13
+[17:33:02] Szögecske: 0 | 14
+[17:33:02] Randomo: 0
+[17:33:02] Hova: 10
+[17:33:02] Elõzõ: 11 | Most: 10
+[17:33:02] Szögecske: 180 | 7
+[17:33:02] Szögecske: 180 | 8
+[17:33:02] Szögecske: 179 | 9
+[17:33:02] Randomo: 2
+[17:33:02] Hova: 9
+[17:33:03] Elõzõ: 10 | Most: 9
+[17:33:03] Szögecske: 181 | 7
+[17:33:03] Szögecske: 180 | 8
+[17:33:03] Randomo: 0
+[17:33:03] Hova: 7
+[17:33:06] Elõzõ: 9 | Most: 7
+[17:33:06] Szögecske: 90 | 4
+[17:33:06] Szögecske: 90 | 5
+[17:33:06] Szögecske: 1 | 8
+[17:33:06] Szögecske: 0 | 10
+[17:33:06] Randomo: 3
+[17:33:06] Hova: 10
+[17:33:09] Elõzõ: 7 | Most: 10
+[17:33:09] Szögecske: 180 | 8
+[17:33:09] Szögecske: 179 | 9
+[17:33:09] Szögecske: 91 | 11
+[17:33:09] Randomo: 0
+[17:33:09] Hova: 8
+[17:33:10] Elõzõ: 10 | Most: 8
+[17:33:10] Szögecske: 181 | 7
+[17:33:10] Szögecske: 0 | 9
+[17:33:10] Randomo: 0
+[17:33:10] Hova: 7
+[17:33:12] Elõzõ: 8 | Most: 7
+[17:33:12] Szögecske: 90 | 4
+[17:33:12] Szögecske: 90 | 5
+[17:33:12] Szögecske: 1 | 9
+[17:33:12] Szögecske: 0 | 10
+[17:33:12] Randomo: 1
+[17:33:12] Hova: 5
+[17:33:15] Elõzõ: 7 | Most: 5
+[17:33:15] Szögecske: 90 | 4
+[17:33:15] Szögecske: 181 | 6
+[17:33:15] Randomo: 1
+[17:33:15] Hova: 6
+[17:33:19] Elõzõ: 5 | Most: 6
+[17:33:19] Szögecske: 270 | 1
+[17:33:19] Szögecske: 90 | 2
+[17:33:19] Randomo: 0
+[17:33:19] Hova: 1
+[17:33:26] Elõzõ: 6 | Most: 1
+[17:33:26] Szögecske: 360 | 0
+[17:33:26] Szögecske: 90 | 2
+[17:33:26] Randomo: 0
+[17:33:26] Hova: 0
+[17:33:35] Elõzõ: 1 | Most: 0
+[17:33:35] Szögecske: 90 | 3
+[17:33:35] Szögecske: 90 | 14
+[17:33:35] Randomo: 1
+[17:33:35] Hova: 14
+[17:33:40] Elõzõ: 0 | Most: 14
+[17:33:40] Szögecske: 90 | 3
+[17:33:40] Szögecske: 180 | 11
+[17:33:40] Szögecske: 181 | 12
+[17:33:40] Szögecske: 181 | 13
+[17:33:40] Randomo: 2
+[17:33:40] Hova: 12
+[17:33:42] Elõzõ: 14 | Most: 12
+[17:33:42] Szögecske: 180 | 11
+[17:33:42] Szögecske: 1 | 13
+[17:33:42] Randomo: 0
+[17:33:42] Hova: 11
+[17:33:43] Elõzõ: 12 | Most: 11
+[17:33:43] Szögecske: 271 | 10
+[17:33:43] Szögecske: 0 | 13
+[17:33:43] Szögecske: 0 | 14
+[17:33:43] Randomo: 1
+[17:33:43] Hova: 13
+[17:33:44] Elõzõ: 11 | Most: 13
+[17:33:44] Szögecske: 181 | 12
+[17:33:44] Szögecske: 1 | 14
+[17:33:44] Randomo: 1
+[17:33:44] Hova: 14
+[17:33:45] Elõzõ: 13 | Most: 14
+[17:33:45] Szögecske: 270 | 0
+[17:33:45] Szögecske: 90 | 3
+[17:33:45] Szögecske: 180 | 11
+[17:33:45] Szögecske: 181 | 12
+[17:33:45] Randomo: 3
+[17:33:45] Hova: 12
+[17:33:46] Elõzõ: 14 | Most: 12
+[17:33:46] Szögecske: 180 | 11
+[17:33:46] Szögecske: 1 | 13
+[17:33:46] Randomo: 1
+[17:33:46] Hova: 13
+[17:33:47] Elõzõ: 12 | Most: 13
+[17:33:47] Szögecske: 180 | 11
+[17:33:47] Szögecske: 1 | 14
+[17:33:47] Randomo: 0
+[17:33:47] Hova: 11
+[17:33:49] Elõzõ: 13 | Most: 11
+[17:33:49] Szögecske: 271 | 10
+[17:33:49] Szögecske: 0 | 12
+[17:33:49] Szögecske: 0 | 14
+[17:33:49] Randomo: 0
+[17:33:49] Hova: 10
+[17:33:50] Elõzõ: 11 | Most: 10
+[17:33:50] Szögecske: 180 | 7
+[17:33:50] Szögecske: 180 | 8
+[17:33:50] Szögecske: 179 | 9
+[17:33:50] Randomo: 2
+[17:33:50] Hova: 9
+[17:33:50] Elõzõ: 10 | Most: 9
+[17:33:50] Szögecske: 181 | 7
+[17:33:50] Szögecske: 180 | 8
+[17:33:50] Randomo: 0
+[17:33:50] Hova: 7
+[17:33:53] Elõzõ: 9 | Most: 7
+[17:33:53] Szögecske: 90 | 4
+[17:33:53] Szögecske: 90 | 5
+[17:33:53] Szögecske: 1 | 8
+[17:33:53] Szögecske: 0 | 10
+[17:33:53] Randomo: 2
+[17:33:53] Hova: 8
+[17:33:55] Elõzõ: 7 | Most: 8
+[17:33:55] Szögecske: 0 | 9
+[17:33:55] Szögecske: 360 | 10
+[17:33:55] Randomo: 0
+[17:33:55] Hova: 9
+[17:33:56] Elõzõ: 8 | Most: 9
+[17:33:56] Szögecske: 181 | 7
+[17:33:56] Szögecske: 359 | 10
+[17:33:56] Randomo: 0
+[17:33:56] Hova: 7
+[17:33:58] Elõzõ: 9 | Most: 7
+[17:33:58] Szögecske: 90 | 4
+[17:33:58] Szögecske: 90 | 5
+[17:33:58] Szögecske: 1 | 8
+[17:33:58] Szögecske: 0 | 10
+[17:33:58] Randomo: 2
+[17:33:58] Hova: 8
+[17:34:00] Elõzõ: 7 | Most: 8
+[17:34:00] Szögecske: 0 | 9
+[17:34:00] Szögecske: 360 | 10
+[17:34:00] Randomo: 1
+[17:34:00] Hova: 10
+[17:34:02] Elõzõ: 8 | Most: 10
+[17:34:02] Szögecske: 180 | 7
+[17:34:02] Szögecske: 179 | 9
+[17:34:02] Szögecske: 91 | 11
+[17:34:02] Randomo: 1
+[17:34:02] Hova: 9
+[17:34:02] Elõzõ: 10 | Most: 9
+[17:34:02] Szögecske: 181 | 7
+[17:34:02] Szögecske: 180 | 8
+[17:34:02] Randomo: 0
+[17:34:02] Hova: 7
+[17:34:05] Elõzõ: 9 | Most: 7
+[17:34:05] Szögecske: 90 | 4
+[17:34:05] Szögecske: 90 | 5
+[17:34:05] Szögecske: 1 | 8
+[17:34:05] Szögecske: 0 | 10
+[17:34:05] Randomo: 1
+[17:34:05] Hova: 5
+[17:34:08] Elõzõ: 7 | Most: 5
+[17:34:08] Szögecske: 90 | 4
+[17:34:08] Szögecske: 181 | 6
+[17:34:08] Randomo: 0
+[17:34:08] Hova: 4
+[17:34:10] Elõzõ: 5 | Most: 4
+[17:34:10] Szögecske: 180 | 2
+[17:34:10] Szögecske: 359 | 3
+[17:34:10] Szögecske: 270 | 7
+[17:34:10] Randomo: 1
+[17:34:10] Hova: 3
+[17:34:15] Elõzõ: 4 | Most: 3
+[17:34:15] Szögecske: 270 | 0
+[17:34:15] Szögecske: 180 | 2
+[17:34:15] Szögecske: 270 | 14
+[17:34:15] Randomo: 0
+[17:34:15] Hova: 0
+[17:34:25] Elõzõ: 3 | Most: 0
+[17:34:25] Szögecske: 180 | 1
+[17:34:25] Szögecske: 90 | 14
+[17:34:25] Randomo: 1
+[17:34:25] Hova: 14
+[17:34:26] [debug] Server received interrupt signal
+[17:34:27] [debug] Native backtrace:
+[17:34:27] [debug] #0 77634d7c in ?? () from C:\Windows\SYSTEM32\ntdll.dll
+[17:34:27] [debug] #1 76869f4f in ?? () from C:\Windows\System32\KERNELBASE.dll
+[17:34:27] [debug] #2 76869edf in ?? () from C:\Windows\System32\KERNELBASE.dll
+[17:34:27] [debug] #3 0048d53c in ?? () from samp-server.exe
+[17:34:27] [debug] #4 0049b4a1 in ?? () from samp-server.exe
+[17:34:27] [debug] #5 0049b4b1 in ?? () from samp-server.exe
+[17:34:27] --- Server Shutting Down.
+[17:34:27] [npc:part] [NPC]Dwayne_Harrison has left the server (0:0)
+[17:34:27] [npc:part] [NPC]boltbot_0 has left the server (1:0)
+[17:34:27] [npc:part] [NPC]boltbot_1 has left the server (2:0)
+[17:34:27] [npc:part] [NPC]boltbot_2 has left the server (3:0)
+[17:34:27] [npc:part] [NPC]boltbot_3 has left the server (4:0)
+[17:34:27] [npc:part] [NPC]boltbot_5 has left the server (5:0)
+[17:34:27] [npc:part] [NPC]boltbot_4 has left the server (6:0)
+[17:34:27] [npc:part] [NPC]boltbot_6 has left the server (7:0)
+[17:34:27] [npc:part] [NPC]boltbot_7 has left the server (8:0)
+[17:34:27] [npc:part] [NPC]boltbot_8 has left the server (9:0)
+[17:34:27] [npc:part] [NPC]boltbot_9 has left the server (10:0)
+[17:34:27] [npc:part] [NPC]bankbot_0 has left the server (11:0)
+[17:34:27] [npc:part] bankbot_0 has left the server (49:0)
+[17:34:27] plugin.mysql: Unloading plugin...
+[17:34:27] plugin.mysql: Plugin unloaded.
+[17:34:27] 
+[17:34:27]  ==============
+[17:34:27]   YSF - kurta999's version 2.0 unloaded
+[17:34:27]  ==============
+[17:34:27] 
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[17:35:08] 
+[17:35:08] Server Plugins
+[17:35:08] --------------
+[17:35:08]  Loading plugin: mysql
+[17:35:08]  >> plugin.mysql: R39-6 successfully loaded.
+[17:35:08]   Loaded.
+[17:35:08]  Loading plugin: crashdetect
+[17:35:08]   CrashDetect v4.15.1 is OK.
+[17:35:08]   Loaded.
+[17:35:08]  Loading plugin: YSF
+[17:35:08] 
+[17:35:08]  ===============================
+[17:35:08]         YSF - kurta999's version 2.0 loaded
+[17:35:08]    (c) 2008 Alex "Y_Less" Cole - (c) 2010 - 2016 kurta999
+[17:35:08]     Server version: 0.3.7 R2-1 or R2-2
+[17:35:08]     Operating System: Windows
+[17:35:08]     Built on: May 24 2020 at 14:42:02
+[17:35:08]  ===============================
+[17:35:08] 
+[17:35:08]   Loaded.
+[17:35:08]  Loading plugin: streamer
+[17:35:08] 
+
+*** Streamer Plugin v2.9.4 by Incognito loaded ***
+
+[17:35:08]   Loaded.
+[17:35:08]  Loading plugin: sscanf
+[17:35:08] 
+
+[17:35:08]  ===============================
+
+[17:35:08]       sscanf plugin loaded.     
+
+[17:35:08]          Version:  2.8.1        
+
+[17:35:08]    (c) 2012 Alex "Y_Less" Cole  
+
+[17:35:08]  ===============================
+
+[17:35:08]   Loaded.
+[17:35:08]  Loading plugin: cstl
+[17:35:08]   Loaded.
+[17:35:08]  Loading plugin: dns
+[17:35:08] 
+
+*** DNS Plugin v2.4 by Incognito loaded ***
+
+[17:35:08]   Loaded.
+[17:35:08]  Loading plugin: samp-hooks
+[17:35:08] Callback hook's by mrdrifter loaded
+[17:35:08]   Loaded.
+[17:35:08]  Loading plugin: sampp_server
+[17:35:08] [SA-MP+] Loaded
+[17:35:08]   Loaded.
+[17:35:08]  Loading plugin: WebSockets
+[17:35:08]   Loaded.
+[17:35:08]  Loading plugin: MapAndreas
+[17:35:08]   Loaded.
+[17:35:08]  Loading plugin: ColAndreas
+[17:35:08] *********************
+[17:35:08] ** Created By:     **
+[17:35:08] ** [uL]Chris42O    **
+[17:35:08] ** [uL]Slice       **
+[17:35:08] ** [uL]Pottus      **
+[17:35:08] *********************
+[17:35:08] No collision data found.
+[17:35:08] *********************
+[17:35:08]   ColAndreas Loaded
+[17:35:08]    v1.4.0
+[17:35:08] *********************
+[17:35:08]   Loaded.
+[17:35:08]  Loading plugin: FCNPC
+[17:35:08] 
+[17:35:08] -------------------------------------------------
+[17:35:08]      FCNPC - Fully Controllable NPC v2.0.4
+[17:35:08]             Windows SA-MP 0.3.7 R2
+[17:35:08]            Nov 17 2021 at 02:36:40
+[17:35:08] 
+[17:35:08]   Author:       OrMisicL (2013 - 2015)
+[17:35:08]   Continued by: ziggi    (2016 - present)
+[17:35:08] 
+[17:35:08]   See full credits in the README.md file
+[17:35:08] -------------------------------------------------
+[17:35:08] 
+[17:35:08] Loading...
+[17:35:08] 
+[17:35:08] -------------------------------------------------
+[17:35:08]    ColAndreasv1.4.0
+[17:35:08] 
+[17:35:08]    Created By:
+[17:35:08]      [uL]Chris42O
+[17:35:08]      [uL]Slice
+[17:35:08]      [uL]Pottus
+[17:35:08] -------------------------------------------------
+[17:35:08] 
+[17:35:08] Loading...
+[17:35:08] ColAndreas v1.4.0 Loaded.
+[17:35:08]   Loaded.
+[17:35:08]  Loaded 13 plugins.
+
+[17:35:08] 
+[17:35:08] Filterscripts
+[17:35:08] ---------------
+[17:35:08]   Loading filterscript 'objectek.amx'...
+[17:35:08]   Unable to load filterscript 'objectek.amx'.
+[17:35:08]   Loaded 0 filterscripts.
+
+[17:35:08] No collision data found.
+[17:35:08]  
+[17:35:08]  
+[17:35:08]  
+[17:35:08]  ======================================= 
+[17:35:08]  |                                     | 
+[17:35:08]  |        YSI version 4.00.0001        | 
+[17:35:08]  |        By Alex "Y_Less" Cole        | 
+[17:35:08]  |                                     | 
+[17:35:08]  ======================================= 
+[17:35:08]  
+[17:35:08] 
+
+[17:35:08] 
+
+[17:35:08] 
+
+[17:35:08] 
+
+[17:35:08] 
+
+[17:35:08] 
+
+[17:35:08] 
+
+[17:35:08] 
+
+[17:35:08] 
+
+[17:35:08] 
+
+[17:35:08] SeeRPG v2.0.0 betoltese folyamatban
+[17:35:08] ---------------------------------------------------
+
+[17:35:08] MySQL: Kapcsolodas a MySQL-hez!
+[17:35:08] Szerver indítása... | Házi szerver
+[17:35:08] Adatbázisok ellenõrzése
+[17:35:08] Adatbázisok ellenõrzése megtörtént
+[17:35:08] ---------------------------------------------------
+
+
+[17:35:08] Szerver: Idozitok elinditasa!
+[17:35:08] =============== [ Automatikus mentés! (1x) ] ===============
+[17:35:08] Szerver: Játékosok adatai automatikusan mentve!
+[17:35:08] Szerver: Jármûvek adatai automatikusan mentve!
+[17:35:08] Szerver: Frakciók adatai automatikusan mentve!
+[17:35:08] Szerver: Automaták adatai automatikusan mentve!
+[17:35:08] Szerver: Területek adatai automatikusan mentve!
+[17:35:08] Szerver: Cegek adatai automatikusan mentve!
+[17:35:08] Szerver: Benzinkutak adatai automatikusan mentve!
+[17:35:08] Szerver: Házak adatai automatikusan mentve!
+[17:35:08] Banya objectek betoltve!
+[17:35:08] Szerver: Idozitok elinditasa sikeresen megtortent!
+[17:35:08] Szerver: Automatak betoltese!
+[17:35:08] Szerver: 0 automata sikeresen betoltve!
+[17:35:08] Szerver: Teleportok betöltése!
+[17:35:08] Szerver: 0 teleport sikeresen betöltve!
+[17:35:08] Szerver: Fák sikeresen lerakva!
+[17:35:08] Szerver: 287 aratás object sikeresen betöltve!
+[17:35:08] Banya objectek betoltve!
+[17:35:08] Szerver: Botok betöltése!
+[17:35:08] [npc:join] bankbot_0 has joined the server (49:127.0.0.1)
+[17:35:08] *** YSI Warning: y_malloc set up via "CallLocalFunction", memory corruption is a remote possibility
+[17:35:08] Szerver: Botok betöltése megtörtént!
+[17:35:08] Fegyveres NPC csatlakozása!
+[17:35:08] Fegyveres NPC csatlakozva!
+[17:35:08] Szerver: Botok betoltese folyamatban!
+[17:35:08] [connection] 127.0.0.1:60246 requests connection cookie.
+[17:35:08] [connection] 127.0.0.1:60247 requests connection cookie.
+[17:35:08] [connection] 127.0.0.1:60248 requests connection cookie.
+[17:35:08] Szerver: BoltBotok betöltése megtörtént!
+[17:35:08] Szerver: Botok betöltése!
+[17:35:08] [connection] 127.0.0.1:60250 requests connection cookie.
+[17:35:08] [connection] 127.0.0.1:60249 requests connection cookie.
+[17:35:08] [connection] 127.0.0.1:60251 requests connection cookie.
+[17:35:08] Szerver: BoltBotok betöltése megtörtént!
+[17:35:08] 0 Trafi Betöltve.
+[17:35:08] Heapspace: 255 kilobytes
+[17:35:08] Szerver: Betoltesi ido: 266ms
+[17:35:08] Number of vehicle models: 0
+[17:35:08] Szerver: CCTV Kamerák betöltése!
+[17:35:08] Szerver: 17 CCTV Kamera Sikeresen betöltve!
+[17:35:08] Szerver: Grafitik betöltése!
+[17:35:08] Szerver: 47 Grafiti Sikeresen betöltve!
+[17:35:08] Szerver: Drink pontok betöltése!
+[17:35:08] Szerver: 10 Drink pontok betöltve!
+[17:35:08] [connection] 127.0.0.1:60252 requests connection cookie.
+[17:35:08] Szerver: Jármûvek betöltése!
+[17:35:08] [connection] 127.0.0.1:60253 requests connection cookie.
+[17:35:08] [connection] 127.0.0.1:60254 requests connection cookie.
+[17:35:08] [connection] 127.0.0.1:60255 requests connection cookie.
+[17:35:08] [connection] 127.0.0.1:60256 requests connection cookie.
+[17:35:09] [connection] 127.0.0.1:60257 requests connection cookie.
+[17:35:09] Szerver: 704 jármû sikeresen betöltve!
+[17:35:09] Szerver: Házak betöltése!
+[17:35:09] Szerver: 126 ház sikeresen betöltve!
+[17:35:09] Szerver: Garázsok betöltése!
+[17:35:09] Szerver: 17 garázs sikeresen betöltve!
+[17:35:09] Szerver: Frakciók betöltése!
+[17:35:09] Szerver: 19 frakció sikeresen betöltve!
+[17:35:09] Szerver: Területek betöltése!
+[17:35:09] Szerver: 10 terület sikeresen betöltve!
+[17:35:09] Szerver: GPS Koordináták betöltése!
+[17:35:09] Szerver: 42 GPS koordináta lett betöltve!
+[17:35:09] Szerver: Benzinkútak betöltése!
+[17:35:09] Szerver: 104 benzinkút sikeresen betöltve!
+[17:35:09] Szerver: Eldobtt Cuccok Betöltése!
+[17:35:09] Szerver: 692 eldobott cucc betöltve!
+[17:35:09] Szerver: Teleportok betöltése!
+[17:35:09] Szerver: 10 teleport sikeresen betöltve!
+[17:35:09] Szerver: Kapuk betöltése!
+[17:35:09] Szerver: 223 kapu sikeresen betöltve!
+[17:35:10] Szerver: 304 bútor sikeresen betöltve!
+[17:35:10] Szerver: Jarmuadatok betoltese!
+[17:35:10] Szerver: 0 jarmuadat sikeresen betoltve!
+[17:35:10] Szerver: Cegek betoltese!
+[17:35:10] Szerver: 11 ceg sikeresen betoltve!
+[17:35:10] Szerver: 3DTextLabelek betöltése!
+[17:35:10] Szerver: 8 3DTextLabel betöltve!
+[17:35:10] Szerver: Ajtók betöltése!
+[17:35:10] Szerver: 0 ajtó sikeresen betöltve!
+[17:35:10] Szerver: Tûz pozíciók betöltése!
+[17:35:10] Nincs betöltendõ tûz! (numrows==0)
+[17:35:10] Szerver: 0 tûz pozíció sikeresen betöltve!
+[17:35:10] [connection] incoming connection: 127.0.0.1:60246 id: 0
+[17:35:10] [connection] incoming connection: 127.0.0.1:60247 id: 1
+[17:35:10] [connection] incoming connection: 127.0.0.1:60248 id: 2
+[17:35:10] [connection] incoming connection: 127.0.0.1:60249 id: 3
+[17:35:10] [connection] incoming connection: 127.0.0.1:60250 id: 4
+[17:35:10] [connection] incoming connection: 127.0.0.1:60251 id: 5
+[17:35:10] [connection] incoming connection: 127.0.0.1:60252 id: 6
+[17:35:10] [connection] incoming connection: 127.0.0.1:60253 id: 7
+[17:35:10] [connection] incoming connection: 127.0.0.1:60254 id: 8
+[17:35:10] [connection] incoming connection: 127.0.0.1:60255 id: 9
+[17:35:10] [connection] incoming connection: 127.0.0.1:60256 id: 10
+[17:35:10] [connection] incoming connection: 127.0.0.1:60257 id: 11
+[17:35:10] [npc:join] [NPC]Dwayne_Harrison has joined the server (0:127.0.0.1)
+[17:35:10] [npc:join] [NPC]boltbot_0 has joined the server (1:127.0.0.1)
+[17:35:10] [npc:join] [NPC]boltbot_1 has joined the server (2:127.0.0.1)
+[17:35:10] [npc:join] [NPC]boltbot_2 has joined the server (3:127.0.0.1)
+[17:35:10] [npc:join] [NPC]boltbot_3 has joined the server (4:127.0.0.1)
+[17:35:10] [npc:join] [NPC]boltbot_4 has joined the server (5:127.0.0.1)
+[17:35:10] [npc:join] [NPC]boltbot_5 has joined the server (6:127.0.0.1)
+[17:35:10] [npc:join] [NPC]boltbot_6 has joined the server (7:127.0.0.1)
+[17:35:10] [npc:join] [NPC]boltbot_7 has joined the server (8:127.0.0.1)
+[17:35:10] [npc:join] [NPC]boltbot_8 has joined the server (9:127.0.0.1)
+[17:35:10] [npc:join] [NPC]boltbot_9 has joined the server (10:127.0.0.1)
+[17:35:10] [npc:join] [NPC]bankbot_0 has joined the server (11:127.0.0.1)
+[17:35:29] [debug] Server received interrupt signal
+[17:35:29] [debug] Native backtrace:
+[17:35:29] [debug] #0 77634d7c in ?? () from C:\Windows\SYSTEM32\ntdll.dll
+[17:35:29] [debug] #1 76869f4f in ?? () from C:\Windows\System32\KERNELBASE.dll
+[17:35:29] [debug] #2 76869edf in ?? () from C:\Windows\System32\KERNELBASE.dll
+[17:35:29] [debug] #3 0048d53c in ?? () from samp-server.exe
+[17:35:29] [debug] #4 0049b4a1 in ?? () from samp-server.exe
+[17:35:29] [debug] #5 0049b4b1 in ?? () from samp-server.exe
+[17:35:29] --- Server Shutting Down.
+[17:35:29] [npc:part] [NPC]Dwayne_Harrison has left the server (0:0)
+[17:35:29] [npc:part] [NPC]boltbot_0 has left the server (1:0)
+[17:35:29] [npc:part] [NPC]boltbot_1 has left the server (2:0)
+[17:35:29] [npc:part] [NPC]boltbot_2 has left the server (3:0)
+[17:35:29] [npc:part] [NPC]boltbot_3 has left the server (4:0)
+[17:35:29] [npc:part] [NPC]boltbot_4 has left the server (5:0)
+[17:35:29] [npc:part] [NPC]boltbot_5 has left the server (6:0)
+[17:35:29] [npc:part] [NPC]boltbot_6 has left the server (7:0)
+[17:35:29] [npc:part] [NPC]boltbot_7 has left the server (8:0)
+[17:35:29] [npc:part] [NPC]boltbot_8 has left the server (9:0)
+[17:35:29] [npc:part] [NPC]boltbot_9 has left the server (10:0)
+[17:35:29] [npc:part] [NPC]bankbot_0 has left the server (11:0)
+[17:35:29] [npc:part] bankbot_0 has left the server (49:0)
+[17:35:29] plugin.mysql: Unloading plugin...
+[17:35:30] plugin.mysql: Plugin unloaded.
+[17:35:30] 
+[17:35:30]  ==============
+[17:35:30]   YSF - kurta999's version 2.0 unloaded
+[17:35:30]  ==============
+[17:35:30] 
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[17:41:09] 
+[17:41:09] Server Plugins
+[17:41:09] --------------
+[17:41:09]  Loading plugin: mysql
+[17:41:09]  >> plugin.mysql: R39-6 successfully loaded.
+[17:41:09]   Loaded.
+[17:41:09]  Loading plugin: crashdetect
+[17:41:09]   CrashDetect v4.15.1 is OK.
+[17:41:09]   Loaded.
+[17:41:09]  Loading plugin: YSF
+[17:41:09] 
+[17:41:09]  ===============================
+[17:41:09]         YSF - kurta999's version 2.0 loaded
+[17:41:09]    (c) 2008 Alex "Y_Less" Cole - (c) 2010 - 2016 kurta999
+[17:41:09]     Server version: 0.3.7 R2-1 or R2-2
+[17:41:09]     Operating System: Windows
+[17:41:09]     Built on: May 24 2020 at 14:42:02
+[17:41:09]  ===============================
+[17:41:09] 
+[17:41:09]   Loaded.
+[17:41:09]  Loading plugin: streamer
+[17:41:09] 
+
+*** Streamer Plugin v2.9.4 by Incognito loaded ***
+
+[17:41:09]   Loaded.
+[17:41:09]  Loading plugin: sscanf
+[17:41:09] 
+
+[17:41:09]  ===============================
+
+[17:41:09]       sscanf plugin loaded.     
+
+[17:41:09]          Version:  2.8.1        
+
+[17:41:09]    (c) 2012 Alex "Y_Less" Cole  
+
+[17:41:09]  ===============================
+
+[17:41:09]   Loaded.
+[17:41:09]  Loading plugin: cstl
+[17:41:09]   Loaded.
+[17:41:09]  Loading plugin: dns
+[17:41:09] 
+
+*** DNS Plugin v2.4 by Incognito loaded ***
+
+[17:41:09]   Loaded.
+[17:41:09]  Loading plugin: samp-hooks
+[17:41:09] Callback hook's by mrdrifter loaded
+[17:41:09]   Loaded.
+[17:41:09]  Loading plugin: sampp_server
+[17:41:09] [SA-MP+] Loaded
+[17:41:09]   Loaded.
+[17:41:09]  Loading plugin: WebSockets
+[17:41:09]   Loaded.
+[17:41:09]  Loading plugin: MapAndreas
+[17:41:09]   Loaded.
+[17:41:09]  Loading plugin: ColAndreas
+[17:41:09] *********************
+[17:41:09] ** Created By:     **
+[17:41:09] ** [uL]Chris42O    **
+[17:41:09] ** [uL]Slice       **
+[17:41:09] ** [uL]Pottus      **
+[17:41:09] *********************
+[17:41:09] No collision data found.
+[17:41:09] *********************
+[17:41:09]   ColAndreas Loaded
+[17:41:09]    v1.4.0
+[17:41:09] *********************
+[17:41:09]   Loaded.
+[17:41:09]  Loading plugin: FCNPC
+[17:41:09] 
+[17:41:09] -------------------------------------------------
+[17:41:09]      FCNPC - Fully Controllable NPC v2.0.4
+[17:41:09]             Windows SA-MP 0.3.7 R2
+[17:41:09]            Nov 17 2021 at 02:36:40
+[17:41:09] 
+[17:41:09]   Author:       OrMisicL (2013 - 2015)
+[17:41:09]   Continued by: ziggi    (2016 - present)
+[17:41:09] 
+[17:41:09]   See full credits in the README.md file
+[17:41:09] -------------------------------------------------
+[17:41:09] 
+[17:41:09] Loading...
+[17:41:09] 
+[17:41:09] -------------------------------------------------
+[17:41:09]    ColAndreasv1.4.0
+[17:41:09] 
+[17:41:09]    Created By:
+[17:41:09]      [uL]Chris42O
+[17:41:09]      [uL]Slice
+[17:41:09]      [uL]Pottus
+[17:41:09] -------------------------------------------------
+[17:41:09] 
+[17:41:09] Loading...
+[17:41:09] ColAndreas v1.4.0 Loaded.
+[17:41:09]   Loaded.
+[17:41:09]  Loaded 13 plugins.
+
+[17:41:09] 
+[17:41:09] Filterscripts
+[17:41:09] ---------------
+[17:41:09]   Loading filterscript 'objectek.amx'...
+[17:41:09]   Unable to load filterscript 'objectek.amx'.
+[17:41:09]   Loaded 0 filterscripts.
+
+[17:41:09] No collision data found.
+[17:41:09]  
+[17:41:09]  
+[17:41:09]  
+[17:41:09]  ======================================= 
+[17:41:09]  |                                     | 
+[17:41:09]  |        YSI version 4.00.0001        | 
+[17:41:09]  |        By Alex "Y_Less" Cole        | 
+[17:41:09]  |                                     | 
+[17:41:09]  ======================================= 
+[17:41:09]  
+[17:41:09] 
+
+[17:41:09] 
+
+[17:41:09] 
+
+[17:41:09] 
+
+[17:41:09] 
+
+[17:41:09] 
+
+[17:41:09] 
+
+[17:41:09] 
+
+[17:41:09] 
+
+[17:41:09] 
+
+[17:41:09] SeeRPG v2.0.0 betoltese folyamatban
+[17:41:09] ---------------------------------------------------
+
+[17:41:09] MySQL: Kapcsolodas a MySQL-hez!
+[17:41:09] Szerver indítása... | Házi szerver
+[17:41:09] Adatbázisok ellenõrzése
+[17:41:09] Adatbázisok ellenõrzése megtörtént
+[17:41:09] ---------------------------------------------------
+
+
+[17:41:09] Szerver: Idozitok elinditasa!
+[17:41:09] =============== [ Automatikus mentés! (1x) ] ===============
+[17:41:09] Szerver: Játékosok adatai automatikusan mentve!
+[17:41:09] Szerver: Jármûvek adatai automatikusan mentve!
+[17:41:09] Szerver: Frakciók adatai automatikusan mentve!
+[17:41:09] Szerver: Automaták adatai automatikusan mentve!
+[17:41:09] Szerver: Területek adatai automatikusan mentve!
+[17:41:09] Szerver: Cegek adatai automatikusan mentve!
+[17:41:09] Szerver: Benzinkutak adatai automatikusan mentve!
+[17:41:09] Szerver: Házak adatai automatikusan mentve!
+[17:41:09] Banya objectek betoltve!
+[17:41:09] Szerver: Idozitok elinditasa sikeresen megtortent!
+[17:41:09] Szerver: Automatak betoltese!
+[17:41:09] Szerver: 0 automata sikeresen betoltve!
+[17:41:09] Szerver: Teleportok betöltése!
+[17:41:09] Szerver: 0 teleport sikeresen betöltve!
+[17:41:09] Szerver: Fák sikeresen lerakva!
+[17:41:09] Szerver: 287 aratás object sikeresen betöltve!
+[17:41:09] Banya objectek betoltve!
+[17:41:09] Szerver: Botok betöltése!
+[17:41:09] [npc:join] bankbot_0 has joined the server (49:127.0.0.1)
+[17:41:09] *** YSI Warning: y_malloc set up via "CallLocalFunction", memory corruption is a remote possibility
+[17:41:09] Szerver: Botok betöltése megtörtént!
+[17:41:09] Fegyveres NPC csatlakozása!
+[17:41:09] Fegyveres NPC csatlakozva!
+[17:41:09] Szerver: Botok betoltese folyamatban!
+[17:41:09] [connection] 127.0.0.1:63485 requests connection cookie.
+[17:41:10] [connection] 127.0.0.1:63486 requests connection cookie.
+[17:41:10] [connection] 127.0.0.1:63488 requests connection cookie.
+[17:41:10] [connection] 127.0.0.1:63487 requests connection cookie.
+[17:41:10] [connection] 127.0.0.1:63489 requests connection cookie.
+[17:41:10] Szerver: BoltBotok betöltése megtörtént!
+[17:41:10] [connection] 127.0.0.1:63490 requests connection cookie.
+[17:41:10] Szerver: Botok betöltése!
+[17:41:10] Szerver: BoltBotok betöltése megtörtént!
+[17:41:10] 0 Trafi Betöltve.
+[17:41:10] Heapspace: 255 kilobytes
+[17:41:10] Szerver: Betoltesi ido: 296ms
+[17:41:10] Number of vehicle models: 0
+[17:41:10] Szerver: CCTV Kamerák betöltése!
+[17:41:10] [connection] 127.0.0.1:63491 requests connection cookie.
+[17:41:10] Szerver: 17 CCTV Kamera Sikeresen betöltve!
+[17:41:10] Szerver: Grafitik betöltése!
+[17:41:10] Szerver: 47 Grafiti Sikeresen betöltve!
+[17:41:10] Szerver: Drink pontok betöltése!
+[17:41:10] Szerver: 10 Drink pontok betöltve!
+[17:41:10] Szerver: Jármûvek betöltése!
+[17:41:10] [connection] 127.0.0.1:63492 requests connection cookie.
+[17:41:10] [connection] 127.0.0.1:63493 requests connection cookie.
+[17:41:10] [connection] 127.0.0.1:63494 requests connection cookie.
+[17:41:10] [connection] 127.0.0.1:63495 requests connection cookie.
+[17:41:10] [connection] 127.0.0.1:63496 requests connection cookie.
+[17:41:10] Szerver: 702 jármû sikeresen betöltve!
+[17:41:10] Szerver: Házak betöltése!
+[17:41:10] Szerver: 126 ház sikeresen betöltve!
+[17:41:10] Szerver: Garázsok betöltése!
+[17:41:10] Szerver: 17 garázs sikeresen betöltve!
+[17:41:10] Szerver: Frakciók betöltése!
+[17:41:10] Szerver: 19 frakció sikeresen betöltve!
+[17:41:10] Szerver: Területek betöltése!
+[17:41:10] Szerver: 10 terület sikeresen betöltve!
+[17:41:10] Szerver: GPS Koordináták betöltése!
+[17:41:10] Szerver: 42 GPS koordináta lett betöltve!
+[17:41:10] Szerver: Benzinkútak betöltése!
+[17:41:10] Szerver: 104 benzinkút sikeresen betöltve!
+[17:41:10] Szerver: Eldobtt Cuccok Betöltése!
+[17:41:11] Szerver: 692 eldobott cucc betöltve!
+[17:41:11] Szerver: Teleportok betöltése!
+[17:41:11] Szerver: 10 teleport sikeresen betöltve!
+[17:41:11] Szerver: Kapuk betöltése!
+[17:41:11] Szerver: 223 kapu sikeresen betöltve!
+[17:41:11] Szerver: 304 bútor sikeresen betöltve!
+[17:41:11] Szerver: Jarmuadatok betoltese!
+[17:41:11] Szerver: 0 jarmuadat sikeresen betoltve!
+[17:41:11] Szerver: Cegek betoltese!
+[17:41:11] Szerver: 11 ceg sikeresen betoltve!
+[17:41:11] Szerver: 3DTextLabelek betöltése!
+[17:41:11] Szerver: 8 3DTextLabel betöltve!
+[17:41:11] Szerver: Ajtók betöltése!
+[17:41:11] Szerver: 0 ajtó sikeresen betöltve!
+[17:41:11] Szerver: Tûz pozíciók betöltése!
+[17:41:11] Nincs betöltendõ tûz! (numrows==0)
+[17:41:11] Szerver: 0 tûz pozíció sikeresen betöltve!
+[17:41:11] [connection] incoming connection: 127.0.0.1:63485 id: 0
+[17:41:11] [connection] incoming connection: 127.0.0.1:63486 id: 1
+[17:41:11] [connection] incoming connection: 127.0.0.1:63488 id: 2
+[17:41:11] [connection] incoming connection: 127.0.0.1:63487 id: 3
+[17:41:11] [connection] incoming connection: 127.0.0.1:63489 id: 4
+[17:41:11] [connection] incoming connection: 127.0.0.1:63490 id: 5
+[17:41:11] [connection] incoming connection: 127.0.0.1:63491 id: 6
+[17:41:11] [connection] incoming connection: 127.0.0.1:63492 id: 7
+[17:41:11] [connection] incoming connection: 127.0.0.1:63493 id: 8
+[17:41:11] [connection] incoming connection: 127.0.0.1:63494 id: 9
+[17:41:11] [connection] incoming connection: 127.0.0.1:63495 id: 10
+[17:41:11] [connection] incoming connection: 127.0.0.1:63496 id: 11
+[17:41:11] [npc:join] [NPC]Dwayne_Harrison has joined the server (0:127.0.0.1)
+[17:41:11] [npc:join] [NPC]boltbot_0 has joined the server (1:127.0.0.1)
+[17:41:11] [npc:join] [NPC]boltbot_2 has joined the server (2:127.0.0.1)
+[17:41:11] [npc:join] [NPC]boltbot_1 has joined the server (3:127.0.0.1)
+[17:41:11] [npc:join] [NPC]boltbot_3 has joined the server (4:127.0.0.1)
+[17:41:11] [npc:join] [NPC]boltbot_4 has joined the server (5:127.0.0.1)
+[17:41:11] [npc:join] [NPC]boltbot_5 has joined the server (6:127.0.0.1)
+[17:41:11] [npc:join] [NPC]boltbot_6 has joined the server (7:127.0.0.1)
+[17:41:11] [npc:join] [NPC]boltbot_7 has joined the server (8:127.0.0.1)
+[17:41:11] [npc:join] [NPC]boltbot_8 has joined the server (9:127.0.0.1)
+[17:41:11] [npc:join] [NPC]boltbot_9 has joined the server (10:127.0.0.1)
+[17:41:11] [npc:join] [NPC]bankbot_0 has joined the server (11:127.0.0.1)
+[17:44:04] [debug] Server received interrupt signal
+[17:44:04] [debug] Native backtrace:
+[17:44:04] [debug] #0 77634d7c in ?? () from C:\Windows\SYSTEM32\ntdll.dll
+[17:44:04] [debug] #1 76869f4f in ?? () from C:\Windows\System32\KERNELBASE.dll
+[17:44:04] [debug] #2 76869edf in ?? () from C:\Windows\System32\KERNELBASE.dll
+[17:44:04] [debug] #3 0048d53c in ?? () from samp-server.exe
+[17:44:04] [debug] #4 0049b4a1 in ?? () from samp-server.exe
+[17:44:04] [debug] #5 0049b4b1 in ?? () from samp-server.exe
+[17:44:04] --- Server Shutting Down.
+[17:44:04] [npc:part] [NPC]Dwayne_Harrison has left the server (0:0)
+[17:44:04] [npc:part] [NPC]boltbot_0 has left the server (1:0)
+[17:44:04] [npc:part] [NPC]boltbot_2 has left the server (2:0)
+[17:44:04] [npc:part] [NPC]boltbot_1 has left the server (3:0)
+[17:44:04] [npc:part] [NPC]boltbot_3 has left the server (4:0)
+[17:44:04] [npc:part] [NPC]boltbot_4 has left the server (5:0)
+[17:44:04] [npc:part] [NPC]boltbot_5 has left the server (6:0)
+[17:44:04] [npc:part] [NPC]boltbot_6 has left the server (7:0)
+[17:44:04] [npc:part] [NPC]boltbot_7 has left the server (8:0)
+[17:44:04] [npc:part] [NPC]boltbot_8 has left the server (9:0)
+[17:44:04] [npc:part] [NPC]boltbot_9 has left the server (10:0)
+[17:44:04] [npc:part] [NPC]bankbot_0 has left the server (11:0)
+[17:44:04] [npc:part] bankbot_0 has left the server (49:0)
+[17:44:04] plugin.mysql: Unloading plugin...
+[17:44:04] plugin.mysql: Plugin unloaded.
+[17:44:04] 
+[17:44:04]  ==============
+[17:44:04]   YSF - kurta999's version 2.0 unloaded
+[17:44:04]  ==============
+[17:44:04] 

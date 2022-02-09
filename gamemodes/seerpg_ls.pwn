@@ -1,13 +1,10 @@
-/*
-Timerek újraírva
-NE a SetTimerEx-t használd!
+/* SeeRPG mod, fixed by https://github.com/vegh-barnabas */
 
-*/
 #define SAMPVER 374 //
 //==================//
-#define MAJOR 1     //
-#define MINOR 7     //
-#define PATCH 5     //
+#define MAJOR 2     //
+#define MINOR 0     //
+#define PATCH 0     //
 //==================//
 #pragma dynamic 10000
 
@@ -74,13 +71,15 @@ NE a SetTimerEx-t használd!
 #include <physics>
 #include <easydialog>
 
-#define PREFIX			"DayRPG"
+#include <FCNPC>
+
+#define PREFIX			"SeeRPG"
 #define VERZIO			""#PREFIX " v"#MAJOR"."#MINOR"."#PATCH""
 
-#define WEBOLDAL "DayRPG.eu"
+#define WEBOLDAL "?"
 
-#define TDTARTALOM_BAL 	"Web: dayrpg.eu"
-#define TDTARTALOM_JOBB "Discord: dc.com/dayrpg"
+#define TDTARTALOM_BAL 	"Web: ?"
+#define TDTARTALOM_JOBB "Discord: ?"
 
 #define UCPKONZOL false
 
@@ -89,21 +88,22 @@ NE a SetTimerEx-t használd!
 	#include <websockets>
 #endif
 
-#define HAZI_SZERVER 0 //	FÕSZERVER(0) | LOCAL(1)
-#define NPC_KELL				0 // 1 = betölti 0 = nem - (FCNPS pluginos)
-#define MYSQL_HOST  	"127.0.0.1"
-#define KELLDWAYNE // Fegyveres NPC
+#define HAZI_SZERVER 1 	// FÕSZERVER(0) | LOCAL(1)
+#define NPC_KELL 1 		// 1 = betölti 0 = nem - (FCNPS pluginos)
+#define KELLDWAYNE		// Fegyveres NPC
+
+#define MYSQL_HOST "127.0.0.1"
 
 #if HAZI_SZERVER == 0
-	#define MYSQL_USER  "see"			//MySQL felhasználónév
-	#define MYSQL_DB    "serversql"			//MySQL adatbázis
-	#define MYSQL_PW    "u5cQyvB9YefvrQvi"		//MySQL jelszó
+	#define MYSQL_USER  "seerpg"			//MySQL felhasználónév
+	#define MYSQL_DB    "seerpg"			//MySQL adatbázis
+	#define MYSQL_PW    "QurPFMp@-nXCej0l"	//MySQL jelszó
 #endif
 
 #if HAZI_SZERVER == 1
-	#define MYSQL_USER  "see"			//MySQL felhasználónév
-	#define MYSQL_DB    "serversql"			//MySQL adatbázis
-	#define MYSQL_PW    "u5cQyvB9YefvrQvi"  		//MySQL jelszó
+	#define MYSQL_USER  "seerpg"			//MySQL felhasználónév
+	#define MYSQL_DB    "seerpg"			//MySQL adatbázis
+	#define MYSQL_PW    "QurPFMp@-nXCej0l"	//MySQL jelszó
 #endif
 
 #if HAZI_SZERVER == 0
@@ -22492,7 +22492,7 @@ stock BotBetoltes()
 		else if(hova > (sizeof(GyarPoziciok) - 1))
 			hova = 0;
 
-		FCNPC_GoTo(BotInformacio[num][botID], GyarPoziciok[rand][kozPosX], GyarPoziciok[rand][kozPosY], GyarPoziciok[rand][kozPosZ], MOVE_TYPE_WALK, 1);
+		FCNPC_GoTo(BotInformacio[num][botID], GyarPoziciok[rand][kozPosX], GyarPoziciok[rand][kozPosY], GyarPoziciok[rand][kozPosZ], FCNPC_MOVE_TYPE_WALK, 1);
 
 		BotInformacio[num][botMost] = rand;
 		BotInformacio[num][botKovetkezo] = hova;
@@ -22551,7 +22551,7 @@ public FCNPC_OnReachDestination(npcid)
 			{0, 991.9806, -1234.0807, 16.9475, {13, 15, 0, 0, 0}}, // NPC14 (13-bõl indulva)
 			{0, 991.9255, -1228.6942, 16.9050, {1, 4, 14, 0, 0}} // NPC15 (14-bõl indulva, köz 0-1)
 			*/
-			printf("Elõzõ: %d | Most: %d", BotInformacio[i][botElozo], BotInformacio[i][botMost]);
+			// printf("Elõzõ: %d | Most: %d", BotInformacio[i][botElozo], BotInformacio[i][botMost]);
 			new x = -1, kovetkezo[10], num = 0;
 			for(;++x < sizeof(GyarPoziciok);)
 			{
@@ -22565,7 +22565,7 @@ public FCNPC_OnReachDestination(npcid)
 				//printf("Index(2): %d", x);
 				if((!(szog % 90)) || (!((szog + 1) % 90)) || (!((szog - 1) % 90)))
 				{
-					printf("Szögecske: %d | %d", szog, x);
+					// printf("Szögecske: %d | %d", szog, x);
 					//printf("Melyik: %d | %d | %d", x, szog, floatround(GetPointAngleToPoint(GyarPoziciok[BotInformacio[i][botMost]][kozPosX], GyarPoziciok[BotInformacio[i][botMost]][kozPosY], GyarPoziciok[x][kozPosX], GyarPoziciok[x][kozPosX])));
 					//kovetkezo = x;
 					kovetkezo[num] = x;
@@ -22578,14 +22578,14 @@ public FCNPC_OnReachDestination(npcid)
 
 			if(randomo > 9)
 				randomo = 0;
-			printf("Randomo: %d", randomo);
+			// printf("Randomo: %d", randomo);
 			/*while(kovetkezo[randomo] == 0)
 				randomo = random(sizeof(kovetkezo));*/
 
 			//printf("Randomo: %d", randomo);
 			//new randomo = random(strlen(kovetkezo));
-			printf("Hova: %d", kovetkezo[randomo]);
-			FCNPC_GoTo(BotInformacio[i][botID], GyarPoziciok[kovetkezo[randomo]][kozPosX], GyarPoziciok[kovetkezo[randomo]][kozPosY], GyarPoziciok[kovetkezo[randomo]][kozPosZ], MOVE_TYPE_WALK, 1);
+			// printf("Hova: %d", kovetkezo[randomo]);
+			FCNPC_GoTo(BotInformacio[i][botID], GyarPoziciok[kovetkezo[randomo]][kozPosX], GyarPoziciok[kovetkezo[randomo]][kozPosY], GyarPoziciok[kovetkezo[randomo]][kozPosZ], FCNPC_MOVE_TYPE_WALK, 1);
 			BotInformacio[i][botKovetkezo] = kovetkezo[randomo];
 			break;
 		}
