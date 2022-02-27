@@ -932,3 +932,5 @@
 [16:08:37 02/27/22] [ERROR] cache_get_field_content_int - invalid datatype
 [16:08:37 02/27/22] [ERROR] cache_get_field_content_int - invalid datatype
 [16:08:37 02/27/22] [ERROR] cache_get_field_content_int - invalid datatype
+[19:57:00 02/27/22] [ERROR] CMySQLConnection::Connect - (error #2003) Can't connect to MySQL server on '127.0.0.1' (10061)
+[20:03:29 02/27/22] [ERROR] CMySQLConnection::Connect - (error #1045) Access denied for user 'seerpg'@'localhost' (using password: YES)
