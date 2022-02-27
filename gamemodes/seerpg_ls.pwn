@@ -23148,64 +23148,64 @@ fpublic FrakcioBetoltes()
 	{
 		for (new i = 0; i < rows && i < MAX_FACTIONS; i++)
 		{
-            new fk = cache_get_field_content_int(i, "ID");
+            new fk = cache_get_field_content_int(i, "ID", sql_ID);
 			printf("Hello %d", fk);
 			FInfo[fk][fID] = fk;
-			cache_get_field_content(i, "FNev", FInfo[fk][fNev], 32);
+			cache_get_field_content(i, "FNev", FInfo[fk][fNev], sql_ID, 32);
 			
-			cache_get_field_content(i, "Rang1", FInfo[fk][fRang1], 32);
-			cache_get_field_content(i, "Rang2", FInfo[fk][fRang2], 32);
-			cache_get_field_content(i, "Rang3", FInfo[fk][fRang3], 32);
-			cache_get_field_content(i, "Rang4", FInfo[fk][fRang4], 32);
-			cache_get_field_content(i, "Rang5", FInfo[fk][fRang5], 32);
-			cache_get_field_content(i, "Rang6", FInfo[fk][fRang6], 32);
-			cache_get_field_content(i, "Rang7", FInfo[fk][fRang7], 32);
-			cache_get_field_content(i, "Rang8", FInfo[fk][fRang8], 32);
-			cache_get_field_content(i, "Rang9", FInfo[fk][fRang9], 32);
-			cache_get_field_content(i, "Rang10", FInfo[fk][fRang10], 32);
-			cache_get_field_content(i, "Rang11", FInfo[fk][fRang11], 32);
-			cache_get_field_content(i, "Rang12", FInfo[fk][fRang12], 32);
-			cache_get_field_content(i, "Rang13", FInfo[fk][fRang13], 32);
-			cache_get_field_content(i, "Rang14", FInfo[fk][fRang14], 32);
-			cache_get_field_content(i, "Rang15", FInfo[fk][fRang15], 32);
-			cache_get_field_content(i, "Rang16", FInfo[fk][fRang16], 32);
-			FInfo[fk][fMaxRang] = cache_get_field_content_int(fk, "MaxRang");
-			cache_get_field_content(i, "SzefRang", FInfo[fk][fSzefRang], 32);
+			cache_get_field_content(i, "Rang1", FInfo[fk][fRang1], sql_ID, 32);
+			cache_get_field_content(i, "Rang2", FInfo[fk][fRang2], sql_ID, 32);
+			cache_get_field_content(i, "Rang3", FInfo[fk][fRang3], sql_ID, 32);
+			cache_get_field_content(i, "Rang4", FInfo[fk][fRang4], sql_ID, 32);
+			cache_get_field_content(i, "Rang5", FInfo[fk][fRang5], sql_ID, 32);
+			cache_get_field_content(i, "Rang6", FInfo[fk][fRang6], sql_ID, 32);
+			cache_get_field_content(i, "Rang7", FInfo[fk][fRang7], sql_ID, 32);
+			cache_get_field_content(i, "Rang8", FInfo[fk][fRang8], sql_ID, 32);
+			cache_get_field_content(i, "Rang9", FInfo[fk][fRang9], sql_ID, 32);
+			cache_get_field_content(i, "Rang10", FInfo[fk][fRang10], sql_ID, 32);
+			cache_get_field_content(i, "Rang11", FInfo[fk][fRang11], sql_ID, 32);
+			cache_get_field_content(i, "Rang12", FInfo[fk][fRang12], sql_ID, 32);
+			cache_get_field_content(i, "Rang13", FInfo[fk][fRang13], sql_ID, 32);
+			cache_get_field_content(i, "Rang14", FInfo[fk][fRang14], sql_ID, 32);
+			cache_get_field_content(i, "Rang15", FInfo[fk][fRang15], sql_ID, 32);
+			cache_get_field_content(i, "Rang16", FInfo[fk][fRang16], sql_ID, 32);
+			FInfo[fk][fMaxRang] = cache_get_field_content_int(fk, "MaxRang", sql_ID);
+			cache_get_field_content(i, "SzefRang", FInfo[fk][fSzefRang], sql_ID, 32);
 
-			new legalis = cache_get_field_content_int(i, "Legalis");
+			new legalis = cache_get_field_content_int(i, "Legalis", sql_ID);
 			FInfo[fk][fLegalis] = legalis ? true : false;
 
-			new szefobject = cache_get_field_content_int(i, "SzefObject");
+			new szefobject = cache_get_field_content_int(i, "SzefObject", sql_ID);
 			FInfo[fk][fSzefObject] = szefobject ? true : false;
 			
 			new szefpos[128];
-			cache_get_field_content(i, "SzefPos", szefpos);
+			cache_get_field_content(i, "SzefPos", szefpos, sql_ID, 128);
 			sscanf(szefpos, "p<,>a<f>[3]", FInfo[fk][fSzefPos]);
 
-			cache_get_field_content(i, "SzefPosR", szefpos);
+			cache_get_field_content(i, "SzefPosR", szefpos, sql_ID, 128);
 			sscanf(szefpos, "p<,>a<f>[3]", FInfo[fk][fSzefPosR]);
 
-			FInfo[fk][fPenz] = cache_get_field_content_int(i, "Penz");
-			FInfo[fk][fMaterial] = cache_get_field_content_int(i, "Material");
-			FInfo[fk][fHeroin] = cache_get_field_content_int(i, "Heroin");
-			FInfo[fk][fKokain] = cache_get_field_content_int(i, "Kokain");
-			FInfo[fk][fMarihuana] = cache_get_field_content_int(i, "Marihuana");
+			FInfo[fk][fPenz] = cache_get_field_content_int(i, "Penz", sql_ID);
+			FInfo[fk][fMaterial] = cache_get_field_content_int(i, "Material", sql_ID);
+			FInfo[fk][fHeroin] = cache_get_field_content_int(i, "Heroin", sql_ID);
+			FInfo[fk][fKokain] = cache_get_field_content_int(i, "Kokain", sql_ID);
+			FInfo[fk][fMarihuana] = cache_get_field_content_int(i, "Marihuana", sql_ID);
 
 			new guns[256];
-			cache_get_field_content(i, "Fegyverek", guns);
+			cache_get_field_content(i, "Fegyverek", guns, sql_ID, 256);
 			sscanf(guns, "p<,>a<d>[50]", FInfo[fk][fFegyverek]);
 
-			cache_get_field_content(i, "Toltenyek", guns);
+			cache_get_field_content(i, "Toltenyek", guns, sql_ID, 256);
 			sscanf(guns, "p<,>a<d>[50]", FInfo[fk][fToltenyek]);
 
-			FInfo[fk][fVW] = cache_get_field_content_int(i, "VW");
+			FInfo[fk][fVW] = cache_get_field_content_int(i, "VW", sql_ID);
 			FInfo[fk][fInterior] = cache_get_field_content_int(i, "Interior");
 			
 			new wage[256];
-			cache_get_field_content(i, "Fizetesek", wage);
+			cache_get_field_content(i, "Fizetesek", wage, sql_ID, 256);
 			sscanf(wage, "p<,>a<d>[16]", FInfo[fk][fFizetes]);
 
-			FInfo[fk][fTrafi] = cache_get_field_content_int(i, "Traffipax");
+			FInfo[fk][fTrafi] = cache_get_field_content_int(i, "Traffipax", sql_ID);
             
 			FInfo[fk][fVan] = true;
 
