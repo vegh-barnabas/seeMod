@@ -6,11 +6,3 @@ crashinfo.txt
 mysql_log.txt
 mysql_log.html
 server_log.txt
-scriptfiles/Logok/Admin/*.log
-scriptfiles/Logok/Chat/*.log
-scriptfiles/Logok/Cheat/*.log
-scriptfiles/Logok/Admin/*.log
-scriptfiles/Logok/Kapcsolodasok/*.log
-scriptfiles/Logok/MySQL/*.log
-scriptfiles/Logok/Nevvaltas/*.log
-scriptfiles/Logok/Parancsok/*.log
