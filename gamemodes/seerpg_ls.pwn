@@ -112,14 +112,14 @@ NE a SetTimerEx-t használd!
 #if HAZI_SZERVER == 0
 new Scripter[1][3][MAX_PLAYER_NAME] =
 {
-    {"Frank_Carter",295,true}
+    {"Frank_Carter", 0, true}
 };
 #endif
 
 #if HAZI_SZERVER == 1
 new Scripter[2][3][MAX_PLAYER_NAME] =
 {
-    {"Frank_Carter",295,true}
+    {"Frank_Carter", 0, true}
 };
 #endif
 new TrafiBuntetheto[MAX_PLAYERS];
@@ -13515,7 +13515,7 @@ public OnGameModeInit()
 	else sql_ID = mysql_connect(MYSQL_HOST, tMYSQL_USER, tMYSQL_DB, tMYSQL_PW);
 	printf("Szerver indítása... | Házi szerver");
 
-	mysql_log(LOG_ALL, LOG_TYPE_HTML);
+	mysql_log(LOG_ERROR | LOG_WARNING, LOG_TYPE_HTML);
 	initDatabases();
 	
 	mysql_tquery(sql_ID, "UPDATE `"#MYSQL_JATEKOS_TABLA"` SET pOnline = '0'", "", "");
@@ -22777,7 +22777,7 @@ fpublic HazBetoltes()
 		{
 			new hdb = cache_get_field_content_int(i, "id");
 			
-			cache_get_field_content(i, "Tulaj", HazInfo[hdb][tulaj], sql_ID, 32);
+			cache_get_field_content(i, "tulaj", HazInfo[hdb][tulaj], sql_ID, 32);
 			HazInfo[hdb][hTulajID] = cache_get_field_content_int(i, "TulajID");
 			
 			HazInfo[hdb][posx] = cache_get_field_content_float(i, "poziciox", sql_ID);
@@ -23038,7 +23038,7 @@ fpublic AutomataBetoltes()
 	printf("Szerver: %d automata sikeresen betoltve!", nums);
 	return true;
 }
-
+/* TODO: remove this
 forward LoadFactions();
 public LoadFactions()
 {
@@ -23117,14 +23117,14 @@ public LoadFactions()
 			tempInt = cache_get_field_content_int(i, "SpeedCam", sql_ID);
 			factionInfo[i][fSpeedCam] = tempInt == 1 ? true : false;
 			
-			/* TODO: LastAttack */
+			// TODO: lastAttack
 
 			if(factionInfo[i][fHasSafe]) 
 			{
 				factionInfo[i][fSafeObjectID] = CreateDynamicObject(2332, factionInfo[i][fSafePos][0], factionInfo[i][fSafePos][1], factionInfo[i][fSafePos][2], factionInfo[i][fSafeRot][0], factionInfo[i][fSafeRot][1],  factionInfo[i][fSafeRot][2],  factionInfo[i][fVW],  factionInfo[i][fInt]);
 			}
 			
-			#if DEBUG_MYSQL == true
+			#if DEBUG_MYSQL
 				printf("[Faction]: Loaded faction %s - %d (%d)", factionInfo[i][fName], i, factionInfo[i][fID]);
 				printf("[Faction]: Ranks (1-8): %s, %s, %s, %s, %s, %s, %s, %s", factionInfo[i][fRank1], factionInfo[i][fRank2], factionInfo[i][fRank3], factionInfo[i][fRank4], factionInfo[i][fRank5], factionInfo[i][fRank6], factionInfo[i][fRank7], factionInfo[i][fRank8]);
 				printf("[Faction]: Ranks (9-16): %s, %s, %s, %s, %s, %s, %s, %s", factionInfo[i][fRank9], factionInfo[i][fRank10], factionInfo[i][fRank11], factionInfo[i][fRank12], factionInfo[i][fRank13], factionInfo[i][fRank14], factionInfo[i][fRank15], factionInfo[i][fRank16]);
@@ -23136,7 +23136,7 @@ public LoadFactions()
 	else print("[MySQL]: No factions loaded.");
 	
 	return true;
-}
+}*/
 
 fpublic FrakcioBetoltes()
 {
@@ -23149,30 +23149,28 @@ fpublic FrakcioBetoltes()
 		for (new i = 0; i < rows && i < MAX_FACTIONS; i++)
 		{
             new fk = cache_get_field_content_int(i, "ID");
-			cache_get_field_content(i, "FNev", FInfo[i][fNev], 32);
+			printf("Hello %d", fk);
+			FInfo[fk][fID] = fk;
+			cache_get_field_content(i, "FNev", FInfo[fk][fNev], 32);
 			
-			printf("%d (%d) - %s", i, FInfo[i][fID], FInfo[i][fNev]);
-			
-			cache_get_field_content(i, "FNev", FInfo[i][fNev]);
-			
-			cache_get_field_content(i, "Rang1", FInfo[i][fRang1], 32);
-			cache_get_field_content(i, "Rang2", FInfo[i][fRang2], 32);
-			cache_get_field_content(i, "Rang3", FInfo[i][fRang3], 32);
-			cache_get_field_content(i, "Rang4", FInfo[i][fRang4], 32);
-			cache_get_field_content(i, "Rang5", FInfo[i][fRang5], 32);
-			cache_get_field_content(i, "Rang6", FInfo[i][fRang6], 32);
-			cache_get_field_content(i, "Rang7", FInfo[i][fRang7], 32);
-			cache_get_field_content(i, "Rang8", FInfo[i][fRang8], 32);
-			cache_get_field_content(i, "Rang9", FInfo[i][fRang9], 32);
-			cache_get_field_content(i, "Rang10", FInfo[i][fRang10], 32);
-			cache_get_field_content(i, "Rang11", FInfo[i][fRang11], 32);
-			cache_get_field_content(i, "Rang12", FInfo[i][fRang12], 32);
-			cache_get_field_content(i, "Rang13", FInfo[i][fRang13], 32);
-			cache_get_field_content(i, "Rang14", FInfo[i][fRang14], 32);
-			cache_get_field_content(i, "Rang15", FInfo[i][fRang15], 32);
-			cache_get_field_content(i, "Rang16", FInfo[i][fRang16], 32);
-			FInfo[fk][fMaxRang] = cache_get_field_content_int(i, "MaxRang");
-			cache_get_field_content(i, "SzefRang", FInfo[i][fSzefRang], 32);
+			cache_get_field_content(i, "Rang1", FInfo[fk][fRang1], 32);
+			cache_get_field_content(i, "Rang2", FInfo[fk][fRang2], 32);
+			cache_get_field_content(i, "Rang3", FInfo[fk][fRang3], 32);
+			cache_get_field_content(i, "Rang4", FInfo[fk][fRang4], 32);
+			cache_get_field_content(i, "Rang5", FInfo[fk][fRang5], 32);
+			cache_get_field_content(i, "Rang6", FInfo[fk][fRang6], 32);
+			cache_get_field_content(i, "Rang7", FInfo[fk][fRang7], 32);
+			cache_get_field_content(i, "Rang8", FInfo[fk][fRang8], 32);
+			cache_get_field_content(i, "Rang9", FInfo[fk][fRang9], 32);
+			cache_get_field_content(i, "Rang10", FInfo[fk][fRang10], 32);
+			cache_get_field_content(i, "Rang11", FInfo[fk][fRang11], 32);
+			cache_get_field_content(i, "Rang12", FInfo[fk][fRang12], 32);
+			cache_get_field_content(i, "Rang13", FInfo[fk][fRang13], 32);
+			cache_get_field_content(i, "Rang14", FInfo[fk][fRang14], 32);
+			cache_get_field_content(i, "Rang15", FInfo[fk][fRang15], 32);
+			cache_get_field_content(i, "Rang16", FInfo[fk][fRang16], 32);
+			FInfo[fk][fMaxRang] = cache_get_field_content_int(fk, "MaxRang");
+			cache_get_field_content(i, "SzefRang", FInfo[fk][fSzefRang], 32);
 
 			new legalis = cache_get_field_content_int(i, "Legalis");
 			FInfo[fk][fLegalis] = legalis ? true : false;
@@ -23216,10 +23214,10 @@ fpublic FrakcioBetoltes()
 				FInfo[fk][fObjectID] = CreateDynamicObject(2332, FInfo[fk][fSzefPos][0], FInfo[fk][fSzefPos][1], FInfo[fk][fSzefPos][2], FInfo[fk][fSzefPosR][0], FInfo[fk][fSzefPosR][1], FInfo[fk][fSzefPosR][2], FInfo[fk][fVW], FInfo[fk][fInterior]);
 			}
 			
-			#if DEBUG_MYSQL == true
-				printf("[Faction]: Loaded faction %s - %d (%d)", FInfo[i][fNev], i, FInfo[i][fID]);
-				printf("[Faction]: Ranks (1-8): %s, %s, %s, %s, %s, %s, %s, %s", FInfo[i][fRang1], FInfo[i][fRang2], FInfo[i][fRang3], FInfo[i][fRang4], FInfo[i][fRang5], FInfo[i][fRang6], FInfo[i][fRang7], FInfo[i][fRang8]);
-				printf("[Faction]: Ranks (9-16): %s, %s, %s, %s, %s, %s, %s, %s", FInfo[i][fRang9], FInfo[i][fRang10], FInfo[i][fRang11], FInfo[i][fRang12], FInfo[i][fRang13], FInfo[i][fRang14], FInfo[i][fRang15], FInfo[i][fRang16]);
+			#if DEBUG_MYSQL
+				printf("[Faction]: Loaded faction %s - %d (%d)", FInfo[fk][fNev], i, FInfo[fk][fID]);
+				printf("[Faction]: Ranks (1-8): %s, %s, %s, %s, %s, %s, %s, %s", FInfo[fk][fRang1], FInfo[fk][fRang2], FInfo[fk][fRang3], FInfo[fk][fRang4], FInfo[fk][fRang5], FInfo[fk][fRang6], FInfo[fk][fRang7], FInfo[fk][fRang8]);
+				printf("[Faction]: Ranks (9-16): %s, %s, %s, %s, %s, %s, %s, %s", FInfo[fk][fRang9], FInfo[fk][fRang10], FInfo[fk][fRang11], FInfo[fk][fRang12], FInfo[fk][fRang13], FInfo[fk][fRang14], FInfo[fk][fRang15], FInfo[fk][fRang16]);
 			#endif
 		}
 		
@@ -61467,7 +61465,7 @@ stock AddCCTV(name[], Float:X, Float:Y, Float:Z, Float:Angle, int=0, vw=0)
 	CCTVEgyeb[TotalCCTVS][0] = int;
 	CCTVEgyeb[TotalCCTVS][1] =  vw;
 	
-	#if DEBUG_MYSQL == true
+	#if DEBUG_MYSQL
 		printf("[CCTV]: Loaded CCTV (%d) %s - (%f, %f, %f) (%f) %d %d", TotalCCTVS + 1, CameraName[TotalCCTVS], CCTVCP[TotalCCTVS][0], CCTVCP[TotalCCTVS][1], CCTVCP[TotalCCTVS][2], CCTVCP[TotalCCTVS][3]);
 		printf("[CCTV]: Loaded CCTVLAO (%f, %f, %f)", CCTVLAO[TotalCCTVS][0], CCTVLAO[TotalCCTVS][1], CCTVLAO[TotalCCTVS][2]);
 		printf("[CCTV]: Loaded CCTVEgyeb (%d, %d)",CCTVEgyeb[TotalCCTVS][0], CCTVEgyeb[TotalCCTVS][1]);
@@ -61658,7 +61656,7 @@ fpublic GraffitiLoad()
 				TagInfo[idx][tObject] = CreateDynamicObject(TagInfo[idx][tGraffitiObject],TagInfo[idx][tPoz][0],TagInfo[idx][tPoz][1],TagInfo[idx][tPoz][2],TagInfo[idx][tRot][0],TagInfo[idx][tRot][1],TagInfo[idx][tRot][2]);
 			}
 			
-			#if DEBUG_MYSQL == true
+			#if DEBUG_MYSQL
 				printf("[CCTV]: Loaded Graffiti (%d = %d) - (%f, %f, %f) (%f %f %f)", i, TagInfo[idx][tID], TagInfo[idx][tPoz][0], TagInfo[idx][tPoz][1], TagInfo[idx][tPoz][2], TagInfo[idx][tRot][0], TagInfo[idx][tRot][1], TagInfo[idx][tRot][2]);
 			#endif
 		}
