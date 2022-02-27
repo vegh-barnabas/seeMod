@@ -23207,6 +23207,7 @@ fpublic FrakcioBetoltes()
 			cache_get_field_content(i, "Fizetesek", wage);
 			sscanf(wage, "p<,>a<d>[16]", FInfo[fk][fFizetes]);
 
+			FInfo[fk][fMaxRang] = cache_get_field_content_int(i, "MaxRang");
 			FInfo[fk][fTrafi] = cache_get_field_content_int(i, "Traffipax");
             
 			FInfo[fk][fVan] = true;
