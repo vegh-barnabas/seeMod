@@ -9777,10 +9777,10 @@ stock ProcessSQL( )
 	mysql_tquery(sql_ID, "SELECT * FROM `"#MYSQL_KAMERA_TABLA"`", "KameraLoad", "");
 	mysql_tquery(sql_ID, "SELECT * FROM `"#MYSQL_SPRAY_TABLA"`", "GraffitiLoad", "");
 	mysql_tquery(sql_ID, "SELECT * FROM `"#MYSQL_JARMU_TABLA"`", "JarmuBetoltes", "");
-	/*mysql_tquery(sql_ID, "SELECT * FROM `"#MYSQL_DRINK_TABLE"`", 	"DrinkLoad", 		"");
-	mysql_tquery(sql_ID, "SELECT * FROM `"#MYSQL_HAZ_TABLA"`", 		"HazBetoltes", 			"");
+	mysql_tquery(sql_ID, "SELECT * FROM `"#MYSQL_DRINK_TABLE"`", "DrinkLoad", "");
+	mysql_tquery(sql_ID, "SELECT * FROM `"#MYSQL_HAZ_TABLA"`", "HazBetoltes", "");
 	mysql_tquery(sql_ID, "SELECT * FROM `"#MYSQL_GARAZS_TABLA"`", 	"GarazsBetoltes", 			"");
-	mysql_tquery(sql_ID, "SELECT * FROM `"#MYSQL_FRAKCIO_TABLA"`", 	"FrakcioBetoltes", 		"");
+	/*mysql_tquery(sql_ID, "SELECT * FROM `"#MYSQL_FRAKCIO_TABLA"`", 	"FrakcioBetoltes", 		"");
 	mysql_tquery(sql_ID, "SELECT * FROM `"#MYSQL_TERULET_TABLA"`", 	"TeruletBetoltes", 		"");
 	mysql_tquery(sql_ID, "SELECT * FROM `"#MYSQL_GPS_TABLA"`", 	"GPSBetoltes", 		"");
 	mysql_tquery(sql_ID, "SELECT * FROM `"#MYSQL_BENZINKUTAK_TABLA"`", 	"BenzinkutBetoltes", 		"");
@@ -18748,12 +18748,14 @@ task OtmasodpercesIdozito[5000]()
 			if(PlayerInfo[pid][pSzuksegletFigy] < 1)
 			{
 				//PlayerInfo[pid][pSzuksegletFigy] = 2;
-				if(PlayerInfo[pid][pEhseg] >= 100.0 && PlayerInfo[pid][pVizelet] < 100.0)
-					// SCM(pid, COL_LRED, "Korog a gyomrod, gyorsan egyél valamit mert romlik az egészséged.."), SetHealth(pid, (PlayerInfo[pid][pElet] - 0.5), true, true);
+				
+				/* TODO: Fix this message spam */
+				/*if(PlayerInfo[pid][pEhseg] >= 100.0 && PlayerInfo[pid][pVizelet] < 100.0)
+					 SCM(pid, COL_LRED, "Korog a gyomrod, gyorsan egyél valamit mert romlik az egészséged.."), SetHealth(pid, (PlayerInfo[pid][pElet] - 0.5), true, true);
 				else if(PlayerInfo[pid][pEhseg] < 100.0 && PlayerInfo[pid][pVizelet] >= 100.0)
 					SCM(pid, COL_LRED, "Itt az idõ, hív a természet. Keress gyorsan egy toalettet és könnyíts magadon.."), SetHealth(pid, (PlayerInfo[pid][pElet] - 0.5), true, true);
 				else if(PlayerInfo[pid][pEhseg] >= 100.0 && PlayerInfo[pid][pVizelet] >= 100.0)
-					SCM(pid, COL_LRED, "Hív a természet és éhes is vagy, egyél valamit és könnyíts magadon.."), SetHealth(pid, (PlayerInfo[pid][pElet] - 0.5), true, true);
+					SCM(pid, COL_LRED, "Hív a természet és éhes is vagy, egyél valamit és könnyíts magadon.."), SetHealth(pid, (PlayerInfo[pid][pElet] - 0.5), true, true);*/
 			}
 		}
 
@@ -22765,52 +22767,57 @@ fpublic TuzBetoltes()
 
 fpublic HazBetoltes()
 {
-	print("Szerver: Házak betöltése!");
+	print("[MYSQL]: Loading Houses...");
 
-	new nums, fields;
-	cache_get_data(nums, fields);
-
-	if(nums)
+	new rows = cache_num_rows();
+	
+	if (rows)
 	{
-		new i = -1, hdb, hsz[64], drog[513], zarva;
-	    for(;++i < nums;)
-	    {
-			mysql_get_int(i, "id", hdb);
-			mysql_get_string(i, "tulaj", HazInfo[hdb][tulaj]);
-			mysql_get_int(i, "TulajID", HazInfo[hdb][hTulajID]);
-			mysql_get_float(i, "poziciox", HazInfo[hdb][posx]);
-			mysql_get_float(i, "pozicioy", HazInfo[hdb][posy]);
-			mysql_get_float(i, "pozicioz", HazInfo[hdb][posz]);
-			mysql_get_int(i, "interior", HazInfo[hdb][hInterior]);
-			mysql_get_int(i, "ar", HazInfo[hdb][hazar]);
+		for (new i = 0; i < rows && i < MAX_HOUSE; i++) /* TODO: to english */
+		{
+			new hdb = cache_get_field_content_int(i, "id");
+			
+			cache_get_field_content(i, "Tulaj", HazInfo[hdb][tulaj], sql_ID, 32);
+			HazInfo[hdb][hTulajID] = cache_get_field_content_int(i, "TulajID");
+			
+			HazInfo[hdb][posx] = cache_get_field_content_float(i, "poziciox", sql_ID);
+			HazInfo[hdb][posx] = cache_get_field_content_float(i, "poziciox", sql_ID);
+			HazInfo[hdb][posx] = cache_get_field_content_float(i, "poziciox", sql_ID);
+			
+			HazInfo[hdb][hInterior] = cache_get_field_content_int(i, "interior");
+			HazInfo[hdb][hazar] = cache_get_field_content_int(i, "ar");
+			
 			if(HazInfo[hdb][hazar] < MIN_HAZ_AR)
 			{
 			   HazInfo[hdb][hazar] = MIN_HAZ_AR;
 			}
-			mysql_get_int(i, "butorok", HazInfo[hdb][butorsz]);
+			
+			HazInfo[hdb][butorsz] = cache_get_field_content_int(i, "butorok");
 
-			mysql_get_string(i, "hazSzef", hsz);
-			sscanf(hsz, "p<,>a<d>[5]", HazInfo[hdb][hazSzef]);
+			new longStr[512];
+			cache_get_field_content(i, "hazSzef", longStr, sql_ID, 64);
+			sscanf(longStr, "p<,>a<d>[5]", HazInfo[hdb][hazSzef]);
+			
+			cache_get_field_content(i, "drogMi", longStr, sql_ID, 128);
+			sscanf(longStr, "p<,>a<d>[50]", HazInfo[hdb][hDrogMi]);
 
-			mysql_get_string(i, "drogMi", drog);
-			sscanf(drog, "p<,>a<d>[50]", HazInfo[hdb][hDrogMi]);
+			cache_get_field_content(i, "drogAll", longStr, sql_ID, 512);
+			sscanf(longStr, "p<,>a<d>[50]", HazInfo[hdb][hDrogAllapot]);
 
-			mysql_get_string(i, "drogAll", drog);
-			sscanf(drog, "p<,>a<d>[50]", HazInfo[hdb][hDrogAllapot]);
-
+			new zarva;
 			mysql_get_int(i, "hZarva", zarva);
 			HazInfo[hdb][hZarva] = (zarva ? true : false);
 
-			mysql_get_string(i, "hFegyver", drog);
-			sscanf(drog, "p<,>a<d>[15]", HazInfo[hdb][hFegyver]);
+			cache_get_field_content(i, "hFegyver", longStr, sql_ID, 64);
+			sscanf(longStr, "p<,>a<d>[15]", HazInfo[hdb][hFegyver]);
 
-			mysql_get_string(i, "hTolteny", drog);
-			sscanf(drog, "p<,>a<d>[15]", HazInfo[hdb][hTolteny]);
+			cache_get_field_content(i, "hTolteny", longStr, sql_ID, 256);
+			sscanf(longStr, "p<,>a<d>[15]", HazInfo[hdb][hTolteny]);
 
-			mysql_get_int(i, "hTipus", HazInfo[hdb][hTipus]);
-			mysql_get_int(i, "hPince", HazInfo[hdb][hPince]);
-
-			mysql_get_int(i, "hGarazs", HazInfo[hdb][hGarazs]);
+			HazInfo[hdb][hTipus] = cache_get_field_content_int(i, "hTipus");
+			
+			HazInfo[hdb][hPince] = cache_get_field_content_int(i, "hPince");
+			HazInfo[hdb][hGarazs] = cache_get_field_content_int(i, "hGarazs");
 
 			HazInfo[hdb][hasznalatban] = true;
 
@@ -22825,10 +22832,16 @@ fpublic HazBetoltes()
 
 			//PDrogHelyek
 			UjUltetveny( hdb );
+			
+			#if DEBUG_MYSQL
+				printf("[Vehicle]: Loaded House %d: %s (%f %f %f)", i, HazInfo[hdb][tulaj], HazInfo[hdb][posx], HazInfo[hdb][posy], HazInfo[hdb][posz]);
+			#endif
 
-	    }
+		}
+		printf("[MySQL]: %d Houses loaded.", rows);
 	}
-  	printf("Szerver: %d ház sikeresen betöltve!", nums);
+	else print("[MySQL]: No Houses loaded.");
+	
  	return true;
 }
 
@@ -23320,7 +23333,7 @@ fpublic JarmuadatBetoltes()
 	return true;
 }
 
-fpublic JarmuBetoltes()
+fpublic JarmuBetoltes() /* TODO: Fix missing values */
 {
 	print("[MYSQL]: Loading Graffitis...");
 
@@ -23350,6 +23363,7 @@ fpublic JarmuBetoltes()
 			vInfo[bID][vPosx] = cache_get_field_content_float(i, "VPosx", sql_ID);
 			vInfo[bID][vPosy] = cache_get_field_content_float(i, "VPosy", sql_ID);
 			vInfo[bID][vPosz] = cache_get_field_content_float(i, "VPosz", sql_ID);
+			vInfo[bID][vAngle] = cache_get_field_content_float(i, "VAngle", sql_ID);
 			
 			vInfo[bID][vInt] = cache_get_field_content_int(i, "vInt", sql_ID);
 			vInfo[bID][vVW] = cache_get_field_content_int(i, "vVW", sql_ID);
@@ -23412,6 +23426,8 @@ fpublic JarmuBetoltes()
 			vInfo[bID][vGarazsban] = cache_get_field_content_int(i, "vGarazsban", sql_ID);
 			vInfo[bID][vNOS] = cache_get_field_content_int(i, "vNOS", sql_ID);
 			
+			vInfo[bID][vElet] = cache_get_field_content_int(i, "VElet", sql_ID);
+			
 			vInfo[bID][vBerelt] = false;
 			vInfo[bID][vHasznalva] = true;
 			vInfo[bID][vInsert] = true;
@@ -23452,7 +23468,7 @@ fpublic JarmuBetoltes()
 			#endif
 
 		}
-		printf("Szerver: %d Vehicles loaded.", rows);
+		printf("[MySQL]: %d Vehicles loaded.", rows);
 	}
 	else print("[MySQL]: No Vehicles loaded.");
 
@@ -32867,35 +32883,41 @@ fpublic OnGarazsCreate(id)
 }
 fpublic GarazsBetoltes()
 {
-	print("Szerver: Garázsok betöltése!");
+	print("[MYSQL]: Loading Garages...");
 
-	new nums, fields;
-	cache_get_data(nums, fields);
-
-	if(nums)
+	new rows = cache_num_rows();
+	
+	if (rows)
 	{
-		new i = -1;
-	    for(;++i < nums;)
-	    {
+		for (new i = 0; i < rows && i < MAX_GARAZS; i++) /* TODO: to english */
+		{
 			gInfo[i][gVan] = true;
-			mysql_get_int(i, "id", gInfo[i][gID]);
-			mysql_get_int(i, "tipus", gInfo[i][gTipus]);
-			mysql_get_int(i, "tulaj", gInfo[i][gTulaj]);
-			mysql_get_int(i, "ara", gInfo[i][gAr]);
-			mysql_get_int(i, "haz", gInfo[i][gHaz]);
+			
+			gInfo[i][gID] = cache_get_field_content_int(i, "id");
+			gInfo[i][gTipus] = cache_get_field_content_int(i, "tipus");
+			gInfo[i][gTulaj] = cache_get_field_content_int(i, "tulaj");
+			gInfo[i][gAr] = cache_get_field_content_int(i, "ara");
+			gInfo[i][gHaz] = cache_get_field_content_int(i, "haz");
 
-			mysql_get_float(i, "x", gInfo[i][gPozBe][0]);
-			mysql_get_float(i, "y", gInfo[i][gPozBe][1]);
-			mysql_get_float(i, "z", gInfo[i][gPozBe][2]);
-			mysql_get_float(i, "a", gInfo[i][gPozBe][3]);
-            mysql_get_int(i, "zarva", gInfo[i][gZarva]);
+			gInfo[i][gPozBe][0] = cache_get_field_content_float(i, "x", sql_ID);
+			gInfo[i][gPozBe][1] = cache_get_field_content_float(i, "y", sql_ID);
+			gInfo[i][gPozBe][2] = cache_get_field_content_float(i, "z", sql_ID);
+			gInfo[i][gPozBe][3] = cache_get_field_content_float(i, "a", sql_ID);
+			
+			gInfo[i][gZarva] = cache_get_field_content_int(i, "zarva");
             
 			gInfo[i][gPickup] = CreateDynamicPickup(19132, 23, posArr{gInfo[i][gPozBe]}, 0, 0, -1);
 	    	gInfo[i][gText] = CreateDynamic3DTextLabel("[GARÁZSBEJÁRAT]\n{FF6A00}/garázs be",COLOR_WHITE, posArr{gInfo[i][gPozBe]} ,DEFAULT_LABEL_DISTANCE);
 			Iter_Add(Garazsok, i);
+			
+			#if DEBUG_MYSQL
+				printf("[Vehicle]: Loaded Garage %d (%d): %d (%f %f %f)", gInfo[i][gID], i, gInfo[i][gTulaj], gInfo[i][gPozBe][0], gInfo[i][gPozBe][1], gInfo[i][gPozBe][2]);
+			#endif
 		}
+		printf("[MySQL]: %d Garages loaded.", rows);
 	}
-  	printf("Szerver: %d garázs sikeresen betöltve!", nums);
+	else print("[MySQL]: No Garages loaded.");
+	
  	return true;
 }
 stock UjGarazs(tipus, Float:x, Float:y, Float:z, Float:angle, haz = NINCS, tulajid = NINCS, ara = 10000)
@@ -61557,7 +61579,7 @@ fpublic KameraLoad()
 			new vw = cache_get_field_content_int(i, "VW", sql_ID);
 			AddCCTV(name, x, y, z, angle, int, vw);
 		}
-		printf("Szerver: %d CCTV Cameras loaded.", rows);
+		printf("[MySQL]: %d CCTV Cameras loaded.", rows);
 	}
 	else print("[MySQL]: No CCTV Cameras loaded.");
 	
@@ -61566,26 +61588,30 @@ fpublic KameraLoad()
 
 fpublic DrinkLoad()
 {
-	print("Szerver: Drink pontok betöltése!");
+	print("[MYSQL]: Loading Drink Points...");
 
-	new nums, fields;
-	cache_get_data(nums, fields);
-
-	if(nums)
+	new rows = cache_num_rows();
+	
+	if (rows)
 	{
-	    new i = -1,c;
-	    for(;++i < nums;)
-	    {
-			mysql_get_int(i,"ID",c);
-			DrinkInfo[c][dVan] = 1;
-			DrinkInfo[c][dID] = c;
-			mysql_get_float(i, "X", DrinkInfo[c][dX]);
-			mysql_get_float(i, "Y", DrinkInfo[c][dY]);
-			mysql_get_float(i, "Z", DrinkInfo[c][dZ]);
-			DrinkInfo[c][dText] = CreateDynamic3DTextLabel("(( /drink ))", COLOR_MKEK, DrinkInfo[c][dX], DrinkInfo[c][dY], DrinkInfo[c][dZ], 20.0, INVALID_VEHICLE_ID, INVALID_VEHICLE_ID, 1);
+		for (new i = 0; i < rows; i++)
+		{
+			new idx = cache_get_field_content_int(i, "ID", sql_ID);
+			DrinkInfo[idx][dID] = idx;
+			
+			DrinkInfo[idx][dVan] = 1;
+			
+			DrinkInfo[idx][dX] = cache_get_field_content_float(i, "X", sql_ID);
+			DrinkInfo[idx][dY] = cache_get_field_content_float(i, "Y", sql_ID);
+			DrinkInfo[idx][dZ] = cache_get_field_content_float(i, "Z", sql_ID);
+			
+			DrinkInfo[idx][dText] = CreateDynamic3DTextLabel("(( /drink ))", COLOR_MKEK, DrinkInfo[idx][dX], DrinkInfo[idx][dY], DrinkInfo[idx][dZ], 20.0);
+			// DrinkInfo[idx][dText] = CreateDynamic3DTextLabel("(( /drink ))", COLOR_MKEK, DrinkInfo[idx][dX], DrinkInfo[idx][dY], DrinkInfo[idx][dZ], 20.0, INVALID_VEHICLE_ID, INVALID_VEHICLE_ID, 1);
 		}
+		printf("[MySQL]: %d Drink Points loaded.", rows);
 	}
-	printf("Szerver: %d Drink pontok betöltve!", nums);
+	else print("[MySQL]: No Drink Points loaded.");
+	
 	return true;
 }
 fpublic GraffitiLoad()
