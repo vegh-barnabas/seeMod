@@ -1,8 +1,0 @@
-[14:39:44] [1194] Table 'ig_activity' is marked as crashed and should be repaired - [query] UPDATE ig_activity SET Ido=Ido+0 WHERE IDJE='2022-2-2721645969142'
-
-[14:39:45] [1194] Table 'ig_activity' is marked as crashed and should be repaired - [query] UPDATE ig_activity SET Ido=Ido+43 WHERE IDJE='2022-2-2721645969142'
-
-[14:40:18] [1194] Table 'ig_activity' is marked as crashed and should be repaired - [query] UPDATE ig_activity SET Ido=Ido+33 WHERE IDJE='2022-2-2721645969142'
-
-[14:40:50] [1194] Table 'ig_activity' is marked as crashed and should be repaired - [query] UPDATE ig_activity SET Ido=Ido+32 WHERE IDJE='2022-2-2721645969142'
-
