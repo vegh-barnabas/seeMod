@@ -74,12 +74,6 @@ NE a SetTimerEx-t használd!
 #include <physics>
 #include <easydialog>
 
-// NPC Includes
-#include <mapandreas>
-#include <colandreas>
-#include <fcnpc>
-
-
 #define PREFIX			"DayRPG"
 #define VERZIO			""#PREFIX " v"#MAJOR"."#MINOR"."#PATCH""
 
@@ -95,8 +89,8 @@ NE a SetTimerEx-t használd!
 	#include <websockets>
 #endif
 
-#define HAZI_SZERVER 	0 //	FÕSZERVER(0) | LOCAL(1)
-#define NPC_KELL		1 // 1 = betölti 0 = nem - (FCNPS pluginos)
+#define HAZI_SZERVER 0 //	FÕSZERVER(0) | LOCAL(1)
+#define NPC_KELL				0 // 1 = betölti 0 = nem - (FCNPS pluginos)
 #define MYSQL_HOST  	"127.0.0.1"
 #define KELLDWAYNE // Fegyveres NPC
 
@@ -2431,8 +2425,39 @@ enum automataInfo
 	Text3D:autext
 };
 
+#define MAX_FACTIONS 20;
+#define MAX_FACTION_RANKS 16;
+enum factionInfoEnum {
+	fID,
+	fName[32],
+	fRank[MAX_FACTION_RANKS][32],
+	fMaxRank,
+	bool:fIsLegal,
+	bool:fHasSafe,
+	fSafeObjectID,
+	Float:fSafePos[3],
+	Float:fSafeRot[3],
+	fSafeRank,
+	fMoney,
+	fMaterial,
+	fHeroin,
+	fCocaine,
+	fMarijuana,
+	fWeapon[52],
+	fAmmo[52],
+	fVW,
+	fInt,
+	fWage[16],
+	fLimit,
+	Float:fDutyPos[3],
+	fSpeedCam,
+	fLastAttack,
+};
+new factionInfo[MAX_FACTIONS][factionInfoEnum];
+
 enum fkInfo
 {
+	fID,
 	bool:fVan,
 	fNev[32],
 	fRang1[20],
@@ -9729,7 +9754,10 @@ stock IsSeatTaken(vehicleid, seatid)
 
 stock ProcessSQL( )
 {
+	printf("[MySQL]: Processing SQL...");
+
 	//mysql_tquery(sql_ID, "SELECT * FROM `"#MYSQL_HIFI_TABLE"`", 	"HifiLoad", 		"");
+	/*
 	mysql_tquery(sql_ID, "SELECT * FROM `"#MYSQL_KAMERA_TABLA"`", 	"KameraLoad", 		"");
 	mysql_tquery(sql_ID, "SELECT * FROM `"#MYSQL_SPRAY_TABLA"`", 	"GraffitiLoad", 		"");
 	mysql_tquery(sql_ID, "SELECT * FROM `"#MYSQL_DRINK_TABLE"`", 	"DrinkLoad", 		"");
@@ -9749,6 +9777,9 @@ stock ProcessSQL( )
 	mysql_tquery(sql_ID, "SELECT * FROM `"#MYSQL_3DTEXT_TABLA"`", 	"LabelBetoltes", 		"");
 	mysql_tquery(sql_ID, "SELECT * FROM `"#MYSQL_AJTO_TABLA"`", 	"AjtokBetoltese", 		"");
 	mysql_tquery(sql_ID, "SELECT * FROM `"#MYSQL_TUZEK_TABLA"`", 		"TuzBetoltes", 		"");
+	*/
+	mysql_tquery(sql_ID, "SELECT * FROM `frakciok`", "LoadFactions", "");
+	
 	return true;
 }
 
@@ -12525,6 +12556,8 @@ stock Parancs_Alias()
 fpublic initDatabases()
 {
 	printf("Adatbázisok ellenõrzése");
+	/* TODO: Fix this mess */
+	/*
 	//A biztonság kedvéért non-threaded queryt küldök, hogy míg le nem fut a query, ne történjen betöltés.
 	#define MAXQUERYSIZE 1024
 	new query[MAXQUERYSIZE]; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! FIGYELJ RÁ, HA KEVÉS, MEGHAL A MÓD !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -12543,7 +12576,7 @@ fpublic initDatabases()
   	PRIMARY KEY (`id`)\
 	) ENGINE=InnoDB DEFAULT CHARSET=latin1;");
     mysql_query(sql_ID, query, false);
-    
+    */
     printf("Adatbázisok ellenõrzése megtörtént");
 }
 public OnGameModeInit()
@@ -13485,8 +13518,8 @@ public OnGameModeInit()
  	print("---------------------------------------------------\n\n");
  	print("Szerver: Idozitok elinditasa!");
  	/* --------------- Idõzítõk ide --------------- */
- 	UpdateIphone();
-	AdatMentesMindenkinek();
+ 	/*UpdateIphone();
+	AdatMentesMindenkinek(); TODO: fix this
 	MasodpercesIdozito();
 	KetMasodpercesIdozito();
 	OtmasodpercesIdozito();
@@ -13494,7 +13527,7 @@ public OnGameModeInit()
 	t_Teargas();
 	t_Bomba();
 	repeat t_UCPCheck();
-	SetTimer("PowerBar", 20, 1);
+	SetTimer("PowerBar", 20, 1);*/
 	/* --------------- Idõzítõk vége --------------- */
 	print("Szerver: Idozitok elinditasa sikeresen megtortent!");
 
@@ -16234,7 +16267,7 @@ public OnPlayerEditDynamicObject(playerid, objectid, response, Float:x, Float:y,
 			}
 			/*new
 				Float:objectpos[6],
-				automataid = ObjectIDEx(objectid);
+				automataid = ObjectID(objectid);
 
 			GetDynamicObjectPos(AutomataInfo[automataid][auobject], objectpos[0], objectpos[1], objectpos[2]);
 			GetDynamicObjectRot(AutomataInfo[automataid][auobject], objectpos[3], objectpos[4], objectpos[5]);
@@ -21569,7 +21602,7 @@ stock FkUpdate(id, ...)
 	for(;++idx < numargs();)
 		FUpdates[id][fk_Update:(getarg(idx))] = true;
 
-	// FInfo[id][fKellUpdates] = true;
+	//FInfo[id][fKellUpdates] = true;
 	return true;
 }
 
@@ -22183,7 +22216,7 @@ fpublic AdatBetoltes( playerid )
 		mysql_get_int(0, "pTolvajSkill", PlayerInfo[playerid][pTolvajSkill]);
 		mysql_get_int(0, "pRabolhat", PlayerInfo[playerid][pRabolhat]);
 		mysql_get_int(0, "pZarolva", PlayerInfo[playerid][pZarolva]);
-		mysql_get_int(0, "pGazmaszk", PlayerInfo[playerid][pGazmaszk]);
+		mysql_get_int(0, "pGaumaszk", PlayerInfo[playerid][pGazmaszk]);
 		mysql_get_int(0, "pTartozas", PlayerInfo[playerid][pTartozas]);
 		mysql_get_float(0, "pEhseg", PlayerInfo[playerid][pEhseg]);
         mysql_get_float(0, "pVizelet", PlayerInfo[playerid][pVizelet]);
@@ -22498,7 +22531,7 @@ stock BotBetoltes()
 		else if(hova > (sizeof(GyarPoziciok) - 1))
 			hova = 0;
 
-		FCNPC_GoTo(BotInformacio[num][botID], GyarPoziciok[rand][kozPosX], GyarPoziciok[rand][kozPosY], GyarPoziciok[rand][kozPosZ], FCNPC_MOVE_TYPE_WALK, 1);
+		FCNPC_GoTo(BotInformacio[num][botID], GyarPoziciok[rand][kozPosX], GyarPoziciok[rand][kozPosY], GyarPoziciok[rand][kozPosZ], MOVE_TYPE_WALK, 1);
 
 		BotInformacio[num][botMost] = rand;
 		BotInformacio[num][botKovetkezo] = hova;
@@ -22557,7 +22590,7 @@ public FCNPC_OnReachDestination(npcid)
 			{0, 991.9806, -1234.0807, 16.9475, {13, 15, 0, 0, 0}}, // NPC14 (13-bõl indulva)
 			{0, 991.9255, -1228.6942, 16.9050, {1, 4, 14, 0, 0}} // NPC15 (14-bõl indulva, köz 0-1)
 			*/
-			// printf("Elõzõ: %d | Most: %d", BotInformacio[i][botElozo], BotInformacio[i][botMost]);
+			printf("Elõzõ: %d | Most: %d", BotInformacio[i][botElozo], BotInformacio[i][botMost]);
 			new x = -1, kovetkezo[10], num = 0;
 			for(;++x < sizeof(GyarPoziciok);)
 			{
@@ -22571,7 +22604,7 @@ public FCNPC_OnReachDestination(npcid)
 				//printf("Index(2): %d", x);
 				if((!(szog % 90)) || (!((szog + 1) % 90)) || (!((szog - 1) % 90)))
 				{
-					// printf("Szögecske: %d | %d", szog, x);
+					printf("Szögecske: %d | %d", szog, x);
 					//printf("Melyik: %d | %d | %d", x, szog, floatround(GetPointAngleToPoint(GyarPoziciok[BotInformacio[i][botMost]][kozPosX], GyarPoziciok[BotInformacio[i][botMost]][kozPosY], GyarPoziciok[x][kozPosX], GyarPoziciok[x][kozPosX])));
 					//kovetkezo = x;
 					kovetkezo[num] = x;
@@ -22584,14 +22617,14 @@ public FCNPC_OnReachDestination(npcid)
 
 			if(randomo > 9)
 				randomo = 0;
-			// printf("Randomo: %d", randomo);
+			printf("Randomo: %d", randomo);
 			/*while(kovetkezo[randomo] == 0)
 				randomo = random(sizeof(kovetkezo));*/
 
 			//printf("Randomo: %d", randomo);
 			//new randomo = random(strlen(kovetkezo));
-			// printf("Hova: %d", kovetkezo[randomo]);
-			FCNPC_GoTo(BotInformacio[i][botID], GyarPoziciok[kovetkezo[randomo]][kozPosX], GyarPoziciok[kovetkezo[randomo]][kozPosY], GyarPoziciok[kovetkezo[randomo]][kozPosZ], FCNPC_MOVE_TYPE_WALK, 1);
+			printf("Hova: %d", kovetkezo[randomo]);
+			FCNPC_GoTo(BotInformacio[i][botID], GyarPoziciok[kovetkezo[randomo]][kozPosX], GyarPoziciok[kovetkezo[randomo]][kozPosY], GyarPoziciok[kovetkezo[randomo]][kozPosZ], MOVE_TYPE_WALK, 1);
 			BotInformacio[i][botKovetkezo] = kovetkezo[randomo];
 			break;
 		}
@@ -22977,37 +23010,121 @@ fpublic AutomataBetoltes()
 	return true;
 }
 
+forward LoadFactions();
+public LoadFactions()
+{
+	print("[MySQL]: Loading factions...");
+
+	new rows = cache_num_rows();
+	
+	if (rows)
+	{
+		for (new i = 0; i < rows; i++)
+		{
+			new tempInt, tempStr[32];
+			
+			factionInfo[i][fID] = cache_get_field_content_int(i, "ID");
+			cache_get_field_content(i, "Name", factionInfo[i][fName], 32);
+			
+			/* TODO: sscanf */
+			for (new j = 0; i < MAX_FACTION_RANKS; j++)
+			{
+				tempStr = "Rank";
+				strcat(tempStr, j);
+
+				cache_get_field_content(i, tempStr, factionInfo[i][fRank][j], 32); 
+			}
+			cache_get_field_content_int(i, "MaxRank", factionInfo[i][fMaxRank]);
+			
+			cache_get_field_content_int(i, "IsLegal", tempInt);
+			factionInfo[i][fIsLegal] = tempInt == 1 ? true : false;
+			
+			cache_get_field_content_int(i, "SafeObject", tempInt);
+			factionInfo[i][fHasSafe] = tempInt > 0 ? true : false;
+			factionInfo[i][fSafeObjectID] = tempInt;
+			
+			new safeStr[128];
+			cache_get_field_content(i, "SafePos", safeStr);
+			sscanf(safeStr, "p<,>a<f>[3]", factionInfo[i][fSafePos]);
+			
+			cache_get_field_content(i, "SafeRot", safeStr);
+			sscanf(safeStr, "p<,>a<f>[3]", factionInfo[i][fSafeRot]);
+			
+			cache_get_field_content_int(i, "SafeRank", factionInfo[i][fSafeRank]);
+			cache_get_field_content_int(i, "Money", factionInfo[i][fMoney]);
+			
+			cache_get_field_content_int(i, "Material", factionInfo[i][fMaterial]);
+			cache_get_field_content_int(i, "Cocaine", factionInfo[i][fCocaine]);
+			cache_get_field_content_int(i, "Marijuana", factionInfo[i][fMarijuana]);
+			
+			new weaponStr[256];
+			cache_get_field_content(i, "Weapons", weaponStr);
+			sscanf(weaponStr, "p<,>a<d>[52]", factionInfo[i][fWeapon]);
+
+			cache_get_field_content(i, "Ammo", weaponStr);
+			sscanf(weaponStr, "p<,>a<d>[52]", factionInfo[i][fAmmo]);
+
+			mysql_get_int(i, "VW", factionInfo[i][fVW]);
+			mysql_get_int(i, "Interior", factionInfo[i][fInt]);
+
+			new wageStr[256];
+			mysql_get_string(i, "Wages", wageStr);
+			sscanf(wageStr, "p<,>a<d>[16]", factionInfo[i][FWage]);
+			
+			new dutyStr[128];
+			cache_get_field_content(i, "DutyPos", dutyStr);
+			sscanf(dutyStr, "p<,>a<d>[3]", factionInfo[i][fDutyPos]);
+			
+			cache_get_field_content_int(i, "SpeedCam", tempInt);
+			factionInfo[i][fSpeedCam] = tempInt == 1 ? true : false;
+			
+			/* TODO: LastAttack */
+
+			if(factionInfo[i][fHasSafe]) 
+			{
+				factionInfo[i][fSafeObjectID] = CreateDynamicObject(2332, factionInfo[i][fSafePos][0], factionInfo[i][fSafePos][1], factionInfo[i][fSafePos][2], factionInfo[i][fSafeRot][0], factionInfo[i][fSafeRot][1],  factionInfo[i][fSafeRot][2],  factionInfo[i][fVW],  factionInfo[i][fInt]);
+			}
+			
+			printf("Data loaded: %d (%d) - %s", i, factionInfo[i][fID], factionInfo[i][fNev]);
+		}
+		
+		printf("[MySQL]: %d factions loaded.", rows);
+	}
+	else print("[MySQL]: No factions loaded.");
+
+}
+
 fpublic FrakcioBetoltes()
 {
     print("Szerver: Frakciók betöltése!");
 
-	new nums, fields;
-	cache_get_data(nums, fields);
+	new rows = cache_num_rows();
 
-	if(nums)
+	if(rows)
 	{
-	    new i = -1, fk, szefobject, szefpos[100], fegytol[256], fizetes[256];
-	    for(;++i < nums;)
+	    new fk, szefobject, szefpos[100], fegytol[256], fizetes[256];
+	    for(new i; i < rows; i++)
 	    {
-			new testString[32];
-
-			fk = cache_get_field_content_int(i, "ID");
-			cache_get_field_content(i, "FNev", FInfo[fk][fNev]);
-            // mysql_get_int(i, "ID", fk);
-			// mysql_get_string(i, "FNev", FInfo[fk][fNev]);
-
-			FInfo[fk][fNev] = testString;
-
-			mysql_get_string(i, "Rang1", FInfo[fk][fRang1]);
-			mysql_get_string(i, "Rang2", FInfo[fk][fRang2]);
-			mysql_get_string(i, "Rang2", FInfo[fk][fRang2]);
-			mysql_get_string(i, "Rang3", FInfo[fk][fRang3]);
-			mysql_get_string(i, "Rang4", FInfo[fk][fRang4]);
-			mysql_get_string(i, "Rang5", FInfo[fk][fRang5]);
-			mysql_get_string(i, "Rang6", FInfo[fk][fRang6]);
-			mysql_get_string(i, "Rang7", FInfo[fk][fRang7]);
-			mysql_get_string(i, "Rang8", FInfo[fk][fRang8]);
-			mysql_get_string(i, "Rang9", FInfo[fk][fRang9]);
+		
+			cache_get_field_content_int(i, "ID", FInfo[i][fID]);
+			cache_get_field_content(i, "FNev", FInfo[i][fNev], 32);
+			
+			printf("%d (%d) - %s", i, FInfo[i][fID], FInfo[i][fNev]);
+			
+			// cache_get_field_content(i, "string", FInfo[i][fString], 32);
+			
+            mysql_get_int(i, "ID", fk);
+			cache_get_field_content(i, "FNev", FInfo[i][fNev]);
+			mysql_get_string(i, "Rang1", FInfo[i][fRang1]);
+			mysql_get_string(i, "Rang2", FInfo[i][fRang2]);
+			mysql_get_string(i, "Rang2", FInfo[i][fRang2]);
+			mysql_get_string(i, "Rang3", FInfo[i][fRang3]);
+			mysql_get_string(i, "Rang4", FInfo[i][fRang4]);
+			mysql_get_string(i, "Rang5", FInfo[i][fRang5]);
+			mysql_get_string(i, "Rang6", FInfo[i][fRang6]);
+			mysql_get_string(i, "Rang7", FInfo[i][fRang7]);
+			mysql_get_string(i, "Rang8", FInfo[i][fRang8]);
+			mysql_get_string(i, "Rang9", FInfo[i][fRang9]);
 			mysql_get_string(i, "Rang10", FInfo[fk][fRang10]);
    			mysql_get_string(i, "Rang11", FInfo[fk][fRang11]);
 			mysql_get_string(i, "Rang12", FInfo[fk][fRang12]);
@@ -23016,8 +23133,6 @@ fpublic FrakcioBetoltes()
 			mysql_get_string(i, "Rang15", FInfo[fk][fRang15]);
 			mysql_get_string(i, "Rang16", FInfo[fk][fRang16]);
 			mysql_get_int(i, "SzefRang", FInfo[fk][fSzefRang]);
-
-			printf("%d: %s | %s | %s | %s | %s | %s | %s | %s | %s | %s | %s", fk, FInfo[fk][fNev], FInfo[fk][fRang1], FInfo[fk][fRang2], FInfo[fk][fRang3], FInfo[fk][fRang4], FInfo[fk][fRang5], FInfo[fk][fRang6], FInfo[fk][fRang7], FInfo[fk][fRang8], FInfo[fk][fRang9], FInfo[fk][fRang10]);
 
 			mysql_get_int(i, "Legalis", FInfo[fk][fLegalis]);
 			//FInfo[fk][fLegalis] = legalis ? true : false;
@@ -23056,10 +23171,10 @@ fpublic FrakcioBetoltes()
 
 			if(FInfo[fk][fSzefObject])
 				FInfo[fk][fObjectID] = CreateDynamicObject(2332, FInfo[fk][fSzefPos][0], FInfo[fk][fSzefPos][1], FInfo[fk][fSzefPos][2], FInfo[fk][fSzefPosR][0], FInfo[fk][fSzefPosR][1], FInfo[fk][fSzefPosR][2], FInfo[fk][fVW], FInfo[fk][fInterior]);
-
+			
 	    }
 	}
-	printf("Szerver: %d frakció sikeresen betöltve!", nums);
+	printf("Szerver: %d frakció sikeresen betöltve!", rows);
 	return true;
 }
 fpublic LoadEldobottCuccok()
@@ -23079,7 +23194,7 @@ fpublic LoadEldobottCuccok()
 			mysql_get_int(i, "Ertek", dInfo[i][dErtek]);
 			mysql_get_string(i, "Pozicio", pos);
 			sscanf(pos, "p<,>a<f>[3]", dInfo[i][dPos]);
-			mysql_get_int(i, "Ints", dInfo[i][dInt]);
+			mysql_get_int(i, "Int", dInfo[i][dInt]);
 			mysql_get_int(i, "VW", dInfo[i][dVirtual]);
 			mysql_get_int(i, "TorlesiAzonosito", dInfo[i][dTorlesiAzonosito]);
 			dInfo[i][dHasznalva] = true;
@@ -33097,7 +33212,7 @@ stock JarmuID(vehicleid, playerid, bool:ciklus = false)
 	return visszateres;
 }
 
-stock ObjectIDEx(objectid)
+stock ObjectID(objectid)
 {
 	new i = 0, visszateres = 0;
 
