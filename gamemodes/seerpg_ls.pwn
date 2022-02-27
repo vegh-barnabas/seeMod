@@ -1,10 +1,13 @@
-/* SeeRPG mod, fixed by https://github.com/vegh-barnabas */
+/*
+Timerek újraírva
+NE a SetTimerEx-t használd!
 
+*/
 #define SAMPVER 374 //
 //==================//
-#define MAJOR 2     //
-#define MINOR 0     //
-#define PATCH 0     //
+#define MAJOR 1     //
+#define MINOR 7     //
+#define PATCH 5     //
 //==================//
 #pragma dynamic 10000
 
@@ -71,15 +74,19 @@
 #include <physics>
 #include <easydialog>
 
-#include <FCNPC>
+// NPC Includes
+#include <mapandreas>
+#include <colandreas>
+#include <fcnpc>
 
-#define PREFIX			"SeeRPG"
+
+#define PREFIX			"DayRPG"
 #define VERZIO			""#PREFIX " v"#MAJOR"."#MINOR"."#PATCH""
 
-#define WEBOLDAL "?"
+#define WEBOLDAL "DayRPG.eu"
 
-#define TDTARTALOM_BAL 	"Web: ?"
-#define TDTARTALOM_JOBB "Discord: ?"
+#define TDTARTALOM_BAL 	"Web: dayrpg.eu"
+#define TDTARTALOM_JOBB "Discord: dc.com/dayrpg"
 
 #define UCPKONZOL false
 
@@ -88,22 +95,21 @@
 	#include <websockets>
 #endif
 
-#define HAZI_SZERVER 1 	// FÕSZERVER(0) | LOCAL(1)
-#define NPC_KELL 1 		// 1 = betölti 0 = nem - (FCNPS pluginos)
-#define KELLDWAYNE		// Fegyveres NPC
-
-#define MYSQL_HOST "127.0.0.1"
+#define HAZI_SZERVER 	0 //	FÕSZERVER(0) | LOCAL(1)
+#define NPC_KELL		1 // 1 = betölti 0 = nem - (FCNPS pluginos)
+#define MYSQL_HOST  	"127.0.0.1"
+#define KELLDWAYNE // Fegyveres NPC
 
 #if HAZI_SZERVER == 0
 	#define MYSQL_USER  "seerpg"			//MySQL felhasználónév
 	#define MYSQL_DB    "seerpg"			//MySQL adatbázis
-	#define MYSQL_PW    "QurPFMp@-nXCej0l"	//MySQL jelszó
+	#define MYSQL_PW    "almafa123"		//MySQL jelszó
 #endif
 
 #if HAZI_SZERVER == 1
 	#define MYSQL_USER  "seerpg"			//MySQL felhasználónév
 	#define MYSQL_DB    "seerpg"			//MySQL adatbázis
-	#define MYSQL_PW    "QurPFMp@-nXCej0l"	//MySQL jelszó
+	#define MYSQL_PW    "almafa123"  		//MySQL jelszó
 #endif
 
 #if HAZI_SZERVER == 0
@@ -126,9 +132,9 @@ new TrafiBuntetheto[MAX_PLAYERS];
 new Focizik[MAX_PLAYERS];
 
 //Szerver port alapján -> ha 7777 akkor éles | ha 7778 akkor teszt
-#define tMYSQL_USER  "see"
-#define tMYSQL_DB    "serversql"
-#define tMYSQL_PW    "u5cQyvB9YefvrQvi"
+#define tMYSQL_USER  "seerpg"
+#define tMYSQL_DB    "seerpg"
+#define tMYSQL_PW    "almafa123"
 
 #define MYSQL_BAN_TABLA				"ban"
 #define MYSQL_HAZ_TABLA				"hazak"
@@ -13460,7 +13466,7 @@ public OnGameModeInit()
 	else sql_ID = mysql_connect(MYSQL_HOST, tMYSQL_USER, tMYSQL_DB, tMYSQL_PW);
 	printf("Szerver indítása... | Házi szerver");
 
-	mysql_log( LOG_ERROR );
+	mysql_log(LOG_ALL, LOG_TYPE_HTML);
 	initDatabases();
 	
 	mysql_tquery(sql_ID, "UPDATE `"#MYSQL_JATEKOS_TABLA"` SET pOnline = '0'", "", "");
@@ -16228,7 +16234,7 @@ public OnPlayerEditDynamicObject(playerid, objectid, response, Float:x, Float:y,
 			}
 			/*new
 				Float:objectpos[6],
-				automataid = ObjectID(objectid);
+				automataid = ObjectIDEx(objectid);
 
 			GetDynamicObjectPos(AutomataInfo[automataid][auobject], objectpos[0], objectpos[1], objectpos[2]);
 			GetDynamicObjectRot(AutomataInfo[automataid][auobject], objectpos[3], objectpos[4], objectpos[5]);
@@ -21563,7 +21569,7 @@ stock FkUpdate(id, ...)
 	for(;++idx < numargs();)
 		FUpdates[id][fk_Update:(getarg(idx))] = true;
 
-	//FInfo[id][fKellUpdates] = true;
+	// FInfo[id][fKellUpdates] = true;
 	return true;
 }
 
@@ -22177,7 +22183,7 @@ fpublic AdatBetoltes( playerid )
 		mysql_get_int(0, "pTolvajSkill", PlayerInfo[playerid][pTolvajSkill]);
 		mysql_get_int(0, "pRabolhat", PlayerInfo[playerid][pRabolhat]);
 		mysql_get_int(0, "pZarolva", PlayerInfo[playerid][pZarolva]);
-		mysql_get_int(0, "pGaumaszk", PlayerInfo[playerid][pGazmaszk]);
+		mysql_get_int(0, "pGazmaszk", PlayerInfo[playerid][pGazmaszk]);
 		mysql_get_int(0, "pTartozas", PlayerInfo[playerid][pTartozas]);
 		mysql_get_float(0, "pEhseg", PlayerInfo[playerid][pEhseg]);
         mysql_get_float(0, "pVizelet", PlayerInfo[playerid][pVizelet]);
@@ -22983,8 +22989,15 @@ fpublic FrakcioBetoltes()
 	    new i = -1, fk, szefobject, szefpos[100], fegytol[256], fizetes[256];
 	    for(;++i < nums;)
 	    {
-            mysql_get_int(i, "ID", fk);
-			mysql_get_string(i, "FNev", FInfo[fk][fNev]);
+			new testString[32];
+
+			fk = cache_get_field_content_int(i, "ID");
+			cache_get_field_content(i, "FNev", FInfo[fk][fNev]);
+            // mysql_get_int(i, "ID", fk);
+			// mysql_get_string(i, "FNev", FInfo[fk][fNev]);
+
+			FInfo[fk][fNev] = testString;
+
 			mysql_get_string(i, "Rang1", FInfo[fk][fRang1]);
 			mysql_get_string(i, "Rang2", FInfo[fk][fRang2]);
 			mysql_get_string(i, "Rang2", FInfo[fk][fRang2]);
@@ -23004,7 +23017,7 @@ fpublic FrakcioBetoltes()
 			mysql_get_string(i, "Rang16", FInfo[fk][fRang16]);
 			mysql_get_int(i, "SzefRang", FInfo[fk][fSzefRang]);
 
-			//printf("%s | %s | %s | %s | %s | %s | %s | %s | %s | %s | %s", FInfo[fk][fNev], FInfo[fk][fRang1], FInfo[fk][fRang2], FInfo[fk][fRang3], FInfo[fk][fRang4], FInfo[fk][fRang5], FInfo[fk][fRang6], FInfo[fk][fRang7], FInfo[fk][fRang8], FInfo[fk][fRang9], FInfo[fk][fRang10]);
+			printf("%d: %s | %s | %s | %s | %s | %s | %s | %s | %s | %s | %s", fk, FInfo[fk][fNev], FInfo[fk][fRang1], FInfo[fk][fRang2], FInfo[fk][fRang3], FInfo[fk][fRang4], FInfo[fk][fRang5], FInfo[fk][fRang6], FInfo[fk][fRang7], FInfo[fk][fRang8], FInfo[fk][fRang9], FInfo[fk][fRang10]);
 
 			mysql_get_int(i, "Legalis", FInfo[fk][fLegalis]);
 			//FInfo[fk][fLegalis] = legalis ? true : false;
@@ -23066,7 +23079,7 @@ fpublic LoadEldobottCuccok()
 			mysql_get_int(i, "Ertek", dInfo[i][dErtek]);
 			mysql_get_string(i, "Pozicio", pos);
 			sscanf(pos, "p<,>a<f>[3]", dInfo[i][dPos]);
-			mysql_get_int(i, "Int", dInfo[i][dInt]);
+			mysql_get_int(i, "Ints", dInfo[i][dInt]);
 			mysql_get_int(i, "VW", dInfo[i][dVirtual]);
 			mysql_get_int(i, "TorlesiAzonosito", dInfo[i][dTorlesiAzonosito]);
 			dInfo[i][dHasznalva] = true;
@@ -33084,7 +33097,7 @@ stock JarmuID(vehicleid, playerid, bool:ciklus = false)
 	return visszateres;
 }
 
-stock ObjectID(objectid)
+stock ObjectIDEx(objectid)
 {
 	new i = 0, visszateres = 0;
 

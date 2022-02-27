@@ -1,5 +1,5 @@
 /**
- * MySQL plugin R39-6
+ * MySQL plugin R39-2
  */
 
 
@@ -26,7 +26,7 @@
 #define CR_SERVER_LOST_EXTENDED 		2055
 
 
-enum E_MYSQL_LOGLEVEL
+enum E_LOGLEVEL
 {
 	LOG_NONE = 0,
 	LOG_ERROR = 1,
@@ -36,7 +36,7 @@ enum E_MYSQL_LOGLEVEL
 	LOG_ALL = LOG_ERROR | LOG_WARNING | LOG_DEBUG
 };
 
-enum E_MYSQL_LOGTYPE
+enum E_LOGTYPE
 {
 	LOG_TYPE_TEXT = 1,
 	LOG_TYPE_HTML = 2
@@ -46,6 +46,13 @@ enum ORM_Error
 {
 	ERROR_OK,
 	ERROR_NO_DATA
+};
+
+enum E_VAR_DATATYPE 
+{
+	DATATYPE_INT,
+	DATATYPE_FLOAT,
+	DATATYPE_STRING
 };
 
 enum E_MYSQL_OPTION
@@ -69,7 +76,8 @@ enum E_EXECTIME_UNIT
 #define mysql_debug(%0)								(%0?mysql_log(LOG_ALL):mysql_log())
 #define ismysqlnull(%0) 							(strcmp(%0,"NULL",false)==0)
 
-
+#define MAX_MYSQL_STRING 3072
+#define MAX_MYSQL_STRING_UPDATER 1024
 // ORM functions
 native ORM:orm_create(const table[], connectionHandle = 1);
 native orm_destroy(ORM:id);
@@ -100,7 +108,7 @@ native orm_setkey(ORM:id, varname[]);
 
 
 // MySQL functions
-native mysql_log(E_MYSQL_LOGLEVEL:loglevel = LOG_ERROR | LOG_WARNING, E_MYSQL_LOGTYPE:logtype = LOG_TYPE_TEXT);
+native mysql_log(E_LOGLEVEL:loglevel = LOG_ERROR | LOG_WARNING, E_LOGTYPE:logtype = LOG_TYPE_TEXT);
 native mysql_connect(const host[], const user[], const database[], const password[], port = 3306, bool:autoreconnect = true, pool_size = 2);
 native mysql_close(connectionHandle = 1);
 native mysql_reconnect(connectionHandle = 1);
@@ -236,3 +244,41 @@ forward OnQueryError(errorid, error[], callback[], query[], connectionHandle);
 		return 1;
 	}
 #endif
+stock MysqlFinalUpdate(query[], sqlid, server)
+{
+	new string[64];
+	format(string, 64, " WHERE id = '%d'", sqlid);
+	strcat(query, string, MAX_MYSQL_STRING);
+	mysql_function_query(server, query, false, "SendQuery", "");
+	return 1;
+}
+
+stock MysqlUpdateFlo(query[], nev[], Float:ertek)
+{
+	if(strfind(query, "=", true) != -1)
+		strcat(query, ", ", MAX_MYSQL_STRING);
+	new string[32];
+	format(string, 32, "%s='%.3f'", nev, ertek);
+	strcat(query, string, MAX_MYSQL_STRING);
+	return 1;
+}
+
+stock MysqlUpdateStr(query[], nev[], ertek[])
+{
+	if(strfind(query, "=", true) != -1)
+		strcat(query, ", ", MAX_MYSQL_STRING);
+	new string[256];
+	format(string, 256, "%s='%s'", nev, ertek);
+	strcat(query, string, MAX_MYSQL_STRING);
+	return 1;
+}
+
+stock MysqlUpdateInt(query[], nev[], ertek)
+{
+	if(strfind(query, "=", true) != -1)
+		strcat(query, ", ", MAX_MYSQL_STRING);
+	new string[32];
+	format(string, 32, "%s='%d'", nev, ertek);
+	strcat(query, string, MAX_MYSQL_STRING);
+	return 1;
+}
