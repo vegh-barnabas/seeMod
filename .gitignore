@@ -1,0 +1,16 @@
+*.amx
+filterscripts/*.amx
+gamemodes/*.amx
+pawno/seerpg_*
+crashinfo.txt
+mysql_log.txt
+mysql_log.html
+server_log.txt
+scriptfiles/Logok/Admin/*
+scriptfiles/Logok/Chat/*
+scriptfiles/Logok/Cheat/*
+scriptfiles/Logok/Admin/*
+scriptfiles/Logok/Kapcsolodasok/*
+scriptfiles/Logok/MySQL/*
+scriptfiles/Logok/Nevvaltas/*
+scriptfiles/Logok/Parancsok/*
