@@ -9773,7 +9773,7 @@ stock ProcessSQL( )
 	printf("[MySQL]: Processing SQL...");
 
 	//mysql_tquery(sql_ID, "SELECT * FROM `"#MYSQL_HIFI_TABLE"`", 	"HifiLoad", 		"");
-	
+	/* TODO: name them normally */
 	mysql_tquery(sql_ID, "SELECT * FROM `"#MYSQL_KAMERA_TABLA"`", "KameraLoad", "");
 	mysql_tquery(sql_ID, "SELECT * FROM `"#MYSQL_SPRAY_TABLA"`", "GraffitiLoad", "");
 	mysql_tquery(sql_ID, "SELECT * FROM `"#MYSQL_JARMU_TABLA"`", "JarmuBetoltes", "");
@@ -9781,6 +9781,7 @@ stock ProcessSQL( )
 	mysql_tquery(sql_ID, "SELECT * FROM `"#MYSQL_HAZ_TABLA"`", "HazBetoltes", "");
 	mysql_tquery(sql_ID, "SELECT * FROM `"#MYSQL_GARAZS_TABLA"`", "GarazsBetoltes", "");
 	mysql_tquery(sql_ID, "SELECT * FROM `"#MYSQL_FRAKCIO_TABLA"`", "FrakcioBetoltes", "");
+	mysql_tquery(sql_ID, "SELECT * FROM `"#MYSQL_AJTO_TABLA"`", "AjtokBetoltese", "");
 	/*mysql_tquery(sql_ID, "SELECT * FROM `"#MYSQL_TERULET_TABLA"`", 	"TeruletBetoltes", 		"");
 	mysql_tquery(sql_ID, "SELECT * FROM `"#MYSQL_GPS_TABLA"`", 	"GPSBetoltes", 		"");
 	mysql_tquery(sql_ID, "SELECT * FROM `"#MYSQL_BENZINKUTAK_TABLA"`", 	"BenzinkutBetoltes", 		"");
@@ -9791,9 +9792,7 @@ stock ProcessSQL( )
 	mysql_tquery(sql_ID, "SELECT * FROM `"#MYSQL_JARMUADAT_TABLA"`", "JarmuadatBetoltes",	"");
 	mysql_tquery(sql_ID, "SELECT * FROM `"#MYSQL_CEGEK_TABLA"`", 	"CegMuvelet", 		"i",	1);
 	mysql_tquery(sql_ID, "SELECT * FROM `"#MYSQL_3DTEXT_TABLA"`", 	"LabelBetoltes", 		"");
-	mysql_tquery(sql_ID, "SELECT * FROM `"#MYSQL_AJTO_TABLA"`", 	"AjtokBetoltese", 		"");
-	mysql_tquery(sql_ID, "SELECT * FROM `"#MYSQL_TUZEK_TABLA"`", 		"TuzBetoltes", 		"");
-	*/
+	mysql_tquery(sql_ID, "SELECT * FROM `"#MYSQL_TUZEK_TABLA"`", 		"TuzBetoltes", 		"");*/
 	// mysql_tquery(sql_ID, "SELECT * FROM `"#MYSQL_FRAKCIO_TABLA"`", "LoadFactions", "");
 	
 	return true;
@@ -22234,7 +22233,7 @@ fpublic AdatBetoltes( playerid )
 		mysql_get_int(0, "pTolvajSkill", PlayerInfo[playerid][pTolvajSkill]);
 		mysql_get_int(0, "pRabolhat", PlayerInfo[playerid][pRabolhat]);
 		mysql_get_int(0, "pZarolva", PlayerInfo[playerid][pZarolva]);
-		mysql_get_int(0, "pGaumaszk", PlayerInfo[playerid][pGazmaszk]);
+		mysql_get_int(0, "pGazmaszk", PlayerInfo[playerid][pGazmaszk]);
 		mysql_get_int(0, "pTartozas", PlayerInfo[playerid][pTartozas]);
 		mysql_get_float(0, "pEhseg", PlayerInfo[playerid][pEhseg]);
         mysql_get_float(0, "pVizelet", PlayerInfo[playerid][pVizelet]);
@@ -22680,41 +22679,47 @@ fpublic CheckPlayer(playerid)
 
 fpublic AjtokBetoltese()
 {
-	print("Szerver: Ajtók betöltése!");
+	print("[MYSQL]: Loading Doors...");
 
-    new nums, fields;
-	cache_get_data(nums, fields);
-	if(nums)
+	new rows = cache_num_rows();
+	
+	if (rows)
 	{
-	    new i = -1, ajtoid, formazas[128], ajtoallapot, ajtojarmu;
-		for(;++i < nums;)
+		for (new i = 0; i < rows && i < MAX_AJTO; i++) /* TODO: to english */
 		{
-			mysql_get_int(i, "id", ajtoid);
-			mysql_get_string(i, "anev", AjtoInfo[ajtoid][anev]);
-			mysql_get_float(i, "abeposx", AjtoInfo[ajtoid][abepos][0]);
-			mysql_get_float(i, "abeposy", AjtoInfo[ajtoid][abepos][1]);
-			mysql_get_float(i, "abeposz", AjtoInfo[ajtoid][abepos][2]);
-			mysql_get_float(i, "abeangle", AjtoInfo[ajtoid][abepos][3]);
-			mysql_get_float(i, "akiposx", AjtoInfo[ajtoid][akipos][0]);
-			mysql_get_float(i, "akiposy", AjtoInfo[ajtoid][akipos][1]);
-			mysql_get_float(i, "akiposz", AjtoInfo[ajtoid][akipos][2]);
-			mysql_get_float(i, "akiangle", AjtoInfo[ajtoid][akipos][3]);
-			mysql_get_int(i, "afreeze", AjtoInfo[ajtoid][afreeze]);
-			mysql_get_int(i, "anyitva", ajtoallapot);
+			new ajtoid = cache_get_field_content_int(i, "id", sql_ID);
+			cache_get_field_content(i, "anev", AjtoInfo[ajtoid][anev], sql_ID, 32);
+			
+			
+			AjtoInfo[ajtoid][abepos][0] = cache_get_field_content_float(i, "abeposx", sql_ID);
+			AjtoInfo[ajtoid][abepos][1] = cache_get_field_content_float(i, "abeposy", sql_ID);
+			AjtoInfo[ajtoid][abepos][2] = cache_get_field_content_float(i, "abeposz", sql_ID);
+			AjtoInfo[ajtoid][abepos][3] = cache_get_field_content_float(i, "abeangle", sql_ID);
+			
+			AjtoInfo[ajtoid][akipos][0] = cache_get_field_content_float(i, "akiposx", sql_ID);
+			AjtoInfo[ajtoid][akipos][1] = cache_get_field_content_float(i, "akiposy", sql_ID);
+			AjtoInfo[ajtoid][akipos][2] = cache_get_field_content_float(i, "akiposz", sql_ID);
+			AjtoInfo[ajtoid][akipos][3] = cache_get_field_content_float(i, "akiangle", sql_ID);
+			
+			AjtoInfo[ajtoid][afreeze] = cache_get_field_content_int(i, "afreeze", sql_ID);
+			new ajtoallapot = cache_get_field_content_int(i, "anyitva", sql_ID);
 			AjtoInfo[ajtoid][anyitva] = ajtoallapot ? true : false;
-			mysql_get_int(i, "ajarmu", ajtojarmu);
+			
+			new ajtojarmu = cache_get_field_content_int(i, "ajtojarmu", sql_ID);
 			AjtoInfo[ajtoid][ajarmu] = ajtojarmu ? true : false;
-			mysql_get_int(i, "abeinterior", AjtoInfo[ajtoid][abeinterior]);
-			mysql_get_int(i, "akiinterior", AjtoInfo[ajtoid][akiinterior]);
-			mysql_get_int(i, "abevw", AjtoInfo[ajtoid][abevw]);
-			mysql_get_int(i, "akivw", AjtoInfo[ajtoid][akivw]);
+			
+			AjtoInfo[ajtoid][abeinterior] = cache_get_field_content_int(i, "abeinterior", sql_ID);
+			AjtoInfo[ajtoid][akiinterior] = cache_get_field_content_int(i, "akiinterior", sql_ID);
+			AjtoInfo[ajtoid][abevw] = cache_get_field_content_int(i, "abevw", sql_ID);
+			AjtoInfo[ajtoid][akivw] = cache_get_field_content_int(i, "akivw", sql_ID);
 			AjtoInfo[ajtoid][ahasznalva] = true;
 
-			format(formazas, sizeof(formazas), #COL_NARANCS"[Bejárat]\n"#COL_SKEK"%s", AjtoInfo[ajtoid][anev]);
+			new string[128];
+			format(string, sizeof(string), #COL_NARANCS"[Bejárat]\n"#COL_SKEK"%s", AjtoInfo[ajtoid][anev]);
 
 			if(AjtoInfo[ajtoid][abepos][0] != 0.0)
 			{
-				AjtoInfo[ajtoid][abelabel] = CreateDynamic3DTextLabel(formazas, 0xFFFFFF, PosExt(AjtoInfo[ajtoid][abepos])+0.75,20, .worldid = AjtoInfo[ajtoid][abevw], .interiorid = AjtoInfo[ajtoid][abeinterior]);
+				AjtoInfo[ajtoid][abelabel] = CreateDynamic3DTextLabel(string, 0xFFFFFF, PosExt(AjtoInfo[ajtoid][abepos])+0.75,20, .worldid = AjtoInfo[ajtoid][abevw], .interiorid = AjtoInfo[ajtoid][abeinterior]);
 				AjtoInfo[ajtoid][abepickup] = CreateDynamicPickup(1318, 23, PosExt(AjtoInfo[ajtoid][abepos]), AjtoInfo[ajtoid][abevw], AjtoInfo[ajtoid][abeinterior]);
 
 				if(AjtoInfo[ajtoid][ajarmu])
@@ -22724,15 +22729,21 @@ fpublic AjtokBetoltese()
 			if(AjtoInfo[ajtoid][akipos][0] != 0.0)
 			{
 				//AjtoInfo[ajtoid][akipos][0], AjtoInfo[ajtoid][akipos][1], AjtoInfo[ajtoid][akipos][2]+0.75
-				AjtoInfo[ajtoid][akilabel] = CreateDynamic3DTextLabel(formazas, 0xFFFFFF, PosExt(AjtoInfo[ajtoid][akipos])+0.75,20, .worldid = AjtoInfo[ajtoid][akivw], .interiorid = AjtoInfo[ajtoid][akiinterior]);
+				AjtoInfo[ajtoid][akilabel] = CreateDynamic3DTextLabel(string, 0xFFFFFF, PosExt(AjtoInfo[ajtoid][akipos])+0.75,20, .worldid = AjtoInfo[ajtoid][akivw], .interiorid = AjtoInfo[ajtoid][akiinterior]);
 				AjtoInfo[ajtoid][akipickup] = CreateDynamicPickup(1318, 23, PosExt(AjtoInfo[ajtoid][akipos]), AjtoInfo[ajtoid][akivw], AjtoInfo[ajtoid][akiinterior]);
 
 				if(AjtoInfo[ajtoid][ajarmu])
 					AjtoInfo[ajtoid][akipickupk] = CreateDynamicPickup(1007, 14, PosExt(AjtoInfo[ajtoid][akipos]), AjtoInfo[ajtoid][akivw], AjtoInfo[ajtoid][akiinterior]);
 			}
+			
+			#if DEBUG_MYSQL
+				printf("[Vehicle]: Loaded Door %d (%d): %s (%f %f %f)", i, ajtoid, AjtoInfo[ajtoid][anev], AjtoInfo[ajtoid][abepos][0], AjtoInfo[ajtoid][abepos][1], AjtoInfo[ajtoid][abepos][2]);
+			#endif
 		}
+		printf("[MySQL]: %d doors loaded.", rows);
 	}
-	printf("Szerver: %d ajtó sikeresen betöltve!", nums);
+	else print("[MySQL]: No doors loaded.");
+	
 	return true;
 }
 fpublic TuzBetoltes()
@@ -22775,7 +22786,7 @@ fpublic HazBetoltes()
 	{
 		for (new i = 0; i < rows && i < MAX_HOUSE; i++) /* TODO: to english */
 		{
-			new hdb = cache_get_field_content_int(i, "id");
+			new hdb = cache_get_field_content_int(i, "id", sql_ID);
 			
 			cache_get_field_content(i, "tulaj", HazInfo[hdb][tulaj], sql_ID, 32);
 			HazInfo[hdb][hTulajID] = cache_get_field_content_int(i, "TulajID");

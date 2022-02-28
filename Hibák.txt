@@ -1,0 +1,11 @@
+✔️ Y betu behozza Dwayne barátunkat akit nem lehet megállitani :D
+	fix: Dwayne egyenlőre kivéve
+❌ NPC-ket nem szeretné betölteni
+❌ Pluginokat úgy vélted hogy elavultak szóval ha esedékes akkor egy ráncfelvarás ráférne.
+❌ Mappokat berakni
+❌ Megnézni hogy miért nem menti el az adatbázis a dolgokat :( FK,Labels stb
+❌ Loginnál elfogad bármilyen admin jelszót. Nem annyira biztonságos
+❌ Mind2-ket beleirni a módba ha lehet és mindenki mást kiszedni(Fred_Zykov a nevem) 
+❌ Megkeresni a rejtett parancsokat ha netán vannak
+❌ Adminsecuritynél van olyan hogy IP Check. Oda berakni minket,és mást kivenni. Adatbázisban,vagy a logban megtalálod az ip-met.
+❌ Nem engedi használni a /nullaz ,/objectresi parancsokat
