@@ -1,8 +1,7 @@
 /*
-	ekezet teszt: ÉÁ?P?ÚÖÜÓéá??úöüó
-	
 Timerek újraírva
 NE a SetTimerEx-t használd!
+
 */
 #define SAMPVER 374 //
 //==================//
@@ -75,13 +74,13 @@ NE a SetTimerEx-t használd!
 #include <physics>
 #include <easydialog>
 
-#define PREFIX			"DayRPG"
+#define PREFIX			"SoulRPG"
 #define VERZIO			""#PREFIX " v"#MAJOR"."#MINOR"."#PATCH""
 
-#define WEBOLDAL "DayRPG.eu"
+#define WEBOLDAL "soulrpg.eu"
 
-#define TDTARTALOM_BAL 	"Web: dayrpg.eu"
-#define TDTARTALOM_JOBB "Discord: dc.com/dayrpg"
+#define TDTARTALOM_BAL 	"Web: soulrpg.eu"
+#define TDTARTALOM_JOBB "Discord:"
 
 #define UCPKONZOL false
 
@@ -95,41 +94,41 @@ NE a SetTimerEx-t használd!
 
 #define HAZI_SZERVER 0 //	FÕSZERVER(0) | LOCAL(1)
 #define NPC_KELL				0 // 1 = betölti 0 = nem - (FCNPS pluginos)
-#define MYSQL_HOST  	"127.0.0.1"
+#define MYSQL_HOST  	"mysqlgame.clans.hu"
 #define KELLDWAYNE // Fegyveres NPC
 
 #if HAZI_SZERVER == 0
-	#define MYSQL_USER  "seerpg"			//MySQL felhasználónév
-	#define MYSQL_DB    "seerpg"			//MySQL adatbázis
-	#define MYSQL_PW    "almafa123"		//MySQL jelszó
+	#define MYSQL_USER  "soulrpg275"			//MySQL felhasználónév
+	#define MYSQL_DB    "soulrpg275"			//MySQL adatbázis
+	#define MYSQL_PW    "eDaSA3UMY6eBA2u"		//MySQL jelszó
 #endif
 
 #if HAZI_SZERVER == 1
-	#define MYSQL_USER  "seerpg"			//MySQL felhasználónév
-	#define MYSQL_DB    "seerpg"			//MySQL adatbázis
-	#define MYSQL_PW    "almafa123"  		//MySQL jelszó
+	#define MYSQL_USER  "soulrpg275"			//MySQL felhasználónév
+	#define MYSQL_DB    "soulrpg275"			//MySQL adatbázis
+	#define MYSQL_PW    "eDaSA3UMY6eBA2u"  		//MySQL jelszó
 #endif
 
 #if HAZI_SZERVER == 0
 new Scripter[1][3][MAX_PLAYER_NAME] =
 {
-    {"Frank_Carter", 0, true}
+    {"Fred_Zykov", 3, true}
 };
 #endif
 
 #if HAZI_SZERVER == 1
 new Scripter[2][3][MAX_PLAYER_NAME] =
 {
-    {"Frank_Carter", 0, true}
+    {"Fred_Zykov", 3, true}
 };
 #endif
 new TrafiBuntetheto[MAX_PLAYERS];
 new Focizik[MAX_PLAYERS];
 
 //Szerver port alapján -> ha 7777 akkor éles | ha 7778 akkor teszt
-#define tMYSQL_USER  "seerpg"
-#define tMYSQL_DB    "seerpg"
-#define tMYSQL_PW    "almafa123"
+#define tMYSQL_USER  "soulrpg275"
+#define tMYSQL_DB    "soulrpg275"
+#define tMYSQL_PW    "eDaSA3UMY6eBA2u"
 
 #define MYSQL_BAN_TABLA				"ban"
 #define MYSQL_HAZ_TABLA				"hazak"
@@ -280,9 +279,9 @@ new sendfstring[256];
 #define FormatTextDraw(%1,%2,%3,%4) do{format(%2,sizeof(%2),(%3),%4);strins(%1,%2,strlen(%1));}while(FALSE)
 #define AdminLog(%1,%2) AdminLogEx((format(sendfstring, 128,(%1),%2), sendfstring))
 
-#define DIALOG1_MSG "Sultan [mûszerfal]\nSultan [háztetõ]\nCheetah [mûszerfal]\nCheetah [háztetõ]\nWashington [mûszerfal]\nWashington [háztetõ]\nPremier [mûszerfal]\nPremier [háztetõ]\nHuntley [mûszerfal]\nHuntley [háztetõ]\nTöbb"
-#define DIALOG2_MSG "Buffalo [mûszerfal]\nBuffalo [háztetõ]\nLSPD Cruiser[mûszerfal]\nLSPD Cruiser[háztetõ]\nSFPD Cruiser[mûszerfal]\nSFPD Cruiser[háztetõ]\nLVPD Cruiser[mûszerfal]\nLVPD Cruiser[háztetõ]\nFiretruck\nFBI Truck \nTöbb"
-#define DIALOG3_MSG "Tow Truck\nStretch [mûszerfal]\nStretch [háztetõ]\nPCJ-600\nFCR-900\nWayfarer\nSuper GT\nBurrito [mûszerfal]\nBurrito [háztetõ]\nBF Injection\nPatriot\nBarracks\nRhino"
+#define DIALOG1_MSG "Sultan [m?szerfal]\nSultan [háztetõ]\nCheetah [m?szerfal]\nCheetah [háztetõ]\nWashington [m?szerfal]\nWashington [háztetõ]\nPremier [m?szerfal]\nPremier [háztetõ]\nHuntley [m?szerfal]\nHuntley [háztetõ]\nTöbb"
+#define DIALOG2_MSG "Buffalo [m?szerfal]\nBuffalo [háztetõ]\nLSPD Cruiser[m?szerfal]\nLSPD Cruiser[háztetõ]\nSFPD Cruiser[m?szerfal]\nSFPD Cruiser[háztetõ]\nLVPD Cruiser[m?szerfal]\nLVPD Cruiser[háztetõ]\nFiretruck\nFBI Truck \nTöbb"
+#define DIALOG3_MSG "Tow Truck\nStretch [m?szerfal]\nStretch [háztetõ]\nPCJ-600\nFCR-900\nWayfarer\nSuper GT\nBurrito [m?szerfal]\nBurrito [háztetõ]\nBF Injection\nPatriot\nBarracks\nRhino"
 
 
 #define ELDOB_FEGYVER		1
@@ -323,7 +322,7 @@ new sendfstring[256];
 #define FOSCRIPTER_SZINT 8888
 #define TULAJ_SZINT	9999
 
-//Adat_Update mûveletek
+//Adat_Update m?veletek
 #define ADAT_MINDEN		0
 #define ADAT_HAZ		1
 #define ADAT_JARMU		2
@@ -414,7 +413,7 @@ new sendfstring[256];
 #define DROG_TELEFONSZAM	89756
 #define MIN_HAZ_AR 20000
 
-//Jármûben maximum ennyi lehet egy adott cuccból
+//Járm?ben maximum ennyi lehet egy adott cuccból
 #define J_MAX_VAS		100
 #define J_MAX_MATERIAL	80000
 #define J_MAX_HEROIN	10000
@@ -470,7 +469,7 @@ new Text3D:dynlabels[MAX_LABEL];
 #define SCM(%1,%2,%3) SendClientMessage(%1, COLOR_WHITE, %2""#PREFIX":"#COL_FEHER" "#%3)
 #define SFM(%1,%2,%3) SendFormatMessage(%1, COLOR_WHITE, %2""#PREFIX":"#COL_FEHER" "%3)
 #define NEM_HASZNALHATO	""#COL_MKEK""#PREFIX":"#COL_FEHER" Ezt a parancsot nem használhatod!"
-#define NEM_MOZOGHAT "Ezt a parancsot jelenleg nem használhatod!(Jármûben/Animban/Bilincsben/Stb)"
+#define NEM_MOZOGHAT "Ezt a parancsot jelenleg nem használhatod!(Járm?ben/Animban/Bilincsben/Stb)"
 
 #define KEZELESI_KOLTSEG		0.07 //beállítja a bank kezelési költségét
 #define RANDOM_STRING_AJ		16 //AJ-ben reakció teszt max karakterei
@@ -504,7 +503,7 @@ new Text3D:dynlabels[MAX_LABEL];
 
 /*----------- MAX definíciók -------------*/
 
-#define MAX_JARMU			212//összes jármû adata -> UCP
+#define MAX_JARMU			212//összes járm? adata -> UCP
 #define MAX_BOJA			20
 #define MAX_HAZ_JARMU		3
 #define MAX_TELEPORT 		100
@@ -527,7 +526,7 @@ new Text3D:dynlabels[MAX_LABEL];
 #define	MAX_CEG				20
 #define MAX_ERTEK			2000000000
 
-//tûz define
+//t?z define
 #define TUZ_MAX 		5
 #define TUZ_OBJECT 		12
 #define TUZ_MINTAG 		1
@@ -549,7 +548,7 @@ new Text3D:dynlabels[MAX_LABEL];
 #define MAX_FRAKCIO 21
 /*-------------- Frakció Definíciók --------------*/
 #define FRAKCIO_LSPD		1 //Rendõrség			-van
-#define FRAKCIO_LSFD		2 //Tûzoltóság			- NINCS
+#define FRAKCIO_LSFD		2 //T?zoltóság			- NINCS
 #define FRAKCIO_LAFD		3 //Mentõ				-van
 #define FRAKCIO_GSF			4 //Los Aztecas			-van
 #define FRAKCIO_KORMANY		5 //Önkormányzat		-van
@@ -945,23 +944,23 @@ new DivatBolt_SZEMUVEG[19][5][64] = {
 	{"Retró szemüveg", "Narancssárga retró szemüveg", 10000, 19027, SLOT_SZEMUVEG},
 	{"Retró szemüveg", "Citromsárga retró szemüveg", 10000, 19028, SLOT_SZEMUVEG},
 	{"Retró szemüveg", "Zöld retró szemüveg", 10000, 19029, SLOT_SZEMUVEG},
-	{"Napszemüveg", "Szûrkes napszemüveg", 4000, 19030, SLOT_SZEMUVEG},
+	{"Napszemüveg", "Sz?rkes napszemüveg", 4000, 19030, SLOT_SZEMUVEG},
 	{"Napszemüveg szemüveg", "Sárga napszemüveg", 10000, 19031, SLOT_SZEMUVEG},
 	{"Napszemüveg szemüveg", "Teljesen fekete napszemüveg", 10000, 19033, SLOT_SZEMUVEG},
 	{"Rendõr szemüveg", "Piros rendõrszemüveg", 20000, 19139, SLOT_SZEMUVEG},
 	{"Rendõr szemüveg", "Kék rendõrszemüveg", 20000, 19140, SLOT_SZEMUVEG}
 };
 new DivatBolt_HOKIMASZK[13][5][64] = {
-	{"Fehér HokiMaszk", "Fehér Színû hokimaszk", 25, 19036, SLOT_MASZK},
-	{"Piros HokiMaszk", "Piros Színû hokimaszk", 25, 19037, SLOT_MASZK},
-	{"Zöld HokiMaszk", "Zöld Színû hokimaszk", 25, 19038, SLOT_MASZK},
+	{"Fehér HokiMaszk", "Fehér Szín? hokimaszk", 25, 19036, SLOT_MASZK},
+	{"Piros HokiMaszk", "Piros Szín? hokimaszk", 25, 19037, SLOT_MASZK},
+	{"Zöld HokiMaszk", "Zöld Szín? hokimaszk", 25, 19038, SLOT_MASZK},
 	{"Hálál Fejes Maszk", "Halál Fejes mintás maszk", 25, 18911, SLOT_MASZK},
-	{"Fekete Mintás Maszk", "Fekete színû maszk", 25, 18912, SLOT_MASZK},
+	{"Fekete Mintás Maszk", "Fekete szín? maszk", 25, 18912, SLOT_MASZK},
 	{"Zöld Mintás Maszk", "Zöld Mintás Maszk", 25, 18913, SLOT_MASZK},
 	{"Katonás Maszk", "Katona maszk", 25, 18914, SLOT_MASZK},
 	{"Rózsaszín Maszk", "Rózsaszín Maszk", 25, 18915, SLOT_MASZK},
-	{"Sárga Maszk", "Sárga Színû maszk", 25, 18916, SLOT_MASZK},
-	{"Kék színû Maszk", "Kék színû", 25, 18917, SLOT_MASZK},
+	{"Sárga Maszk", "Sárga Szín? maszk", 25, 18916, SLOT_MASZK},
+	{"Kék szín? Maszk", "Kék szín?", 25, 18917, SLOT_MASZK},
 	{"Fekete Fehér Mintás Maszk", "Fekte Fehér Mintás Mintás", 25, 18918, SLOT_MASZK},
 	{"Sárga Pöttyös Maszk", "Sárga Pöttyös Maszk", 25, 18919, SLOT_MASZK},
 	{"Virágos Maszk", "Virágos Maszk", 25, 18920, SLOT_MASZK}
@@ -987,22 +986,22 @@ new DivatBolt_SVAJCISAPKA[5][5][64] = {
 	{"Svájci sapka", "Piros fekete svájci sapka", 5000, 18925, SLOT_SAPKA}
 };
 new DivatBolt_BASEBALLSAPKA[12][5][64] = {
-	{"Baseball sapka", "TerepSzinû baseball sapka", 5000, 18926, SLOT_SAPKA},
-	{"Baseball sapka", "Sötét-világoskékSzinû baseball sapka", 5000, 18927, SLOT_SAPKA},
-	{"Baseball sapka", "SokSzinû  baseball sapka", 5000, 18928, SLOT_SAPKA},
-	{"Baseball sapka", "Szûrke fehér Szinû baseball sapka", 5000, 18929, SLOT_SAPKA},
-	{"Baseball sapka", "Narancssárga-sárga Szinû baseball sapka", 5000, 18932, SLOT_SAPKA},
-	{"Baseball sapka", "Fehér fekete Szinû mintás baseball sapka", 5000, 18933, SLOT_SAPKA},
-	{"Baseball sapka", "Világospiros Szinû baseball sapka", 5000, 18934, SLOT_SAPKA},
-	{"Baseball sapka", "Fekete szûrke baseball sapka", 5000, 18941, SLOT_SAPKA},
-	{"Baseball sapka", "Szûrke baseball sapka", 5000, 18942, SLOT_SAPKA},
+	{"Baseball sapka", "TerepSzin? baseball sapka", 5000, 18926, SLOT_SAPKA},
+	{"Baseball sapka", "Sötét-világoskékSzin? baseball sapka", 5000, 18927, SLOT_SAPKA},
+	{"Baseball sapka", "SokSzin?  baseball sapka", 5000, 18928, SLOT_SAPKA},
+	{"Baseball sapka", "Sz?rke fehér Szin? baseball sapka", 5000, 18929, SLOT_SAPKA},
+	{"Baseball sapka", "Narancssárga-sárga Szin? baseball sapka", 5000, 18932, SLOT_SAPKA},
+	{"Baseball sapka", "Fehér fekete Szin? mintás baseball sapka", 5000, 18933, SLOT_SAPKA},
+	{"Baseball sapka", "Világospiros Szin? baseball sapka", 5000, 18934, SLOT_SAPKA},
+	{"Baseball sapka", "Fekete sz?rke baseball sapka", 5000, 18941, SLOT_SAPKA},
+	{"Baseball sapka", "Sz?rke baseball sapka", 5000, 18942, SLOT_SAPKA},
 	{"Baseball sapka", "Zöld baseball sapka", 5000, 18943, SLOT_SAPKA},
 	{"Baseball sapka", "Sárga fekete mintás baseball sapka", 5000, 18958, SLOT_SAPKA},
 	{"Baseball sapka", "Kamionos baseball sapka", 5000, 18961, SLOT_SAPKA}
 };
 new DivatBolt_KALAP[15][5][64] = {
-	{"Kalap", "Szûrke fehér mintás kalap", 5000, 18945, SLOT_SAPKA},
-	{"Kalap", "Szûrke divatos kalap", 5000, 18946, SLOT_SAPKA},
+	{"Kalap", "Sz?rke fehér mintás kalap", 5000, 18945, SLOT_SAPKA},
+	{"Kalap", "Sz?rke divatos kalap", 5000, 18946, SLOT_SAPKA},
 	{"Kalap", "Fekete elegáns mintás kalap", 5000, 18947, SLOT_SAPKA},
 	{"Kalap", "Kék elengáns kalap mintás kalap", 5000, 18948, SLOT_SAPKA},
 	{"Kalap", "Zöld elegáns kalap", 5000, 18949, SLOT_SAPKA},
@@ -1019,10 +1018,10 @@ new DivatBolt_KALAP[15][5][64] = {
 };
 new DivatBolt_SAPKA[5][5][64] = {
 	{"Sapka", "Fekete télisapka", 3000, 18953, SLOT_SAPKA},
-	{"Sapka", "Szûrke télisapka", 3000, 18954, SLOT_SAPKA},
-	{"Sapka", "Fekete Szinû(repper) télisapka", 3000, 18964, SLOT_SAPKA},
+	{"Sapka", "Sz?rke télisapka", 3000, 18954, SLOT_SAPKA},
+	{"Sapka", "Fekete Szin?(repper) télisapka", 3000, 18964, SLOT_SAPKA},
 	{"Sapka", "Piros fekete divatos sapka", 5000, 19067, SLOT_SAPKA},
-	{"sapka", "Fekete szûrke divatos sapka", 5000, 19069, SLOT_SAPKA}
+	{"sapka", "Fekete sz?rke divatos sapka", 5000, 19069, SLOT_SAPKA}
 };
 #define KIEGESZITO_SAPKA 0
 #define KIEGESZITO_SZEMUVEG 1
@@ -1680,7 +1679,7 @@ enum vehicleInfo
 	vNOSCounter
 };
 
-//Terheléselosztás -> Jármû rendszer - Martin
+//Terheléselosztás -> Járm? rendszer - Martin
 enum vehUpdate
 {
 	bool:vuPos,
@@ -1712,7 +1711,7 @@ enum vehUpdate
 	bool:vuApben
 };
 
-//Jármû adatok => UserCP
+//Járm? adatok => UserCP
 enum jarmuAdat
 {
 	jNev[32],
@@ -3366,7 +3365,7 @@ new Munkak[ MAX_MUNKA ][5][20] =
 	{MUNKA_ARU, 			"Árúszállító",	300,	1, 2*(60)},
 	{MUNKA_PILOTA,			"Pilóta",		600,	1, 1*(60)},
 	{MUNKA_PENZSZALLITO,    "Pénzszállító",	400,    1, 1*(60)},
-	{MUNKA_MOWER,    		"Fûnyíró",		0,      1, 1*(60)},
+	{MUNKA_MOWER,    		"F?nyíró",		0,      1, 1*(60)},
  	{MUNKA_BANYASZ,         "Bányász",      750,	1, 0}
 };
 
@@ -4046,7 +4045,7 @@ new FBI_Engedely[4][4][32] =
 {
 	{"Alap felszerelés", 	0,	1,	163},
 	{"Nyomozó felszerelés", 	0,	6,	164},
-	{"Magasszintû felszerelés", 	0,	2,	166},
+	{"Magasszint? felszerelés", 	0,	2,	166},
 	{"Mesterlövész", 		0,	1,	285}
 };
 
@@ -4069,7 +4068,7 @@ new Etel_Menu[10][6][24] =
 new VizsgaLista[MAX_ENGEDELY][6][32] =
 {
 	{"KRESZ viszga", 	70, 	"nincs", 	0,		200,	1},
-	{"Személygépjármû (B)", 650, 	"8 perc", 	8,		72,		1},
+	{"Személygépjárm? (B)", 650, 	"8 perc", 	8,		72,		1},
 	{"Motor (A1)",		490, 	"8 perc", 	8,		72,		1},
 	{"Kamion (C, CE)", 			1136, 	"8 perc", 	8,		72,		1},
 	{"Fegyverengedély", 1050, 	"",			0,		90,		0}
@@ -4144,7 +4143,7 @@ new TargyLista[BOLT_CUCCOK][6][32] =
 	{"Kézi Rádió",	50, BL_KEZIRADIO, 1, CUCC_BL, 1},
 	{"Bankkártya",  40, BL_BANKKARTYA, 1, CUCC_BL, 1},
 	{"Traffipax",  1500, BL_TRAFFIPAX, 1, CUCC_BL, 1},
- 	{"Gumikesztyû", 1, BL_GUMIKESZTYU, 1, CUCC_BL, 1},
+ 	{"Gumikeszty?", 1, BL_GUMIKESZTYU, 1, CUCC_BL, 1},
  	{"Szívószál", 1, BL_SZIVOSZAL, 1, CUCC_BL, 1}
 };
 
@@ -4372,7 +4371,7 @@ enum butorEnum {
 new Butor_Asztal[35][butorEnum] =
 {
 	{2357,		"Négyszögletes hosszú asztal",				55},
-	{2119,		"Kerekített végû asztal",					30},
+	{2119,		"Kerekített vég? asztal",					30},
 	{2762,		"Négyszögletes asztal (piros)",				25},
 	{2763,		"Négyszögletes(piros)",						25},
 	{2764,		"Négyszögletes asztal",						42},
@@ -4541,13 +4540,13 @@ new Butor_Szekreny[25][butorEnum] =
 	{937,		"Konyha Szekrény", 			340},
 	{1416,		"Fa szekrény", 				255},
 	{1417,		"Kis Gardrób", 				254},
-	{1741,		"Alsónemûs szekrény", 		255},
-	{1743,		"Aolsónemûs szekrény", 		250},
+	{1741,		"Alsónem?s szekrény", 		255},
+	{1743,		"Aolsónem?s szekrény", 		250},
 	{2000,		"Irat Szekrény", 			127},
 	{2007,		"Dupla Irat Szekrény", 		170},
 	{2025,		"Gardrób", 					255},
 	{2078,		"Pohár szekrény", 			217},
-	{2094,		"Alsónemûs szekrény", 		127},
+	{2094,		"Alsónem?s szekrény", 		127},
 	{2095,		"Kis Szekrény", 			85},
 	{2161,		"Könyves Szekrény", 		178},
 	{2162,		"Könyves Szekrény", 		178},
@@ -4559,7 +4558,7 @@ new Butor_Szekreny[25][butorEnum] =
 	{2200,		"Dupla Gardrób", 			170},
 	{2204,		"Szekrény", 				238},
 	{2307,		"Kabát Szekrény", 			63},
-	{2576,		"Gardrób alsónemûtartóval", 276},
+	{2576,		"Gardrób alsónem?tartóval", 276},
 	{2610,		"Irat Szekrény", 			127},
 	{1742,		"Könyves Szekrény", 		93}
 };
@@ -4606,7 +4605,7 @@ new Butor_Konyhabutor[13][butorEnum] =
 new Butor_Huto[3][butorEnum] =
 {
 	{2533,		"Üdítõs",		212},
-	{2534,		"Fa hûtõ",		212},
+	{2534,		"Fa h?tõ",		212},
 	{2452,		"Üdítõs",		382}
 };
 
@@ -4673,7 +4672,7 @@ new Butor_Zuhanyzo[6][butorEnum] =
 
 new Butor_Mosdo[3][butorEnum] =
 {
-	{2515,		"Egyszerû két csapos",				63},
+	{2515,		"Egyszer? két csapos",				63},
 	{2518,		"Szifonos porcelán",				93},
 	{2523,		"Talpas modern",					90}
 };
@@ -4682,10 +4681,10 @@ new Butor_Szonyeg[9][butorEnum] =
 {
 	{2815,		"Lila, téglalapokkal",				106},
 	{2817,		"Zöldes kék, körökkel",				106},
-	{2818,		"Egyszerû kockás",					80},
+	{2818,		"Egyszer? kockás",					80},
 	{2833,		"Díszes okker színekkel",			127},
-	{2835,		"Okker szíbû kerek",				120},
-	{2836,		"Okker színû pöttyös",				135},
+	{2835,		"Okker szíb? kerek",				120},
+	{2836,		"Okker szín? pöttyös",				135},
 	{2841,		"Kerek kék kockás",					83},
 	{2842,		"Hangulatos lila mintás",			85},
 	{2847,		"Hangulatos perzsa narancs",		137}
@@ -4694,14 +4693,14 @@ new Butor_Szonyeg[9][butorEnum] =
 new Butor_Szek[12][butorEnum] =
 {
 	{1671,		"Hivatali fekete fém",				63},
-	{1714,		"Elegáns fekete szövetû",			85},
+	{1714,		"Elegáns fekete szövet?",			85},
 	{1715,		"Fém szerkezetes bõr",				90},
 	{1720,		"Kicsi fehér háttámlával",			106},
 	{1805,		"Sámli piros ülõfelülettel",		29},
 	{1806,		"Szögletes, forgó, kék huzallat",	70},
 	{1810,		"Összecsukható",					20},
 	{1811,		"Praktikus fém vázas",				63},
-	{2120,		"Egyszerû bõr ülõfelülettel",		60},
+	{2120,		"Egyszer? bõr ülõfelülettel",		60},
 	{2123,		"Elegáns fehér",					138},
 	{2124,		"Piros párnás fa",					127},
 	{2356,		"Kék huzat, forgószék",				70}
@@ -4714,8 +4713,8 @@ new Butor_Iroasztal[8][butorEnum] =
 	{2169,		"Fehér oldalú fa",					110},
 	{2173,		"Fémvázas fa lappal",				93},
 	{2180,		"Három oldalú fa",					53},
-	{2205,		"Egyszerû nagy barna",				110},
-	{2206,		"Egyszerû barna",					82},
+	{2205,		"Egyszer? nagy barna",				110},
+	{2206,		"Egyszer? barna",					82},
 	{2607,		"Fehér két lábú",					82}
 };
 
@@ -5053,7 +5052,7 @@ new FaObjectek[MAX_FA];
 new FrakcioSkinek[FK_SKINEK][] =
 {
 	{FRAKCIO_LSPD, 9,		280, 281, 266, 267, 265, 282, 283, 288, 284},//SCPD
-	{FRAKCIO_LSFD, 3,		277,278,279},//Tûzoltóság
+	{FRAKCIO_LSFD, 3,		277,278,279},//T?zoltóság
 	{FRAKCIO_LAFD, 4, 		70, 274, 275, 276},//Mentõszolgálat
 	{FRAKCIO_KORMANY, 9,	186,187,227,228,91,219,216,163,164}, //Önkormányzat
 	{FRAKCIO_KATONA, 6,		287,61,71,179,191,73},//Special Force
@@ -5064,7 +5063,7 @@ new FrakcioSkinek[FK_SKINEK][] =
 new FrakcioSzin[MAX_FRAKCIO] =
 {
 	NINCS,				//LSPD				1
-	NINCS,				//Tûzoltóság		2
+	NINCS,				//T?zoltóság		2
 	NINCS,				//Mentõszolgálat	3
 	COLOR_GREEN,		//GSF				4
 	NINCS,				//Önkormányzat		5
@@ -5156,7 +5155,7 @@ new aWeaponNames[][32] = {
 	{"Shovel"}, // 6
 	{"Pool"}, // 7
 	{"Katana"}, // 8
-	{"Láncfûrész"}, // 9
+	{"Láncf?rész"}, // 9
 	{"PurpleDildo"}, // 10
 	{"BigWhiteVibrator"}, // 11
 	{"MediumWhiteVibrator"}, // 12
@@ -7142,12 +7141,12 @@ stock TipusToNev(munkaid)
 		case MUNKA_HACK: nev = "Hacker";
 		case MUNKA_ARU: nev = "Árúszállító";
 		case MUNKA_PILOTA: nev = "Pilóta";
-		case MUNKA_MOWER: nev = "Fûnyíró";
+		case MUNKA_MOWER: nev = "F?nyíró";
 		case MUNKA_BANYASZ: nev = "Bányász";
 		case 0: nev = "Eladó";
 		case 100: nev = "Bérelhetõ";
-		case 101: nev = "Vizsgajármû";
-		case 102: nev = "See Közlekedési Vállalat";
+		case 101: nev = "Vizsgajárm?";
+		case 102: nev = "Soul Közlekedési Vállalat";
 		case 103: nev = "Használtkereskedés";
 	}
 	return nev;
@@ -7428,7 +7427,7 @@ stock IsRealAdmin(playerid)
 }
 stock IsLewis(playerid)
 {
-	if(egyezik("Tamasi_Gabor",JatekosNev(playerid, false, true)) || egyezik("Lewis_Rolee",JatekosNev(playerid,false,true)) || egyezik("Jason_Leigh",JatekosNev(playerid,false,true)) || Fonok[playerid] == 1 && Belepett[playerid])
+	if(egyezik("Fred_Zykov",JatekosNev(playerid, false, true)) || egyezik("Frank_Carter",JatekosNev(playerid,false,true)) || egyezik("",JatekosNev(playerid,false,true)) || Fonok[playerid] == 1 && Belepett[playerid])
 		return true;
 	return false;
 }
@@ -7464,7 +7463,7 @@ stock PenzHozzaad(playerid, osszeg)
 }
 stock NincsJarmu(playerid)
 {
-	return SCM(playerid,COL_LRED,"Nincs ilyen jármû.");
+	return SCM(playerid,COL_LRED,"Nincs ilyen járm?.");
 }
 stock NincsJatekos(playerid)
 {
@@ -7597,12 +7596,12 @@ timer Feltor[50000](playerid,kocsi)
 	
 	if(RandomSiker(skill * 10))
 	{
-		SCM(playerid,COL_LRED,"Nem sikerült feltörnöd a jármûvet!");
+		SCM(playerid,COL_LRED,"Nem sikerült feltörnöd a járm?vet!");
 		UnFreeze(playerid);
 	}
 	else
 	{
-		SCM(playerid,COL_VZOLD,"Sikeresen feltörted a jármûvet!");
+		SCM(playerid,COL_VZOLD,"Sikeresen feltörted a járm?vet!");
 		AjtoZar(playerid,kocsi,true,true);
 		UnFreeze(playerid);
 	}
@@ -7637,7 +7636,7 @@ fpublic KocsiLopas(playerid,kocsi, billentyu)
 			new starttime = (3000-PlayerInfo[playerid][pTolvajSkill]*200);
 			defer JarmuInditas[starttime](playerid, kocsi);
 			
-			SCM(playerid,COL_VZOLD,"Jármû indítás...");
+			SCM(playerid,COL_VZOLD,"Járm? indítás...");
 			PlayerInfo[playerid][pmotortinditja] = true;
 			Billentyu[playerid] = NINCS;
 			BillentyuHatra[playerid] = NINCS;
@@ -7650,7 +7649,7 @@ fpublic KocsiLopas(playerid,kocsi, billentyu)
 		Billentyu[playerid] = NINCS;
 		BillentyuHatra[playerid] = NINCS;
 		PlayerInfo[playerid][pLophat] += 180;
-		SCM(playerid,COL_VZOLD,"A jármû ellopása nem sikerült,rossz vezetéket próbáltál összekötni!");
+		SCM(playerid,COL_VZOLD,"A járm? ellopása nem sikerült,rossz vezetéket próbáltál összekötni!");
 		if(PlayerInfo[playerid][pTolvajSkill] > 0)
 		{
 			switch(Rand(0,100))
@@ -7671,7 +7670,7 @@ timer Sikertelen[5000](playerid)
 	Billentyu[playerid] = NINCS;
 	BillentyuHatra[playerid] = NINCS;
 	PlayerInfo[playerid][pLophat] += 240;
-	SCM(playerid,COL_VZOLD,"A jármû ellopása nem sikerült,rossz vezetéket próbáltál összekötni!");
+	SCM(playerid,COL_VZOLD,"A járm? ellopása nem sikerült,rossz vezetéket próbáltál összekötni!");
 	if(PlayerInfo[playerid][pTolvajSkill] > 1)//
 	{
 		switch(Rand(0,100))
@@ -7830,10 +7829,10 @@ timer AruLe[1000](playerid,melyik)
 		if(AruFelpakolva[playerid] >= 1)
 		{
 			SCM(playerid,COL_VZOLD,"Szállísd az árúkat a következõ helyre!");
-			SFM(playerid, COL_LKEK,"A jármûben még maradt %d szállításra elég termék!", AruFelpakolva[playerid]);
+			SFM(playerid, COL_LKEK,"A járm?ben még maradt %d szállításra elég termék!", AruFelpakolva[playerid]);
 			CheckpointBeallitas(playerid,MUNKA_ARU);
 			}	else	{
-			SCM(playerid,COL_VZOLD,"Elfogytak az árúk a jármûbõl! Menj vissza a munkahelyedre,és pakold fel!");
+			SCM(playerid,COL_VZOLD,"Elfogytak az árúk a járm?bõl! Menj vissza a munkahelyedre,és pakold fel!");
 			SetPlayerCheckpoint(playerid, 2338.1218,-2071.3381,13.5538, 5.0);
 			PlayerInfo[playerid][pCP] = CP_ARU2;
 		}
@@ -7862,7 +7861,7 @@ timer GazmaszkFel[3000](playerid)
 timer BombaSzerel[30000](playerid, melyik, hol)
 {
 	if(!Belepve(playerid)) return false;
-	if(melyik != 1) { if(!IsPlayerInAnyVehicle(playerid)) { SCM(playerid, COL_LRED,"Jármûben kell lenned a bomba beszereléséhez!"); UnFreeze(playerid); MunkaFolyamatban[playerid] = 0; return false; } }
+	if(melyik != 1) { if(!IsPlayerInAnyVehicle(playerid)) { SCM(playerid, COL_LRED,"Járm?ben kell lenned a bomba beszereléséhez!"); UnFreeze(playerid); MunkaFolyamatban[playerid] = 0; return false; } }
 	switch(melyik)
 	{
 		case 1: // sima
@@ -7877,7 +7876,7 @@ timer BombaSzerel[30000](playerid, melyik, hol)
 			UnFreeze(playerid);
 			PlayerInfo[playerid][pCuccok][BL_C4]--;
 		}
-		case 2: // jármû
+		case 2: // járm?
 		{
             BombaLerakva[playerid] = BombaLerak(0.0, 0.0, 0.0,  GetPlayerVehicleID(playerid));
 			SCM(playerid, COL_VZOLD,"Bomba felszerelve! Robbantás - "#COL_LKEK"/bomba robbant");
@@ -8034,7 +8033,7 @@ fpublic IRCC(playerid,channel)
 		new str[128];
 		format(str,sizeof(str),"%s csatlakozott a channelhez.",returnName(playerid));
 		IRCuzenet(PlayerInfo[playerid][pChannel],str);
-		SFM(playerid,COL_RSARG,"Csatlakoztál a "#COL_RSARG"%d."#COL_FEHER" számû channelhez!",channel);
+		SFM(playerid,COL_RSARG,"Csatlakoztál a "#COL_RSARG"%d."#COL_FEHER" szám? channelhez!",channel);
 	}
 	return true;
 }
@@ -9194,7 +9193,7 @@ stock Idojaras(playerid = NINCS, extra = NINCS)
 		{10,	"Hõhullám", 			0},
 		{12,	"Enyhén felhõs idõ",	0},
 		{13,	"Tulnyomóan napos idõ", 1},//ez
-		{14,	"Derûs idõ", 			1},//ez
+		{14,	"Der?s idõ", 			1},//ez
 		{15,	"Borongós idõ", 		0},
 		{16,	"Jégesõ", 				0},
 		{17,	"Napos, fülledt idõ", 	1},//ez
@@ -11408,7 +11407,7 @@ public OnPlayerClickTextDraw(playerid, Text:clickedid)
 		else if(ph == 103)
 		{
 			PlayerInfo[playerid][pSegelyhivas] = 3;
-			SendClientMessage(playerid, COLOR_ALLDEPT, "Itt a Tûzoltóság, kérem mondja el, hogy mi történt!");
+			SendClientMessage(playerid, COLOR_ALLDEPT, "Itt a T?zoltóság, kérem mondja el, hogy mi történt!");
 		}
 		else if(ph == 104)
 		{
@@ -11792,10 +11791,10 @@ timer Kocsijavit[20000](playerid,kocsi,vid,osszeg,KiszallasOsszeg)
 	vehicleh[ kocsi ] = 1000.0;
 	vUpdate(vid, vuElet);
 
-	Cselekves(playerid,"megjavította a motort a jármûben.",0);
+	Cselekves(playerid,"megjavította a motort a járm?ben.",0);
 	Freeze(playerid, NINCS);
 
-	if(vInfo[vid][vMunka] == PlayerInfo[playerid][pFrakcio])						//Saját frakció jármû javítása
+	if(vInfo[vid][vMunka] == PlayerInfo[playerid][pFrakcio])						//Saját frakció járm? javítása
 	{
 		FInfo[ PlayerInfo[playerid][pFrakcio] ][fPenz] += (osszeg / 8);										//A 20%-at levonja a széfbõl.
 		SendFormatMessage(playerid, COLOR_WHITE, "A szerelés költsége 0 $-volt, anyagár %d-$ melyet a frakciód széfjébõl levontunk.", (osszeg / 8));
@@ -11819,10 +11818,10 @@ timer Kasztni[20000](playerid,vid,osszeg,KiszallasOsszeg)
 	vInfo[vid][vDoors] = 0;
 	vUpdate(vid, vuPanels);
 
-	Cselekves(playerid,"megjavította a karosszéria alkatrészeket a jármûvön.",0);
+	Cselekves(playerid,"megjavította a karosszéria alkatrészeket a járm?vön.",0);
 	Freeze(playerid, NINCS);
 
-	if(vInfo[vid][vMunka] == PlayerInfo[playerid][pFrakcio])						//Saját frakció jármû javítása
+	if(vInfo[vid][vMunka] == PlayerInfo[playerid][pFrakcio])						//Saját frakció járm? javítása
 	{
 		FInfo[ PlayerInfo[playerid][pFrakcio] ][fPenz] += (osszeg / 8);										//A 20%-at levonja a széfbõl.
 		SendFormatMessage(playerid, COLOR_WHITE, "A szerelés költsége 0 $-volt, anyagár %d-$ melyet a frakciód széfjébõl levontunk.", (osszeg / 8));
@@ -11845,10 +11844,10 @@ timer Lampak[20000](playerid,vid,osszeg,KiszallasOsszeg)
 	vInfo[vid][vLights] = 0;
 	vUpdate(vid, vuLights);
 
-	Cselekves(playerid,"megjavította a lámpákat a jármûvön.",0);
+	Cselekves(playerid,"megjavította a lámpákat a járm?vön.",0);
 	Freeze(playerid, NINCS);
 
-	if(vInfo[vid][vMunka] == PlayerInfo[playerid][pFrakcio])						//Saját frakció jármû javítása
+	if(vInfo[vid][vMunka] == PlayerInfo[playerid][pFrakcio])						//Saját frakció járm? javítása
 	{
 		FInfo[ PlayerInfo[playerid][pFrakcio] ][fPenz] += (osszeg / 8);										//A 20%-at levonja a széfbõl.
 		SendFormatMessage(playerid, COLOR_WHITE, "A szerelés költsége 0 $-volt, anyagár %d-$ melyet a frakciód széfjébõl levontunk.", (osszeg / 8));
@@ -11870,10 +11869,10 @@ timer Kerekek[20000](playerid,vid,osszeg,KiszallasOsszeg)
 	vInfo[vid][vTires] = 0;
 	vUpdate(vid, vuTires);
 
-	Cselekves(playerid,"megjavította a kerekeket a jármûvön.",0);
+	Cselekves(playerid,"megjavította a kerekeket a járm?vön.",0);
 	Freeze(playerid, NINCS);
 
-	if(vInfo[vid][vMunka] == PlayerInfo[playerid][pFrakcio])						//Saját frakció jármû javítása
+	if(vInfo[vid][vMunka] == PlayerInfo[playerid][pFrakcio])						//Saját frakció járm? javítása
 	{
 		FInfo[ PlayerInfo[playerid][pFrakcio] ][fPenz] += (osszeg / 8);										//A 20%-at levonja a széfbõl.
 		SendFormatMessage(playerid, COLOR_WHITE, "A szerelés költsége 0 $-volt, anyagár %d-$ melyet a frakciód széfjébõl levontunk.", (osszeg / 8));
@@ -12500,7 +12499,7 @@ stock Parancs_Alias()
 	ZCMD_Alias("stats", 		"adatok");
 	ZCMD_Alias("stats", 		"adataim");
 	ZCMD_Alias("szemelyi", 		"személyi");
-	ZCMD_Alias("tuz", 			"tûz");
+	ZCMD_Alias("tuz", 			"t?z");
 	ZCMD_Alias("statisztika", 	"stat");
 	ZCMD_Alias("aduty", 		"onduty");
 	ZCMD_Alias("atankol", 		"fuelcar");
@@ -14165,7 +14164,7 @@ public OnPlayerEnterCheckpoint(playerid)
 				SetPlayerCheckpoint(playerid, PosExt( Vizsga_Kamion[ PlayerInfo[playerid][pVizsga][0] ] ), 3.5);
 				PlayerInfo[playerid][pCP] = CP_VIZSGA;
 
-				SCM(playerid, COL_LRED, "Hová tûnt a vizsga jármû??");
+				SCM(playerid, COL_LRED, "Hová t?nt a vizsga járm???");
 				return true;
 			}
 			switch( PlayerInfo[playerid][pVizsga][1] )//vizsga típus
@@ -14492,7 +14491,7 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 			    SCM(playerid, COL_LRED, "Nem fér fel több");
 		}
 		else
-  			SCM(playerid, COL_LRED, "Nincs a közelben kõ hordására szolgáló jármû");
+  			SCM(playerid, COL_LRED, "Nincs a közelben kõ hordására szolgáló járm?");
 	}
 	if(Focizik[playerid] == 1)
 	{
@@ -14669,7 +14668,7 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 
 			if(PlayerInfo[playerid][pTiltasok][TILTAS_AUTO] > 0)
 			{
-				SFM(playerid,COL_LRED,"Nem használhatsz jármûvet még %d percig",PlayerInfo[playerid][pTiltasok][TILTAS_AUTO]/60);
+				SFM(playerid,COL_LRED,"Nem használhatsz járm?vet még %d percig",PlayerInfo[playerid][pTiltasok][TILTAS_AUTO]/60);
 				return 1;
 			}
 			new
@@ -14680,16 +14679,16 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 				return SCM(playerid, COL_LRED, "Ez egy bicikli :D Nincs benne motor!");
 
 			if(!vInfo[jarmuidje][vUzemanyag])
-				return SCM(playerid, COL_LRED, "A jármûbõl kifogyott az üzemanyag!");
+				return SCM(playerid, COL_LRED, "A járm?bõl kifogyott az üzemanyag!");
 
 			if(PlayerInfo[playerid][pmotortinditja])
-				return SCM(playerid, COL_LRED, "A jármû jelenleg is indítás alatt áll!");
+				return SCM(playerid, COL_LRED, "A járm? jelenleg is indítás alatt áll!");
 
 			if(GetJarmu(kocsi, KOCSI_MOTOR) == 1)
 			{
 				SetJarmu(kocsi, KOCSI_MOTOR, 0);
-				SendClientMessage(playerid, COLOR_LIGHTRED, "A jármû leállítva!");
-				Cselekves(playerid, "leállította a jármûvét", 1);
+				SendClientMessage(playerid, COLOR_LIGHTRED, "A járm? leállítva!");
+				Cselekves(playerid, "leállította a járm?vét", 1);
 				vInfo[jarmuidje][vMotorelinditva] = false;
 			}
 			else
@@ -14699,15 +14698,15 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 					new kocsiserules, starttime, Float:kocsielet;
 					GetVehicleHealth(kocsi, kocsielet);
 					if((100 - (((kocsielet - 350) / 650)) * 100) > 100)
-						return SCM(playerid, COL_LRED, "A jármû állapota nem teszi lehetõvé a motor indítását!");
+						return SCM(playerid, COL_LRED, "A járm? állapota nem teszi lehetõvé a motor indítását!");
 
 					kocsiserules = 1000 - floatround(kocsielet);
 					starttime = 1000 + (kocsiserules * 5);
-					SendClientMessage(playerid, COLOR_GREEN, "Jármû indítás...");
+					SendClientMessage(playerid, COLOR_GREEN, "Járm? indítás...");
 					defer JarmuInditas[starttime](playerid, kocsi);
 					PlayerInfo[playerid][pmotortinditja] = true;
 				} else
-					return SendClientMessage(playerid, COLOR_LIGHTRED, "Ehhez a jármûhöz nincs kulcsod!");
+					return SendClientMessage(playerid, COLOR_LIGHTRED, "Ehhez a járm?höz nincs kulcsod!");
 			}
 		}
 		#if defined KELLDWAYNE
@@ -15253,9 +15252,9 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 				if(vid > 0)
 				{
 					if(!IsScripter(playerid) || (!IsScripter(playerid) && vInfo[vid][vInsert]))
-						AdminUzenet(COLOR_LIGHTRED, PlayerInfo[playerid][padmin], "%s lefoglalt egy %s típusú jármûvet! JármûID: %d[%d] | Tulaj: %s", JatekosNev(playerid), VehicleNames[vInfo[vid][vModel] - 400], car, vid, JarmuTulaj(vid));
+						AdminUzenet(COLOR_LIGHTRED, PlayerInfo[playerid][padmin], "%s lefoglalt egy %s típusú járm?vet! Járm?ID: %d[%d] | Tulaj: %s", JatekosNev(playerid), VehicleNames[vInfo[vid][vModel] - 400], car, vid, JarmuTulaj(vid));
 
-					SCM(playerid, COL_MKEK, "Jármû sikeresen lefoglalva!");
+					SCM(playerid, COL_MKEK, "Járm? sikeresen lefoglalva!");
 
 					if(id == NINCS)
 						PutPlayerInVehicle(playerid, car, 0);
@@ -15265,7 +15264,7 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 				}
 			}
 			else
-				return SCM(playerid, COL_LRED, "Nincs jármû a közeledben!");
+				return SCM(playerid, COL_LRED, "Nincs járm? a közeledben!");
 		}
 	}
 
@@ -16077,7 +16076,7 @@ public OnPlayerEditDynamicObject(playerid, objectid, response, Float:x, Float:y,
 					}
 					case 11:
 					{
-						kategoria = "Hûtõ";
+						kategoria = "H?tõ";
 						penz = Butor_Huto[ButorInfo[butorszam][butorListitem]][butorAR];
 						format(nev, sizeof(nev), Butor_Huto[ButorInfo[butorszam][butorListitem]][butorNEV]);
 					}
@@ -18549,7 +18548,7 @@ task OtmasodpercesIdozito[5000]()
 
 				new p_id = GetVehicleDriver(vInfo[idx][vID]);
 				if(p_id > NINCS)
-					SCM(p_id, COL_MKEK, "Kifogyott a jármûvedbõl az üzemanyag!");
+					SCM(p_id, COL_MKEK, "Kifogyott a járm?vedbõl az üzemanyag!");
 			}
 
 			new Float:khp;
@@ -18560,7 +18559,7 @@ task OtmasodpercesIdozito[5000]()
 				SetJarmu(vInfo[idx][vID], KOCSI_MOTOR, 0);
 				new p_id = GetVehicleDriver(vInfo[idx][vID]);
 				if(p_id > NINCS)
-					SCM(p_id, COL_MKEK, "A jármûved elromlott! Hívj szerelõt! /call 112");
+					SCM(p_id, COL_MKEK, "A járm?ved elromlott! Hívj szerelõt! /call 112");
 			}
 		}
 	}
@@ -18785,7 +18784,7 @@ task OtmasodpercesIdozito[5000]()
 						SendClientMessage(pid, COLOR_LIGHTRED, "Mivel nincs bankszámlád, ezért a fizetésed nem került kiutalásra!");
 					else
 					{
-						SendFormatMessage(pid, COLOR_YELLOW, "SMS - Bank: Fizetés: %s $ | Bankszámla: %s $ | Jármû Adó: %d$ | Ház Adó: %d $ | Villanyszámla: %d$", FN(PlayerInfo[pid][pFizetes], 0, ','), FN(PlayerInfo[pid][pBszPenz], 0, ','),AdoResz(pid),HazAdoResz(pid), Villanysz(pid));
+						SendFormatMessage(pid, COLOR_YELLOW, "SMS - Bank: Fizetés: %s $ | Bankszámla: %s $ | Járm? Adó: %d$ | Ház Adó: %d $ | Villanyszámla: %d$", FN(PlayerInfo[pid][pFizetes], 0, ','), FN(PlayerInfo[pid][pBszPenz], 0, ','),AdoResz(pid),HazAdoResz(pid), Villanysz(pid));
 						new penz, id = PlayerInfo[pid][pFrakcio];
 						if(id)
 						{
@@ -18798,7 +18797,7 @@ task OtmasodpercesIdozito[5000]()
 								SendClientMessage(pid, COLOR_YELLOW, "SMS - Bank: Munkahely fizetés: "#COL_MKEK"Nincs"#COL_FEHER" (Nincs elég pénz a széfben!)");
 						}
 
-						//SendFormatMessage(pid, COLOR_WHITE, "Jármû Adó: "#COL_MKEK"%d"#COL_FEHER"$", AdoResz(pid));
+						//SendFormatMessage(pid, COLOR_WHITE, "Járm? Adó: "#COL_MKEK"%d"#COL_FEHER"$", AdoResz(pid));
 						//SendFormatMessage(pid, COLOR_WHITE, "Ház Adó: "#COL_MKEK"%d"#COL_FEHER"$", HazAdoResz(pid));
 						//SendFormatMessage(pid, COLOR_WHITE, "Villanyszámla: "#COL_MKEK"%d"#COL_FEHER"$", Villanysz(pid));
 
@@ -19079,7 +19078,7 @@ task MasodpercesIdozito[1000]()
 			Billentyu[p] = NINCS;
 			BillentyuHatra[p] = NINCS;
 			MunkaFolyamatban[p] = 0;
-			SCM(p,COL_LRED,"Mivel elhagytad a jármûvet ezért a jármû ellopása sikertelen volt!");
+			SCM(p,COL_LRED,"Mivel elhagytad a járm?vet ezért a járm? ellopása sikertelen volt!");
 		}
 		if(FInfo[PlayerInfo[p][pFrakcio] ][fLegalis] == FK_REND || IsHitman(p))
 		{
@@ -19156,7 +19155,7 @@ task MasodpercesIdozito[1000]()
 					new vid = JarmuID(car, jatekos);
 					new sebesseg = GetVehicleSpeed(car);
 					if(sebesseg < 1) return true;
-					format(rendszam, sizeof(rendszam), "A közeli jármû rendszáma: {00ff59}See-%d", vid);
+					format(rendszam, sizeof(rendszam), "A közeli járm? rendszáma: {00ff59}Soul-%d", vid);
 					format(seb, sizeof(seb), "Sebessége: {ff0000}%d{ffffff} km/h", sebesseg);
 					SendClientMessage(p, -1, "____traffipax EREDMÉNY____");
 					SendClientMessage(p, -1, rendszam);
@@ -19302,7 +19301,7 @@ task MasodpercesIdozito[1000]()
 		    PlayerInfo[p][pLophat]--;
 		    if(PlayerInfo[p][pLophat] == 0)
 		    {
-		        SCM(p, COL_VZOLD,"Újra lophatsz jármûvet!");
+		        SCM(p, COL_VZOLD,"Újra lophatsz járm?vet!");
 		        PlayerInfo[p][pLophat] = NINCS;
 		    }
 		}
@@ -19523,7 +19522,7 @@ task MasodpercesIdozito[1000]()
 				DisablePlayerCheckpoint(p);
 				SCM(p, COL_LRED, "Sajnálom kedves vizsgázó, de az idõd letelt, ezért a megkezdett vizsgád sikertelen!");
 
-				if(PlayerInfo[p][pJarmuben] && vInfo[ PlayerInfo[p][pJarmuben] ][vMunka] == 101)//oktatós jármû
+				if(PlayerInfo[p][pJarmuben] && vInfo[ PlayerInfo[p][pJarmuben] ][vMunka] == 101)//oktatós járm?
 				{
 					SetVehicleToRespawn( vInfo[ PlayerInfo[p][pJarmuben] ][vID] );
 				}
@@ -19583,7 +19582,7 @@ task MasodpercesIdozito[1000]()
 				}
 			}
 		}
-		/*---------------- Tûz rendszer - check ---------------*/
+		/*---------------- T?z rendszer - check ---------------*/
 		if(ServerInfo[sTuzVan] && ServerInfo[sTuzIdo][0] > 0)
 		{
 			sk = GetPlayerSkin(p);
@@ -19593,7 +19592,7 @@ task MasodpercesIdozito[1000]()
 				if((GetDistanceToPointEx(p, PosExt(Tuz[t][tPoz])) < TUZ_SERULES_TAV) && sk != 277 && sk != 278 && sk != 279 && sk != 219)
 				{
 					SetHealth(p, (PlayerInfo[p][pElet] - TUZ_SERULES));
-					SCM(p, COL_LRED, "Vigyázz!! Még a végén megégsz! Menj a tûz közelébõl!");
+					SCM(p, COL_LRED, "Vigyázz!! Még a végén megégsz! Menj a t?z közelébõl!");
 				}
 
 				if(PlayerInfo[p][pTuzetOlt] && PlayerInfo[p][pFrakcio] == FRAKCIO_LAFD)
@@ -19649,12 +19648,12 @@ task MasodpercesIdozito[1000]()
 								FrakcioUzenet(COLOR_YELLOW, FRAKCIO_LAFD, str);
 
 								FInfo[ FRAKCIO_LAFD ][ fPenz ] += ServerInfo[sTuzPenz];
-								ServerInfo[sTuzIdo][1] = Rand(TUZ_IDO_MIN, TUZ_IDO_MAX); //mikor indul a kövi tûz
+								ServerInfo[sTuzIdo][1] = Rand(TUZ_IDO_MIN, TUZ_IDO_MAX); //mikor indul a kövi t?z
 								ServerInfo[sTuzVan] = false;
 								ServerInfo[sTuzIdo][0] = 0;
 							} else {
 
-								format(str, sizeof(str), "===================== [ "#COL_FEHER"TÛZRIADÓ"#COL_LRED" ] =====================");
+								format(str, sizeof(str), "===================== [ "#COL_FEHER"T?ZRIADÓ"#COL_LRED" ] =====================");
 								FrakcioUzenet(COLOR_LIGHTRED, FRAKCIO_LAFD, str);
 								format(str, sizeof(str), "Sikeresen eloltottatok egy tüzet, de még nem végeztetek, siessetek a következõhöz és a jutalom nem marad el!");
 								FrakcioUzenet(COLOR_YELLOW, FRAKCIO_LAFD, str);
@@ -19777,14 +19776,14 @@ task MasodpercesIdozito[1000]()
 	{
 		ServerInfo[sCarResi][0]--;
 		if(ServerInfo[sCarResi][0] == 30)
-			SendClientMessageToAll(COLOR_WHITE, ""#COL_MKEK"Felhívás:"#COL_FEHER" Az elhagyott jármûvek "#COL_MKEK"30"#COL_FEHER" másodpercen belül elvontatásra kerülnek!");
+			SendClientMessageToAll(COLOR_WHITE, ""#COL_MKEK"Felhívás:"#COL_FEHER" Az elhagyott járm?vek "#COL_MKEK"30"#COL_FEHER" másodpercen belül elvontatásra kerülnek!");
 
 		if(!ServerInfo[sCarResi][0])
 		{
 			JarmuRespawn(ServerInfo[sCarResi][1]);
 			ServerInfo[sCarResi][0] = 3600;//1h múlva automata respawn
 			ServerInfo[sCarResi][1] = 0; //esetleges automata respawn javítás nélkül
-			SendClientMessageToAll(COLOR_WHITE, ""#COL_MKEK"Felhívás:"#COL_FEHER" Elhagyott és használaton kívüli jármûvek elvontatva!");
+			SendClientMessageToAll(COLOR_WHITE, ""#COL_MKEK"Felhívás:"#COL_FEHER" Elhagyott és használaton kívüli járm?vek elvontatva!");
 		}
 	}
 
@@ -19854,10 +19853,10 @@ timer MuveletTimer[1000](playerid, process, extra, egyeb)
 			switch(random(100))
 			{
 				case 0 .. 30:
-					return SCM(playerid, COL_LRED, "Sajnos nem találtál tût a kukában, nézd át jobban..");
+					return SCM(playerid, COL_LRED, "Sajnos nem találtál t?t a kukában, nézd át jobban..");
 				case 31 .. 100:
 				{
-					SCM(playerid, COL_VZOLD, "Találtál egy tût a kukában..");
+					SCM(playerid, COL_VZOLD, "Találtál egy t?t a kukában..");
 					Cselekves(playerid, "talált valamit az egyik kukában");
 					PlayerInfo[playerid][pCuccok][ BL_TU ]++;
 					return true;
@@ -20161,7 +20160,7 @@ timer MuveletTimer[1000](playerid, process, extra, egyeb)
 				case 1:
 				{
 					new vasrand = (random(2) + 1);
-					SFM(playerid, COL_MKEK, "Sikeresen gyûjtöttél "#COL_MKEK"%d"#COL_FEHER"kg vasat!", vasrand);
+					SFM(playerid, COL_MKEK, "Sikeresen gy?jtöttél "#COL_MKEK"%d"#COL_FEHER"kg vasat!", vasrand);
 
 					PlayerInfo[playerid][pVas] += vasrand;
 
@@ -20264,7 +20263,7 @@ public OnUnoccupiedVehicleUpdate(vehicleid, playerid, passenger_seat, Float:new_
 			PlayerInfo[playerid][pCarTeleportFlood]++;
 			PlayerInfo[playerid][pCarTeleportTime] += 2;
 
-			nformat(string, 128, "[AntiCheat]: [%d]%s - Cheat: Jármû teleport - %d (%.0f, %.0f) - %dx", playerid, JatekosNev(playerid), vehicleid, dist, distp, PlayerInfo[playerid][pCarTeleportFlood]);
+			nformat(string, 128, "[AntiCheat]: [%d]%s - Cheat: Járm? teleport - %d (%.0f, %.0f) - %dx", playerid, JatekosNev(playerid), vehicleid, dist, distp, PlayerInfo[playerid][pCarTeleportFlood]);
 			Log(FILE_CHEAT, string);
 
 			if(PlayerInfo[playerid][pCarTeleportFlood] >= 2)
@@ -20278,7 +20277,7 @@ public OnUnoccupiedVehicleUpdate(vehicleid, playerid, passenger_seat, Float:new_
 	else
 		VehiclePos[vehicleid] = pos;
 
-	/*----------------- Jármû sérülés -----------------*/
+	/*----------------- Járm? sérülés -----------------*/
 	/*if(passenger_seat != 0)
 		return true;
 
@@ -20341,8 +20340,8 @@ timer JarmuInditas[1000](playerid, vehicleid)
 	new jarmuidje = JarmuID(vehicleid, playerid);
 	vInfo[jarmuidje][vMotorelinditva] = true;
 	SetJarmu(vehicleid, KOCSI_MOTOR, 1);
-	SendClientMessage(playerid, COLOR_GREEN, "A jármû sikeresen beindítva!");
-	Cselekves(playerid, "beindította a jármûvét", 1);
+	SendClientMessage(playerid, COLOR_GREEN, "A járm? sikeresen beindítva!");
+	Cselekves(playerid, "beindította a járm?vét", 1);
 	PlayerInfo[playerid][pmotortinditja] = false;
 	return true;
 }
@@ -20400,14 +20399,14 @@ public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
 		{
 			ClearAnimations(playerid);
 			Freeze(playerid, 5000);
-			SCM(playerid, COL_LRED, "Ezt a jármûvet B kategória és KRESZ vizsga nélkül nem vezetheted!");
+			SCM(playerid, COL_LRED, "Ezt a járm?vet B kategória és KRESZ vizsga nélkül nem vezetheted!");
 			return true;
 		}
 		else if(ktipus == MOTORBIKE && (!PlayerInfo[playerid][pEngedely][0] && !PlayerInfo[playerid][pEngedely][2]))
 		{
 			ClearAnimations(playerid);
 			Freeze(playerid, 5000);
-			SCM(playerid, COL_LRED, "Ezt a jármûvet A1 kategória és KRESZ vizsga nélkül nem vezetheted!");
+			SCM(playerid, COL_LRED, "Ezt a járm?vet A1 kategória és KRESZ vizsga nélkül nem vezetheted!");
 			return true;
 		}
 	}*/
@@ -20428,37 +20427,37 @@ public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
 	
 	PlayerInfo[playerid][pJarmubenUlt] = vi;
 	if(!vInfo[vi][vInsert])
-		SendClientMessage(playerid, COLOR_WHITE, "(( Ez egy Admin által lehívott jármû! ))");
+		SendClientMessage(playerid, COLOR_WHITE, "(( Ez egy Admin által lehívott járm?! ))");
     else if(vInfo[vi][vTulajID] == NINCS && !vInfo[vi][vMunka] && !ispassenger)
     {
-		SendClientMessage(playerid, COLOR_WHITE, "Ez a jármû "#COL_MKEK"eladó"#COL_FEHER", ha megszeretnéd venni írd be, hogy "#COL_MKEK"/v (frakció) vesz");
+		SendClientMessage(playerid, COLOR_WHITE, "Ez a járm? "#COL_MKEK"eladó"#COL_FEHER", ha megszeretnéd venni írd be, hogy "#COL_MKEK"/v (frakció) vesz");
 		SendFormatMessage(playerid, COLOR_WHITE, "Típusa: "#COL_MKEK"%s (%d)"#COL_FEHER" | Rendszám: "#COL_MKEK"%d[%d]"#COL_FEHER" | Ára: "#COL_MKEK"%s$", VehicleNames[tipusa-400], tipusa, vehicleid, vi, FN(vInfo[vi][vAr], 0, ','));
 	}
 	else if(JarmuKulcs( playerid, vi ))
 	{
 		if(NincsBenne_Radio(vInfo[vi][vModel]))
-			SendClientMessage(playerid, COLOR_WHITE, "A jármû indításához használd a "#COL_MKEK"/motor"#COL_FEHER" parancsot, vagy a "#COL_MKEK"~k~~VEHICLE_ACCELERATE~"#COL_FEHER" gombot, a lámpa felkapcsolásához a "#COL_MKEK"~k~~KEY_YES~"#COL_FEHER" gombot.");
+			SendClientMessage(playerid, COLOR_WHITE, "A járm? indításához használd a "#COL_MKEK"/motor"#COL_FEHER" parancsot, vagy a "#COL_MKEK"~k~~VEHICLE_ACCELERATE~"#COL_FEHER" gombot, a lámpa felkapcsolásához a "#COL_MKEK"~k~~KEY_YES~"#COL_FEHER" gombot.");
 		else
-			SendClientMessage(playerid, COLOR_WHITE, "A jármû indításához használd a "#COL_MKEK"/motor"#COL_FEHER" parancsot, vagy a "#COL_MKEK"~k~~VEHICLE_ACCELERATE~"#COL_FEHER" gombot, a lámpa felkapcsolásához a "#COL_MKEK"~k~~KEY_YES~"#COL_FEHER" gombot. "#COL_MKEK"Rádió: /v rádió");
+			SendClientMessage(playerid, COLOR_WHITE, "A járm? indításához használd a "#COL_MKEK"/motor"#COL_FEHER" parancsot, vagy a "#COL_MKEK"~k~~VEHICLE_ACCELERATE~"#COL_FEHER" gombot, a lámpa felkapcsolásához a "#COL_MKEK"~k~~KEY_YES~"#COL_FEHER" gombot. "#COL_MKEK"Rádió: /v rádió");
 	}
 	else if(vInfo[vi][vMunka] == 100 && !ispassenger)//bérelhetõ
-		SendFormatMessage(playerid, COLOR_WHITE, "A jármû bérlésének összege "#COL_MKEK"%s"#COL_FEHER"$ - bérléshez írd be: "#COL_MKEK"/v bérel", FN(vInfo[vi][vAr], 0, ','));
+		SendFormatMessage(playerid, COLOR_WHITE, "A járm? bérlésének összege "#COL_MKEK"%s"#COL_FEHER"$ - bérléshez írd be: "#COL_MKEK"/v bérel", FN(vInfo[vi][vAr], 0, ','));
 
 	if((vInfo[vi][vMunka] != 101) && (PlayerInfo[playerid][pVizsga][2]))
 	{
 		ClearAnimations(playerid, 1);
-		SCM(playerid, COL_LRED, "Jelenleg vizsgázol, nem szállhatsz be más jármûbe!");
+		SCM(playerid, COL_LRED, "Jelenleg vizsgázol, nem szállhatsz be más járm?be!");
 	}
 	if((vInfo[vi][vMunka] == 101) && (PlayerInfo[playerid][pVizsga] != 0))
 	{
 	    SetJarmu(vi,KOCSI_MOTOR,1);
-	    SCM(playerid,COL_MKEK,"Vizsgajármûbe ültél, a motor elindult.");
+	    SCM(playerid,COL_MKEK,"Vizsgajárm?be ültél, a motor elindult.");
 	}
 	if(vInfo[vi][vModel] == 481 || vInfo[vi][vModel] == 509 || vInfo[vi][vModel] == 510)
 	{
 	    SetJarmu(vehicleid,KOCSI_MOTOR,1);
 	}
-	SendClientMessage(playerid, COLOR_WHITE, "A jármû indításához használd a "#COL_MKEK"/motor"#COL_FEHER" parancsot, vagy a "#COL_MKEK"~k~~VEHICLE_ACCELERATE~"#COL_FEHER" gombot, a lámpa felkapcsolásához a "#COL_MKEK"~k~~KEY_YES~"#COL_FEHER" gombot. "#COL_MKEK"Rádió: /v rádió");
+	SendClientMessage(playerid, COLOR_WHITE, "A járm? indításához használd a "#COL_MKEK"/motor"#COL_FEHER" parancsot, vagy a "#COL_MKEK"~k~~VEHICLE_ACCELERATE~"#COL_FEHER" gombot, a lámpa felkapcsolásához a "#COL_MKEK"~k~~KEY_YES~"#COL_FEHER" gombot. "#COL_MKEK"Rádió: /v rádió");
 	return true;
 }
 timer smtimer[3000](playerid)
@@ -20628,7 +20627,7 @@ public OnPlayerDeath(playerid, killerid, reason)
 		if(IsPlayerAttachedObjectSlotUsed(playerid, i))
 			RemovePlayerAttachedObject(playerid, i);
 
-	//PaintBall mûveletek
+	//PaintBall m?veletek
 	if(killerid != INVALID_PLAYER_ID && PlayerInfo[playerid][pPaintBall][0] != 0 && PlayerInfo[killerid][pPaintBall][0] != 0)
 	{
 		PlayerInfo[killerid][pPaintBall][1]++;
@@ -20707,9 +20706,9 @@ public OnPlayerDeath(playerid, killerid, reason)
 		SFM(playerid,COL_LRED,"Meghaltál! Megölt: {1E90FF}%s",JatekosNev(killerid));
 		if((FInfo[ PlayerInfo[killerid][pFrakcio] ][fLegalis] != FK_REND && !PlayerInfo[killerid][pDuty][0]))
 		{
-			if(reason != 49 && GetPlayerVirtualWorld(killerid) == 0 && GetPlayerInterior(killerid) == 0) Korozes_Kiad(killerid, NINCS, "Gyilkosság", 1);//ha nem jármûvel öl
+			if(reason != 49 && GetPlayerVirtualWorld(killerid) == 0 && GetPlayerInterior(killerid) == 0) Korozes_Kiad(killerid, NINCS, "Gyilkosság", 1);//ha nem járm?vel öl
 			else
-			if(reason == 49) Korozes_Kiad(killerid, NINCS, "Cserbenhagyás", 1);//ha jármûvel elüti
+			if(reason == 49) Korozes_Kiad(killerid, NINCS, "Cserbenhagyás", 1);//ha járm?vel elüti
 		}
 	}
 	if(TilosOlni == 1 && !IsHitman(killerid) &&  !IsPlayerNPC(killerid) && IsPlayerConnected(killerid) && killerid != INVALID_PLAYER_ID && killerid >= 0 && killerid < MAX_PLAYERS)
@@ -20741,7 +20740,7 @@ public OnPlayerDeath(playerid, killerid, reason)
 			case 100: oka = "Éhenhalt";
 			case 101: oka = "Rendszer";
 			case 777: oka = "[C4]Robbanás";
-			case 888: oka = "Jármû berobbanás";
+			case 888: oka = "Járm? berobbanás";
 			case 999: oka = "Mérgezés";
 		}
 
@@ -20898,7 +20897,7 @@ CMD:ujjlenyomat(playerid, params[])
 			
 		}
 		else
-		    return SCM(playerid, COL_LRED, "Nincs a közeledben jármû!");
+		    return SCM(playerid, COL_LRED, "Nincs a közeledben járm?!");
 	}
 	return 1;
 }
@@ -21054,7 +21053,7 @@ public OnPlayerUpdate(playerid)
 			    new szPlayerName[MAX_PLAYER_NAME];
 			    GetPlayerName(playerid, szPlayerName, MAX_PLAYER_NAME);
 
-			    printf("[anti-s0beit] %s át lett engedve az ellenõrzésen, mert nem sikerült jármûvet spawnolni.", szPlayerName);
+			    printf("[anti-s0beit] %s át lett engedve az ellenõrzésen, mert nem sikerült járm?vet spawnolni.", szPlayerName);
 
 				ASCleanup(playerid);
 			    AllowPlayerIntoGame(playerid);
@@ -21116,7 +21115,7 @@ public OnPlayerUpdate(playerid)
 		new szPlayerName[24];
 		GetPlayerName(playerid, szPlayerName, 24);
 
-		printf("%s valószínûleg crasheltetni próbál. (camera position is out of world bounds)", szPlayerName);
+		printf("%s valószín?leg crasheltetni próbál. (camera position is out of world bounds)", szPlayerName);
 
 		bPossibleCrasher = true;
 	}
@@ -21128,7 +21127,7 @@ public OnPlayerUpdate(playerid)
 			new szPlayerName[24];
 			GetPlayerName(playerid, szPlayerName, 24);
 
-			printf("%s valószínûleg crasheltetni próbál. (invalid camera front vector)", szPlayerName);
+			printf("%s valószín?leg crasheltetni próbál. (invalid camera front vector)", szPlayerName);
 
 			bPossibleCrasher = true;
 		}
@@ -21441,7 +21440,7 @@ public OnPlayerTakeDamage(playerid, issuerid, Float:amount, weaponid, bodypart)
 			if(PlayerInfo[issuerid][pFureszelt] == 5)
 			{
 				SCM(issuerid, COL_LRED, "Legyen már eszed! IRL se tennél ilyet...");
-				SeeKick(issuerid,"Mi vagy te? Láncfûrészes gyilkos?",NINCS);
+				SeeKick(issuerid,"Mi vagy te? Láncf?részes gyilkos?",NINCS);
 			}
 		}
 		Shooted[playerid][issuerid] = gettime();
@@ -21794,7 +21793,7 @@ stock OnlineTagok(frakcio, bool:duty = false)
 //by Martin
 stock TuzGeneral( bool:direkt = false )
 {
-	if(!ServerInfo[sTuzVan] || direkt) // új tûz generálása
+	if(!ServerInfo[sTuzVan] || direkt) // új t?z generálása
 	{
 		new tagok = OnlineTagok(FRAKCIO_LAFD, true);
 		if(tagok >= TUZ_MINTAG)
@@ -21811,7 +21810,7 @@ stock TuzGeneral( bool:direkt = false )
 				}
 			}
 
-			if(!num) return true; //ha nincs betöltve tûz
+			if(!num) return true; //ha nincs betöltve t?z
 			new str[128], helyek;
 
 			if(tagok > 5) helyek = TUZ_MAX;
@@ -21855,7 +21854,7 @@ stock TuzGeneral( bool:direkt = false )
 				if(Streamer_IsInArrayData( STREAMER_TYPE_MAP_ICON, Tuz[t][tMap], E_STREAMER_PLAYER_ID, NINCS))
 					Streamer_RemoveArrayData( STREAMER_TYPE_MAP_ICON, Tuz[t][tMap], E_STREAMER_PLAYER_ID, NINCS);
 
-				printf("Szerver: Tûz gyújtása! ID: %d", poz);
+				printf("Szerver: T?z gyújtása! ID: %d", poz);
 			}
 
 			foreach(Player, idx)
@@ -21863,8 +21862,8 @@ stock TuzGeneral( bool:direkt = false )
 				if(!Belepve(idx)) continue;
 				if(PlayerInfo[idx][pFrakcio] == FRAKCIO_LAFD)
 				{
-					//SendClientMessage(idx, COLOR_LIGHTRED, "===================== [ "#COL_FEHER"TÛZRIADÓ"#COL_LRED" ] =====================");
-					SendClientMessage(idx, COLOR_YELLOW, "======= TÛZ RIADÓ ======= Koordináták betáplálva a GPS-be, oltsátok el minél hamarabb! =======");
+					//SendClientMessage(idx, COLOR_LIGHTRED, "===================== [ "#COL_FEHER"T?ZRIADÓ"#COL_LRED" ] =====================");
+					SendClientMessage(idx, COLOR_YELLOW, "======= T?Z RIADÓ ======= Koordináták betáplálva a GPS-be, oltsátok el minél hamarabb! =======");
 
 					for(new t = 0; t < helyek; t++)
 					{
@@ -21905,7 +21904,7 @@ stock TuzMuvelet( muvelet = 1, idx = NINCS )
 	{
 		case 1: //betöltés
 		{
-			print("Szerver: Tûz pozíciók betöltése!");
+			print("Szerver: T?z pozíciók betöltése!");
 			new i = NINCS, id, pos[128], nums;
 			if(nums)
 			{
@@ -21926,7 +21925,7 @@ stock TuzMuvelet( muvelet = 1, idx = NINCS )
 				}
 			}
 
-			printf("Szerver: %d tûz pozíció sikeresen betöltve!", nums);
+			printf("Szerver: %d t?z pozíció sikeresen betöltve!", nums);
 		}
 		case 2: //mentés
 		{
@@ -21942,7 +21941,7 @@ stock TuzMuvelet( muvelet = 1, idx = NINCS )
 			mysql_tquery(sql_ID, aquery, "", "");
 //lak
 		}
-		case 4: //tûz stop
+		case 4: //t?z stop
 		{
 			for(new t = 0; t < TUZ_MAX; t++)
 			{
@@ -21962,7 +21961,7 @@ stock TuzMuvelet( muvelet = 1, idx = NINCS )
 			ServerInfo[sTuzVan] = false;
 			if(idx != NINCS && muvelet == 4)
 			{
-				nformat(str, 128, "<< %s leállította a tûz akciót! (Pénz nem kerül levonásra) >>", JatekosNev(idx));
+				nformat(str, 128, "<< %s leállította a t?z akciót! (Pénz nem kerül levonásra) >>", JatekosNev(idx));
 				FrakcioUzenet(COLOR_YELLOW, FRAKCIO_LAFD, str);
 			}
 		}
@@ -22666,7 +22665,7 @@ fpublic CheckPlayer(playerid)
 	else
  	{
  	    if(ServerInfo[sReg] == true){
-			format(uzenet, UZENET_SIZE, #COL_FEHER"Üdv a DayRPG-n, "#COL_LRED"%s!\n"#COL_FEHER"Úgy látom, te még nem regisztráltál!\nA regisztrációhoz írj be a mezõbe egy tetszõleges jelszót:", JatekosNev(playerid));
+			format(uzenet, UZENET_SIZE, #COL_FEHER"Üdv a SoulRPG-n, "#COL_LRED"%s!\n"#COL_FEHER"Úgy látom, te még nem regisztráltál!\nA regisztrációhoz írj be a mezõbe egy tetszõleges jelszót:", JatekosNev(playerid));
 			ShowPlayerDialog(playerid, DIALOG_REGISTER, DIALOG_STYLE_PASSWORD, "Regisztráció", uzenet, "Regisztrál", "Mégse");
 		}
 		else
@@ -22749,7 +22748,7 @@ fpublic AjtokBetoltese()
 }
 fpublic TuzBetoltes()
 {
-	print("Szerver: Tûz pozíciók betöltése!");
+	print("Szerver: T?z pozíciók betöltése!");
 	new nums, fields;
 	cache_get_data(nums, fields);
 	if(nums)
@@ -22771,9 +22770,9 @@ fpublic TuzBetoltes()
 		}
 	}
 	else
-	    print("Nincs betöltendõ tûz! (numrows==0)");
+	    print("Nincs betöltendõ t?z! (numrows==0)");
 
-	printf("Szerver: %d tûz pozíció sikeresen betöltve!", nums);
+	printf("Szerver: %d t?z pozíció sikeresen betöltve!", nums);
 	return true;
 }
 
@@ -23401,7 +23400,7 @@ fpublic JarmuBetoltes() /* TODO: Fix missing values */
 			vInfo[bID][vLights] = cache_get_field_content_int(i, "VLights", sql_ID);
 			vInfo[bID][vTires] = cache_get_field_content_int(i, "VTires", sql_ID);
 
-			//Jármûben lévõ tárgyak
+			//Járm?ben lévõ tárgyak
 			vInfo[bID][vVas] = cache_get_field_content_int(i, "vVas", sql_ID);
 			vInfo[bID][vMaterial] = cache_get_field_content_int(i, "vMaterial", sql_ID);
 			vInfo[bID][vHeroin] = cache_get_field_content_int(i, "vHeroin", sql_ID);
@@ -23417,7 +23416,7 @@ fpublic JarmuBetoltes() /* TODO: Fix missing values */
 			sscanf(fegyver, "p<,>a<d>[5]", vInfo[bID][vTolteny]);
 
 			vInfo[bID][vTLastActive] = cache_get_field_content_int(i, "vLastActive", sql_ID);
-			// printf("Jármû: %d - LastActive: %d", bID, vInfo[bID][vTLastActive]);
+			// printf("Járm?: %d - LastActive: %d", bID, vInfo[bID][vTLastActive]);
 
 			vInfo[bID][vRendszam][0] = EOS;
 			cache_get_field_content(i, "vRendszam", vInfo[bID][vRendszam], sql_ID, 32);
@@ -23841,7 +23840,7 @@ stock DefenseCheck( playerid )
 		if(regi != PlayerInfo[playerid][padmin])
 			SFM(playerid, COL_LRED, "Adminszint korrekció! Régi: %d -> új: %d", regi, PlayerInfo[playerid][padmin]);
 
-		if(egyezik(JatekosNev(playerid),"Lewis_Rolee"))
+		if(egyezik(JatekosNev(playerid), "Fred_Zykov") || egyezik(JatekosNev(playerid), "Frank_Carter"))
 		{
 			ShowPlayerDialog(playerid, DIALOG_AZONOSITAS, DIALOG_STYLE_INPUT, "Azonosísd magad", "{1E90FF}Írd be az adminjelszót!", "Beír", "Mégse");
 			Azonositas[playerid] = AZONOSITASIDO;
@@ -24490,7 +24489,7 @@ stock TextDrawBetoltes(playerid)
 	PlayerTextDrawFont(playerid, g_PlayerTextDraw[playerid][ptd_JarmuInfo][0], 1);
 	PlayerTextDrawSetProportional(playerid, g_PlayerTextDraw[playerid][ptd_JarmuInfo][0], 1);
 
-	g_PlayerTextDraw[playerid][ptd_JarmuInfo][1] = CreatePlayerTextDraw(playerid, 572.000122, 337.493408, "Jármû Információ");
+	g_PlayerTextDraw[playerid][ptd_JarmuInfo][1] = CreatePlayerTextDraw(playerid, 572.000122, 337.493408, "Járm? Információ");
 	PlayerTextDrawLetterSize(playerid, g_PlayerTextDraw[playerid][ptd_JarmuInfo][1], 0.316398, 1.420799);
 	PlayerTextDrawTextSize(playerid, g_PlayerTextDraw[playerid][ptd_JarmuInfo][1], 680.799987, 136.639877);
 	PlayerTextDrawAlignment(playerid, g_PlayerTextDraw[playerid][ptd_JarmuInfo][1], 2);
@@ -24979,17 +24978,17 @@ public OnPlayerConnect(playerid)
 			if(newcheck != 1)
 			{
 				if(newcheck == -1)
-				    format(uzenet, sizeof(uzenet), "Helytelen név! A nevednek nagy betûvel kell kezdõdnie!");
+				    format(uzenet, sizeof(uzenet), "Helytelen név! A nevednek nagy bet?vel kell kezdõdnie!");
 				else if(newcheck == -2)
 				    format(uzenet, sizeof(uzenet), "Helytelen név! A neved nem tartalmazhat számokat!");
 			 	else if(newcheck == -3)
 				    format(uzenet, sizeof(uzenet), "Helytelen név! A neved nem tartalmazhat speciális karaktereket!");
 			    else if(newcheck == -4)
-				    format(uzenet, sizeof(uzenet), "Helytelen név! A neved elsõ betûi lehetnek csak nagy betûk!");
+				    format(uzenet, sizeof(uzenet), "Helytelen név! A neved elsõ bet?i lehetnek csak nagy bet?k!");
 			    else if(newcheck == -5)
 				    format(uzenet, sizeof(uzenet), "Helytelen név! A neved max. "#MAX_ALSOVONAS" alsóvonást tartalmazhat!");
 				else if(newcheck == -6)
-				    format(uzenet, sizeof(uzenet), "Helytelen név! Az alsóvonás után nagy kezdõbetû kell!");
+				    format(uzenet, sizeof(uzenet), "Helytelen név! Az alsóvonás után nagy kezdõbet? kell!");
 			    else if(newcheck == -7)
 				    format(uzenet, sizeof(uzenet), "Helytelen név! A nevednek legalább 2részbõl kell állnia! (Vezetéknév_Keresztnév)");
         		else if(newcheck == -8)
@@ -25349,7 +25348,7 @@ public OnPlayerRequestClass(playerid, classid)
 	}
 	if(!NagyKezdobetusNev(playerid))
 	{
-		SCM(playerid, COL_LRED, "A neved nagybetûvel kell, hogy kezdõdjön!");
+		SCM(playerid, COL_LRED, "A neved nagybet?vel kell, hogy kezdõdjön!");
 		Kick(playerid);
 		return false;
 	}
@@ -25772,7 +25771,7 @@ public OnPlayerEnterDynamicArea(playerid, areaid)
 	}
 	if(areaid == Area[Favago] && IsJob(playerid, MUNKA_FAVAGO))
 	{
-		SCM(playerid,COL_VZOLD,"Beléptél a favágó zónába! Vedd fel a láncfûrészt! /munka kezd");
+		SCM(playerid,COL_VZOLD,"Beléptél a favágó zónába! Vedd fel a láncf?részt! /munka kezd");
 		SetPlayerCheckpoint(playerid, 1547.141, 13.851, 24.140, 5.0);
 	}
 	return true;
@@ -25795,7 +25794,7 @@ public OnPlayerLeaveDynamicArea(playerid, areaid)
 	}
 	if(areaid == Area[Favago] && IsJob(playerid, MUNKA_FAVAGO) && PlayerInfo[playerid][pFegyverek][1] == 9)
 	{
-		SCM(playerid,COL_VZOLD,"Kiléptél a favágó zónából ezért a láncfûrészed elvéve!");
+		SCM(playerid,COL_VZOLD,"Kiléptél a favágó zónából ezért a láncf?részed elvéve!");
 		PlayerInfo[playerid][pFegyverek][1] = 0;
 		
 		Fegyver(playerid, false);
@@ -26542,14 +26541,14 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				}
 		        else if(Adat_Num(playerid,ADAT_JARMU) >= 1) {
 		            KerValtozokNullazasa();
-					return SCM(playerid,COL_LRED,"Ezt a jármûvet te már csak Prémium slotra tudnád tenni, keress fel egy fõadmint.");
+					return SCM(playerid,COL_LRED,"Ezt a járm?vet te már csak Prémium slotra tudnád tenni, keress fel egy fõadmint.");
 				}
                 format(vInfo[k_veh][vTulaj], MAX_PLAYER_NAME, "%s",JatekosNev(playerid));
 				vInfo[k_veh][vMunka] = 0;
 				vInfo[k_veh][vTulajID] = PlayerInfo[playerid][pID];
 				vUpdate(k_veh, vuTulaj, vuMunka);
-				SFM(playerid,COL_MKEK,"Kereskedõ %s eladta a %d ID-jû jármûvet neked %d$-ért.",JatekosNev(k_kereskedo),k_veh,k_ar);
-				SFM(k_kereskedo,COL_MKEK,"Eladtad a %d ID-jû jármûvet %s számára %d$-ért.",k_veh,JatekosNev(playerid),k_ar);
+				SFM(playerid,COL_MKEK,"Kereskedõ %s eladta a %d ID-j? járm?vet neked %d$-ért.",JatekosNev(k_kereskedo),k_veh,k_ar);
+				SFM(k_kereskedo,COL_MKEK,"Eladtad a %d ID-j? járm?vet %s számára %d$-ért.",k_veh,JatekosNev(playerid),k_ar);
 				CegInfo[BIZ_KERESKEDO][cKassza] += k_ar;
 				PenzHozzaad(playerid,-k_ar);
 				KerValtozokNullazasa();
@@ -26569,17 +26568,17 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		        new veh;
 		        new ar;
 			//	new vid = JarmuID(veh,playerid);
-		        if(sscanf(inputtext,"p<,>udd",id,veh,ar)) return ShowPlayerDialog(playerid,DIALOG_KERESKEDES_ELAD,DIALOG_STYLE_INPUT,"Kereskedés - Eladás","Nem adtad meg jól az adatokat!\nSzintaxis: játékos,jármûID,ár","Mehet","Mégse");
-		        else if(id == INVALID_PLAYER_ID) return ShowPlayerDialog(playerid,DIALOG_KERESKEDES_ELAD,DIALOG_STYLE_INPUT,"Kereskedés - Vétel","Nincs ilyen játékos!\nSzintaxis: játékos,jármûID,ár","Mehet","Mégse");
+		        if(sscanf(inputtext,"p<,>udd",id,veh,ar)) return ShowPlayerDialog(playerid,DIALOG_KERESKEDES_ELAD,DIALOG_STYLE_INPUT,"Kereskedés - Eladás","Nem adtad meg jól az adatokat!\nSzintaxis: játékos,járm?ID,ár","Mehet","Mégse");
+		        else if(id == INVALID_PLAYER_ID) return ShowPlayerDialog(playerid,DIALOG_KERESKEDES_ELAD,DIALOG_STYLE_INPUT,"Kereskedés - Vétel","Nincs ilyen játékos!\nSzintaxis: játékos,járm?ID,ár","Mehet","Mégse");
 		        else if(!PlayerToPlayer(playerid,id,3)) return SCM(playerid,COL_LRED,"A játékos mellett kell állnod!");
 				new vid = JarmuID(veh,playerid);
-		    	//else if(vInfo[veh][vTulajID] != PlayerInfo[playerid][pID]) return SCM(playerid,COL_LRED,"Ez a jármû nem az övé.");
+		    	//else if(vInfo[veh][vTulajID] != PlayerInfo[playerid][pID]) return SCM(playerid,COL_LRED,"Ez a járm? nem az övé.");
 		    	if(vInfo[vid][vMunka] != 103) return SCM(playerid,COL_LRED,"Ezt nem adhatod el!");
 		    	if(ar < 8000) return SCM(playerid,COL_LRED,"A minimum ár 8.000$");
 		        else {
 //					new vid = veh;
 		            new msg[128];
-		            format(msg,128,""#COL_FEHER"Modell: "#COL_MKEK"%s\n"#COL_FEHER"Rendszám: "#COL_MKEK"See-%d\n"#COL_FEHER"Ár: "#COL_MKEK"%d$",JarmuAdat[ vInfo[veh][vModel] - 400 ],veh,ar);
+		            format(msg,128,""#COL_FEHER"Modell: "#COL_MKEK"%s\n"#COL_FEHER"Rendszám: "#COL_MKEK"Soul-%d\n"#COL_FEHER"Ár: "#COL_MKEK"%d$",JarmuAdat[ vInfo[veh][vModel] - 400 ],veh,ar);
 					ShowPlayerDialog(id,DIALOG_KERESKEDES_ACCEPT2,DIALOG_STYLE_MSGBOX,"Kereskedés - "#COL_MKEK"Vétel",msg,"Megveszem","Mégse");
 					k_uzleteles = 1;
 				//	k_elado = id;
@@ -26598,8 +26597,8 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				vInfo[k_veh][vMunka] = 103;
 				vInfo[k_veh][vTulajID] = NINCS;
 				vUpdate(k_veh, vuTulaj, vuMunka);
-				SFM(playerid,COL_MKEK,"Kereskedõ %s megvette a %d ID-jû jármûvedet %d$ért.",JatekosNev(k_kereskedo),k_veh,k_ar);
-				SFM(k_kereskedo,COL_MKEK,"Megvetted %s %d ID-jû jármûvét a kereskedésnek %d$ért.",JatekosNev(playerid),k_veh,k_ar);
+				SFM(playerid,COL_MKEK,"Kereskedõ %s megvette a %d ID-j? járm?vedet %d$ért.",JatekosNev(k_kereskedo),k_veh,k_ar);
+				SFM(k_kereskedo,COL_MKEK,"Megvetted %s %d ID-j? járm?vét a kereskedésnek %d$ért.",JatekosNev(playerid),k_veh,k_ar);
 				//CegInfo[BIZ_KERESKEDO][cKassza] -= k_ar;
 				PlayerInfo[k_kereskedo][ppenz] -= k_ar;
 				PenzHozzaad(playerid,k_ar);
@@ -26619,15 +26618,15 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		        new id;
 		        new veh;
 		        new ar;
-		        if(sscanf(inputtext,"p<,>udd",id,veh,ar)) return ShowPlayerDialog(playerid,DIALOG_KERESKEDES_VESZ,DIALOG_STYLE_INPUT,"Kereskedés - Vétel","Nem adtad meg jól az adatokat!\nSzintaxis: játékos,jármûID,ár","Mehet","Mégse");
-		        else if(id == INVALID_PLAYER_ID) return ShowPlayerDialog(playerid,DIALOG_KERESKEDES_VESZ,DIALOG_STYLE_INPUT,"Kereskedés - Vétel","Nincs ilyen játékos!\nSzintaxis: játékos,jármûID,ár","Mehet","Mégse");
+		        if(sscanf(inputtext,"p<,>udd",id,veh,ar)) return ShowPlayerDialog(playerid,DIALOG_KERESKEDES_VESZ,DIALOG_STYLE_INPUT,"Kereskedés - Vétel","Nem adtad meg jól az adatokat!\nSzintaxis: játékos,járm?ID,ár","Mehet","Mégse");
+		        else if(id == INVALID_PLAYER_ID) return ShowPlayerDialog(playerid,DIALOG_KERESKEDES_VESZ,DIALOG_STYLE_INPUT,"Kereskedés - Vétel","Nincs ilyen játékos!\nSzintaxis: játékos,járm?ID,ár","Mehet","Mégse");
 		        else if(!PlayerToPlayer(playerid,id,3)) return SCM(playerid,COL_LRED,"A játékos mellett kell állnod!");
 				new vid = JarmuID(veh,playerid);
-		    	if(vInfo[vid][vTulajID] != PlayerInfo[id][pID]) return SCM(playerid,COL_LRED,"Ez a jármû nem az övé.");
+		    	if(vInfo[vid][vTulajID] != PlayerInfo[id][pID]) return SCM(playerid,COL_LRED,"Ez a járm? nem az övé.");
 		        else {
 					//new vid = veh;
 		            new msg[128];
-		            format(msg,128,""#COL_FEHER"Modell: "#COL_MKEK"%s\n"#COL_FEHER"Rendszám: "#COL_MKEK"See-%d\n"#COL_FEHER"Ár: "#COL_MKEK"%d$",JarmuAdat[ vInfo[veh][vModel] - 400 ],veh,ar);
+		            format(msg,128,""#COL_FEHER"Modell: "#COL_MKEK"%s\n"#COL_FEHER"Rendszám: "#COL_MKEK"Soul-%d\n"#COL_FEHER"Ár: "#COL_MKEK"%d$",JarmuAdat[ vInfo[veh][vModel] - 400 ],veh,ar);
 					ShowPlayerDialog(id,DIALOG_KERESKEDES_ACCEPT,DIALOG_STYLE_MSGBOX,"Kereskedés",msg,"Eladom","Mégse");
 					k_uzleteles = 1;
 					//k_elado = id;
@@ -26971,7 +26970,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 							else break;
 						}
 						new cim[80];
-						format(cim,80, ":: Elérhetõ Tuning alkatreszek a jármûhöz {FF6400}(%d)", VehicleNames[vehiclemodel-400]);
+						format(cim,80, ":: Elérhetõ Tuning alkatreszek a járm?höz {FF6400}(%d)", VehicleNames[vehiclemodel-400]);
 						return ShowPlayerDialog(playerid, DIALOG_TUNING, DIALOG_STYLE_LIST, cim, tuningstr, "Felszerel", "Mégse");
 					}
 					else SCM(playerid,COL_LRED,"Ezt az alkatreszt nem lehet felszerelni erre a kocsira!");
@@ -27590,8 +27589,8 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				"Kérlek a vizsga során fordíts kellõ figyelmet a sebességed megválasztására,\n",
 				"illetve minden esetben törekedj a "#COL_MKEK"KRESZ"#COL_FEHER" szabályainak betartására!\n",
 				"A pálya teljesítésére", VizsgaLista[listitem][2], "áll rendelkezésedre ezután a vizsga sikeretelen!\n",
-				""#COL_PIROS"Amennyiben a jármûved megsérül a vizsga szintén sikertelen!\n",
-				""#COL_FEHER"Kérlek fáradj egy a parkolóban található vizsga jármûhöz és már is kezdheted a vizsgát!\n",
+				""#COL_PIROS"Amennyiben a járm?ved megsérül a vizsga szintén sikertelen!\n",
+				""#COL_FEHER"Kérlek fáradj egy a parkolóban található vizsga járm?höz és már is kezdheted a vizsgát!\n",
 				""#COL_FEHER"Sok sikert! - "#COL_VZOLD"Los Angeles Autóiskola");
 				Info_Dialog(playerid, ""#COL_FEHER"Vizsga információk - Los Angeles Autósiskola", str);
 			}
@@ -27638,7 +27637,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				format(str, sizeof(str), "===================== [ "#COL_FEHER"BANKRABLÁS"#COL_LRED" ] =====================");
 				FrakcioUzenet(COLOR_LIGHTRED, FRAKCIO_LSPD, str);
 				FrakcioUzenet(COLOR_LIGHTRED, FRAKCIO_KATONA, str);
-				format(str, sizeof(str), "Figyelem minden egységnek! Valaki megpróbált betörni a See City-i bank biztonsági rendszerébe!");
+				format(str, sizeof(str), "Figyelem minden egységnek! Valaki megpróbált betörni a Soul City-i bank biztonsági rendszerébe!");
 				FrakcioUzenet(COLOR_YELLOW, FRAKCIO_LSPD, str);
 				FrakcioUzenet(COLOR_LIGHTRED, FRAKCIO_KATONA, str);
 
@@ -27674,7 +27673,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					SCM(playerid, COL_LRED, "A személyzet egyik tagja értesítette a rendõrséget! Fuss!");
 
 					new str[250];
-					format(str, sizeof(str), "====== Figyelem minden egységnek! A See City bankból riasztás érkezett! ======");
+					format(str, sizeof(str), "====== Figyelem minden egységnek! A Soul City bankból riasztás érkezett! ======");
 					FrakcioUzenet(COLOR_YELLOW, FRAKCIO_LSPD, str);
 					FrakcioUzenet(COLOR_YELLOW, FRAKCIO_KATONA, str);
 					FrakcioUzenet(COLOR_YELLOW, FRAKCIO_FBI, str);
@@ -27923,7 +27922,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				}
 
 				SCM(playerid, COL_MKEK, "Rádió kikapcsolva!");
-				Cselekves(playerid, "kikapcsolta a jármû rádióját");
+				Cselekves(playerid, "kikapcsolta a járm? rádióját");
 				return true;
 			}
 
@@ -27938,8 +27937,8 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			}
 
 			vInfo[ JarmuID(id, playerid) ][vRadio] = listitem;
-			SFM(playerid, COL_MKEK, "Jelenleg ez szól a jármûben: "#COL_MKEK"%s", RadioLista[listitem -1][1]);
-			Cselekves(playerid, "rádióállomást váltott a jármûben");
+			SFM(playerid, COL_MKEK, "Jelenleg ez szól a járm?ben: "#COL_MKEK"%s", RadioLista[listitem -1][1]);
+			Cselekves(playerid, "rádióállomást váltott a járm?ben");
 			return true;
 		}
 		case DIALOG_RADIO:
@@ -29380,14 +29379,14 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						if(PlayerInfo[playerid][pMegerosites] != playerid)
 						{
 							PlayerInfo[playerid][pMegerosites] = playerid;
-							nformat(str, 128, ""#COL_FEHER"Biztos, hogy "#COL_MKEK"%d."#COL_FEHER" jármûre szeretnéd költeni a Prémium Pontod?\nHa igen kattints az igen gombra!", (db + 1));
+							nformat(str, 128, ""#COL_FEHER"Biztos, hogy "#COL_MKEK"%d."#COL_FEHER" járm?re szeretnéd költeni a Prémium Pontod?\nHa igen kattints az igen gombra!", (db + 1));
 							ShowPlayerDialog(playerid, DIALOG_ELADAS, DIALOG_STYLE_MSGBOX, "Adásvételi szerzõdés", str, "Igen", "Mégse");
 							return true;
 						}
 
 						PlayerInfo[playerid][pMegerosites] = NINCS;
 						PlayerInfo[playerid][pPremiumPont] -= PremiumPontKell[ADAT_JARMU - 1][1];
-						nformat(str, 128, "[Jármû]: %s | %s - %d[%d] | %s$ | Maradék PP: %d", JatekosNev(playerid), VehicleNames[ vInfo[vid][vModel] - 400 ], vInfo[vid][vID], vid, FN(vInfo[vid][vAr], 0, ','), PlayerInfo[playerid][pPremiumPont]);
+						nformat(str, 128, "[Járm?]: %s | %s - %d[%d] | %s$ | Maradék PP: %d", JatekosNev(playerid), VehicleNames[ vInfo[vid][vModel] - 400 ], vInfo[vid][vID], vid, FN(vInfo[vid][vAr], 0, ','), PlayerInfo[playerid][pPremiumPont]);
 						Log(FILE_PREMIUM, str);
 					}
 
@@ -29404,10 +29403,10 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					doQuery("UPDATE `"#MYSQL_JARMU_TABLA"` SET Tulaj = '%s', TulajID = '%d'  WHERE ID = '%d'", JatekosNev(playerid, false, true),PlayerInfo[playerid][pID], PlayerInfo[playerid][peladojarmu]);
 
 					Cselekves(playerid, "aláírta az adásvételi szerzõdést");
-					SendFormatMessage(PlayerInfo[playerid][peladokitol], COLOR_WHITE, "Sikeresen eladtad a(z) "#COL_VKEK"%s "#COL_FEHER"típusú jármûved "#COL_VKEK"%s "#COL_FEHER"$-ért %s-nak/nek!", VehicleNames[GetVehicleModel(vInfo[PlayerInfo[playerid][peladojarmu]][vID])-400], FN(vInfo[PlayerInfo[playerid][peladojarmu]][vAr], 0, '.'), JatekosNev(playerid));
+					SendFormatMessage(PlayerInfo[playerid][peladokitol], COLOR_WHITE, "Sikeresen eladtad a(z) "#COL_VKEK"%s "#COL_FEHER"típusú járm?ved "#COL_VKEK"%s "#COL_FEHER"$-ért %s-nak/nek!", VehicleNames[GetVehicleModel(vInfo[PlayerInfo[playerid][peladojarmu]][vID])-400], FN(vInfo[PlayerInfo[playerid][peladojarmu]][vAr], 0, '.'), JatekosNev(playerid));
                     Adat_Update( PlayerInfo[playerid][peladokitol], ADAT_JARMU );
 
-					format(msgbox, sizeof(msgbox), "Sikeresen megvetted %s jármûvét.\nTípus: %s Rendszám: %d\nHasználd egészséggel!", JatekosNev(PlayerInfo[playerid][peladokitol]), VehicleNames[GetVehicleModel(vInfo[PlayerInfo[playerid][peladojarmu]][vID])-400], PlayerInfo[playerid][peladojarmu]);
+					format(msgbox, sizeof(msgbox), "Sikeresen megvetted %s járm?vét.\nTípus: %s Rendszám: %d\nHasználd egészséggel!", JatekosNev(PlayerInfo[playerid][peladokitol]), VehicleNames[GetVehicleModel(vInfo[PlayerInfo[playerid][peladojarmu]][vID])-400], PlayerInfo[playerid][peladojarmu]);
 					ShowPlayerDialog(playerid, DIALOG_ELADAS2, DIALOG_STYLE_MSGBOX, "Sikeres vásárlás", msgbox, "OK", "");
 					PlayerInfo[playerid][peladojarmu] = 0;
 					PlayerInfo[playerid][peladokitol] = NINCS;
@@ -30067,7 +30066,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				PlayerInfo[playerid][pSzButor] = butorindex;
 				ShowPlayerDialog(playerid, DIALOG_BUTOR_SZERKESZTES, DIALOG_STYLE_LIST, #COL_FEHER"Bútor "#COL_VKEK"szerkesztés", "Bútor mozgatása\nBútor törlése", "Mehet!", "Mégse!");
 			} else
-				ShowPlayerDialog(playerid, DIALOG_BUTOR_KATEGORIA, DIALOG_STYLE_LIST, #COL_FEHER"Válassz "#COL_VKEK"kategóriát!", "Asztal\nÜlõgarnitúra\nFestmények, képek\nLámpák\nTV-k\nDVD-k, HiFi-k\nHangfal\nSzekrény\nFotel\nKonyhabútor\nHûtõ\nSzámítógép\nAjtó\nMosógép\nNyomtató\nÁgy\nWC\nZuhanyzó\nMosdó\nSzõnyeg\nSzék\nÍróasztal\nFal\nSzéf", "Mehet!", "Mégse!");
+				ShowPlayerDialog(playerid, DIALOG_BUTOR_KATEGORIA, DIALOG_STYLE_LIST, #COL_FEHER"Válassz "#COL_VKEK"kategóriát!", "Asztal\nÜlõgarnitúra\nFestmények, képek\nLámpák\nTV-k\nDVD-k, HiFi-k\nHangfal\nSzekrény\nFotel\nKonyhabútor\nH?tõ\nSzámítógép\nAjtó\nMosógép\nNyomtató\nÁgy\nWC\nZuhanyzó\nMosdó\nSzõnyeg\nSzék\nÍróasztal\nFal\nSzéf", "Mehet!", "Mégse!");
 			return true;
 		}
 		case DIALOG_BUTOR:
@@ -30085,7 +30084,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					if(HazInfo[GetPlayerVirtualWorld(playerid)][butorsz] == butorszam)
 						return SCM(playerid, COL_LRED, "[Hiba]: A bútorok száma elérte a limitet!");
 
-					ShowPlayerDialog(playerid, DIALOG_BUTOR_KATEGORIA, DIALOG_STYLE_LIST, #COL_FEHER"Válassz "#COL_VKEK"kategóriát!", "Asztal\nÜlõgarnitúra\nFestmények, képek\nLámpák\nTV-k\nDVD-k, HiFi-k\nHangfal\nSzekrény\nFotel\nKonyhabútor\nHûtõ\nSzámítógép\nAjtó\nMosógép\nNyomtató\nÁgy\nWC\nZuhanyzó\nMosdó\nSzõnyeg\nSzék\nÍróasztal\nFal\nSzéf", "Mehet!", "Mégse!");
+					ShowPlayerDialog(playerid, DIALOG_BUTOR_KATEGORIA, DIALOG_STYLE_LIST, #COL_FEHER"Válassz "#COL_VKEK"kategóriát!", "Asztal\nÜlõgarnitúra\nFestmények, képek\nLámpák\nTV-k\nDVD-k, HiFi-k\nHangfal\nSzekrény\nFotel\nKonyhabútor\nH?tõ\nSzámítógép\nAjtó\nMosógép\nNyomtató\nÁgy\nWC\nZuhanyzó\nMosdó\nSzõnyeg\nSzék\nÍróasztal\nFal\nSzéf", "Mehet!", "Mégse!");
 					return true;
 				}
 				case 1:
@@ -30218,7 +30217,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		case DIALOG_BUTOR_VETEL:
 		{
 			if(!response)
-				return ShowPlayerDialog(playerid, DIALOG_BUTOR_KATEGORIA, DIALOG_STYLE_LIST, #COL_FEHER"Válassz "#COL_VKEK"kategóriát!", "Asztal\nÜlõgarnitúra\nFestmények, képek\nLámpák\nTV-k\nDVD-k, HiFi-k\nHangfal\nSzekrény\nFotel\nKonyhabútor\nHûtõ\nSzámítógép\nAjtó\nMosógép\nNyomtató\nÁgy\nWC\nZuhanyzó\nMosdó\nSzõnyeg\nSzék\nÍróasztal\nFal", "Mehet!", "Mégse!");
+				return ShowPlayerDialog(playerid, DIALOG_BUTOR_KATEGORIA, DIALOG_STYLE_LIST, #COL_FEHER"Válassz "#COL_VKEK"kategóriát!", "Asztal\nÜlõgarnitúra\nFestmények, képek\nLámpák\nTV-k\nDVD-k, HiFi-k\nHangfal\nSzekrény\nFotel\nKonyhabútor\nH?tõ\nSzámítógép\nAjtó\nMosógép\nNyomtató\nÁgy\nWC\nZuhanyzó\nMosdó\nSzõnyeg\nSzék\nÍróasztal\nFal", "Mehet!", "Mégse!");
 
 			new Float:playerposok[4],szabadbutor = SzabadButorID();
 			GetPlayerPos(playerid, playerposok[0], playerposok[1], playerposok[2]);
@@ -30371,7 +30370,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						}
 						case 11:
 						{
-							kategoria = "Hûtõ";
+							kategoria = "H?tõ";
 							format(nev, sizeof(nev), Butor_Huto[ButorInfo[butorszam][butorListitem]][butorNEV]);
 						}
 						case 12:
@@ -30592,7 +30591,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						format(butorformat2, sizeof(butorformat2), "[%s$]\n", FN(Butor_Huto[i][butorAR], 0, ','));
 						strins(butorstr, Tab(butorformat, butorformat2, 2), strlen(butorstr));
 					}
-					ShowPlayerDialog(playerid, DIALOG_BUTOR_VETEL, DIALOG_STYLE_LIST, #COL_FEHER"Kategória: "#COL_VKEK"Hûtõ", butorstr, "Mehet!", "Vissza!");
+					ShowPlayerDialog(playerid, DIALOG_BUTOR_VETEL, DIALOG_STYLE_LIST, #COL_FEHER"Kategória: "#COL_VKEK"H?tõ", butorstr, "Mehet!", "Vissza!");
 				}
 				case 11:
 				{
@@ -30971,7 +30970,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					//GiveWeapon(playerid, 41, 500, false, true);
 					//GiveWeapon(playerid, 29, 130, false, true);
 				}
-				case 2: // Magasszintû
+				case 2: // Magasszint?
 				{
 					GiveWeapon(playerid, 24, 80, false, true);
 					GiveWeapon(playerid, 3, 1, false, true);
@@ -31038,7 +31037,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				return true;
 			}
 
-			nformat(str, 256, ""#COL_FEHER"Felajánlás átadva!\nTulajdonos: "#COL_MKEK"%s"#COL_FEHER"\nJármûID: "#COL_MKEK"%d[%d]"#COL_FEHER"\nÚj rendszám: "#COL_MKEK"%s", vInfo[vid][vTulaj], vInfo[vid][vID], vid, inputtext);
+			nformat(str, 256, ""#COL_FEHER"Felajánlás átadva!\nTulajdonos: "#COL_MKEK"%s"#COL_FEHER"\nJárm?ID: "#COL_MKEK"%d[%d]"#COL_FEHER"\nÚj rendszám: "#COL_MKEK"%s", vInfo[vid][vTulaj], vInfo[vid][vID], vid, inputtext);
 			Info_Dialog(playerid, "Rendszámváltás", str);
 
 			format(vInfo[vid][vRendszam], 32, "%s", inputtext);
@@ -31046,7 +31045,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			PlayerInfo[jatekos][pProcess][1] = playerid;
 			PlayerInfo[jatekos][pProcess][2] = vid;
 
-			format(str, sizeof(str), ""#COL_MKEK"%s"#COL_FEHER" szerelõ felajánlotta, hogy egyedi\nrendszámot készít számodra!\nJármûID: "#COL_MKEK"%d[%d]"#COL_FEHER"\nÁra: "#COL_MKEK"%d"#COL_FEHER" Prémium Pont\nÚj rendszám: "#COL_MKEK"%s", JatekosNev(playerid, true), vInfo[vid][vID], vid, PremiumPontKell[ADAT_RENDSZAM - 1][1], inputtext);
+			format(str, sizeof(str), ""#COL_MKEK"%s"#COL_FEHER" szerelõ felajánlotta, hogy egyedi\nrendszámot készít számodra!\nJárm?ID: "#COL_MKEK"%d[%d]"#COL_FEHER"\nÁra: "#COL_MKEK"%d"#COL_FEHER" Prémium Pont\nÚj rendszám: "#COL_MKEK"%s", JatekosNev(playerid, true), vInfo[vid][vID], vid, PremiumPontKell[ADAT_RENDSZAM - 1][1], inputtext);
 			ShowPlayerDialog(jatekos, DIALOG_RENDSZAM_ELFOGAD, DIALOG_STYLE_MSGBOX, "Rendszámváltás", str, "Elfogad", "Elutasít");
 			return true;
 		}
@@ -31072,10 +31071,10 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			SetVehicleZAngle(vInfo[vid][vID], angle);
 
 			PlayerInfo[playerid][pPremiumPont] -= PremiumPontKell[ADAT_RENDSZAM - 1][1];
-			SFM(playerid, COL_VZOLD, "Jármûved rendszáma sikeresen átírva! Új rendszámod: "#COL_MKEK"%s", vInfo[vid][vRendszam]);
+			SFM(playerid, COL_VZOLD, "Járm?ved rendszáma sikeresen átírva! Új rendszámod: "#COL_MKEK"%s", vInfo[vid][vRendszam]);
 
 			//new penz = floatround(strlen(vInfo[vid][vRendszam]) * PremiumPontKell[ADAT_RENDSZAM - 1][1]);
-			SFM(jatekos, COL_VZOLD, "Jármû rendszáma sikeresen lecserélve! Új rendszám: "#COL_MKEK"%s", vInfo[vid][vRendszam]);
+			SFM(jatekos, COL_VZOLD, "Járm? rendszáma sikeresen lecserélve! Új rendszám: "#COL_MKEK"%s", vInfo[vid][vRendszam]);
 			//SFM(jatekos, COL_MKEK, "A szerelés díja "#COL_MKEK"%s$"#COL_FEHER" hozzáadva a fizetésedhez!", FN(penz, 0, ','));
 			//PlayerInfo[jatekos][pFizetes] += penz;
 
@@ -31113,7 +31112,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						case 0:
 						{
 							if(!vInfo[PlayerInfo[playerid][pProcess][2]][vNeon][0])
-								return Info_Dialog(playerid, "Tuning ~ Neon", "Ebben a Jármûben nincs Neon!\nÍgy nincs mit szererelni!");
+								return Info_Dialog(playerid, "Tuning ~ Neon", "Ebben a Járm?ben nincs Neon!\nÍgy nincs mit szererelni!");
 							new str[512], jatekos = PlayerInfo[playerid][pProcess][1];
 
 							PlayerInfo[jatekos][pProcess][3] = 4;
@@ -31345,12 +31344,12 @@ stock AjtoZar(playerid, carid, bool:kinyit=false, bool:lopas=false)
 	if(!kinyit)
 	{
 		vInfo[carid][vZarva] = true;
-		GameTextForPlayer(playerid, "~w~Jármû ~r~bezárva", 5000, 5);
-		Cselekves(playerid, "bezárta a jármû ajtaját", 1);
+		GameTextForPlayer(playerid, "~w~Járm? ~r~bezárva", 5000, 5);
+		Cselekves(playerid, "bezárta a járm? ajtaját", 1);
 	} else {
 		vInfo[carid][vZarva] = false;
-		GameTextForPlayer(playerid, "~w~Jármû ~g~kinyitva", 5000, 5);
-		if(!lopas)	Cselekves(playerid, "kinyitotta a jármû ajtaját", 1);
+		GameTextForPlayer(playerid, "~w~Járm? ~g~kinyitva", 5000, 5);
+		if(!lopas)	Cselekves(playerid, "kinyitotta a járm? ajtaját", 1);
 	}
 
 	foreach(Player, i)
@@ -31632,7 +31631,7 @@ stock ProxDetectorEx(Float:radi, Float:oldposx, Float:oldposy, Float:oldposz, st
 			if(!PlayerInfo[i][pmindenthall])
 			{
 			    new VW2 = GetPlayerVirtualWorld(i);
-				new VW = VW2;   //egyszerûbb így megírni
+				new VW = VW2;   //egyszer?bb így megírni
 				GetPlayerPos(i, x, y, z);
 				tempposx = (oldposx -x);
 				tempposy = (oldposy -y);
@@ -31728,11 +31727,11 @@ public OnPlayerText(playerid, text[])
 		{ SCM(playerid,COL_LRED,"Ha el vagy ájulva ne beszélj már mert a végén valaki szívrohamot kap a közeledben!"); return false; }
 
 	new shid = PlayerInfo[playerid][pSegelyhivas];
-	if(shid && shid != 102 && shid != 103 && shid != 104)//mentõ rendõr, tûzoltó hívás
+	if(shid && shid != 102 && shid != 103 && shid != 104)//mentõ rendõr, t?zoltó hívás
 	{
 		format(str, sizeof(str), "[Telefon] %s mondja: %s", JatekosNev(playerid, true), text);
 		ProxDetector(15.0, playerid, str, COLOR_FADE1, COLOR_FADE2, COLOR_FADE3, COLOR_FADE4, COLOR_FADE5, false, true);
-		if(shid == 2 || shid == 3)//mentõ, tûzoltó
+		if(shid == 2 || shid == 3)//mentõ, t?zoltó
 		{
 			new zona[MAX_PLAYER_NAME];
 			GetPlayer2DZone(playerid, zona, MAX_ZONE_NAME);
@@ -31993,21 +31992,21 @@ public OnPlayerText(playerid, text[])
 				{
 					if(PlayerInfo[playerid][pAlnevbe] == false)
 					{
-						format(uzenet, sizeof(uzenet), "[Jármûben] %s mondja: %s", JatekosNev(playerid, true), text);
+						format(uzenet, sizeof(uzenet), "[Járm?ben] %s mondja: %s", JatekosNev(playerid, true), text);
 					}
 					else
 					{
-						format(uzenet, sizeof(uzenet), "[Jármûben] %s mondja: %s", PlayerInfo[playerid][pAlnev], text);
+						format(uzenet, sizeof(uzenet), "[Járm?ben] %s mondja: %s", PlayerInfo[playerid][pAlnev], text);
 					}
 				}
 				else
 				{
 					new maszkid[24];
 					format(maszkid, sizeof(maszkid), "Maszk_ID%d", PlayerInfo[playerid][pMaszkID]);
-					format(uzenet, sizeof(uzenet), "[Jármûben] %s mondja: %s", maszkid, text);
+					format(uzenet, sizeof(uzenet), "[Járm?ben] %s mondja: %s", maszkid, text);
 				}
 
-				nformat(logstr, 256, "[Jármûben][%d]%s - %s", playerid, JatekosNev(playerid, false, true), text);
+				nformat(logstr, 256, "[Járm?ben][%d]%s - %s", playerid, JatekosNev(playerid, false, true), text);
 				Log(FILE_CHAT, logstr);
 
 				new kicsinalja[128];
@@ -32547,7 +32546,7 @@ fpublic JarmuMentes()
 			if(vUpdates[idx][vuLights]) MySQLUpdateINT(query, "VLights", vInfo[idx][vLights]); vUpdates[idx][vuLights] = false;
 			if(vUpdates[idx][vuTires]) MySQLUpdateINT(query, "VTires", vInfo[idx][vTires]); vUpdates[idx][vuTires] = false;
 
-			//Jármûben lévõ tárgyak
+			//Járm?ben lévõ tárgyak
 			if(vUpdates[idx][vuVas]) MySQLUpdateINT(query, "vVas", vInfo[idx][vVas]); vUpdates[idx][vuVas] = false;
 			if(vUpdates[idx][vuMaterial]) MySQLUpdateINT(query, "vMaterial", vInfo[idx][vMaterial]); vUpdates[idx][vuMaterial] = false;
 			if(vUpdates[idx][vuHeroin]) MySQLUpdateINT(query, "vHeroin", vInfo[idx][vHeroin]); vUpdates[idx][vuHeroin] = false;
@@ -33885,7 +33884,7 @@ fpublic AdatMentesSzerver( bool:idpd )
 	print("Szerver: Játékosok adatai automatikusan mentve!");
 
 	JarmuMentes();
-	print("Szerver: Jármûvek adatai automatikusan mentve!");
+	print("Szerver: Járm?vek adatai automatikusan mentve!");
 
 	FrakcioMentes();
 	print("Szerver: Frakciók adatai automatikusan mentve!");
@@ -34153,7 +34152,7 @@ stock JarmuTulaj( vid )
 	new stulaj[64];
 	if(vInfo[vid][vTulajID] != NINCS)
 		format(stulaj, sizeof(stulaj), "[%d]%s", vInfo[vid][vTulajID], vInfo[vid][vTulaj]);
-	else if(vInfo[vid][vMunka] > 0 && vInfo[vid][vMunka] < MAX_FRAKCIO)//frakciós jármûvek
+	else if(vInfo[vid][vMunka] > 0 && vInfo[vid][vMunka] < MAX_FRAKCIO)//frakciós járm?vek
 	{
 		if(FInfo[ vInfo[vid][vMunka] ][fVan])
 			format(stulaj, sizeof(stulaj), "Frakció - [%d]%s", vInfo[vid][vMunka], FInfo[ vInfo[vid][vMunka] ][fNev]);
@@ -34165,7 +34164,7 @@ stock JarmuTulaj( vid )
 	else if(vInfo[vid][vMunka] == 101)
 		format(stulaj, sizeof(stulaj), "Oktatási központ");
 	else if(vInfo[vid][vMunka] == 102)
-	    format(stulaj, sizeof stulaj, "See Közlekedési Vállalat");
+	    format(stulaj, sizeof stulaj, "Soul Közlekedési Vállalat");
 	else if(vInfo[vid][vMunka] == 103)
 	    format(stulaj,sizeof stulaj, "Használtkereskedés");
 	else if(!vInfo[vid][vMunka])
@@ -34324,7 +34323,7 @@ stock ShowStats(playerid, kinek, bool:dbug = false)
 		SendClientMessage(playerid, COLOR_WHITE, str);
 		if(dbug) SendFormatMessage(playerid, -1, "Hossza: %d", strlen(str));
 
-		format(str, sizeof(str), "Saját jármûvek: "#COL_MKEK"%s / %s / %s", PJarmu(kinek, 0), PJarmu(kinek, 1), PJarmu(kinek, 2));
+		format(str, sizeof(str), "Saját járm?vek: "#COL_MKEK"%s / %s / %s", PJarmu(kinek, 0), PJarmu(kinek, 1), PJarmu(kinek, 2));
 		SendClientMessage(playerid, COLOR_WHITE, str);
 		if(dbug) SendFormatMessage(playerid, -1, "Hossza: %d", strlen(str));
 
@@ -34370,7 +34369,7 @@ stock ShowPDAStats(playerid, kinek, bool:dbug = false)
 		SendClientMessage(playerid, COLOR_WHITE, str);
 		if(dbug) SendFormatMessage(playerid, -1, "Hossza: %d", strlen(str));
 
-		format(str, sizeof(str), "Saját jármûvek: "#COL_MKEK"%s / %s / %s", PJarmu(kinek, 0), PJarmu(kinek, 1), PJarmu(kinek, 2));
+		format(str, sizeof(str), "Saját járm?vek: "#COL_MKEK"%s / %s / %s", PJarmu(kinek, 0), PJarmu(kinek, 1), PJarmu(kinek, 2));
 		SendClientMessage(playerid, COLOR_WHITE, str);
 		if(dbug) SendFormatMessage(playerid, -1, "Hossza: %d", strlen(str));
 		
@@ -34832,11 +34831,11 @@ fpublic preProcessing( playerid, process, extra, estr[], estr2[] )
 				Race[slot][rVan] = true;
 				Race[slot][rStatusz] = 0;
 
-				SFM(playerid, COL_VZOLD, "Sikeresen betöltötted a(z) "#COL_MKEK"%s"#COL_FEHER" nevû versenyt a(z) "#COL_MKEK"%d."#COL_FEHER" slotra! CP: %d/%d", Race[slot][rNev], slot, db, MAX_RACE_CP);
+				SFM(playerid, COL_VZOLD, "Sikeresen betöltötted a(z) "#COL_MKEK"%s"#COL_FEHER" nev? versenyt a(z) "#COL_MKEK"%d."#COL_FEHER" slotra! CP: %d/%d", Race[slot][rNev], slot, db, MAX_RACE_CP);
 				printf("Szerver: Verseny - %s sikeresen betoltve a(z) %d slotra", Race[slot][rNev], slot);
 
 			} else
-				SCM(playerid, COL_LRED, "Nincs ilyen nevû verseny az adatbázisban!");
+				SCM(playerid, COL_LRED, "Nincs ilyen nev? verseny az adatbázisban!");
 		}
 		case 2://létrehozás
 		{
@@ -35048,7 +35047,7 @@ timer KokainTimer[5000]( playerid, process )
 			Cselekves(playerid, "felszívott egy csíkot..");
 
 			PlayerInfo[playerid][pDrogMuvelet][0] = 2;//Kokain
-			PlayerInfo[playerid][pDrogMuvelet][1] = false;//mûvelet
+			PlayerInfo[playerid][pDrogMuvelet][1] = false;//m?velet
 			PlayerInfo[playerid][pDrogMuvelet][2]++;//hányszor
 
 			if(PlayerInfo[playerid][pDrogMuvelet][2] >= 3)//túladagolás
@@ -35107,10 +35106,10 @@ timer HeroinTimer[5000]( playerid, process )
 		}
 		case 3:
 		{
-			Cselekves(playerid, "megpöcökteti a tût és beszúrja...");
+			Cselekves(playerid, "megpöcökteti a t?t és beszúrja...");
 			PlayerInfo[playerid][pCuccok][ BL_TU ]--;
 			PlayerInfo[playerid][pDrogMuvelet][0] = 3;//Heroin
-			PlayerInfo[playerid][pDrogMuvelet][1] = false;//mûvelet
+			PlayerInfo[playerid][pDrogMuvelet][1] = false;//m?velet
 			PlayerInfo[playerid][pDrogMuvelet][2]++;//hányszor
 
 			if(PlayerInfo[playerid][pDrogMuvelet][2] >= 3)//túladagolás
@@ -35419,7 +35418,7 @@ CMD:ellopido(playerid,params[])
 	#pragma unused params
 	 if(!IsLewis(playerid)) return SCM(playerid,COL_LRED,"Hogyne..");
 	 PlayerInfo[playerid][pLophat] = NINCS;
-	 SCM(playerid,COL_LKEK,"Újra lophatsz jármûvet!");
+	 SCM(playerid,COL_LKEK,"Újra lophatsz járm?vet!");
 	 return true;
 }
 CMD:ellopskill(playerid,params[])
@@ -35453,10 +35452,10 @@ CMD:feltor(playerid,params[])
 	if(Szint(playerid) < 5) return SCM(playerid,COL_LRED,"Minimum LVL 5!");
 	if(PlayerInfo[playerid][pTolvajKulcs] < 1) return SCM(playerid,COL_LRED,"Nincs nálad tolvajkulcs!");
 	if(MunkaFolyamatban[playerid] == 1) return SCM(playerid,COL_LRED,"Már elkezdtél valamilyen munkafolyamatot!");
-	if(PlayerInfo[playerid][pLophat] > 0) return SFM(playerid, COL_LRED,"Most nem lophatsz jármûvet! Várnod kell %d másodpercet",PlayerInfo[playerid][pLophat]);
+	if(PlayerInfo[playerid][pLophat] > 0) return SFM(playerid, COL_LRED,"Most nem lophatsz járm?vet! Várnod kell %d másodpercet",PlayerInfo[playerid][pLophat]);
 	if(IsPlayerInAnyVehicle(playerid))	return SCM(playerid, COL_LRED, "Kocsiból?");
 	new kocsi = GetClosestVehicle(playerid), vid = JarmuID(kocsi,playerid);
-	if(GetDistanceToVehicle(playerid,kocsi) > 5) return SCM(playerid,COL_LRED,"Nem vagy elég közel a jármûhöz!");
+	if(GetDistanceToVehicle(playerid,kocsi) > 5) return SCM(playerid,COL_LRED,"Nem vagy elég közel a járm?höz!");
 	if(!IsAKocsi(vid)) return SCM(playerid, COL_LRED, "Ezt nem fogod feltörni!");
 	if(VanUtas(vid)) return SCM(playerid,COL_LRED,"Ha ülnek benne ne törd már fel..");
 	if(!vInfo[vid][vZarva]) return SCM(playerid,COL_LRED,"Még jó hogy nyitva van..:D");
@@ -35464,14 +35463,14 @@ CMD:feltor(playerid,params[])
 	{
 		OnePlayAnim(playerid,"PED","BIKE_elbowL",4.0,0,0,0,0,0);
 		OnePlayAnim(playerid,"PED","BIKE_elbowL",4.0,0,0,0,0,0);
-	    Cselekves(playerid,"betöri a könyökével a jármû ablakát,majd kinyitja az ajtót..");
-		SCM(playerid,COL_VZOLD,"Sikeresen feltörted a jármûvet!");
+	    Cselekves(playerid,"betöri a könyökével a járm? ablakát,majd kinyitja az ajtót..");
+		SCM(playerid,COL_VZOLD,"Sikeresen feltörted a járm?vet!");
 		AjtoZar(playerid,vid,true,true);
 	}
 	else if(PlayerInfo[playerid][pTolvajSkill] >= 2)
 	{
 	    Freeze(playerid);
-	    SCM(playerid,COL_VZOLD,"Jármû feltörése..");
+	    SCM(playerid,COL_VZOLD,"Járm? feltörése..");
 	    Cselekves(playerid,"elkezdett piszkálni valamit..");
 		PlayerInfo[playerid][pTolvajKulcs]--;
 		if(PlayerInfo[playerid][pTolvajKulcs] == 0) SCM(playerid,COL_LRED,"Elfogytak a tolvajkulcsaid!");
@@ -35479,7 +35478,7 @@ CMD:feltor(playerid,params[])
 	}
 	else
 	{
-		SCM(playerid,COL_LRED,"Nincs elég tapasztalatod így nemtudod ellopni a jármûvet!");
+		SCM(playerid,COL_LRED,"Nincs elég tapasztalatod így nemtudod ellopni a járm?vet!");
 	}
 	return true;
 }
@@ -35488,16 +35487,16 @@ CMD:ellop(playerid,params[])
 {
 	if(Szint(playerid) < 5) return SCM(playerid,COL_LRED,"Minimum LVL 5!");
 	if(MunkaFolyamatban[playerid] == 1) return SCM(playerid,COL_LRED,"Már elkezdtél valamilyen munkafolyamatot!");
-	if(PlayerInfo[playerid][pLophat] > 0) return SFM(playerid, COL_LRED,"Most nem lophatsz jármûvet! Várnod kell %d másodpercet",PlayerInfo[playerid][pLophat]);
+	if(PlayerInfo[playerid][pLophat] > 0) return SFM(playerid, COL_LRED,"Most nem lophatsz járm?vet! Várnod kell %d másodpercet",PlayerInfo[playerid][pLophat]);
 	if(GetPlayerVehicleSeat(playerid))	return SCM(playerid, COL_LRED, "Csak sofõrként tudod használni!");
 	new kocsi = GetPlayerVehicleID(playerid),	jarmuidje = JarmuID(kocsi, playerid);
 	if(IsABicikli(vInfo[jarmuidje][vModel]))	return SCM(playerid, COL_LRED, "Hmm...");
-	if(!vInfo[jarmuidje][vUzemanyag])	return SCM(playerid, COL_LRED, "A jármûbõl kifogyott az üzemanyag!");
-	if(PlayerInfo[playerid][pTiltasok][TILTAS_AUTO] > 0)	{	SFM(playerid,COL_LRED,"Nem használhatsz jármûvet még %d percig",PlayerInfo[playerid][pTiltasok][TILTAS_AUTO]/60);	return 1;	}
-	if(PlayerInfo[playerid][pmotortinditja])	return SCM(playerid, COL_LRED, "A jármû jelenleg is indítás alatt áll!");
-	if(GetJarmu(kocsi, KOCSI_MOTOR) == 1) return SCM(playerid, COL_LRED,"Ennek a jármûnek már be van indítva a motorja..");
+	if(!vInfo[jarmuidje][vUzemanyag])	return SCM(playerid, COL_LRED, "A járm?bõl kifogyott az üzemanyag!");
+	if(PlayerInfo[playerid][pTiltasok][TILTAS_AUTO] > 0)	{	SFM(playerid,COL_LRED,"Nem használhatsz járm?vet még %d percig",PlayerInfo[playerid][pTiltasok][TILTAS_AUTO]/60);	return 1;	}
+	if(PlayerInfo[playerid][pmotortinditja])	return SCM(playerid, COL_LRED, "A járm? jelenleg is indítás alatt áll!");
+	if(GetJarmu(kocsi, KOCSI_MOTOR) == 1) return SCM(playerid, COL_LRED,"Ennek a járm?nek már be van indítva a motorja..");
 	new Float:kocsielet;	GetVehicleHealth(kocsi, kocsielet);
-	if((100 - (((kocsielet - 350) / 650)) * 100) > 100)	return SCM(playerid, COL_LRED, "A jármû állapota nem teszi lehetõvé a motor indítását!");
+	if((100 - (((kocsielet - 350) / 650)) * 100) > 100)	return SCM(playerid, COL_LRED, "A járm? állapota nem teszi lehetõvé a motor indítását!");
 	if(vInfo[jarmuidje][vModel] == 427 || vInfo[jarmuidje][vModel] == 428 || vInfo[jarmuidje][vModel] == 528 || vInfo[jarmuidje][vModel] == 425 || vInfo[jarmuidje][vModel] == 432  || vInfo[jarmuidje][vModel] == 520 || vInfo[jarmuidje][vModel] == 601) return SCM(playerid,COL_LRED,"Felejsd el..");
 
 	if(vInfo[jarmuidje][vMunka] && PlayerInfo[playerid][pTolvajSkill] < 15) return SCM(playerid,COL_LRED,"Ezt még nem tudod ellopni mivel nincs elég tapasztalatod hozzá! (15)");
@@ -35507,7 +35506,7 @@ CMD:ellop(playerid,params[])
 	else if(IsARepulo(vInfo[jarmuidje][vModel]) && PlayerInfo[playerid][pTolvajSkill] < 9) return SCM(playerid,COL_LRED,"Ezt még nem tudod ellopni mivel nincs elég tapasztalatod hozzá! (9)");
 	else if(PlayerInfo[playerid][pTolvajSkill] >= 9)
 	{
-	    SCM(playerid,COL_VZOLD,"Jármû ellopása..");
+	    SCM(playerid,COL_VZOLD,"Járm? ellopása..");
 	    
 	    new starttime = (10000-PlayerInfo[playerid][pTolvajSkill]*200);
 	    defer JarmuInditas[starttime](playerid, kocsi);
@@ -35563,7 +35562,7 @@ CMD:nullaz(playerid,params[])
 	if(!IsLewis(playerid)) return SCM(playerid,COL_LRED,"Óóóó hogyne..");
 	if(isnull(params))
 	{
-		SCM(playerid,COL_MKEK,"/nulláz [Ház/Jármû/Fegyverek[ÕSSZES]] [ID]");
+		SCM(playerid,COL_MKEK,"/nulláz [Ház/Járm?/Fegyverek[ÕSSZES]] [ID]");
 		return 1;
 	}
 	new mi[32],id;
@@ -35583,8 +35582,8 @@ CMD:nullaz(playerid,params[])
 			}
    			SetPlayerAttachedWeapon(i, true);
 		}
-		doQuery("UPDATE `jatekosok` SET `pFegyverek`='0,0,0,0,0,0,0,0,0,0,0,0,%d'",0); //ez így egyszerûbb
-		doQuery("UPDATE `jatekosok` SET `pToltenyek`='0,0,0,0,0,0,0,0,0,0,0,0,%d'",0); //ez így egyszerûbb
+		doQuery("UPDATE `jatekosok` SET `pFegyverek`='0,0,0,0,0,0,0,0,0,0,0,0,%d'",0); //ez így egyszer?bb
+		doQuery("UPDATE `jatekosok` SET `pToltenyek`='0,0,0,0,0,0,0,0,0,0,0,0,%d'",0); //ez így egyszer?bb
 		for(new cid=0;cid<MAX_VEHICLES;cid++)
 		{
 			if(vInfo[cid][vHasznalva] == true)
@@ -35658,7 +35657,7 @@ CMD:nullaz(playerid,params[])
 		AdminUzenet(COLOR_LIGHTRED,1,"%s nullázta a %d számú ház fegyvereit",JatekosNev(playerid),id);
 		return 1;
 	}
-	if(egyezik(mi,"Jármû"))
+	if(egyezik(mi,"Járm?"))
 	{
 		if(id == -1)
 		{
@@ -35672,8 +35671,8 @@ CMD:nullaz(playerid,params[])
 			vInfo[id][vTolteny][i] = 0;
 		}
 		vUpdate(id, vuFegyver);
-		SFM(playerid,COL_LRED,"A %d számú jármûvet!",id);
-		AdminUzenet(COLOR_LIGHTRED,1,"%s nullázta a %d számú jármû fegyvereit",JatekosNev(playerid),id);
+		SFM(playerid,COL_LRED,"A %d számú járm?vet!",id);
+		AdminUzenet(COLOR_LIGHTRED,1,"%s nullázta a %d számú járm? fegyvereit",JatekosNev(playerid),id);
 		JarmuMentes();
 		return 1;
 	}
@@ -35810,10 +35809,10 @@ CMD:bomba(playerid,params[])
 		if(!IsHitman(playerid)) return SCM(playerid,COL_LRED,"Nem vagy hitman!");
 		if(PlayerInfo[playerid][pCuccok][BL_C4] == 0) return SCM(playerid,COL_LRED,"Nincs nálad bomba!");
 		if(BombaKezbe[playerid] != 1) return SCM(playerid,COL_LRED,"Nem vettél elõ bombát!");
-		if(!IsPlayerInAnyVehicle(playerid)) return SCM(playerid, COL_LRED, "Nem vagy jármûben!");
+		if(!IsPlayerInAnyVehicle(playerid)) return SCM(playerid, COL_LRED, "Nem vagy járm?ben!");
 		if(Bortonben(playerid) > 0)	return SCM(playerid, COL_LRED, "Börtönben?!");
 		if(NemMozoghat(playerid,false)) return SCM(playerid, COL_LRED, "Most nem!");
-		if(InditosBomba[GetPlayerVehicleID(playerid)] != NINCS) return SCM(playerid,COL_LRED,"Ebbe a jármûbe már van bomba!");
+		if(InditosBomba[GetPlayerVehicleID(playerid)] != NINCS) return SCM(playerid,COL_LRED,"Ebbe a járm?be már van bomba!");
 		if(PlayerInfo[playerid][pMegerosites] != playerid)
 		{
 			PlayerInfo[playerid][pMegerosites] = playerid;
@@ -35850,7 +35849,7 @@ CMD:bomba(playerid,params[])
 				BombaSzerel(playerid, 2, 0);
 			else {
 			    defer BombaSzerel[90000](playerid, 2, 0);
-			    Cselekves(playerid,"elkezdte beszerelni a bombát a jármûbe...");
+			    Cselekves(playerid,"elkezdte beszerelni a bombát a járm?be...");
 			    MunkaFolyamatban[playerid] = 1;
 			}
 		}
@@ -35931,7 +35930,7 @@ CMD:leut(playerid,params[])
 	if(!PlayerToPlayer(playerid,jatekos,2)){ 	return SCM(playerid,COL_LRED,"Nincs senki a közeledben!");	}
 	if(IsPlayerNPC(jatekos) || PlayerInfo[jatekos][pAduty] || PlayerInfo[jatekos][pASduty]) return SCM(playerid,COL_LRED,"Õt nem ütheted le..");
 	if(NemMozoghat(playerid,false))	return SCM(playerid, COL_LRED, "Hogyne..");
-	if(IsPlayerInAnyVehicle(playerid)) return SCM(playerid, COL_LRED,"Jármûben? Ejnye..");
+	if(IsPlayerInAnyVehicle(playerid)) return SCM(playerid, COL_LRED,"Járm?ben? Ejnye..");
 	if(PlayerInfo[jatekos][pAnimban][0] == 1) return SCM(playerid, COL_LRED,"Animba ne üsd már le legyél oly kedves..");
 	if(PlayerInfo[jatekos][pLeutve] == 1) return SCM(playerid, COL_LRED,"Õ már le van ütve!");
 	if(PlayerInfo[jatekos][pFegyver] != 0) return SCM(playerid, COL_LRED,"Ha fegyver van a kezében nem ütheted le!");
@@ -35989,7 +35988,7 @@ CMD:mergezes(playerid,params[])
 	{
 		PlayerInfo[playerid][pMergezoMod] = 1;
 		OnePlayAnim(playerid,"UZI","UZI_reload",4.0,0,0,0,0,0);
-		SCM(playerid,COL_VZOLD,"Mérgezett lövedék betöltve! - Csak hangtompítóssal/sniperrel mûködik");
+		SCM(playerid,COL_VZOLD,"Mérgezett lövedék betöltve! - Csak hangtompítóssal/sniperrel m?ködik");
 	}
 	else if(PlayerInfo[playerid][pMergezoMod] == 1)
 	{
@@ -36383,7 +36382,7 @@ CMD:gcam(playerid,params[])
 
 CMD:streaminfo(playerid,params[])
 {
-	SFM(playerid,COL_MKEK,"A SAMP kliensednek jelenleg be van töltve (streamelve) %d játékos, és %d jármû.",PlayerInfo[playerid][pStreameltplayer],PlayerInfo[playerid][pStreameltvehicle]);
+	SFM(playerid,COL_MKEK,"A SAMP kliensednek jelenleg be van töltve (streamelve) %d játékos, és %d járm?.",PlayerInfo[playerid][pStreameltplayer],PlayerInfo[playerid][pStreameltvehicle]);
 	SFM(playerid,COL_MKEK,"Te jelenleg %d játékosnak vagy bestreamelve.",PlayerInfo[playerid][pMasoknakstreamelt]);
 	return 1;
 }
@@ -36414,7 +36413,7 @@ CMD:lakcimkartya(playerid,params[])
 	    GetPlayerPos(playerid,pos[0],pos[1],pos[2]);
 	    GetPlayerPos(pid,ppos[0],ppos[1],ppos[2]);
 	    if(GetDistanceBetweenPoints(pos[0],pos[1],pos[2],ppos[0],ppos[1],ppos[2]) > 5.00) return SCM(playerid,COL_LRED,"Ez a játékos nincs a közeledben.");
-	    nformat(dtext,512,""#COL_MKEK"Név: {FFFFFF}%s\n"#COL_MKEK"Bejelentett lakcím:{FFFFFF} San Andreas, See u. %d",JatekosNev(playerid),PlayerInfo[playerid][pHazKulcs][0]);
+	    nformat(dtext,512,""#COL_MKEK"Név: {FFFFFF}%s\n"#COL_MKEK"Bejelentett lakcím:{FFFFFF} San Andreas, Soul u. %d",JatekosNev(playerid),PlayerInfo[playerid][pHazKulcs][0]);
 	    ShowPlayerDialog(pid,DIALOG_LAKCIMKARTYA,DIALOG_STYLE_MSGBOX,"Lakcímkártya",dtext,"Rendben","");
 	}
 	return 1;
@@ -36424,19 +36423,19 @@ CMD:forgalmi(playerid,params[])
 	new pid;
 	new vid;
 	new vvid;
-	if(sscanf(params,"ud",pid,vid)) return SCM(playerid,COL_MKEK,"Használat: /forgalmi [Játékos/ID] [jármûID]");
+	if(sscanf(params,"ud",pid,vid)) return SCM(playerid,COL_MKEK,"Használat: /forgalmi [Játékos/ID] [járm?ID]");
 	else if(pid == INVALID_PLAYER_ID) return NincsJatekos(playerid);
 	else if(vid == INVALID_VEHICLE_ID) return NincsJarmu(playerid);
 	else {
 	    vvid = vInfoID[vid];
-		if(vInfo[vvid][vTulajID] != PlayerInfo[playerid][pID]) return SCM(playerid,COL_LRED,"Ez nem a te jármûved.");
+		if(vInfo[vvid][vTulajID] != PlayerInfo[playerid][pID]) return SCM(playerid,COL_LRED,"Ez nem a te járm?ved.");
 		else {
 		    new Float:ppos[3];
 		    new Float:pos[3];
 		    GetPlayerPos(playerid,pos[0],pos[1],pos[2]);
 		    GetPlayerPos(pid,ppos[0],ppos[1],ppos[2]);
 		    if(GetDistanceBetweenPoints(pos[0],pos[1],pos[2],ppos[0],ppos[1],ppos[2]) > 5.00) return SCM(playerid,COL_LRED,"Ez a játékos nincs a közeledben.");
-			nformat(dtext,1024,""#COL_MKEK"jármû típusa: {FFFFFF}%s\n"#COL_MKEK"jármû rendszáma: {FFFFFF}SEE-%d\n"#COL_MKEK"jármû tulajdonosa: {FFFFFF}%s",VehicleNames[vInfo[vvid][vModel] - 400],vid,JatekosNev(playerid));
+			nformat(dtext,1024,""#COL_MKEK"járm? típusa: {FFFFFF}%s\n"#COL_MKEK"járm? rendszáma: {FFFFFF}Soul-%d\n"#COL_MKEK"járm? tulajdonosa: {FFFFFF}%s",VehicleNames[vInfo[vvid][vModel] - 400],vid,JatekosNev(playerid));
 			ShowPlayerDialog(pid,DIALOG_FORGALMI,DIALOG_STYLE_MSGBOX,"Forgalmi Engedély",dtext,"Rendben","");
 			Cselekves(playerid,"felmutatta a forgalmiját valakinek.");
 		}
@@ -36565,7 +36564,7 @@ CMD:tiltasaim(playerid,params[])
 	}
 	if(PlayerInfo[playerid][pTiltasok][TILTAS_AUTO] > 0)
 	{
-		SFM(playerid,COL_LRED,"Jármû vezetés tiltás: %s.", UnixToTime( PlayerInfo[playerid][pTiltasok][TILTAS_AUTO] ));
+		SFM(playerid,COL_LRED,"Járm? vezetés tiltás: %s.", UnixToTime( PlayerInfo[playerid][pTiltasok][TILTAS_AUTO] ));
 		alma++;
 	}
 	if(PlayerInfo[playerid][pTiltasok][TILTAS_FEGYVER] > 0)
@@ -36965,7 +36964,7 @@ CMD:legtobbfirka(playerid,params[])
 		new Tagszam = LegtobbTag(1);
 		if(Tagszam != NINCS)
 		{
-			SFM(playerid,COL_MKEK,"Bandák: Los Angeles legnépszerûbb bandája jelenleg: %s | %d firkájuk van!",FInfo[Frakcio][fNev],Tagszam);
+			SFM(playerid,COL_MKEK,"Bandák: Los Angeles legnépszer?bb bandája jelenleg: %s | %d firkájuk van!",FInfo[Frakcio][fNev],Tagszam);
 		}
 		return 1;
 	}
@@ -37200,7 +37199,7 @@ CMD:vasazas(playerid,params[])
 				ApplyAnimation(playerid,"BOX","bxhipwlk",1300,1,1,1,1,5000);
 				ApplyAnimation(playerid,"BOX","bxhipwlk",1300,1,1,1,1,5000);
 				ApplyAnimation(playerid,"BOX","bxhipwlk",1300,1,1,1,1,5000);
-				SCM(playerid,COL_MKEK, "Felvetted az ócskavasat! Gyûjtögess tovább!");
+				SCM(playerid,COL_MKEK, "Felvetted az ócskavasat! Gy?jtögess tovább!");
 			}
 		}
 	}
@@ -37409,7 +37408,7 @@ CMD:cctv(playerid,params[])
 		Interior = GetPlayerInterior(playerid);
 		VW = GetPlayerVirtualWorld(playerid);
 		AddCCTV(Nev,X,Y,Z,A,Interior,VW);
-		SFM(playerid,COL_MKEK,"Hozzá adtad a %s nevû kamera pontot a Rendõrség CCTV listájához",Nev);
+		SFM(playerid,COL_MKEK,"Hozzá adtad a %s nev? kamera pontot a Rendõrség CCTV listájához",Nev);
 		doQuery("INSERT INTO `"#MYSQL_KAMERA_TABLA"` (Nev, X, Y, Z, A, Interior, VW, Lerako) VALUES ('%s', '%f','%f','%f','%f','%d','%d','%s')",Nev,X,Y,Z,A,Interior,VW,JatekosNev(playerid));
 		return 1;
 	}
@@ -37554,7 +37553,7 @@ CMD:garazs(playerid,params[])
 	    if(!Admin(playerid, FOADMIN_SZINT))
 			return SendClientMessage(playerid, COLOR_WHITE, NEM_HASZNALHATO);
 
-		if(!IsPlayerInAnyVehicle(playerid)) return SCM(playerid, COL_MKEK, "Jármûben használd és úgy állj oda, ahogy szeretnéd, hogy KITELEPORTÁLJA!");
+		if(!IsPlayerInAnyVehicle(playerid)) return SCM(playerid, COL_MKEK, "Járm?ben használd és úgy állj oda, ahogy szeretnéd, hogy KITELEPORTÁLJA!");
 		    
         new garazs;
 	    if(sscanf(params,"{s[64]}d", garazs))
@@ -37745,7 +37744,7 @@ CMD:garazs(playerid,params[])
 	    if(!Admin(playerid, FOADMIN_SZINT))
 			return SendClientMessage(playerid, COLOR_WHITE, NEM_HASZNALHATO);
 			
-		if(!IsPlayerInAnyVehicle(playerid)) return SCM(playerid, COL_MKEK, "Jármûben használd és úgy állj oda, ahogy szeretnéd, hogy KITELEPORTÁLJA!");
+		if(!IsPlayerInAnyVehicle(playerid)) return SCM(playerid, COL_MKEK, "Járm?ben használd és úgy állj oda, ahogy szeretnéd, hogy KITELEPORTÁLJA!");
 
 		new tipus, haz, tulajdonos, ara;
 		if(sscanf(params, "{s[64]}dddd", tipus, haz, tulajdonos, ara))
@@ -37863,7 +37862,7 @@ CMD:setsign(playerid,params[])
 			return 1;
 		}
 		if(!IsPlayerInAnyVehicle(playerid))
-			return SCM(playerid, COL_LRED, "Nem vagy jármûben!");
+			return SCM(playerid, COL_LRED, "Nem vagy járm?ben!");
 			
 		new kocsi = GetPlayerVehicleID(playerid);
 		if(IsValidDynamic3DTextLabel(sign[kocsi]))
@@ -38018,8 +38017,8 @@ CMD:k(playerid,params[])
 		if(sscanf(params,"s[32]{}",param)) return SCM(playerid,COL_MKEK,"Használat: /k(ereskedõ) [ Vesz / Elad / Park / Felvesz / Kirúg / R / RB / Lista / Tagok / Rang]");
 		else if(!strcmp(param,"vesz",true))
 		{
-		    if(k_uzleteles == 1) return SCM(playerid,COL_LRED,"Most éppen valaki más üzletel jármûvel.");
-			ShowPlayerDialog(playerid,DIALOG_KERESKEDES_VESZ,DIALOG_STYLE_INPUT,"Kereskedés - Vétel","Írd be a játékost, a jármû ID-t és az árat vesszõvel elválasztva!\nPl: Razo_M,644,85000","Mehet","Mégse");
+		    if(k_uzleteles == 1) return SCM(playerid,COL_LRED,"Most éppen valaki más üzletel járm?vel.");
+			ShowPlayerDialog(playerid,DIALOG_KERESKEDES_VESZ,DIALOG_STYLE_INPUT,"Kereskedés - Vétel","Írd be a játékost, a járm? ID-t és az árat vesszõvel elválasztva!\nPl: Razo_M,644,85000","Mehet","Mégse");
 			}
 		else if(!strcmp(param,"gov",true))
 		{
@@ -38069,10 +38068,10 @@ CMD:k(playerid,params[])
 					LinkVehicleToInterior(vInfo[vid][vID], vInfo[vid][vInt]);
    			    	SetVehicleVirtualWorld(vInfo[vid][vID],vInfo[vid][vVW]);
 
-					SCM(playerid, COL_MKEK, "Sikeresen leparkoltad a jármûvet!");
+					SCM(playerid, COL_MKEK, "Sikeresen leparkoltad a járm?vet!");
 				}
 			} else
-				return SCM(playerid, COL_LRED, "Nincs a közeledben jármû!");
+				return SCM(playerid, COL_LRED, "Nincs a közeledben járm?!");
 			return true;
 		}
 		else if(!strcmp(param,"lista",true))
@@ -38174,8 +38173,8 @@ CMD:k(playerid,params[])
 		}
 		else if(!strcmp(param,"elad",true))
 		{
-            if(k_uzleteles == 1) return SCM(playerid,COL_LRED,"Most éppen valaki más üzletel jármûvel.");
-			ShowPlayerDialog(playerid,DIALOG_KERESKEDES_ELAD,DIALOG_STYLE_INPUT,"Kereskedés - Eladás","Írd be a játékost, a jármû ID-t és az árat vesszõvel elválasztva!\nPl: Razo_M,644,85000","Mehet","Mégse");
+            if(k_uzleteles == 1) return SCM(playerid,COL_LRED,"Most éppen valaki más üzletel járm?vel.");
+			ShowPlayerDialog(playerid,DIALOG_KERESKEDES_ELAD,DIALOG_STYLE_INPUT,"Kereskedés - Eladás","Írd be a játékost, a járm? ID-t és az árat vesszõvel elválasztva!\nPl: Razo_M,644,85000","Mehet","Mégse");
 		}
 	}
 	else return SCM(playerid,COL_LRED,"Nem vagy kereskedõ!");
@@ -38720,9 +38719,9 @@ CMD:repa(playerid,params[])
 	if(GetDistanceToVehicle(playerid, car) < 5.0)
 	{
 	GetVehicleDamageStatus(vInfo[vid][vID], vInfo[vid][vPanels], vInfo[vid][vDoors], vInfo[vid][vLights], vInfo[vid][vTires]);
-	SFM(playerid,COL_MKEK,"Jármû: %d | Panelek: %d | Ajtók: %d | Lámpák: %d | Gumik: %d",vInfo[vid][vID], vInfo[vid][vPanels], vInfo[vid][vDoors], vInfo[vid][vLights], vInfo[vid][vTires]);
+	SFM(playerid,COL_MKEK,"Járm?: %d | Panelek: %d | Ajtók: %d | Lámpák: %d | Gumik: %d",vInfo[vid][vID], vInfo[vid][vPanels], vInfo[vid][vDoors], vInfo[vid][vLights], vInfo[vid][vTires]);
 	} else
-	    return SCM(playerid, COL_LRED, "Nincs jármû a közeledben!");
+	    return SCM(playerid, COL_LRED, "Nincs járm? a közeledben!");
 	return true;
 }
 CMD:szerelok(playerid,params[])
@@ -40334,7 +40333,7 @@ CMD:lista(playerid, params[])
 
 		if(fk != FRAKCIO_LSPD)
 		{
-			format(str, sizeof(str), "** %s "#COL_VKEK"%s"#COL_FEHER" fogadta "#COL_VKEK"%s"#COL_FEHER" hívását!", (fk == FRAKCIO_LAFD ? ("Mentõs") : ("Tûzoltó")), JatekosNev(playerid, true), JatekosNev(jatekos, true));
+			format(str, sizeof(str), "** %s "#COL_VKEK"%s"#COL_FEHER" fogadta "#COL_VKEK"%s"#COL_FEHER" hívását!", (fk == FRAKCIO_LAFD ? ("Mentõs") : ("T?zoltó")), JatekosNev(playerid, true), JatekosNev(jatekos, true));
 			SendClientMessageToAll(COLOR_WHITE, str);
 			SCM(jatekos, COL_MKEK, "Úton a segítség! Tarts ki!");
 		}
@@ -40393,7 +40392,7 @@ CMD:jelent(playerid, params[])
 		return SCM(playerid, COL_MKEK, "Használat: /jelent [Azonosító] [Oka] | Azonosító az amit a feje felett látsz");
 
 	if(isnull(oka))
-		return SCM(playerid, COL_LRED, "Az oka legalább 2 betû kell, hogy legyen!");
+		return SCM(playerid, COL_LRED, "Az oka legalább 2 bet? kell, hogy legyen!");
 
 	new jatekos = NINCS;
 	foreach(Player, i)
@@ -40540,7 +40539,7 @@ CMD:szerel(playerid, params[])
 			return SCM(playerid, COL_LRED, "Kocsi mellett kell állnod");
 
 		if(GetDistanceToCar(playerid,kocsi) > 4.0)
-			return SCM(playerid,COL_LRED,"Nincs a közeledben jármû!");
+			return SCM(playerid,COL_LRED,"Nincs a közeledben járm?!");
 
 		if(GetJarmu(kocsi, KOCSI_MOTOR) == 1)
 			return SCM(playerid, COL_LRED, "Járó motornál szerelnél? Nem vagy te szívsebész!!!");
@@ -40610,7 +40609,7 @@ CMD:szerel(playerid, params[])
 			return SCM(playerid, COL_LRED, "Kocsi mellett kell állnod");
 
 		if(GetDistanceToCar(playerid,kocsi) > 4.0)
-			return SCM(playerid,COL_LRED,"Nincs a közeledben jármû!");
+			return SCM(playerid,COL_LRED,"Nincs a közeledben járm?!");
 
 		if(GetJarmu(kocsi, KOCSI_MOTOR) == 1)
 			return SCM(playerid, COL_LRED, "Járó motornál szerelnél? Nem vagy te szívsebész!!!");
@@ -40680,7 +40679,7 @@ CMD:szerel(playerid, params[])
 			return SCM(playerid, COL_LRED, "Kocsi mellett kell állnod");
 
 		if(GetDistanceToCar(playerid,kocsi) > 4.0)
-			return SCM(playerid,COL_LRED,"Nincs a közeledben jármû!");
+			return SCM(playerid,COL_LRED,"Nincs a közeledben járm?!");
 
 		if(GetJarmu(kocsi, KOCSI_MOTOR) == 1)
 			return SCM(playerid, COL_LRED, "Járó motornál szerelnél? Nem vagy te szívsebész!!!");
@@ -40750,7 +40749,7 @@ CMD:szerel(playerid, params[])
 			return SCM(playerid, COL_LRED, "Kocsi mellett kell állnod");
 
 		if(GetDistanceToCar(playerid,kocsi) > 4.0)
-			return SCM(playerid,COL_LRED,"Nincs a közeledben jármû!");
+			return SCM(playerid,COL_LRED,"Nincs a közeledben járm?!");
 
 		if(GetJarmu(kocsi, KOCSI_MOTOR) == 1)
 			return SCM(playerid, COL_LRED, "Járó motornál szerelnél? Nem vagy te szívsebész!!!");
@@ -40793,11 +40792,11 @@ CMD:szerel(playerid, params[])
 
 		new car = GetClosestVehicle(playerid, false);
 		if(car == NINCS || GetDistanceToVehicle(playerid, car) > 5.0)
-			return SCM(playerid, COL_LRED, "Nincs a közeledben jármû!");
+			return SCM(playerid, COL_LRED, "Nincs a közeledben járm?!");
 
 		new jatekos = GetClosestPlayer(playerid), vid = JarmuID(car, playerid);
 		if((jatekos == NINCS) || (vInfo[vid][vTulajID] != PlayerInfo[jatekos][pID]))
-			return SCM(playerid, COL_LRED, "A jármû tulaja nincs a közeledben!");
+			return SCM(playerid, COL_LRED, "A járm? tulaja nincs a közeledben!");
 
 		if(PlayerInfo[jatekos][pPremiumPont] < PremiumPontKell[ADAT_RENDSZAM - 1][1])
 			return SCM(playerid, COL_LRED, "Ennek a játékosnak nincs elegendõ Prémium Pontja, hogy egyedi rendszámot csinálhass neki!");
@@ -40806,7 +40805,7 @@ CMD:szerel(playerid, params[])
 		PlayerInfo[playerid][pProcess][1] = jatekos;
 		PlayerInfo[playerid][pProcess][2] = vid;
 
-		nformat(form, 256, ""#COL_FEHER"Kérlek add meg a jármû leendõ rendszámát!\nAktuális rendszám: "#COL_MKEK"%d[%d]"#COL_FEHER"\nTulajdonos: "#COL_MKEK"%s", car, vid, vInfo[vid][vTulaj]);
+		nformat(form, 256, ""#COL_FEHER"Kérlek add meg a járm? leendõ rendszámát!\nAktuális rendszám: "#COL_MKEK"%d[%d]"#COL_FEHER"\nTulajdonos: "#COL_MKEK"%s", car, vid, vInfo[vid][vTulaj]);
 		ShowPlayerDialog(playerid, DIALOG_RENDSZAM, DIALOG_STYLE_INPUT, "Rendszámváltás", form , "Rendben", "Mégse");
 	}
 	else if(!strcmp(param, "neon", true))
@@ -40820,7 +40819,7 @@ CMD:szerel(playerid, params[])
 		}
 		new car = GetClosestVehicle(playerid, false);
 		if(car == NINCS || GetDistanceToVehicle(playerid, car) > 5.0)
-			return SCM(playerid, COL_LRED, "Nincs a közeledben jármû!");
+			return SCM(playerid, COL_LRED, "Nincs a közeledben járm?!");
 
 		new jatekos = GetClosestPlayer(playerid), vid = JarmuID(car, playerid);
 		if(GetPlayerDistanceFromPlayer(playerid,jatekos) > 5)
@@ -40839,11 +40838,11 @@ CMD:szerel(playerid, params[])
 
 				new str[256];
 				format(str, sizeof(str), ""#COL_FEHER"Neon leszerelése\n"#COL_PIROS"[1.] Piros\n"#COL_MKEK"[2.] Kék\n"#COL_VZOLD"[3.] Zöld\n"#COL_CITROM"[4.] Sárga\n"#COL_ROZSA"[5.] Rózsaszín\n"#COL_FEHER"[6.] Fehér");
-				ShowPlayerDialog(playerid, DIALOG_NEON ,DIALOG_STYLE_LIST, "Neon mûveletek", str, "Mehet", "Mégse");
+				ShowPlayerDialog(playerid, DIALOG_NEON ,DIALOG_STYLE_LIST, "Neon m?veletek", str, "Mehet", "Mégse");
 				return true;
 			}
 			default:
-				return SCM(playerid, COL_LRED, "Erre a jármû nem rakhatsz Neont!");
+				return SCM(playerid, COL_LRED, "Erre a járm? nem rakhatsz Neont!");
 		}
 	}
 	return true;
@@ -40991,15 +40990,15 @@ CMD:munka(playerid, params[])
 		{
 			case MUNKA_ARU:
 			{
-				if(!IsPlayerInAnyVehicle(playerid))		return SCM(playerid, COL_LRED, "Nem vagy jármûben!");
-				if(vInfo[vid][vMunka] != MUNKA_ARU)		return SCM(playerid, COL_LRED, "Árúszállító jármûben kell ülnöd!");
-				SCM(playerid,COL_LKEK,"Pakold fel az árút a jármûvedre!");
+				if(!IsPlayerInAnyVehicle(playerid))		return SCM(playerid, COL_LRED, "Nem vagy járm?ben!");
+				if(vInfo[vid][vMunka] != MUNKA_ARU)		return SCM(playerid, COL_LRED, "Árúszállító járm?ben kell ülnöd!");
+				SCM(playerid,COL_LKEK,"Pakold fel az árút a járm?vedre!");
 				SetPlayerCheckpoint(playerid, 2338.1218,-2071.3381,13.5538, 5.0);
 				PlayerInfo[playerid][pCP] = CP_ARU2;
 			}
 			case MUNKA_PILOTA:
 			{
-				if(!IsPlayerInAnyVehicle(playerid))		return SCM(playerid, COL_LRED, "Nem vagy jármûben!");
+				if(!IsPlayerInAnyVehicle(playerid))		return SCM(playerid, COL_LRED, "Nem vagy járm?ben!");
 				if(vInfo[vid][vMunka] != MUNKA_PILOTA)		return SCM(playerid, COL_LRED, "Árúszállító repülõgépben kell ülnöd!");
 				SCM(playerid,COL_LKEK,"Pakold fel az árút a repülõgéprdre!");
 				SetPlayerCheckpoint(playerid, 1617.9362,-2628.5530,13.5469, 15.0);
@@ -41007,8 +41006,8 @@ CMD:munka(playerid, params[])
 			}
 			case MUNKA_UTTISZTITO:
 			{
-				if(!IsPlayerInAnyVehicle(playerid))		return SCM(playerid, COL_LRED, "Nem vagy jármûben!");
-				if(vInfo[vid][vMunka] != MUNKA_UTTISZTITO)	return SCM(playerid, COL_LRED, "Úttisztító jármûben kell ülnöd!");
+				if(!IsPlayerInAnyVehicle(playerid))		return SCM(playerid, COL_LRED, "Nem vagy járm?ben!");
+				if(vInfo[vid][vMunka] != MUNKA_UTTISZTITO)	return SCM(playerid, COL_LRED, "Úttisztító járm?ben kell ülnöd!");
 				new rand = random(sizeof(TisztitoUtak));
 				PlayerInfo[playerid][pCP] = CP_UTTISZTITO;
 				MunkaCP[playerid][0] = TisztitoUtak[rand][0];
@@ -41022,8 +41021,8 @@ CMD:munka(playerid, params[])
 			}
 			case MUNKA_MOWER:
 			{
-				if(!IsPlayerInAnyVehicle(playerid))		return SCM(playerid, COL_LRED, "Nem vagy jármûben!");
-				if(vInfo[vid][vMunka] != MUNKA_MOWER)	return SCM(playerid, COL_LRED, "Fûnyíróban kell ülnöd!");
+				if(!IsPlayerInAnyVehicle(playerid))		return SCM(playerid, COL_LRED, "Nem vagy járm?ben!");
+				if(vInfo[vid][vMunka] != MUNKA_MOWER)	return SCM(playerid, COL_LRED, "F?nyíróban kell ülnöd!");
 				new rand = random(sizeof(MowerUtak));
 				PlayerInfo[playerid][pCP] = CP_MOWER;
 				MunkaCP[playerid][0] = MowerUtak[rand][0];
@@ -41037,8 +41036,8 @@ CMD:munka(playerid, params[])
 			}
 			case MUNKA_KUKA:
 			{
-				if(!IsPlayerInAnyVehicle(playerid))	return SCM(playerid, COL_LRED, "Nem vagy jármûben!");
-				if(vInfo[vid][vMunka] != MUNKA_KUKA)		return SCM(playerid, COL_LRED, "Kukás jármûben kell ülnöd!");
+				if(!IsPlayerInAnyVehicle(playerid))	return SCM(playerid, COL_LRED, "Nem vagy járm?ben!");
+				if(vInfo[vid][vMunka] != MUNKA_KUKA)		return SCM(playerid, COL_LRED, "Kukás járm?ben kell ülnöd!");
 				new rand = random(sizeof(KukaPos)),
 				Float:cpx = KukaPos[rand][0],
 				Float:cpy = KukaPos[rand][1],
@@ -41076,7 +41075,7 @@ CMD:munka(playerid, params[])
 			case MUNKA_FARMER:
 			{
 				if(!IsPlayerInAnyVehicle(playerid))
-					return SCM(playerid, COL_LRED, "Nem vagy jármûben!");
+					return SCM(playerid, COL_LRED, "Nem vagy járm?ben!");
 
 				if((GetVehicleModel(GetPlayerVehicleID(playerid)) != 532) && (GetVehicleModel(GetPlayerVehicleID(playerid)) != 531))
 					return SCM(playerid, COL_LRED, "Traktorba, illetve Combine-ba kell ülnöd!");
@@ -41627,7 +41626,7 @@ CMD:d(playerid, params[])
 		return true;
 
 	if(fk == FRAKCIO_LSFD)
-		format(prox, sizeof(prox),"** Tûzoltó %s %s: %s ,vége ", Rangok(PlayerInfo[playerid][prang], PlayerInfo[playerid][pFrakcio]), JatekosNev(playerid, true), params);
+		format(prox, sizeof(prox),"** T?zoltó %s %s: %s ,vége ", Rangok(PlayerInfo[playerid][prang], PlayerInfo[playerid][pFrakcio]), JatekosNev(playerid, true), params);
 	else if(fk == FRAKCIO_KORMANY && PlayerInfo[playerid][prang] > 4)
 		format(prox, sizeof(prox),"** %s %s: %s ,vége ", Rangok(PlayerInfo[playerid][prang], PlayerInfo[playerid][pFrakcio]), JatekosNev(playerid, true), params);
 	else
@@ -41864,7 +41863,7 @@ CMD:call(playerid, params[])
 	if(telefonszam == 112 || telefonszam == 911)
 	{
 		SendClientMessage(playerid, COLOR_YELLOW, "Központ: Üdvözlöm, kérem válasszon a lehetõségek közül:");
-		SendClientMessage(playerid, COLOR_YELLOW, "Autómentõ, Mentõszolgálat, Tûzoltóság, Rendõrség");
+		SendClientMessage(playerid, COLOR_YELLOW, "Autómentõ, Mentõszolgálat, T?zoltóság, Rendõrség");
 		PlayerInfo[playerid][pSegelyhivas] = 1;
 		SetPlayerSpecialAction(playerid,SPECIAL_ACTION_USECELLPHONE);
 		return true;
@@ -41879,12 +41878,12 @@ CMD:call(playerid, params[])
 CMD:eject(playerid, params[])
 {
 	if(!IsPlayerInAnyVehicle(playerid))
-		return ShowPlayerDialog(playerid, DIALOG_NINCS, DIALOG_STYLE_MSGBOX, "Kidobás","Nem vagy jármûben!", "Bezárás", "");
-		// SCM(playerid, COL_LRED, "Nem vagy jármûben!");
+		return ShowPlayerDialog(playerid, DIALOG_NINCS, DIALOG_STYLE_MSGBOX, "Kidobás","Nem vagy járm?ben!", "Bezárás", "");
+		// SCM(playerid, COL_LRED, "Nem vagy járm?ben!");
 
 	if(GetPlayerState(playerid) != PLAYER_STATE_DRIVER)
-		return ShowPlayerDialog(playerid, DIALOG_NINCS, DIALOG_STYLE_MSGBOX, "Kidobás","Csak vezetõként dobhatsz ki utast a jármûbõl!", "Bezárás", "");
-		// SCM(playerid, COL_LRED, "Csak vezetõként dobhatsz ki utast a jármûbõl!");
+		return ShowPlayerDialog(playerid, DIALOG_NINCS, DIALOG_STYLE_MSGBOX, "Kidobás","Csak vezetõként dobhatsz ki utast a járm?bõl!", "Bezárás", "");
+		// SCM(playerid, COL_LRED, "Csak vezetõként dobhatsz ki utast a járm?bõl!");
 
 	new jatekos;
 	if(sscanf(params, "u", jatekos))
@@ -41896,8 +41895,8 @@ CMD:eject(playerid, params[])
 		// SCM(playerid, COL_LRED, "Ez a játékos nincs fent!");
 
 	if(!IsPlayerInVehicle(jatekos, GetPlayerVehicleID(playerid)))
-		return ShowPlayerDialog(playerid, DIALOG_NINCS, DIALOG_STYLE_MSGBOX, "Kidobás","Ez a játékos nincs a jármûvedben!", "Bezárás", "");
-		// SCM(playerid, COL_LRED, "Ez a játékos nincs a jármûvedben!");
+		return ShowPlayerDialog(playerid, DIALOG_NINCS, DIALOG_STYLE_MSGBOX, "Kidobás","Ez a játékos nincs a járm?vedben!", "Bezárás", "");
+		// SCM(playerid, COL_LRED, "Ez a játékos nincs a járm?vedben!");
 
 	new str[128];
 	switch(random(2))
@@ -41905,17 +41904,17 @@ CMD:eject(playerid, params[])
 		case 0:
 		{
 			//Josh Solman megpróbálta kilökni a kocsiból [akit ki akart lökni] -t és sikerült neki.
-			format(str, sizeof(str), "** %s megpróbálta kilökni a jármûbõl %st és sikerült neki!", JatekosNev(playerid), JatekosNev(jatekos));
+			format(str, sizeof(str), "** %s megpróbálta kilökni a járm?bõl %st és sikerült neki!", JatekosNev(playerid), JatekosNev(jatekos));
 			ProxDetector(30.0, playerid, str, COLOR_GREEN,COLOR_GREEN,COLOR_GREEN,COLOR_GREEN,COLOR_GREEN);
 			SFM(playerid, COL_VZOLD, "Sikeresen kiraktad "#COL_MKEK"%s"#COL_FEHER"-t!", JatekosNev(jatekos));
-			ShowPlayerDialog(jatekos, DIALOG_NINCS, DIALOG_STYLE_MSGBOX,"Kidobás", "A sofõr kidobott a jármûbõl!", "Bezárás", "");
-			//SCM(jatekos, COL_LRED, "A sofõr kidobott a jármûbõl!");
+			ShowPlayerDialog(jatekos, DIALOG_NINCS, DIALOG_STYLE_MSGBOX,"Kidobás", "A sofõr kidobott a járm?bõl!", "Bezárás", "");
+			//SCM(jatekos, COL_LRED, "A sofõr kidobott a járm?bõl!");
 			RemovePlayerFromVehicle(jatekos);
 			return true;
 		}
 		case 1:
 		{
-			format(str, sizeof(str), "** %s megpróbálta kilökni a jármûbõl %st és nem sikerült neki!", JatekosNev(playerid), JatekosNev(jatekos));
+			format(str, sizeof(str), "** %s megpróbálta kilökni a járm?bõl %st és nem sikerült neki!", JatekosNev(playerid), JatekosNev(jatekos));
 			ProxDetector(30.0, playerid, str, COLOR_RED,COLOR_RED,COLOR_RED,COLOR_RED,COLOR_RED);
 			return true;
 		}
@@ -42105,8 +42104,8 @@ CMD:kanna(playerid,params[])
 				// SCM(playerid, COL_LRED, "Járó motornál tankolnál? Ökröt akarsz sütni?");
 
 			if(MAX_Benzin[ vInfo[ vehicleidje ][vModel] - 400 ] < vInfo[vehicleidje][vUzemanyag]+mennyit || mennyit < 0)
-				return ShowPlayerDialog(playerid, DIALOG_NINCS, DIALOG_STYLE_MSGBOX, "Kanna","Ebbe a jármûbe nem fér ennyi üzemanyag!","Bezárás", "");
-				//SCM(playerid, COL_LRED, "Ebbe a jármûbe nem fér ennyi üzemanyag!");
+				return ShowPlayerDialog(playerid, DIALOG_NINCS, DIALOG_STYLE_MSGBOX, "Kanna","Ebbe a járm?be nem fér ennyi üzemanyag!","Bezárás", "");
+				//SCM(playerid, COL_LRED, "Ebbe a járm?be nem fér ennyi üzemanyag!");
 
 			vInfo[vehicleidje][vUzemanyag] += float(mennyit);
 			PlayerInfo[playerid][pKannaBenzin] -= mennyit;
@@ -42114,8 +42113,8 @@ CMD:kanna(playerid,params[])
 		}
 		else
 		{
-		    ShowPlayerDialog(playerid, DIALOG_NINCS, DIALOG_STYLE_MSGBOX, "Kanna","Nincs jármû a közeledben!","Bezárás", "");
-			//SCM(playerid,COL_LRED,"Nincs jármû a közeledben!");
+		    ShowPlayerDialog(playerid, DIALOG_NINCS, DIALOG_STYLE_MSGBOX, "Kanna","Nincs járm? a közeledben!","Bezárás", "");
+			//SCM(playerid,COL_LRED,"Nincs járm? a közeledben!");
 		}
 	}
 	return true;
@@ -42129,7 +42128,7 @@ CMD:tankol(playerid, params[])
 	if(sscanf(params, "s[32]{}", parameterek))
 	{
 		SCM(playerid, COL_MKEK, "Használat: /tankol [paraméterek]");
-		SCM(playerid, COL_MKEK, "Paraméterek: jármû, árak");
+		SCM(playerid, COL_MKEK, "Paraméterek: járm?, árak");
 		return true;
 	}
 
@@ -42144,7 +42143,7 @@ CMD:tankol(playerid, params[])
 			SendClientMessage(playerid, COLOR_GREEN, "=======================================");
 			return true;
 		}
-		else if(!strcmp(parameterek, "jármû") || !strcmp(parameterek, "jarmu"))
+		else if(!strcmp(parameterek, "járm?") || !strcmp(parameterek, "jarmu"))
 		{
 			new kocsi = GetClosestVehicle(playerid);
 			new benzinkut = GetClosestBenzinkut(playerid);
@@ -42161,7 +42160,7 @@ CMD:tankol(playerid, params[])
 
 				new benzin, mennyit = floatround(MAX_Benzin[vInfo[vehicleidje][vModel] - 400] - vInfo[vehicleidje][vUzemanyag]);
 				if(sscanf(params, "{s[32]}d", benzin))
-					return SFM(playerid, COL_MKEK, "Használat: /tankol jármû [Üzemanyag] | Még ennyit tankolhatsz bele: "#COL_MKEK"%d", mennyit);
+					return SFM(playerid, COL_MKEK, "Használat: /tankol járm? [Üzemanyag] | Még ennyit tankolhatsz bele: "#COL_MKEK"%d", mennyit);
 
 				if(benzin < 5 || benzin > mennyit)
 					return SFM(playerid, COL_LRED, "A tankolható mennyiség "#COL_MKEK"5 "#COL_FEHER"és "#COL_MKEK"%d "#COL_FEHER" liter között kell lennie!", mennyit);
@@ -42174,21 +42173,21 @@ CMD:tankol(playerid, params[])
 				new munka = vInfo[ JarmuID( GetClosestVehicle(playerid), playerid ) ][vMunka];
 				if(munka != FRAKCIO_LSPD && munka != FRAKCIO_LSFD && munka != FRAKCIO_KATONA && munka != FRAKCIO_FBI && munka != FRAKCIO_LAFD)
 		        {
-		            SFM(playerid, COL_MKEK, "Sikeresen megtankoltad a jármûvet "#COL_MKEK"%dl "#COL_FEHER"üzemanyaggal! Összeg: "#COL_MKEK"%s$", benzin, FN(uar, 0, ','));
-					Cselekves(playerid, "Megtankolta a jármûvét", 1);
+		            SFM(playerid, COL_MKEK, "Sikeresen megtankoltad a járm?vet "#COL_MKEK"%dl "#COL_FEHER"üzemanyaggal! Összeg: "#COL_MKEK"%s$", benzin, FN(uar, 0, ','));
+					Cselekves(playerid, "Megtankolta a járm?vét", 1);
 					PenzHozzaad(playerid,-uar);
 				}
 				else
 				{
 					SFM(playerid, COL_MKEK, " "#COL_MKEK"%dl "#COL_FEHER"üzemanyagot tankoltál! Összeg: "#COL_MKEK"%s$ amit az állam fizet.", benzin, FN(uar, 0, ','));
-		            Cselekves(playerid, "Megtankolta a jármûvét", 1);
+		            Cselekves(playerid, "Megtankolta a járm?vét", 1);
 				}
 				CegPenz(BIZ_OMV, uar);
 				BenzinkutInfo[benzinkut][bbenzinmennyiseg] -= benzin; //bvon
 				BenzinkutMentes();
 				return true;
 			} else
-				return SCM(playerid, COL_LRED, "Nincs a közeledben jármû, amibe tankolhatnál!");
+				return SCM(playerid, COL_LRED, "Nincs a közeledben járm?, amibe tankolhatnál!");
 		}
 	} else
 		return SCM(playerid, COL_LRED, "Nem vagy egy benzinkútnál sem!");
@@ -42378,13 +42377,13 @@ CMD:kulcs(playerid, params[])
 {
 	new param[24];
 	if(sscanf(params, "s[24]{}", param))
-		return SCM(playerid, COL_MKEK, "Használat: /kulcs [ Jármû ]");
+		return SCM(playerid, COL_MKEK, "Használat: /kulcs [ Járm? ]");
 
-	if(!strcmp(param, "jármû", true) || !strcmp(param, "jarmu", true))
+	if(!strcmp(param, "járm?", true) || !strcmp(param, "jarmu", true))
 	{
 		new kulcs, jatekos;
 		if(sscanf(params, "{s[24]}ud", jatekos, kulcs))
-			return SCM(playerid, COL_MKEK, "Használat: /kulcs jármû [Játékos] [Rendszám] | Stats-ban található rendszám");
+			return SCM(playerid, COL_MKEK, "Használat: /kulcs járm? [Játékos] [Rendszám] | Stats-ban található rendszám");
 
 		if(jatekos == INVALID_PLAYER_ID || IsPlayerNPC(jatekos) || !Belepve(jatekos) || playerid == jatekos)
 			return SCM(playerid, COL_LRED, "Nincs ilyen játékos!");
@@ -42401,9 +42400,9 @@ CMD:kulcs(playerid, params[])
 		{
 			if(PlayerInfo[playerid][pJarmuKulcs][i] != NINCS && PlayerInfo[playerid][pJarmuKulcs][i] == kulcs)
 			{
-				SFM(playerid, COL_MKEK, "Átadtad a %d számú jármûved kulcsát neki: "#COL_MKEK"%s"#COL_FEHER" | Rendszám: "#COL_MKEK"LS - %d[%d]", (i + 1), JatekosNev(jatekos), vInfo[kulcs][vID], kulcs);
-				SFM(jatekos, COL_MKEK, "%s átadta neked a "#COL_MKEK"LS - %d[%d]"#COL_FEHER" rendszámú jármûve kulcsait.", JatekosNev(playerid), vInfo[kulcs][vID], kulcs);
-				Cselekves(playerid, "átadta valakinek a jármûve kulcsait..", 1);
+				SFM(playerid, COL_MKEK, "Átadtad a %d számú járm?ved kulcsát neki: "#COL_MKEK"%s"#COL_FEHER" | Rendszám: "#COL_MKEK"LS - %d[%d]", (i + 1), JatekosNev(jatekos), vInfo[kulcs][vID], kulcs);
+				SFM(jatekos, COL_MKEK, "%s átadta neked a "#COL_MKEK"LS - %d[%d]"#COL_FEHER" rendszámú járm?ve kulcsait.", JatekosNev(playerid), vInfo[kulcs][vID], kulcs);
+				Cselekves(playerid, "átadta valakinek a járm?ve kulcsait..", 1);
 				PlayerInfo[jatekos][pJarmuKolcson] = kulcs;
 				van = true;
 				break;
@@ -42411,7 +42410,7 @@ CMD:kulcs(playerid, params[])
 		}
 
 		if(!van)
-			return SCM(playerid, COL_LRED, "Nincs ilyen rendszámú jármûved!");
+			return SCM(playerid, COL_LRED, "Nincs ilyen rendszámú járm?ved!");
 	}
 	return true;
 }
@@ -42419,7 +42418,7 @@ CMD:kulcs(playerid, params[])
 CMD:motor(playerid, params[])
 {
 	if(!IsPlayerInAnyVehicle(playerid))
-		return SCM(playerid, COL_LRED, "Csak jármûben használhatod!");
+		return SCM(playerid, COL_LRED, "Csak járm?ben használhatod!");
 
 	if(GetPlayerVehicleSeat(playerid))
 		return SCM(playerid, COL_LRED, "Csak sofõrként tudod használni!");
@@ -42435,22 +42434,22 @@ CMD:motor(playerid, params[])
 		return SCM(playerid, COL_LRED, "Ez egy bicikli :D Nincs benne motor!");
 
 	if(!vInfo[jarmuidje][vUzemanyag])
-		return SCM(playerid, COL_LRED, "A jármûbõl kifogyott az üzemanyag!");
+		return SCM(playerid, COL_LRED, "A járm?bõl kifogyott az üzemanyag!");
 
 	if(PlayerInfo[playerid][pTiltasok][TILTAS_AUTO] > 0)
 	{
-		SFM(playerid,COL_LRED,"Nem használhatsz jármûvet még %d percig",PlayerInfo[playerid][pTiltasok][TILTAS_AUTO]/60);
+		SFM(playerid,COL_LRED,"Nem használhatsz járm?vet még %d percig",PlayerInfo[playerid][pTiltasok][TILTAS_AUTO]/60);
 		return 1;
 	}
 
 	if(PlayerInfo[playerid][pmotortinditja])
-		return SCM(playerid, COL_LRED, "A jármû jelenleg is indítás alatt áll!");
+		return SCM(playerid, COL_LRED, "A járm? jelenleg is indítás alatt áll!");
 
 	if(GetJarmu(kocsi, KOCSI_MOTOR) == 1)
 	{
 		SetJarmu(kocsi, KOCSI_MOTOR, 0);
-		SendClientMessage(playerid, COLOR_LIGHTRED, "A jármû leállítva!");
-		/*Cselekves(playerid, "leállította a jármûvét", 1);*/
+		SendClientMessage(playerid, COLOR_LIGHTRED, "A járm? leállítva!");
+		/*Cselekves(playerid, "leállította a járm?vét", 1);*/
 		vInfo[jarmuidje][vMotorelinditva] = false;
 
 	} else {
@@ -42460,16 +42459,16 @@ CMD:motor(playerid, params[])
 			new kocsiserules, starttime, Float:kocsielet;
 			GetVehicleHealth(kocsi, kocsielet);
 			if((100 - (((kocsielet - 350) / 650)) * 100) > 100)
-				return SCM(playerid, COL_LRED, "A jármû állapota nem teszi lehetõvé a motor indítását!");
+				return SCM(playerid, COL_LRED, "A járm? állapota nem teszi lehetõvé a motor indítását!");
 
 			kocsiserules = 1000 - floatround(kocsielet);
 			starttime = 1000 + (kocsiserules * 5);
-			SendClientMessage(playerid, COLOR_GREEN, "Jármû indítás...");
+			SendClientMessage(playerid, COLOR_GREEN, "Járm? indítás...");
 	    	defer JarmuInditas[starttime](playerid, kocsi);
 			PlayerInfo[playerid][pmotortinditja] = true;
 		}
 		else
-			return SendClientMessage(playerid, COLOR_LIGHTRED, "Ehhez a jármûhöz nincs kulcsod!");
+			return SendClientMessage(playerid, COLOR_LIGHTRED, "Ehhez a járm?höz nincs kulcsod!");
 	}
 	return true;
 }
@@ -42492,7 +42491,7 @@ CMD:hulla(playerid, params[])
 			return SCM(playerid, COL_LRED, "Egy vizsgálás már folyamatban van!");
 
 		if(IsPlayerInAnyVehicle(playerid))
-			return SCM(playerid, COL_LRED, "Jármûbõl nem tudod megvizsgálni a hullát!");
+			return SCM(playerid, COL_LRED, "Járm?bõl nem tudod megvizsgálni a hullát!");
 
 		new hulla = GetClosestHulla(playerid);
 		if(GetDistanceToHulla(playerid, hulla) < 5.0 || hulla != NINCS)
@@ -42572,25 +42571,25 @@ CMD:hulla(playerid, params[])
 			return SCM(playerid, COL_LRED, "Nincs a közeledben hulla!");
 
 		if(GetDistanceToVehicle(playerid, kocsi) > 5.0)
-			return SCM(playerid, COL_LRED, "Nincs a közeledben jármû!");
+			return SCM(playerid, COL_LRED, "Nincs a közeledben járm?!");
 
 		new vid = JarmuID(kocsi, playerid);
 
 		if((vInfo[vid][vModel] != 442) && (vInfo[vid][vModel] != 416))
-			return SCM(playerid, COL_LRED, "Ebbe a jármûbe nem tudod bepakolni!");
+			return SCM(playerid, COL_LRED, "Ebbe a járm?be nem tudod bepakolni!");
 
 		if(vInfo[vid][vHulla] >= 2)
-			return SCM(playerid, COL_LRED, "A jármûbe nem fér több hulla, elõtte add le a meglévõket!");
+			return SCM(playerid, COL_LRED, "A járm?be nem fér több hulla, elõtte add le a meglévõket!");
 
 		vInfo[vid][vHulla]++;
 		HullaTorol(hulla);
-		SFM(playerid, COL_LRED, "Bepakoltál egy hullát a jármûbe. Jelenleg "#COL_MKEK"%d"#COL_FEHER" van benne.", vInfo[vid][vHulla]);
+		SFM(playerid, COL_LRED, "Bepakoltál egy hullát a járm?be. Jelenleg "#COL_MKEK"%d"#COL_FEHER" van benne.", vInfo[vid][vHulla]);
 	}
 	else if(!strcmp(fparams, "motoz"))
 	{
 		new hulla = GetClosestHulla(playerid);
 		if(IsPlayerInAnyVehicle(playerid))
-			return SCM(playerid, COL_LRED, "Jármûbõl akarod átnézni a hullát?");
+			return SCM(playerid, COL_LRED, "Járm?bõl akarod átnézni a hullát?");
 
 		if(HullaInfo[hulla][Hvw] != GetPlayerVirtualWorld(playerid))
 			return SCM(playerid, COL_LRED, "Nincs a közeledben hulla!");
@@ -42622,14 +42621,14 @@ CMD:hulla(playerid, params[])
 
 		new kocsi = GetClosestVehicle(playerid);
 		if(GetDistanceToVehicle(playerid, kocsi) > 5.0)
-			return SCM(playerid, COL_LRED, "Nincs a közeledben jármû!");
+			return SCM(playerid, COL_LRED, "Nincs a közeledben járm?!");
 
 		new vid = JarmuID(kocsi, playerid);
 		if((vInfo[vid][vModel] != 442) && (vInfo[vid][vModel] != 416))
-			return SCM(playerid, COL_LRED, "Ebbe a jármûbe nem tudod bepakolni!");
+			return SCM(playerid, COL_LRED, "Ebbe a járm?be nem tudod bepakolni!");
 
 		if(!vInfo[vid][vHulla])
-			return SCM(playerid, COL_LRED, "A jármûben nincs leadható hulla!");
+			return SCM(playerid, COL_LRED, "A járm?ben nincs leadható hulla!");
 
 		new penz = (vInfo[vid][vHulla] * HULLASZORZO);
 		SFM(playerid, COL_VZOLD, "Sikeresen leadtál "#COL_MKEK"%d"#COL_FEHER" holttestet ezért "#COL_MKEK"%s"#COL_FEHER"$ jóváírásra került a bankszámládon!", vInfo[vid][vHulla], FN(penz, 0, ','));
@@ -42643,7 +42642,7 @@ CMD:hulla(playerid, params[])
 			return SCM(playerid, COL_MKEK, "Használat: /hulla elvesz [ Material / Heroin / Marihuana / Kokain / Pénz ]");
 
 		if(IsPlayerInAnyVehicle(playerid))
-			return SCM(playerid, COL_LRED, "Jármûbõl nem használható!");
+			return SCM(playerid, COL_LRED, "Járm?bõl nem használható!");
 
 		new hulla = GetClosestHulla(playerid);
 
@@ -43028,7 +43027,7 @@ CMD:fegyver(playerid, params[])
 		    return SCM(playerid, COL_LRED, "Nincs benne lõszer!");
 		    
 		if(IsPlayerInAnyVehicle(playerid) && (id == 22 || id == 23 || id == 24))
-			return SCM(playerid, COL_LRED, "Ezt nem veheted elõ jármûben!");
+			return SCM(playerid, COL_LRED, "Ezt nem veheted elõ járm?ben!");
 
 		if(id == PlayerInfo[playerid][pFegyver])
 			return SCM(playerid, COL_LRED, "Ezt a fegyvert már elõvetted!");
@@ -43098,7 +43097,7 @@ CMD:locker(playerid, params[])
 	
 	new car = GetClosestVehicle(playerid);
 	new model = GetVehicleModel(car);
-	if(GetDistanceToVehicle(playerid, car) > 10.0 || model != 544 && model != 407) return SCM(playerid, COL_LRED, "Nincs a közelben tûzoltó jármû");
+	if(GetDistanceToVehicle(playerid, car) > 10.0 || model != 544 && model != 407) return SCM(playerid, COL_LRED, "Nincs a közelben t?zoltó járm?");
 	new i = NINCS, dialogstr[1024];
 	for(;++i < sizeof(g_FDLocker);)
 	{
@@ -43107,7 +43106,7 @@ CMD:locker(playerid, params[])
 		else
 		    format(dialogstr, 512, "%s\n%s (%s)", dialogstr, g_FDLocker[i][0], g_FDLocker[i][1]);
 	}
-	Dialog_Show(playerid, FDLocker, DIALOG_STYLE_LIST, "Tûzoltóság - Öltözékek", dialogstr, "Felvesz", "Mégse");
+	Dialog_Show(playerid, FDLocker, DIALOG_STYLE_LIST, "T?zoltóság - Öltözékek", dialogstr, "Felvesz", "Mégse");
 	return true;
 }
 CMD:duty(playerid, params[])
@@ -43284,7 +43283,7 @@ CMD:duty(playerid, params[])
 				DeleteWeapon(playerid);
 			}
 		}
-		/*case FRAKCIO_LSFD: //tûzoltóság
+		/*case FRAKCIO_LSFD: //t?zoltóság
 		{
 		    new car = GetClosestCar(playerid);
 			new model = GetVehicleModel(car);
@@ -43295,7 +43294,7 @@ CMD:duty(playerid, params[])
 					PlayerInfo[playerid][pCP] = CP_GPS;
 					SetPlayerCheckpoint(playerid, 1279.9231,-1791.1005,13.6140, 5.0);
 				}
-				SCM(playerid, COL_LRED, "Nem vagy az öltözõszekrényeknél, vagy tûzoltóautó közelében!");
+				SCM(playerid, COL_LRED, "Nem vagy az öltözõszekrényeknél, vagy t?zoltóautó közelében!");
 				return true;
 			}
 
@@ -43757,12 +43756,12 @@ CMD:vas(playerid, params[])
 {
 	#pragma unused params
 	if(IsPlayerInAnyVehicle(playerid))
-		return SCM(playerid, COL_LRED, "Ezt a parancsot jármûben nem használhatod!");
+		return SCM(playerid, COL_LRED, "Ezt a parancsot járm?ben nem használhatod!");
 	if(PlayerInfo[playerid][pFoglalt])
 		return SCM(playerid, COL_LRED, "Jelenleg elvagy foglalva!");
 
 	if(PlayerInfo[playerid][pVas] >= P_MAX_VAS)
-		return SFM(playerid, COL_LRED, "Már gyûjtöttél %dkg vasat!", PlayerInfo[playerid][pVas]);
+		return SFM(playerid, COL_LRED, "Már gy?jtöttél %dkg vasat!", PlayerInfo[playerid][pVas]);
 
 	new Float:RandomCP[][3] = {
 		{2590.2905, -1998.4435, 3.8594}, // mati1
@@ -43794,9 +43793,9 @@ CMD:vas(playerid, params[])
 CMD:keres(playerid, params[])
 {
 	if(isnull(params))
-		return SCM(playerid, COL_MKEK, "Használat: /keres [ Tû ]");
+		return SCM(playerid, COL_MKEK, "Használat: /keres [ T? ]");
 
-	if(!strcmp(params, "tû", true) || !strcmp(params, "tu", true))
+	if(!strcmp(params, "t?", true) || !strcmp(params, "tu", true))
 	{
 		if(PlayerInfo[playerid][pTimerFut])
 			return SCM(playerid, COL_LRED, "Türelem, ne siess ennyire..");
@@ -43821,7 +43820,7 @@ CMD:heroin(playerid, params[])
 
 	
 	if(!PlayerInfo[playerid][pCuccok][ BL_TU ])
-		return SCM(playerid, COL_LRED, "Nincs nálad tû, keress egyet a kórház kukáiban...");
+		return SCM(playerid, COL_LRED, "Nincs nálad t?, keress egyet a kórház kukáiban...");
 
 	if(!PlayerInfo[playerid][pCuccok][ BL_GYUJTO ])
 		return SCM(playerid, COL_LRED, "Nincs nálad öngyújtó, vegyél egyet az egyik boltban.");
@@ -43894,10 +43893,10 @@ CMD:megkot(playerid, params[])
 		return SCM(playerid, COL_LRED, "Nincs ilyen játékos!");
 
 	if(!IsPlayerInAnyVehicle(playerid) || GetPlayerState(playerid) != PLAYER_STATE_DRIVER)
-		return SCM(playerid, COL_LRED, "Egy jármû vezetõ ülésén kell ülnöd!");
+		return SCM(playerid, COL_LRED, "Egy járm? vezetõ ülésén kell ülnöd!");
 
 	if(!IsPlayerInVehicle(jatekos, GetPlayerVehicleID(playerid)))
-		return SCM(playerid, COL_LRED, "Ez a játékos nem ül a jármûvedben!");
+		return SCM(playerid, COL_LRED, "Ez a játékos nem ül a járm?vedben!");
 
 	if(PlayerInfo[jatekos][pBilincselve])
 		return SCM(playerid, COL_LRED, "Ezen a játékosok bilincs van!");
@@ -43928,7 +43927,7 @@ CMD:megkot(playerid, params[])
 
 CMD:cigi(playerid, params[])
 {
-	//elqrtam a parancsot, így egyszerûbb volt - krisk
+	//elqrtam a parancsot, így egyszer?bb volt - krisk
 	if(isnull(params))
 		return SCM(playerid, COL_MKEK, "Használat: /cigi [ Szív / Papír / Pipa / Bong ]");
 
@@ -44537,7 +44536,7 @@ CMD:elvesz(playerid, params[])
 {
 	new param[24];
 	if(NemMozoghat(playerid,false))	return SCM(playerid, COL_LRED, "A sokk hatására nem tudsz elvenni semmit!");
-	if(IsPlayerInAnyVehicle(playerid)) return SCM(playerid, COL_LRED,"Jármûben nem vehetsz el semmit!");
+	if(IsPlayerInAnyVehicle(playerid)) return SCM(playerid, COL_LRED,"Járm?ben nem vehetsz el semmit!");
 	new jatekos = GetClosestPlayer(playerid);
 	if(!PlayerToPlayer(playerid,jatekos,2))
  		return SCM(playerid,COL_LRED,"Nincs senki a közeledben!");
@@ -44773,14 +44772,14 @@ CMD:kiszed(playerid, params[])
 		return SCM(playerid, COL_LRED, "A közeledben nincs senki akit kirángathatnál!");
 
 	if(IsPlayerInAnyVehicle(playerid))
-		return SCM(playerid, COL_LRED, "Jármûben vagy, mégis, hogy akarod kirángatni?");
+		return SCM(playerid, COL_LRED, "Járm?ben vagy, mégis, hogy akarod kirángatni?");
 
     if(PlayerInfo[jatekos][pAduty] || PlayerInfo[jatekos][pASduty])
         return SCM(playerid, COL_LRED, "Adminszolgálatost?!");
         
 	new vid = JarmuID( GetClosestVehicle(jatekos), jatekos );
 	if(vInfo[vid][vZarva])
-		return SCM(playerid, COL_LRED, "Ez a jármû be van zárva, így nem tudod kirángatni!");
+		return SCM(playerid, COL_LRED, "Ez a járm? be van zárva, így nem tudod kirángatni!");
 
 	new Float:pos[3];
 	GetPlayerPos(playerid, PosExt(pos));
@@ -44789,7 +44788,7 @@ CMD:kiszed(playerid, params[])
 	if(GetPlayerState(jatekos) == PLAYER_STATE_DRIVER)
 		Freeze(jatekos, NINCS);
 
-	Cselekves(playerid, "kirángatott valakit a jármûböl");
+	Cselekves(playerid, "kirángatott valakit a járm?böl");
 	return true;
 }
 CMD:ls(playerid, params[])
@@ -44827,7 +44826,7 @@ CMD:segit(playerid, params[])
 			munka = vInfo[ JarmuID( mentosjarmuid, playerid ) ][vMunka];
         
         if(!IsPlayerInAnyVehicle(playerid) || !IsPlayerInAnyVehicle(jatekos) || mentosjarmuid != GetPlayerVehicleID(jatekos) || munka != FRAKCIO_LAFD)
-		    return SCM(playerid, COL_LRED, "Csak mentõszolgálati jármûben tudod ellátni! (/berak)");
+		    return SCM(playerid, COL_LRED, "Csak mentõszolgálati járm?ben tudod ellátni! (/berak)");
 		else
 		    return SCM(playerid, COL_LRED, "Lõtt sebei vannak! Adj neki gyógyszert, hogy el tudd látni!");
 	}
@@ -45023,7 +45022,7 @@ CMD:removeallrb(playerid, params[])
 CMD:boja(playerid, params[])
 {
 	if(PlayerInfo[playerid][pFrakcio] != FRAKCIO_LSPD && PlayerInfo[playerid][pFrakcio] != FRAKCIO_LAFD && PlayerInfo[playerid][pFrakcio] != FRAKCIO_KATONA && PlayerInfo[playerid][pFrakcio] != FRAKCIO_FBI && PlayerInfo[playerid][pFrakcio] != FRAKCIO_EPITESZ)
-		return SCM(playerid, COL_LRED, "Te nem vagy se tûzoltó, se rendõr!");
+		return SCM(playerid, COL_LRED, "Te nem vagy se t?zoltó, se rendõr!");
 	if(isnull(params))
 		return SCM(playerid, COL_MKEK, "Használat: /bója [ Lerak / Felvesz ]");
 
@@ -45105,11 +45104,11 @@ CMD:hir(playerid, params[])//ah-ban
 		return SCM(playerid, COL_LRED, "Te nem vagy riporter!");
 
 	if(!IsPlayerInAnyVehicle(playerid))
-		return SCM(playerid, COL_LRED, "Csak riporter jármûben használhatod!");
+		return SCM(playerid, COL_LRED, "Csak riporter járm?ben használhatod!");
 
 	new munka = vInfo[ JarmuID( GetPlayerVehicleID(playerid), playerid ) ][vMunka];
 	if(munka != FRAKCIO_RIPORTER)
-		return SCM(playerid, COL_LRED, "Csak RIPORTER jármûben használhatod!");
+		return SCM(playerid, COL_LRED, "Csak RIPORTER járm?ben használhatod!");
 
 	foreach(Player, i)
 	if(IsPlayerConnected(i) && !PlayerInfo[i][pTog][8])
@@ -45129,9 +45128,9 @@ CMD:zene(playerid, params[])//ah-ban
 	if(PlayerInfo[playerid][pFrakcio] != FRAKCIO_RIPORTER && !Admin(playerid, FOADMIN_SZINT))    return SendClientMessage(playerid, COLOR_WHITE, NEM_HASZNALHATO);
 	if(PlayerInfo[playerid][pTog][8])	return SCM(playerid, COL_LRED, "Elõször kapcsold be riportokat, hogy lásd! (( /tog riporter ))");
 	if(isnull(params)) return SCM(playerid, COL_MKEK, "Használat: /zene [ URL (.mp3, .pls, .ogg végzõdéssel) / Stop ] | Zene indítása és leállítása");
-	if(!IsPlayerInAnyVehicle(playerid) && strcmp(params, "stop", true) != 0 && !Admin(playerid, FOADMIN_SZINT))return SCM(playerid, COL_LRED, "Nem vagy riporter jármûben!");
+	if(!IsPlayerInAnyVehicle(playerid) && strcmp(params, "stop", true) != 0 && !Admin(playerid, FOADMIN_SZINT))return SCM(playerid, COL_LRED, "Nem vagy riporter járm?ben!");
 	new id = JarmuID(GetPlayerVehicleID(playerid), playerid);
-	if(strcmp(params, "stop", true) != 0 && !Admin(playerid, FOADMIN_SZINT) && ((vInfo[id][vModel] != 488 && vInfo[id][vModel] != 582) || vInfo[id][vMunka] != FRAKCIO_RIPORTER))	return SCM(playerid, COL_LRED, "Nem vagy riporter jármûben!");
+	if(strcmp(params, "stop", true) != 0 && !Admin(playerid, FOADMIN_SZINT) && ((vInfo[id][vModel] != 488 && vInfo[id][vModel] != 582) || vInfo[id][vMunka] != FRAKCIO_RIPORTER))	return SCM(playerid, COL_LRED, "Nem vagy riporter járm?ben!");
 	if(!strcmp(params, "stop", true))
 	{
 		foreach(Player, i)
@@ -45295,7 +45294,7 @@ CMD:sk(playerid, params[])
 		return SCM(playerid, COL_MKEK, "Használat: /(s)ebesség(k)orlát [(50 - 130)km/h | 0 = Kikapcsolás]");
 
 	if(!PlayerInfo[playerid][pJarmuben])
-		return SCM(playerid, COL_LRED, "Csak jármûben használható!");
+		return SCM(playerid, COL_LRED, "Csak járm?ben használható!");
 
 	if(IsABicikli( vInfo[ PlayerInfo[playerid][pJarmuben] ][vModel] ))
 		return SCM(playerid, COL_LRED, "A bicikli sebességét nem módosíthatod!");
@@ -45311,7 +45310,7 @@ CMD:sk(playerid, params[])
 CMD:vontat(playerid, params[])
 {
 	if(!IsPlayerInAnyVehicle(playerid))
-		return SCM(playerid, COL_LRED, "Nem ülsz jármûben!");
+		return SCM(playerid, COL_LRED, "Nem ülsz járm?ben!");
 	if(GetPlayerVehicleSeat(playerid))
 		return SCM(playerid, COL_LRED, "Vezetõnek kell lenned, hogy vontathass!");
 
@@ -45334,16 +45333,16 @@ CMD:vontat(playerid, params[])
 		}
 
 		if(ok)
-			return SCM(playerid, COL_LRED, "Ezzel a jármûvel nem vontathatsz!");
+			return SCM(playerid, COL_LRED, "Ezzel a járm?vel nem vontathatsz!");
 	}
 
 	if(id == NINCS)
 	{
 		id = GetClosestVehicle(playerid, false);
-		SCM(playerid, COL_MKEK, "Használat: /vontat vagy /vontat [JármûID] | Alap esetben a legközelebbi jármûvet vontatja!");
+		SCM(playerid, COL_MKEK, "Használat: /vontat vagy /vontat [Járm?ID] | Alap esetben a legközelebbi járm?vet vontatja!");
 	}
 	if(!IsVehicleConnected(id) && (id > MAX_VEHICLES || id < 0) || GetDistanceToVehicle(playerid, id) > 10)
-		return SCM(playerid, COL_LRED, "Nincs ilyen jármû a közeledben!");
+		return SCM(playerid, COL_LRED, "Nincs ilyen járm? a közeledben!");
 
 	essid = vInfo[ PlayerInfo[playerid][pJarmuben] ][vID];
 
@@ -45357,14 +45356,14 @@ CMD:vontat(playerid, params[])
 	}
 
 	if(ok)
-		return SCM(playerid, COL_LRED, "Ezt a jármûvet nem vontathatod!");
+		return SCM(playerid, COL_LRED, "Ezt a járm?vet nem vontathatod!");
 
 	if(!GetVehicleTrailer(essid)) AttachTrailerToVehicle(id, essid);
 	else DetachTrailerFromVehicle(essid);
 
 	SetVehicleVirtualWorld(id, GetPlayerVirtualWorld(playerid));
 	LinkVehicleToInterior(id, GetPlayerInterior(playerid));
-	SFM(playerid, COL_VZOLD, "Elkezdted vontatni a "#COL_MKEK"%d[%d]"#COL_FEHER" rendszámú jármûvet!", id, JarmuID(id, playerid));
+	SFM(playerid, COL_VZOLD, "Elkezdted vontatni a "#COL_MKEK"%d[%d]"#COL_FEHER" rendszámú járm?vet!", id, JarmuID(id, playerid));
 	return true;
 }
 
@@ -45374,15 +45373,15 @@ CMD:lenyomoz(playerid, params[])
 		return SendClientMessage(playerid, COLOR_WHITE, NEM_HASZNALHATO);
 
 	if(!Admin(playerid, 3) && !IsPlayerInAnyVehicle(playerid))
-		return SCM(playerid, COL_LRED, "Rendõr jármûben kell ülnöd!");
+		return SCM(playerid, COL_LRED, "Rendõr járm?ben kell ülnöd!");
 
 	new vm = vInfo[ JarmuID( GetPlayerVehicleID(playerid), playerid ) ][vMunka];
 	if(!Admin(playerid, 3) && vm != FRAKCIO_LSPD && vm != FRAKCIO_KATONA && vm != FRAKCIO_FBI)
-		return SCM(playerid, COL_LRED, "Rendõr jármûben kell ülnöd!");
+		return SCM(playerid, COL_LRED, "Rendõr járm?ben kell ülnöd!");
 
 	new param[24];
 	if(sscanf(params, "s[24]{}", param))
-		return SCM(playerid, COL_MKEK, "Használat: /lenyomoz [ Játékos / Jármû / Befejez ]");
+		return SCM(playerid, COL_MKEK, "Használat: /lenyomoz [ Játékos / Járm? / Befejez ]");
 
 	if(PlayerInfo[playerid][pLenyomoz] > gettime())
 		return SFM(playerid, COL_LRED, "Következõ lenyomozásig még várnod kell "#COL_MKEK"%d"#COL_FEHER" másodpercet!", (PlayerInfo[playerid][pLenyomoz] - gettime()));
@@ -45416,17 +45415,17 @@ CMD:lenyomoz(playerid, params[])
 		SetPlayerCheckpoint(playerid, PosExt(pos), 5.0);
 		PlayerInfo[playerid][pCP] = CP_LENYOMOZ;
 	}
-	else if(!strcmp(param, "jármû", true) || !strcmp(param, "jarmu", true))
+	else if(!strcmp(param, "járm?", true) || !strcmp(param, "jarmu", true))
 	{
 		new car;
 		if(sscanf(params, "{s[24]}d", car))
-			return SCM(playerid, COL_MKEK, "Használat: /lenyomoz jármû [Rendszám]");
+			return SCM(playerid, COL_MKEK, "Használat: /lenyomoz járm? [Rendszám]");
 
 		if(!car || car > MAX_VEHICLES || !IsVehicleConnected(car))
-			return SCM(playerid, COL_LRED, "Nincs ilyen jármû!");
+			return SCM(playerid, COL_LRED, "Nincs ilyen járm?!");
 
 		GameTextForPlayer(playerid, "~b~Lenyomozás folyamatban...", 2500, 3);
-		SCM(playerid, COL_VZOLD, "Jármû pillanatnyi koordinátái betáplálva a GPS-be!");
+		SCM(playerid, COL_VZOLD, "Járm? pillanatnyi koordinátái betáplálva a GPS-be!");
 		new Float:pos[3];
 		GetVehiclePos(car, PosExt(pos));
 		SetPlayerCheckpoint(playerid, PosExt(pos), 5.0);
@@ -45731,7 +45730,7 @@ CMD:elfogad(playerid, params[])
 		{
 			return SCM(playerid, COL_LRED, "Nincs a közeledben!!");
 		}
-		SendFormatMessage(playerid, COLOR_WHITE, "Pap: %s, valóban %st akarod férjednek? Örökké szeretned kell, es hûséget kell fogadnod neki!", JatekosNev(playerid), JatekosNev(kivel));
+		SendFormatMessage(playerid, COLOR_WHITE, "Pap: %s, valóban %st akarod férjednek? Örökké szeretned kell, es h?séget kell fogadnod neki!", JatekosNev(playerid), JatekosNev(kivel));
 		SendClientMessage(playerid, COLOR_WHITE, "Ha igen, ird be, hogy 'igen', bármi mást írsz be, azzal visszautasítod!");
 		Beirhatjahogyigen[playerid]  = 1;
 		return true;
@@ -45832,8 +45831,8 @@ CMD:elfogad(playerid, params[])
 				Adat_Update( playerid, ADAT_JARMU_EX );
 				Adat_Update( playerid, ADAT_JARMU_EX );
 
-				SCM(playerid, COL_VZOLD, "Jármûveitek sikeresen elcseréve! Az átiratás össszege "#COL_MKEK"550"#COL_FEHER"$ levonva a bankszámládról!");
-				SCM(jatekos, COL_VZOLD, "Jármûveitek sikeresen elcserélve!");
+				SCM(playerid, COL_VZOLD, "Járm?veitek sikeresen elcseréve! Az átiratás össszege "#COL_MKEK"550"#COL_FEHER"$ levonva a bankszámládról!");
+				SCM(jatekos, COL_VZOLD, "Járm?veitek sikeresen elcserélve!");
 			}
 		}
 
@@ -46018,7 +46017,7 @@ CMD:cuff(playerid, params[])
 
 	if(!PlayerInfo[jatekos][pBilincselve])
 	{
-		if(IsPlayerInAnyVehicle(playerid))	return SCM(playerid, COL_LRED, "Jármûben nem bilincselhetsz!");
+		if(IsPlayerInAnyVehicle(playerid))	return SCM(playerid, COL_LRED, "Járm?ben nem bilincselhetsz!");
 		if(GetPlayerWeapon(jatekos))	return SCM(playerid, COL_LRED, "Ha van a kezébe fegyver nem bilincselheted meg!");
 		if(Bejelzett[jatekos] > 0) 	Bejelzett[jatekos] = 0; SetPlayerColor(jatekos,COLOR_INVISIBLE);
 		SCM(jatekos, COL_LRED, "Megbilincseltek!");
@@ -46058,10 +46057,10 @@ CMD:berak(playerid, params[])
 		return SCM(playerid, COL_LRED, "Ez a játékos nincs a közeledben!");
 
 	if(IsPlayerInAnyVehicle(jatekos))
-		return SCM(playerid, COL_LRED, "A játékos jelenleg is jármûben van!");
+		return SCM(playerid, COL_LRED, "A játékos jelenleg is járm?ben van!");
 
 	if(IsPlayerInAnyVehicle(playerid))
-		return SCM(playerid, COL_LRED, "Jármûben ülsz, így nem tudod berakni!");
+		return SCM(playerid, COL_LRED, "Járm?ben ülsz, így nem tudod berakni!");
 
 	if(PlayerInfo[playerid][pBilincselve])
 		return SCM(playerid, COL_LRED, "Így nem hiszem, hogy sikerülne...");
@@ -46071,7 +46070,7 @@ CMD:berak(playerid, params[])
 
 	new car = GetClosestVehicle(playerid);
 	if(GetDistanceToVehicle(playerid, car) > 5.0)
-		return SCM(playerid, COL_LRED, "Nincs a közeledben jármû!");
+		return SCM(playerid, COL_LRED, "Nincs a közeledben járm?!");
 
 	if(IsABicikli(vInfo[JarmuID(car, playerid)][vModel]))
 		return SCM(playerid, COL_LRED, "Cicaborsó, biciklin mégis, hogy akarsz egyensúlyozni? :D");
@@ -46081,8 +46080,8 @@ CMD:berak(playerid, params[])
 		TogglePlayerControllable(jatekos, false);
 
 	PutPlayerInVehicle(jatekos, car, ules);
-	Cselekves(playerid, "berakott valakit a jármûbe");
-	SCM(playerid, COL_VZOLD, "Beraktad a jármûbe!");
+	Cselekves(playerid, "berakott valakit a járm?be");
+	SCM(playerid, COL_VZOLD, "Beraktad a járm?be!");
 	return true;
 }
 
@@ -46214,7 +46213,7 @@ CMD:bepakol(playerid, params[])
 
 	new car = GetClosestVehicle(playerid);
 	if(GetDistanceToVehicle(playerid, car) > 5.0)
-		return SCM(playerid, COL_LRED, "Nincs a közeledben jármû!");
+		return SCM(playerid, COL_LRED, "Nincs a közeledben járm?!");
 		
 
 	if(PlayerInfo[playerid][pFoglalt] == true)
@@ -46233,24 +46232,24 @@ CMD:bepakol(playerid, params[])
 	}
 	
 	if(!IsAKocsi(vInfo[vid][vModel]))
-		return SCM(playerid, COL_LRED, "Ennek a jármûnek nincs csomagtartója!");
+		return SCM(playerid, COL_LRED, "Ennek a járm?nek nincs csomagtartója!");
 
 	if(ok)
-		return SCM(playerid, COL_LRED, "Ebbe a jármûbe nem pakolhatsz!");
+		return SCM(playerid, COL_LRED, "Ebbe a járm?be nem pakolhatsz!");
 
 	sscanf(params, "s[24]D(0){}", param, db);
 	if(db > MAX_ERTEK || db < 0)
 		return SCM(playerid, COL_LRED, "Hibás érték!");
 
 	if(vInfo[vid][vZarva])
-		return SCM(playerid, COL_LRED, "Ez a jármû zárva van! Így nem tudsz belepakolni.");
+		return SCM(playerid, COL_LRED, "Ez a járm? zárva van! Így nem tudsz belepakolni.");
 
 	if(GetJarmu(car, KOCSI_CSOMAGTARTO) == 0)
-		return SCM(playerid, COL_LRED, "A jármû csomagtartója zárva van! Így nem tudsz belepakolni.");
+		return SCM(playerid, COL_LRED, "A járm? csomagtartója zárva van! Így nem tudsz belepakolni.");
 
 
 	if(IsPlayerInAnyVehicle(playerid))
-		return SCM(playerid, COL_LRED, "Jármûben vagy, így nem tudsz belepakolni!");
+		return SCM(playerid, COL_LRED, "Járm?ben vagy, így nem tudsz belepakolni!");
 
 
 	if(!strcmp(param, "fegyver", false))
@@ -46286,8 +46285,8 @@ CMD:bepakol(playerid, params[])
 			return true;
 		}
 
-		SFM(playerid, COL_VZOLD, "Bepakoltál egy "#COL_MKEK"%s"#COL_FEHER" típusú fegyvert %d tölténnyel a "#COL_MKEK"%d[%d]"#COL_FEHER" rendszámú jármûbe!", aWeaponNames[wid], ammo, car, vid);
-		Cselekves(playerid, "bepakolt egy fegyvert az egyik jármûbe", 1);
+		SFM(playerid, COL_VZOLD, "Bepakoltál egy "#COL_MKEK"%s"#COL_FEHER" típusú fegyvert %d tölténnyel a "#COL_MKEK"%d[%d]"#COL_FEHER" rendszámú járm?be!", aWeaponNames[wid], ammo, car, vid);
+		Cselekves(playerid, "bepakolt egy fegyvert az egyik járm?be", 1);
 
 		vInfo[vid][vFegyver][db - 1] = wid;
 		vInfo[vid][vTolteny][db - 1] = ammo;
@@ -46307,13 +46306,13 @@ CMD:bepakol(playerid, params[])
 			return SCM(playerid, COL_LRED, "Nincs nálad ennyi vas!");
 
 		if((vInfo[vid][vVas] + db) > J_MAX_VAS)
-			return SCM(playerid, COL_LRED, "Ennyit nem tudsz bepakolni a jármûbe! Maximum "#J_MAX_VAS"kg lehet!");
+			return SCM(playerid, COL_LRED, "Ennyit nem tudsz bepakolni a járm?be! Maximum "#J_MAX_VAS"kg lehet!");
 
 		PlayerInfo[playerid][pVas] -= db;
 		vInfo[vid][vVas] += db;
 		vUpdate(vid, vuVas);
-		SFM(playerid, COL_VZOLD, "Bepakoltál "#COL_MKEK"%s"#COL_FEHER"kg vasat a "#COL_MKEK"%d[%d]"#COL_FEHER" rendszámú jármûbe!", FN(db, 0, ','), car, vid);
-		Cselekves(playerid, "bepakolt némi vasat az egyik jármûbe", 1);
+		SFM(playerid, COL_VZOLD, "Bepakoltál "#COL_MKEK"%s"#COL_FEHER"kg vasat a "#COL_MKEK"%d[%d]"#COL_FEHER" rendszámú járm?be!", FN(db, 0, ','), car, vid);
+		Cselekves(playerid, "bepakolt némi vasat az egyik járm?be", 1);
 	}
 	else if(!strcmp(param, "material", false) || !strcmp(param, "materiál", false) || !strcmp(param, "mati", false))
 	{
@@ -46324,13 +46323,13 @@ CMD:bepakol(playerid, params[])
 			return SCM(playerid, COL_LRED, "Nincs nálad ennyi materiál!");
 
 		if((vInfo[vid][vMaterial] + db) > J_MAX_MATERIAL)
-			return SCM(playerid, COL_LRED, "Ennyit nem tudsz bepakolni a jármûbe! Maximum "#J_MAX_MATERIAL"db lehet!");
+			return SCM(playerid, COL_LRED, "Ennyit nem tudsz bepakolni a járm?be! Maximum "#J_MAX_MATERIAL"db lehet!");
 
 		PlayerInfo[playerid][pMaterial] -= db;
 		vInfo[vid][vMaterial] += db;
 		vUpdate(vid, vuMaterial);
-		SFM(playerid, COL_VZOLD, "Bepakoltál "#COL_MKEK"%s"#COL_FEHER"db materiált a "#COL_MKEK"%d[%d]"#COL_FEHER" rendszámú jármûbe!", FN(db, 0, ','), car, vid);
-		Cselekves(playerid, "bepakolt némi materiált az egyik jármûbe", 1);
+		SFM(playerid, COL_VZOLD, "Bepakoltál "#COL_MKEK"%s"#COL_FEHER"db materiált a "#COL_MKEK"%d[%d]"#COL_FEHER" rendszámú járm?be!", FN(db, 0, ','), car, vid);
+		Cselekves(playerid, "bepakolt némi materiált az egyik járm?be", 1);
 	}
 	else if(!strcmp(param, "heroin", false))
 	{
@@ -46341,13 +46340,13 @@ CMD:bepakol(playerid, params[])
 			return SCM(playerid, COL_LRED, "Nincs nálad ennyi heroin!");
 
 		if((vInfo[vid][vHeroin] + db) > J_MAX_HEROIN)
-			return SCM(playerid, COL_LRED, "Ennyit nem tudsz bepakolni a jármûbe! Maximum "#J_MAX_HEROIN"g lehet!");
+			return SCM(playerid, COL_LRED, "Ennyit nem tudsz bepakolni a járm?be! Maximum "#J_MAX_HEROIN"g lehet!");
 
 		PlayerInfo[playerid][pHeroin] -= db;
 		vInfo[vid][vHeroin] += db;
 		vUpdate(vid, vuHeroin);
-		SFM(playerid, COL_VZOLD, "Bepakoltál "#COL_MKEK"%s"#COL_FEHER"g heroint a "#COL_MKEK"%d[%d]"#COL_FEHER" rendszámú jármûbe!", FN(db, 0, ','), car, vid);
-		Cselekves(playerid, "bepakolt némi heroint az egyik jármûbe", 1);
+		SFM(playerid, COL_VZOLD, "Bepakoltál "#COL_MKEK"%s"#COL_FEHER"g heroint a "#COL_MKEK"%d[%d]"#COL_FEHER" rendszámú járm?be!", FN(db, 0, ','), car, vid);
+		Cselekves(playerid, "bepakolt némi heroint az egyik járm?be", 1);
 	}
 	else if(!strcmp(param, "kokain", false))
 	{
@@ -46358,13 +46357,13 @@ CMD:bepakol(playerid, params[])
 			return SCM(playerid, COL_LRED, "Nincs nálad ennyi kokain!");
 
 		if((vInfo[vid][vKokain] + db) > J_MAX_KOKAIN)
-			return SCM(playerid, COL_LRED, "Ennyit nem tudsz bepakolni a jármûbe! Maximum "#J_MAX_KOKAIN"g lehet!");
+			return SCM(playerid, COL_LRED, "Ennyit nem tudsz bepakolni a járm?be! Maximum "#J_MAX_KOKAIN"g lehet!");
 
 		PlayerInfo[playerid][pKokain] -= db;
 		vInfo[vid][vKokain] += db;
 		vUpdate(vid, vuKokain);
-		SFM(playerid, COL_VZOLD, "Bepakoltál "#COL_MKEK"%s"#COL_FEHER"g kokaint a "#COL_MKEK"%d[%d]"#COL_FEHER" rendszámú jármûbe!", FN(db, 0, ','), car, vid);
-		Cselekves(playerid, "bepakolt némi kokaint az egyik jármûbe", 1);
+		SFM(playerid, COL_VZOLD, "Bepakoltál "#COL_MKEK"%s"#COL_FEHER"g kokaint a "#COL_MKEK"%d[%d]"#COL_FEHER" rendszámú járm?be!", FN(db, 0, ','), car, vid);
+		Cselekves(playerid, "bepakolt némi kokaint az egyik járm?be", 1);
 	}
 	else if(!strcmp(param, "marihuána", false) || !strcmp(param, "marihuana", false) || !strcmp(param, "mariska", false))
 	{
@@ -46375,13 +46374,13 @@ CMD:bepakol(playerid, params[])
 			return SCM(playerid, COL_LRED, "Nincs nálad ennyi marihuána!");
 
 		if((vInfo[vid][vMarihuana] + db) > J_MAX_MARIHUANA)
-			return SCM(playerid, COL_LRED, "Ennyit nem tudsz bepakolni a jármûbe! Maximum "#J_MAX_MARIHUANA"g lehet!");
+			return SCM(playerid, COL_LRED, "Ennyit nem tudsz bepakolni a járm?be! Maximum "#J_MAX_MARIHUANA"g lehet!");
 
 		PlayerInfo[playerid][pMarihuana] -= db;
 		vInfo[vid][vMarihuana] += db;
 		vUpdate(vid, vuMarihuana);
-		SFM(playerid, COL_VZOLD, "Bepakoltál "#COL_MKEK"%s"#COL_FEHER"g marihuánát a "#COL_MKEK"%d[%d]"#COL_FEHER" rendszámú jármûbe!", FN(db, 0, ','), car, vid);
-		Cselekves(playerid, "bepakolt némi marihuánát az egyik jármûbe", 1);
+		SFM(playerid, COL_VZOLD, "Bepakoltál "#COL_MKEK"%s"#COL_FEHER"g marihuánát a "#COL_MKEK"%d[%d]"#COL_FEHER" rendszámú járm?be!", FN(db, 0, ','), car, vid);
+		Cselekves(playerid, "bepakolt némi marihuánát az egyik járm?be", 1);
 	}
 	return true;
 }
@@ -46393,7 +46392,7 @@ CMD:kipakol(playerid, params[])
 
 	new car = GetClosestVehicle(playerid);
 	if(GetDistanceToVehicle(playerid, car) > 5.0)
-		return SCM(playerid, COL_LRED, "Nincs a közeledben jármû!");
+		return SCM(playerid, COL_LRED, "Nincs a közeledben járm?!");
 
 	new param[24], db = 0, vid = JarmuID(car, playerid);
 	sscanf(params, "s[24]D(0){}", param, db);
@@ -46401,17 +46400,17 @@ CMD:kipakol(playerid, params[])
 		return SCM(playerid, COL_LRED, "Hibás érték!");
 
 	if(vInfo[vid][vZarva])
-		return SCM(playerid, COL_LRED, "Ez a jármû zárva van! Így nem tudsz kipakolni semmit se.");
+		return SCM(playerid, COL_LRED, "Ez a járm? zárva van! Így nem tudsz kipakolni semmit se.");
 		
 
 	if(!IsAKocsi(vInfo[vid][vModel]))
-		return SCM(playerid, COL_LRED, "Ennek a jármûnek nincs csomagtartója!");
+		return SCM(playerid, COL_LRED, "Ennek a járm?nek nincs csomagtartója!");
 
 	if(GetJarmu(car, KOCSI_CSOMAGTARTO) == 0)
-		return SCM(playerid, COL_LRED, "A jármû csomagtartója zárva van! Így nem tudsz kipakolni semmit se.");
+		return SCM(playerid, COL_LRED, "A járm? csomagtartója zárva van! Így nem tudsz kipakolni semmit se.");
 
 	if(IsPlayerInAnyVehicle(playerid))
-		return SCM(playerid, COL_LRED, "Jármûben vagy, így nem tudsz kipakolni semmit se!");
+		return SCM(playerid, COL_LRED, "Járm?ben vagy, így nem tudsz kipakolni semmit se!");
 
 	if(!strcmp(param, "fegyver", false))
 	{
@@ -46434,8 +46433,8 @@ CMD:kipakol(playerid, params[])
 
 		SetPlayerAttachedWeapon(playerid);
 
-		SFM(playerid, COL_VZOLD, "Kivéttél egy "#COL_MKEK"%s"#COL_FEHER" típusú fegyvert %d tölténnyel a "#COL_MKEK"%d[%d]"#COL_FEHER" rendszámú jármûbõl!", aWeaponNames[ vInfo[vid][vFegyver][db - 1] ], vInfo[vid][vTolteny][db - 1], car, vid);
-		Cselekves(playerid, "kivett egy fegyvert az egyik jármûbõl", 1);
+		SFM(playerid, COL_VZOLD, "Kivéttél egy "#COL_MKEK"%s"#COL_FEHER" típusú fegyvert %d tölténnyel a "#COL_MKEK"%d[%d]"#COL_FEHER" rendszámú járm?bõl!", aWeaponNames[ vInfo[vid][vFegyver][db - 1] ], vInfo[vid][vTolteny][db - 1], car, vid);
+		Cselekves(playerid, "kivett egy fegyvert az egyik járm?bõl", 1);
 
 		vInfo[vid][vFegyver][db - 1] = 0;
 		vInfo[vid][vTolteny][db - 1] = 0;
@@ -46450,13 +46449,13 @@ CMD:kipakol(playerid, params[])
 			return SCM(playerid, COL_LRED, "Ennyi nem fér el nálad! Maximum "#P_MAX_VAS"kg lehet nálad!");
 
 		if(vInfo[vid][vVas] < db)
-			return SCM(playerid, COL_LRED, "Nincs ennyi vas a jármûben!");
+			return SCM(playerid, COL_LRED, "Nincs ennyi vas a járm?ben!");
 
 		PlayerInfo[playerid][pVas] += db;
 		vInfo[vid][vVas] -= db;
 		vUpdate(vid, vuVas);
-		SFM(playerid, COL_VZOLD, "Kivettél "#COL_MKEK"%s"#COL_FEHER"kg vasat a "#COL_MKEK"%d[%d]"#COL_FEHER" rendszámú jármûbõl!", FN(db, 0, ','), car, vid);
-		Cselekves(playerid, "kipakolt némi vasat az egyik jármûbõl", 1);
+		SFM(playerid, COL_VZOLD, "Kivettél "#COL_MKEK"%s"#COL_FEHER"kg vasat a "#COL_MKEK"%d[%d]"#COL_FEHER" rendszámú járm?bõl!", FN(db, 0, ','), car, vid);
+		Cselekves(playerid, "kipakolt némi vasat az egyik járm?bõl", 1);
 	}
 	else if(!strcmp(param, "material", false) || !strcmp(param, "materiál", false) || !strcmp(param, "mati", false))
 	{
@@ -46467,13 +46466,13 @@ CMD:kipakol(playerid, params[])
 			return SCM(playerid, COL_LRED, "Ennyi nem fér el nálad! Maximum "#P_MAX_MATERIAL"db lehet nálad!");
 
 		if(vInfo[vid][vMaterial] < db)
-			return SCM(playerid, COL_LRED, "Nincs ennyi materiál a jármûben!");
+			return SCM(playerid, COL_LRED, "Nincs ennyi materiál a járm?ben!");
 
 		PlayerInfo[playerid][pMaterial] += db;
 		vInfo[vid][vMaterial] -= db;
 		vUpdate(vid, vuMaterial);
-		SFM(playerid, COL_VZOLD, "Kivettél "#COL_MKEK"%s"#COL_FEHER"db materiált a "#COL_MKEK"%d[%d]"#COL_FEHER" rendszámú jármûbõl!", FN(db, 0, ','), car, vid);
-		Cselekves(playerid, "kipakolt némi materiált az egyik jármûbõl", 1);
+		SFM(playerid, COL_VZOLD, "Kivettél "#COL_MKEK"%s"#COL_FEHER"db materiált a "#COL_MKEK"%d[%d]"#COL_FEHER" rendszámú járm?bõl!", FN(db, 0, ','), car, vid);
+		Cselekves(playerid, "kipakolt némi materiált az egyik járm?bõl", 1);
 	}
 	else if(!strcmp(param, "heroin", false))
 	{
@@ -46484,13 +46483,13 @@ CMD:kipakol(playerid, params[])
 			return SCM(playerid, COL_LRED, "Ennyi nem fér el nálad! Maximum "#P_MAX_HEROIN"g lehet nálad!");
 
 		if(vInfo[vid][vHeroin] < db)
-			return SCM(playerid, COL_LRED, "Nincs ennyi heroin a jármûben!");
+			return SCM(playerid, COL_LRED, "Nincs ennyi heroin a járm?ben!");
 
 		PlayerInfo[playerid][pHeroin] += db;
 		vInfo[vid][vHeroin] -= db;
 		vUpdate(vid, vuHeroin);
-		SFM(playerid, COL_VZOLD, "Kivettél "#COL_MKEK"%s"#COL_FEHER"g heroint a "#COL_MKEK"%d[%d]"#COL_FEHER" rendszámú jármûbõl!", FN(db, 0, ','), car, vid);
-		Cselekves(playerid, "kipakolt némi heroint az egyik jármûbõl", 1);
+		SFM(playerid, COL_VZOLD, "Kivettél "#COL_MKEK"%s"#COL_FEHER"g heroint a "#COL_MKEK"%d[%d]"#COL_FEHER" rendszámú járm?bõl!", FN(db, 0, ','), car, vid);
+		Cselekves(playerid, "kipakolt némi heroint az egyik járm?bõl", 1);
 	}
 	else if(!strcmp(param, "kokain", false))
 	{
@@ -46501,13 +46500,13 @@ CMD:kipakol(playerid, params[])
 			return SCM(playerid, COL_LRED, "Ennyi nem fér el nálad! Maximum "#P_MAX_KOKAIN"g lehet nálad!");
 
 		if(vInfo[vid][vKokain] < db)
-			return SCM(playerid, COL_LRED, "Nincs ennyi heroin a jármûben!");
+			return SCM(playerid, COL_LRED, "Nincs ennyi heroin a járm?ben!");
 
 		PlayerInfo[playerid][pKokain] += db;
 		vInfo[vid][vKokain] -= db;
 		vUpdate(vid, vuKokain);
-		SFM(playerid, COL_VZOLD, "Kivettél "#COL_MKEK"%s"#COL_FEHER"g kokaint a "#COL_MKEK"%d[%d]"#COL_FEHER" rendszámú jármûbõl!", FN(db, 0, ','), car, vid);
-		Cselekves(playerid, "kipakolt némi kokaint az egyik jármûbõl", 1);
+		SFM(playerid, COL_VZOLD, "Kivettél "#COL_MKEK"%s"#COL_FEHER"g kokaint a "#COL_MKEK"%d[%d]"#COL_FEHER" rendszámú járm?bõl!", FN(db, 0, ','), car, vid);
+		Cselekves(playerid, "kipakolt némi kokaint az egyik járm?bõl", 1);
 	}
 	else if(!strcmp(param, "marihuána", false) || !strcmp(param, "marihuana", false) || !strcmp(param, "mariska", false))
 	{
@@ -46518,13 +46517,13 @@ CMD:kipakol(playerid, params[])
 			return SCM(playerid, COL_LRED, "Ennyi nem fér el nálad! Maximum "#P_MAX_MARIHUANA"g lehet nálad!");
 
 		if(vInfo[vid][vMarihuana] < db)
-			return SCM(playerid, COL_LRED, "Nincs ennyi marihuána a jármûben!");
+			return SCM(playerid, COL_LRED, "Nincs ennyi marihuána a járm?ben!");
 
 		PlayerInfo[playerid][pMarihuana] += db;
 		vInfo[vid][vMarihuana] -= db;
 		vUpdate(vid, vuMarihuana);
-		SFM(playerid, COL_VZOLD, "Kivettél "#COL_MKEK"%s"#COL_FEHER"g marihuánát a "#COL_MKEK"%d[%d]"#COL_FEHER" rendszámú jármûbõl!", FN(db, 0, ','), car, vid);
-		Cselekves(playerid, "kipakolt némi marihuánát az egyik jármûbõl", 1);
+		SFM(playerid, COL_VZOLD, "Kivettél "#COL_MKEK"%s"#COL_FEHER"g marihuánát a "#COL_MKEK"%d[%d]"#COL_FEHER" rendszámú járm?bõl!", FN(db, 0, ','), car, vid);
+		Cselekves(playerid, "kipakolt némi marihuánát az egyik járm?bõl", 1);
 	}
 	return true;
 }
@@ -46535,14 +46534,14 @@ CMD:rendszam(playerid, params[])
 	car = GetClosestVehicle(playerid);
 
 	if(!IsVehicleConnected(car) || car == NINCS || GetDistanceToVehicle(playerid, car) > 5.0)
-		return SCM(playerid, COL_LRED, "Nincs a közeledben jármû!");
+		return SCM(playerid, COL_LRED, "Nincs a közeledben járm?!");
 
 	new vid = JarmuID(car, playerid);
 	if(!vid || !vInfo[vid][vHasznalva])
 		return SCM(playerid, COL_LRED, "Egy hiba történt!");
 
-	if(strlen(vInfo[vid][vRendszam]) < 4) SFM(playerid, COL_MKEK, "A "#COL_MKEK"%s"#COL_FEHER" típusú jármû rendszáma: "#COL_MKEK"See-%d[%d]", VehicleNames[vInfo[vid][vModel] - 400], car, vid);
-	else SFM(playerid, COL_MKEK, "A "#COL_MKEK"%s"#COL_FEHER" típusú jármû rendszáma: "#COL_MKEK"%s ( %d[%d] )", VehicleNames[vInfo[vid][vModel] - 400], vInfo[vid][vRendszam], car, vid);
+	if(strlen(vInfo[vid][vRendszam]) < 4) SFM(playerid, COL_MKEK, "A "#COL_MKEK"%s"#COL_FEHER" típusú járm? rendszáma: "#COL_MKEK"Soul-%d[%d]", VehicleNames[vInfo[vid][vModel] - 400], car, vid);
+	else SFM(playerid, COL_MKEK, "A "#COL_MKEK"%s"#COL_FEHER" típusú járm? rendszáma: "#COL_MKEK"%s ( %d[%d] )", VehicleNames[vInfo[vid][vModel] - 400], vInfo[vid][vRendszam], car, vid);
 	return true;
 }
 
@@ -46552,22 +46551,22 @@ CMD:atnez(playerid, params[])
 		return SCM(playerid, COL_LRED, "Te nem vagy a rendvédelem tagja!");*/
 						
 	if(isnull(params))
-		return SCM(playerid, COL_MKEK, "Használat: /átnéz [ Jármû / Ház ]");
+		return SCM(playerid, COL_MKEK, "Használat: /átnéz [ Járm? / Ház ]");
 
-	if(!strcmp(params, "jármû", false) || !strcmp(params, "jarmu", false))
+	if(!strcmp(params, "járm?", false) || !strcmp(params, "jarmu", false))
 	{
 		new car = NINCS;
 		car = GetClosestVehicle(playerid);
 
 		if(!IsVehicleConnected(car) || car == NINCS || GetDistanceToVehicle(playerid, car) > 5.0)
-			return SCM(playerid, COL_LRED, "Nincs a közeledben jármû!");
+			return SCM(playerid, COL_LRED, "Nincs a közeledben járm?!");
 
 		new vid = JarmuID(car, playerid);
 		if(!vid || !vInfo[vid][vHasznalva])
 			return SCM(playerid, COL_LRED, "Egy hiba történt!");
 
 		if(vInfo[vid][vZarva])
-			return SCM(playerid, COL_LRED, "Ez a jármû zárva van!");
+			return SCM(playerid, COL_LRED, "Ez a járm? zárva van!");
 
 		SendFormatMessage(playerid, COLOR_WHITE, "=================== "#COL_MKEK"[ LS - %d[%d] Tartalma ]"#COL_FEHER" ===================", car, vid);
 		SendFormatMessage(playerid, COLOR_WHITE, "Vas: "#COL_MKEK"%d/%dKg"#COL_FEHER" | Material: "#COL_MKEK"%d/%ddb", vInfo[vid][vVas], J_MAX_VAS, vInfo[vid][vMaterial], J_MAX_MATERIAL);
@@ -46598,7 +46597,7 @@ CMD:atnez(playerid, params[])
 	    new haz = PlayerInfo[playerid][phaz];
 	    if( haz == NINCS) return SCM(playerid, COL_LRED, "Nem vagy házban!");
 		new string[512];
-		format(string, 512, "\t\tSee utca %d\n\
+		format(string, 512, "\t\tSoul utca %d\n\
 			Pénz: %s\n\
 			Kokain: %s\n\
 			Heroin: %s\n\
@@ -46616,7 +46615,7 @@ CMD:csere(playerid, params[])
 	if(isnull(params))
 	{
 		sh_help:
-		return SCM(playerid, COL_MKEK, "Használat: /csere [ Ház / Jármû ] [Játékos] [ Mit? (ID) ] [ Mire? (ID) ]");
+		return SCM(playerid, COL_MKEK, "Használat: /csere [ Ház / Járm? ] [Játékos] [ Mit? (ID) ] [ Mire? (ID) ]");
 	}
 
 	new jatekos, param[24], mit = NINCS, mire = NINCS;
@@ -46658,8 +46657,8 @@ CMD:csere(playerid, params[])
 		if(!van[1])
 			return SCM(playerid, COL_LRED, "Ez a ház nem a másik fél tulajdona! (( /stats-ban ellenõrizze a másik fél a házszámot! ))");
 
-		SendFormatMessage(playerid, COLOR_ORANGE, "Felajánlottad %s számára, hogy elcseréled a See utca %d házad a See utca %d házára.", JatekosNev(jatekos, true), mit, mire);
-		SendFormatMessage(jatekos, COLOR_ORANGE, "%s felajánlotta, hogy elcserélné veled a See utca %d házát a See utca %d házadra.", JatekosNev(jatekos, true), mit, mire);
+		SendFormatMessage(playerid, COLOR_ORANGE, "Felajánlottad %s számára, hogy elcseréled a Soul utca %d házad a Soul utca %d házára.", JatekosNev(jatekos, true), mit, mire);
+		SendFormatMessage(jatekos, COLOR_ORANGE, "%s felajánlotta, hogy elcserélné veled a Soul utca %d házát a Soul utca %d házadra.", JatekosNev(jatekos, true), mit, mire);
 		SCM(jatekos, COL_MKEK, "Ha elszeretnéd fogadni a cserét kérlek írd be, hogy /elfogad csere, elutasításhoz /elutasít csere");
 
 		PlayerInfo[playerid][pProcess][0] = PR_CSERE_HAZ;
@@ -46668,13 +46667,13 @@ CMD:csere(playerid, params[])
 		PlayerInfo[jatekos][pProcess][2] = mit;
 		PlayerInfo[jatekos][pProcess][3] = mire;
 	}
-	else if(!strcmp(param, "jarmu", true) || !strcmp(param, "jármû", true))
+	else if(!strcmp(param, "jarmu", true) || !strcmp(param, "járm?", true))
 	{
 		if(mit == NINCS && mire == NINCS)
-			return SCM(playerid, COL_MKEK, "Használat: /csere Jármû [Játékos] [ Jármûved rendszáma ] [ Játékos jármûvének rendszám ] | /stats-ban találjátok");
+			return SCM(playerid, COL_MKEK, "Használat: /csere Járm? [Játékos] [ Járm?ved rendszáma ] [ Játékos járm?vének rendszám ] | /stats-ban találjátok");
 
 		if(playerid == jatekos)
-			return SCM(playerid, COL_LRED, "Cicaborsó saját jármûved ne cseréld már el magaddal! :D");
+			return SCM(playerid, COL_LRED, "Cicaborsó saját járm?ved ne cseréld már el magaddal! :D");
 
 		if(!Belepve(jatekos) || jatekos == INVALID_PLAYER_ID || IsPlayerNPC(jatekos))
 			return SCM(playerid, COL_LRED, "Nincs ilyen játékos!");
@@ -46683,10 +46682,10 @@ CMD:csere(playerid, params[])
 			return SCM(playerid, COL_LRED, "Ez a játékos nincs a közeledben!");
 
 		if(mit == NINCS)
-			return SCM(playerid, COL_MKEK, "Add meg a cserélendõ jármûved rendszámát! (( /stats-ban látod! ))");
+			return SCM(playerid, COL_MKEK, "Add meg a cserélendõ járm?ved rendszámát! (( /stats-ban látod! ))");
 
 		if(mire == NINCS)
-			return SCM(playerid, COL_MKEK, "Add meg a másik fél cserélni kívánt jármûvének rendszámát! (( /stats-ban látja a másik fél! ))");
+			return SCM(playerid, COL_MKEK, "Add meg a másik fél cserélni kívánt járm?vének rendszámát! (( /stats-ban látja a másik fél! ))");
 
 		new bool:van[2], i = NINCS;
 		for(;++i < MAX_HAZ_JARMU;)
@@ -46699,13 +46698,13 @@ CMD:csere(playerid, params[])
 		}
 
 		if(!van[0])
-			return SCM(playerid, COL_LRED, "Ez a jármû nem a tiéd! (( /stats-ban ellenõrízd a rendszámot! ))");
+			return SCM(playerid, COL_LRED, "Ez a járm? nem a tiéd! (( /stats-ban ellenõrízd a rendszámot! ))");
 
 		if(!van[1])
-			return SCM(playerid, COL_LRED, "Ez a jármû nem a másik fél tulajdona! (( /stats-ban ellenõrizze a másik fél a rendszámot! ))");
+			return SCM(playerid, COL_LRED, "Ez a járm? nem a másik fél tulajdona! (( /stats-ban ellenõrizze a másik fél a rendszámot! ))");
 
-		SendFormatMessage(playerid, COLOR_ORANGE, "Felajánlottad %s számára, hogy elcseréled a See-%d[%d] rendszámú jármûved a See-%d[%d] rendszámú jármûvére!", JatekosNev(jatekos, true), mit, JarmuID(mit, playerid), mire, JarmuID(mire, playerid));
-		SendFormatMessage(jatekos, COLOR_ORANGE, "%s felajánlotta, hogy elcserélné veled a See-%d[%d] rendszámú jármûvét a See-%d[%d] rendszámú jármûvedre!", JatekosNev(playerid, true), mit, JarmuID(mit, playerid), mire, JarmuID(mire, playerid));
+		SendFormatMessage(playerid, COLOR_ORANGE, "Felajánlottad %s számára, hogy elcseréled a Soul-%d[%d] rendszámú járm?ved a Soul-%d[%d] rendszámú járm?vére!", JatekosNev(jatekos, true), mit, JarmuID(mit, playerid), mire, JarmuID(mire, playerid));
+		SendFormatMessage(jatekos, COLOR_ORANGE, "%s felajánlotta, hogy elcserélné veled a Soul-%d[%d] rendszámú járm?vét a Soul-%d[%d] rendszámú járm?vedre!", JatekosNev(playerid, true), mit, JarmuID(mit, playerid), mire, JarmuID(mire, playerid));
 		SCM(jatekos, COL_MKEK, "Ha elszeretnéd fogadni a cserét kérlek írd be, hogy /elfogad csere, elutasításhoz /elutasít csere");
 
 		PlayerInfo[playerid][pProcess][0] = PR_CSERE_JARMU;
@@ -46717,7 +46716,7 @@ CMD:csere(playerid, params[])
 	return true;
 }
 
-CMD:v(playerid, params[]) // jármû rendszer kezelés
+CMD:v(playerid, params[]) // járm? rendszer kezelés
 {
 	new param[64], fparam[32];
 
@@ -46750,7 +46749,7 @@ CMD:v(playerid, params[]) // jármû rendszer kezelés
 			} else {
 				if(!strcmp(fparam, "lista", false))
 				{
-					SendFormatMessage(playerid, COLOR_SZURKE, "========= [ "#COL_MKEK"%s jármûvei"#COL_SZURKE" ] =========", FInfo[PlayerInfo[playerid][pFrakcio]][fNev]);
+					SendFormatMessage(playerid, COLOR_SZURKE, "========= [ "#COL_MKEK"%s járm?vei"#COL_SZURKE" ] =========", FInfo[PlayerInfo[playerid][pFrakcio]][fNev]);
 					new szamlalo = 0;
 
 					foreach(Jarmuvek, id)
@@ -46766,7 +46765,7 @@ CMD:v(playerid, params[]) // jármû rendszer kezelés
 						}
 					}
 					if(!szamlalo)
-						SendClientMessage(playerid, COLOR_LIGHTBLUE, "A frakciódnak még nincs jármûve!");
+						SendClientMessage(playerid, COLOR_LIGHTBLUE, "A frakciódnak még nincs járm?ve!");
 					//SendClientMessage(playerid, COLOR_SZURKE, "=======================================");
 				}
 				else if(!strcmp(fparam, "rang", false))
@@ -46786,12 +46785,12 @@ CMD:v(playerid, params[]) // jármû rendszer kezelés
 						new vehicleidje = JarmuID(car, playerid);
 
                         if(vInfo[vehicleidje][vMunka] != PlayerInfo[playerid][pFrakcio])
-						    return SCM(playerid, COL_LRED, "Ez a jármû nem a te frakciódé.");
+						    return SCM(playerid, COL_LRED, "Ez a járm? nem a te frakciódé.");
 
 						if(PlayerInfo[playerid][pLeader] != 1)
 						    return SCM(playerid, COL_LRED, "Te nem vagy (Al)Leader!");
 
-						SendFormatMessage(playerid, COLOR_LBLUE, ""#COL_VKEK"%s"#COL_FEHER" típusú jármû rangja átírva! | Régi "#COL_VKEK"%d"#COL_FEHER" | Új: "#COL_VKEK"%d"#COL_FEHER" | JármûID: "#COL_VKEK"%d[%d]", VehicleNames[GetVehicleModel(car) - 400], vInfo[vehicleidje][vRang], rang, car, vehicleidje);
+						SendFormatMessage(playerid, COLOR_LBLUE, ""#COL_VKEK"%s"#COL_FEHER" típusú járm? rangja átírva! | Régi "#COL_VKEK"%d"#COL_FEHER" | Új: "#COL_VKEK"%d"#COL_FEHER" | Járm?ID: "#COL_VKEK"%d[%d]", VehicleNames[GetVehicleModel(car) - 400], vInfo[vehicleidje][vRang], rang, car, vehicleidje);
 						vInfo[vehicleidje][vRang] = rang;
 						vUpdate(vehicleidje, vuRang);
 					}
@@ -46807,13 +46806,13 @@ CMD:v(playerid, params[]) // jármû rendszer kezelés
 						if(vid > 0)
 						{
 							if(!vInfo[vid][vInsert])
-								return SCM(playerid, COL_LRED, "Ez ideiglenes lehívott jármû, nem veheted meg!");
+								return SCM(playerid, COL_LRED, "Ez ideiglenes lehívott járm?, nem veheted meg!");
 
 							if(FInfo[PlayerInfo[playerid][pFrakcio]][fPenz] >= vInfo[vid][vAr])
 							{
 								if(vInfo[vid][vMunka] == 0 && vInfo[vid][vTulajID] == NINCS)
 								{
-									format(uzenet, sizeof(uzenet), "Gratulálunk! Sikeresen megvettél egy %s típusú jármûvet a frakciód számára! Ára: %d $", VehicleNames[GetVehicleModel(vInfo[vid][vID])-400], vInfo[vid][vAr]);
+									format(uzenet, sizeof(uzenet), "Gratulálunk! Sikeresen megvettél egy %s típusú járm?vet a frakciód számára! Ára: %d $", VehicleNames[GetVehicleModel(vInfo[vid][vID])-400], vInfo[vid][vAr]);
 									SendClientMessage(playerid, COLOR_LBLUE, uzenet);
 
 									FInfo[PlayerInfo[playerid][pFrakcio]][fPenz] -= vInfo[vid][vAr];
@@ -46825,25 +46824,25 @@ CMD:v(playerid, params[]) // jármû rendszer kezelés
 
 									Cselekves(playerid, "aláírta az adásvételi szerzõdést", 1);
 								} else
-									return SCM(playerid, COL_LRED, "Ez a jármû már valaki tulajdona, nem veheted meg!");
+									return SCM(playerid, COL_LRED, "Ez a járm? már valaki tulajdona, nem veheted meg!");
 							} else
 								return SCM(playerid, COL_LRED, "Nincs elegendõ pénz a frakciód széfében, hogy ezt megvehesd!");
 						} else
-							return SCM(playerid, COL_LRED, "Ezt a jármûvet nem veheted meg!");
+							return SCM(playerid, COL_LRED, "Ezt a járm?vet nem veheted meg!");
 					} else
-					    return SCM(playerid, COL_LRED, "Jármûben kell ülnöd!");
+					    return SCM(playerid, COL_LRED, "Járm?ben kell ülnöd!");
 				}
 			}
 		}
 		else if(!strcmp(param, "ablak", true))
 		{
 			if(!IsPlayerInAnyVehicle(playerid))
-				return SCM(playerid, COL_LRED, "Jármûben kell ülnöd!");
+				return SCM(playerid, COL_LRED, "Járm?ben kell ülnöd!");
 
 			new vid = JarmuID( GetPlayerVehicleID(playerid), playerid );
 
 			if(!IsAKocsi(vInfo[vid][vModel]))
-				return SCM(playerid, COL_LRED, "Autón kívûl nincs biztonsági öv!");
+				return SCM(playerid, COL_LRED, "Autón kív?l nincs biztonsági öv!");
 
 			if(vInfo[vid][vAblakLetekerve])
 			{
@@ -46869,12 +46868,12 @@ CMD:v(playerid, params[]) // jármû rendszer kezelés
 		else if(!strcmp(param, "öv", false) || !strcmp(param, "ov", false))
 		{
 			if(!IsPlayerInAnyVehicle(playerid))
-				return SCM(playerid, COL_LRED, "Jármûben kell ülnöd!");
+				return SCM(playerid, COL_LRED, "Járm?ben kell ülnöd!");
 
 			new vid = JarmuID( GetPlayerVehicleID(playerid), playerid );
 
 			if(!IsAKocsi(vInfo[vid][vModel]))
-				return SCM(playerid, COL_LRED, "Autón kívûl nincs biztonsági öv!");
+				return SCM(playerid, COL_LRED, "Autón kív?l nincs biztonsági öv!");
 
 			if(PlayerInfo[playerid][pOv])
 			{
@@ -46891,10 +46890,10 @@ CMD:v(playerid, params[]) // jármû rendszer kezelés
 		else if(!strcmp(param, "radio", false) || !strcmp(param, "rádió", false))
 		{
 			if(!IsPlayerInAnyVehicle(playerid))
-				return SCM(playerid, COL_LRED, "Jármûben kell ülnöd!");
+				return SCM(playerid, COL_LRED, "Járm?ben kell ülnöd!");
 
 			if(NincsBenne_Radio( vInfo[ JarmuID( GetPlayerVehicleID(playerid), playerid ) ][vModel] ))
-				return SCM(playerid, COL_LRED, "Ebben a jármûben nincs rádió!");
+				return SCM(playerid, COL_LRED, "Ebben a járm?ben nincs rádió!");
 
 			new dstr[1024], tmp[128], i = NINCS;
 			format(dstr, sizeof(dstr), #COL_VZOLD"Rádió kikapcsolása");
@@ -46904,21 +46903,21 @@ CMD:v(playerid, params[]) // jármû rendszer kezelés
 				else format(tmp, sizeof(tmp), "\n"#COL_FEHER"%s", RadioLista[i][1]);
 				strcat(dstr, tmp, sizeof(dstr));
 			}
-			ShowPlayerDialog(playerid, DIALOG_RADIO_JARMU, DIALOG_STYLE_LIST, "Jármû - Rádió lista", dstr, "Hallgat", "Mégse");
+			ShowPlayerDialog(playerid, DIALOG_RADIO_JARMU, DIALOG_STYLE_LIST, "Járm? - Rádió lista", dstr, "Hallgat", "Mégse");
 		}
 		else if(!strcmp(param, "neon", true))
 		{
 		//	if(playerid != INVALID_PLAYER_ID) return SCM(playerid,COL_LRED,"Bocsika de ez a parancs jelenleg kiszedve!");
 			if(!IsPlayerInAnyVehicle(playerid))
-				return SCM(playerid, COL_LRED, "Jármûben kell ülnöd!");
+				return SCM(playerid, COL_LRED, "Járm?ben kell ülnöd!");
 
 			new vid = JarmuID( GetPlayerVehicleID(playerid), playerid);
 
 			if(!JarmuKulcs(playerid, vid))
-				return SCM(playerid, COL_LRED, "Ehhez a jármûhöz nincs kulcsod!");
+				return SCM(playerid, COL_LRED, "Ehhez a járm?höz nincs kulcsod!");
 
 			if(!vInfo[vid][vNeon][0])
-				return SCM(playerid, COL_LRED, "Ebben a jármûben nincs Neon!");
+				return SCM(playerid, COL_LRED, "Ebben a járm?ben nincs Neon!");
 
 			if(!vInfo[vid][vNeon][4])
 			{
@@ -46961,7 +46960,7 @@ CMD:v(playerid, params[]) // jármû rendszer kezelés
 				else break;
 			}
 			new cim[80];
-			format(cim,80, ":: Elérhetõ Tuning alkatreszek a jármûhöz {FF6400}(%d)", VehicleNames[vehiclemodel-400]);
+			format(cim,80, ":: Elérhetõ Tuning alkatreszek a járm?höz {FF6400}(%d)", VehicleNames[vehiclemodel-400]);
 			ShowPlayerDialog(playerid, DIALOG_TUNING, DIALOG_STYLE_LIST, cim, tuningstr, "Felszerel", "Mégse");
 			return true;
 		}
@@ -46987,7 +46986,7 @@ CMD:v(playerid, params[]) // jármû rendszer kezelés
 			}
 			if(hanyas < 1 || hanyas > 4) return SCM(playerid,COL_LRED,"1-4 között!");
 			new vid = JarmuID(GetPlayerVehicleID(playerid), playerid);
-			if(vInfo[vid][vSzin1] == 0 || vInfo[vid][vSzin2] == 0) return SCM(playerid,COL_LRED,"Nem lehet fekete a jármû fesd át fehérre!!");
+			if(vInfo[vid][vSzin1] == 0 || vInfo[vid][vSzin2] == 0) return SCM(playerid,COL_LRED,"Nem lehet fekete a járm? fesd át fehérre!!");
 			Tuningol[playerid] = 1;
 			hanyas = hanyas-1;
 			vInfo[vid][vMatrica] = hanyas;
@@ -47013,11 +47012,11 @@ CMD:v(playerid, params[]) // jármû rendszer kezelés
 				if(IsPlayerInRangeOfPoint(playerid, 5.0, PosExt(FestoPos[k])))
 					talalt = true;
 
-			if(!talalt && !Admin(playerid, FOADMIN_SZINT) && PlayerInfo[playerid][pFrakcio] != FRAKCIO_SZERELO) return SCM(playerid, COL_LRED, "Nem vagy Pay 'n' Spray vagy Tuning mûhelyben, vagy szerelõnél!");
+			if(!talalt && !Admin(playerid, FOADMIN_SZINT) && PlayerInfo[playerid][pFrakcio] != FRAKCIO_SZERELO) return SCM(playerid, COL_LRED, "Nem vagy Pay 'n' Spray vagy Tuning m?helyben, vagy szerelõnél!");
 
 			new car = (IsPlayerInAnyVehicle(playerid) ? GetPlayerVehicleID(playerid) : GetClosestVehicle(playerid));
 			if(!IsPlayerInAnyVehicle(playerid) && GetDistanceToVehicle(playerid, car) > 5.5)
-				return SCM(playerid, COL_LRED, "Nincs a közeledben jármû!");
+				return SCM(playerid, COL_LRED, "Nincs a közeledben járm?!");
 
 			new vid = JarmuID(car, playerid), szin1, szin2;
 			if(!vid)
@@ -47058,7 +47057,7 @@ CMD:v(playerid, params[]) // jármû rendszer kezelés
 					if(FInfo[PlayerInfo[playerid][pFrakcio]][fPenz] < 550)
 						return SCM(playerid, COL_LRED, "A festés költsége 550$! Nincs ennyi pénz a frakciód széfében!");
 
-					nformat(str, 128, "<< %s átfestett egy %s típusú frakciós jármûvet 550$-ért! >>", JatekosNev(playerid, true), VehicleNames[vInfo[vid][vModel] - 400]);
+					nformat(str, 128, "<< %s átfestett egy %s típusú frakciós járm?vet 550$-ért! >>", JatekosNev(playerid, true), VehicleNames[vInfo[vid][vModel] - 400]);
 					FrakcioUzenet(COLOR_YELLOW, PlayerInfo[playerid][pFrakcio], str);
 					GameTextForPlayer(playerid, "~w~Festés elkészült!", 5000, 1);
 				} else
@@ -47070,7 +47069,7 @@ CMD:v(playerid, params[]) // jármû rendszer kezelés
 				ChangeVehicleColor(car, szin1, szin2);
 			}
 			else
-				SCM(playerid,COL_LRED,"Ez nem a te jármûved / Nem vagy szerelõ / nem frakciójármû!");
+				SCM(playerid,COL_LRED,"Ez nem a te járm?ved / Nem vagy szerelõ / nem frakciójárm?!");
 			return true;
 		}
 		else if(!strcmp(param, "damage"))
@@ -47083,15 +47082,15 @@ CMD:v(playerid, params[]) // jármû rendszer kezelés
 			{
 				new vid = JarmuID(closestcar, playerid);
 
-				AdminUzenet(COLOR_LIGHTRED, 1, "%s használtá alakított egy %s típusú jármûvet! JármûID: %d[%d] | Tulaj: %s", JatekosNev(playerid), VehicleNames[GetVehicleModel(closestcar) - 400], closestcar, vid, JarmuTulaj(vid));
-				SendFormatMessage(playerid, COLOR_WHITE, "Sikeresen használtá tettél egy %s típusú jármûvet! Tulaj: %s", VehicleNames[GetVehicleModel(closestcar) - 400], JarmuTulaj(vid));
+				AdminUzenet(COLOR_LIGHTRED, 1, "%s használtá alakított egy %s típusú járm?vet! Járm?ID: %d[%d] | Tulaj: %s", JatekosNev(playerid), VehicleNames[GetVehicleModel(closestcar) - 400], closestcar, vid, JarmuTulaj(vid));
+				SendFormatMessage(playerid, COLOR_WHITE, "Sikeresen használtá tettél egy %s típusú járm?vet! Tulaj: %s", VehicleNames[GetVehicleModel(closestcar) - 400], JarmuTulaj(vid));
 				UpdateVehicleDamageStatus(closestcar, 204801046, 67372036, 0, 0);
 				vInfo[vid][vPanels] = 204801046;
 				vInfo[vid][vDoors] = 67372036;
 				SetVehicleHealth(vInfo[vid][vID], (vInfo[vid][vElet] = 500.0));
 
 			} else
-				return SCM(playerid, COL_LRED, "Nincs a közeledben jármû!");
+				return SCM(playerid, COL_LRED, "Nincs a közeledben járm?!");
 			return true;
 		}
 		else if(!strcmp(param, "aelad", false))
@@ -47104,13 +47103,13 @@ CMD:v(playerid, params[]) // jármû rendszer kezelés
 			{
 				new vid = JarmuID(closestcar, playerid);
 				if(!vInfo[vid][vInsert])
-					return SCM(playerid, COL_LRED, "Ez ideiglenes lehívott jármû, ezért nem tudod eladni!");
+					return SCM(playerid, COL_LRED, "Ez ideiglenes lehívott járm?, ezért nem tudod eladni!");
 
 				if(!strcmp("Nincs_Tulaj", vInfo[vid][vTulaj]) && vInfo[vid][vMunka] == 0 && vInfo[vid][vTulajID] == NINCS)
-					return SCM(playerid, COL_LRED, "Ennek a jármûnek nincs tulaja!");
+					return SCM(playerid, COL_LRED, "Ennek a járm?nek nincs tulaja!");
 
-				AdminUzenet(COLOR_LIGHTRED,1, "%s eladott egy %s típusú jármûvet! JármûID: %d[%d] | Tulaj: %s", JatekosNev(playerid), VehicleNames[GetVehicleModel(closestcar) - 400], closestcar, vid, JarmuTulaj(vid));
-				SendFormatMessage(playerid, COLOR_WHITE, "Sikeresen eladtál egy "#COL_MKEK"%s"#COL_FEHER" típusú jármûvet! Tulaj: %s", VehicleNames[GetVehicleModel(closestcar) - 400], JarmuTulaj(vid));
+				AdminUzenet(COLOR_LIGHTRED,1, "%s eladott egy %s típusú járm?vet! Járm?ID: %d[%d] | Tulaj: %s", JatekosNev(playerid), VehicleNames[GetVehicleModel(closestcar) - 400], closestcar, vid, JarmuTulaj(vid));
+				SendFormatMessage(playerid, COLOR_WHITE, "Sikeresen eladtál egy "#COL_MKEK"%s"#COL_FEHER" típusú járm?vet! Tulaj: %s", VehicleNames[GetVehicleModel(closestcar) - 400], JarmuTulaj(vid));
 
 				format(vInfo[vid][vTulaj], MAX_PLAYER_NAME, "Nincs_Tulaj");
 				vInfo[vid][vMunka] = 0;
@@ -47120,7 +47119,7 @@ CMD:v(playerid, params[]) // jármû rendszer kezelés
 				doQuery("UPDATE `"#MYSQL_JARMU_TABLA"` SET Tulaj = 'Nincs_Tulaj', TulajID = '-1', Munka = '0'  WHERE ID = '%d'", vid);
 
 			} else
-				return SCM(playerid, COL_LRED, "Nincs a közeledben jármû!");
+				return SCM(playerid, COL_LRED, "Nincs a közeledben járm?!");
 
  		}
 		else if(!strcmp(param, "atuning", false))
@@ -47145,7 +47144,7 @@ CMD:v(playerid, params[]) // jármû rendszer kezelés
 				else break;
 			}
 			new cim[80];
-			format(cim,80, ":: Elérhetõ Tuning alkatreszek a jármûhöz {FF6400}(%d)", VehicleNames[vehiclemodel-400]);
+			format(cim,80, ":: Elérhetõ Tuning alkatreszek a járm?höz {FF6400}(%d)", VehicleNames[vehiclemodel-400]);
 			ShowPlayerDialog(playerid, DIALOG_TUNING_V2, DIALOG_STYLE_LIST, cim, tuningstr, "Felszerel", "Mégse");
 			return true;
  		}
@@ -47179,26 +47178,26 @@ CMD:v(playerid, params[]) // jármû rendszer kezelés
 			sscanf(params, "{s[64]}D(-1)", id);
 			if(id == NINCS)
 			{
-				SCM(playerid, COL_MKEK, "Használat: /v info [JármûID] | Alap esetben a közeledben lévõt veszi figyelembe");
+				SCM(playerid, COL_MKEK, "Használat: /v info [Járm?ID] | Alap esetben a közeledben lévõt veszi figyelembe");
 				id = GetClosestVehicle(playerid);
 				if(GetDistanceToVehicle(playerid, id) > 6.0)
-					return SCM(playerid, COL_LRED, "Nincs a közeledben jármû!");
+					return SCM(playerid, COL_LRED, "Nincs a közeledben járm?!");
 			}
 
 			new vid = JarmuID(id, playerid);
-			SendFormatMessage(playerid, COLOR_WHITE, "Model: "#COL_MKEK"%s"#COL_FEHER" ("#COL_MKEK"%d"#COL_FEHER") | JármûID: "#COL_MKEK"%d[ SQL: %d ]", VehicleNames[vInfo[vid][vModel] - 400], vInfo[vid][vModel], id, vid);
+			SendFormatMessage(playerid, COLOR_WHITE, "Model: "#COL_MKEK"%s"#COL_FEHER" ("#COL_MKEK"%d"#COL_FEHER") | Járm?ID: "#COL_MKEK"%d[ SQL: %d ]", VehicleNames[vInfo[vid][vModel] - 400], vInfo[vid][vModel], id, vid);
 			SendFormatMessage(playerid, COLOR_WHITE, "Tulaj: "#COL_MKEK"%s"#COL_FEHER" | Ára: "#COL_MKEK"%s$", JarmuTulaj(vid), FN(vInfo[vid][vAr], 0, ','));
 		}
 		else if(!strcmp(param, "vesz", false))
 		{
 			if(!IsPlayerInAnyVehicle(playerid))
-				return SCM(playerid, COL_LRED, "Jármûben kell ülnöd!");
+				return SCM(playerid, COL_LRED, "Járm?ben kell ülnöd!");
 
 			new vid = JarmuID(GetPlayerVehicleID(playerid), playerid);
 			if(vid > 0)
 			{
 				if(!vInfo[vid][vInsert])
-					return SCM(playerid, COL_LRED, "Ez ideiglenes lehívott jármû, nem veheted meg!");
+					return SCM(playerid, COL_LRED, "Ez ideiglenes lehívott járm?, nem veheted meg!");
 
 				if(KPegyenleg(playerid) >= vInfo[vid][vAr])
 				{
@@ -47212,17 +47211,17 @@ CMD:v(playerid, params[]) // jármû rendszer kezelés
 								if(PlayerInfo[playerid][pMegerosites] != playerid)
 								{
 									PlayerInfo[playerid][pMegerosites] = playerid;
-									SFM(playerid, COL_LRED, "Biztos, hogy %d. jármûre szeretnéd költeni a Prémium Pontod? Ha igen, írd be mégegyszer!", (db + 1));
+									SFM(playerid, COL_LRED, "Biztos, hogy %d. járm?re szeretnéd költeni a Prémium Pontod? Ha igen, írd be mégegyszer!", (db + 1));
 									return true;
 								}
 
 								PlayerInfo[playerid][pMegerosites] = NINCS;
 								PlayerInfo[playerid][pPremiumPont] -= PremiumPontKell[ADAT_JARMU - 1][1];
-								nformat(str, 128, "[Jármû]: %s | %s - %d[%d] | %s$ | Maradék PP: %d", JatekosNev(playerid), VehicleNames[ vInfo[vid][vModel] - 400 ], vInfo[vid][vID], vid, FN(vInfo[vid][vAr], 0, ','), PlayerInfo[playerid][pPremiumPont]);
+								nformat(str, 128, "[Járm?]: %s | %s - %d[%d] | %s$ | Maradék PP: %d", JatekosNev(playerid), VehicleNames[ vInfo[vid][vModel] - 400 ], vInfo[vid][vID], vid, FN(vInfo[vid][vAr], 0, ','), PlayerInfo[playerid][pPremiumPont]);
 								Log(FILE_PREMIUM, str);
 							}
 
-							SendFormatMessage(playerid, COLOR_WHITE, "Gratulálunk! Sikeresen megvettél egy "#COL_MKEK"%s"#COL_FEHER" típusú jármûvet! Ára: "#COL_MKEK"%s"#COL_FEHER" $", VehicleNames[vInfo[vid][vModel] - 400], FN(vInfo[vid][vAr], 0, ','));
+							SendFormatMessage(playerid, COLOR_WHITE, "Gratulálunk! Sikeresen megvettél egy "#COL_MKEK"%s"#COL_FEHER" típusú járm?vet! Ára: "#COL_MKEK"%s"#COL_FEHER" $", VehicleNames[vInfo[vid][vModel] - 400], FN(vInfo[vid][vAr], 0, ','));
 							GiveMoney(playerid,-vInfo[vid][vAr]);
 							CegPenz(BIZ_JARMU,-vInfo[vid][vAr]);
 
@@ -47235,13 +47234,13 @@ CMD:v(playerid, params[]) // jármû rendszer kezelés
 
 							Cselekves(playerid, "aláírta az adásvételi szerzõdést", 1);
 						} else
-							return SCM(playerid, COL_LRED, "Elérted a maximális megvehetõ jármûvek számát, ha többet szeretnél támogasd a szervert! (UserCP -> Támogatás)");
+							return SCM(playerid, COL_LRED, "Elérted a maximális megvehetõ járm?vek számát, ha többet szeretnél támogasd a szervert! (UserCP -> Támogatás)");
 					} else
-						return SCM(playerid, COL_LRED, "Ez a jármû már valaki tulajdona, nem veheted meg!");
+						return SCM(playerid, COL_LRED, "Ez a járm? már valaki tulajdona, nem veheted meg!");
 				} else
-					return SCM(playerid, COL_LRED, "Nincs elég pénzed a jármû megvételéhez!");
+					return SCM(playerid, COL_LRED, "Nincs elég pénzed a járm? megvételéhez!");
 			} else
-				return SCM(playerid, COL_LRED, "Ezt a jármûvet nem veheted meg!");
+				return SCM(playerid, COL_LRED, "Ezt a járm?vet nem veheted meg!");
 			return true;
 		}
 		else if(!strcmp(param, "elad", false))
@@ -47266,7 +47265,7 @@ CMD:v(playerid, params[]) // jármû rendszer kezelés
 					if(vInfo[vid][vTulajID] == PlayerInfo[playerid][pID])
 					{
 						if(vInfo[vid][vMunka] != 0)
-							return SCM(playerid, COL_LRED, "Frakciós jármûvet nem adhatsz el!");
+							return SCM(playerid, COL_LRED, "Frakciós járm?vet nem adhatsz el!");
 
 						new Float:vevopos[3];
 						GetPlayerPos(jatekosid, vevopos[0], vevopos[1], vevopos[2]);
@@ -47277,16 +47276,16 @@ CMD:v(playerid, params[]) // jármû rendszer kezelés
 						vInfo[vid][vAr] = kocsiar;
 						PlayerInfo[jatekosid][peladojarmu] = vid;
 						PlayerInfo[jatekosid][peladokitol] = playerid;
-						format(msgbox, sizeof(msgbox), #COL_CITROM"Jármû adásvételi szerzõdése\n\n"#COL_VKEK"%s "#COL_FEHER"felajánlotta, hogy eladja számodra a "#COL_VKEK"%s "#COL_FEHER"típusú jármûvét\n"#COL_VKEK"%s "#COL_FEHER"$-ért. Ha meg szeretnéd venni, kattints az "#COL_VKEK"ALÁÍR "#COL_FEHER"gombra!\nRendszáma: "#COL_VKEK"%d[%d]", \
+						format(msgbox, sizeof(msgbox), #COL_CITROM"Járm? adásvételi szerzõdése\n\n"#COL_VKEK"%s "#COL_FEHER"felajánlotta, hogy eladja számodra a "#COL_VKEK"%s "#COL_FEHER"típusú járm?vét\n"#COL_VKEK"%s "#COL_FEHER"$-ért. Ha meg szeretnéd venni, kattints az "#COL_VKEK"ALÁÍR "#COL_FEHER"gombra!\nRendszáma: "#COL_VKEK"%d[%d]", \
 						JatekosNev(playerid), VehicleNames[GetVehicleModel(vInfo[vid][vID])-400], FN(kocsiar, 0, ','), car, vid);
 						ShowPlayerDialog(jatekosid, DIALOG_ELADAS, DIALOG_STYLE_MSGBOX, "Adásvételi szerzõdés", msgbox, "Aláír", "Mégse");
 						format(uzenet, sizeof(uzenet), "átnyújta az adásvételi szerzõdést %s-nak/nek", JatekosNev(jatekosid));
 						Cselekves(playerid, uzenet);
 					} else
-						return SCM(playerid, COL_LRED, "Ez a jármû már valaki tulajdona, nem veheted meg!");
+						return SCM(playerid, COL_LRED, "Ez a járm? már valaki tulajdona, nem veheted meg!");
 				}
 			} else
-				return SCM(playerid, COL_LRED, "Nincs a közeledben jármû!");
+				return SCM(playerid, COL_LRED, "Nincs a közeledben járm?!");
 		}
 		else if(!strcmp(param, "set", false))
 		{
@@ -47305,12 +47304,12 @@ CMD:v(playerid, params[]) // jármû rendszer kezelés
 				if(vid > 0)
 				{
 					if(!vInfo[vid][vInsert])
-						return SCM(playerid, COL_LRED, "Ez ideiglenes lehívott jármû, ezért nem konfigurálhatod!");
+						return SCM(playerid, COL_LRED, "Ez ideiglenes lehívott járm?, ezért nem konfigurálhatod!");
 
 				    if(vInfo[vid][vTulajID] == NINCS)
 					{
-					    SendFormatMessage(playerid, COLOR_WHITE, "Sikeresen átállítottad egy "#COL_VKEK"%s "#COL_FEHER"típusú jármû munkáját!", VehicleNames[GetVehicleModel(car) - 400]);
-					    SendFormatMessage(playerid, COLOR_WHITE, "Régi: "#COL_VKEK"%s "#COL_FEHER"| Új: "#COL_VKEK"%s "#COL_FEHER"| JármûID: "#COL_VKEK"%d[%d]"#COL_FEHER"",  TipusToNev(vInfo[vid][vMunka]), TipusToNev(tipusa), car, vid);
+					    SendFormatMessage(playerid, COLOR_WHITE, "Sikeresen átállítottad egy "#COL_VKEK"%s "#COL_FEHER"típusú járm? munkáját!", VehicleNames[GetVehicleModel(car) - 400]);
+					    SendFormatMessage(playerid, COLOR_WHITE, "Régi: "#COL_VKEK"%s "#COL_FEHER"| Új: "#COL_VKEK"%s "#COL_FEHER"| Járm?ID: "#COL_VKEK"%d[%d]"#COL_FEHER"",  TipusToNev(vInfo[vid][vMunka]), TipusToNev(tipusa), car, vid);
 					    if(vInfo[vid][vMunka] == 101)
 							DestroyDynamic3DTextLabel(vInfo[vid][vOktato]);
 
@@ -47328,10 +47327,10 @@ CMD:v(playerid, params[]) // jármû rendszer kezelés
 							//else vInfo[vid][vMunka] = 0;
 
 					} else
-						return SCM(playerid, COL_LRED, "Ez a jármû már valaki tulajdona, nem állíthatod át a típusát!");
+						return SCM(playerid, COL_LRED, "Ez a járm? már valaki tulajdona, nem állíthatod át a típusát!");
 				}
 			} else
-				return SCM(playerid, COL_LRED, "Nincs a közeledben jármû!");
+				return SCM(playerid, COL_LRED, "Nincs a közeledben járm?!");
 			return true;
 		}
 		else if(!strcmp(param, "ár", false) || !strcmp(param, "ar", false))
@@ -47351,20 +47350,20 @@ CMD:v(playerid, params[]) // jármû rendszer kezelés
 				if(vid > 0)
 				{
 					if(!vInfo[vid][vInsert])
-						return SCM(playerid, COL_LRED, "Ez ideiglenes lehívott jármû, ezért nem konfigurálhatod!");
+						return SCM(playerid, COL_LRED, "Ez ideiglenes lehívott járm?, ezért nem konfigurálhatod!");
 
 				    if(vInfo[vid][vTulajID] == NINCS)
 					{
-					    SendFormatMessage(playerid, COLOR_WHITE, "Sikeresen átállítottad egy "#COL_VKEK"%s "#COL_FEHER"típusú jármû (bérlési / megvételi) árát!", VehicleNames[GetVehicleModel(car) - 400]);
-					    SendFormatMessage(playerid, COLOR_WHITE, "Régi: "#COL_VKEK"%s"#COL_FEHER"$ | Új: "#COL_VKEK"%s"#COL_FEHER"$ | JármûID: "#COL_VKEK"%d[%d]"#COL_FEHER"",  FN(vInfo[vid][vAr], 0, ','), FN(tipusa, 0, ','), car, vid);
+					    SendFormatMessage(playerid, COLOR_WHITE, "Sikeresen átállítottad egy "#COL_VKEK"%s "#COL_FEHER"típusú járm? (bérlési / megvételi) árát!", VehicleNames[GetVehicleModel(car) - 400]);
+					    SendFormatMessage(playerid, COLOR_WHITE, "Régi: "#COL_VKEK"%s"#COL_FEHER"$ | Új: "#COL_VKEK"%s"#COL_FEHER"$ | Járm?ID: "#COL_VKEK"%d[%d]"#COL_FEHER"",  FN(vInfo[vid][vAr], 0, ','), FN(tipusa, 0, ','), car, vid);
 					    vInfo[vid][vAr] = tipusa;
 						vUpdate(vid, vuAr);
 
 					} else
-						return SCM(playerid, COL_LRED, "Ez a jármû már valaki tulajdona, nem állíthatod át az árát!");
+						return SCM(playerid, COL_LRED, "Ez a járm? már valaki tulajdona, nem állíthatod át az árát!");
 				}
 			} else
-				return SCM(playerid, COL_LRED, "Nincs a közeledben jármû!");
+				return SCM(playerid, COL_LRED, "Nincs a közeledben járm?!");
 			return true;
 		}
 		else if(!strcmp(param, "park", false))
@@ -47378,12 +47377,12 @@ CMD:v(playerid, params[]) // jármû rendszer kezelés
 				if(vid > 0)
 				{
 					if(!vInfo[vid][vInsert])
-						return SCM(playerid, COL_LRED, "Ez ideiglenes lehívott jármû, ezért nem parkolhatod!");
+						return SCM(playerid, COL_LRED, "Ez ideiglenes lehívott járm?, ezért nem parkolhatod!");
 
 					if(Admin(playerid, 2) || (FrakcioJarmu(playerid, vid) && PlayerInfo[playerid][prang] >= 9) || vInfo[vid][vTulajID] == PlayerInfo[playerid][pID])
 					{
 						if(vInfo[vid][vMunka] > MAX_FRAKCIO && !Admin(playerid, FOADMIN_SZINT))
-							return SCM(playerid, COL_LRED, "Ezt a jármûvet csak FõAdmin parkolhatja el!");
+							return SCM(playerid, COL_LRED, "Ezt a járm?vet csak FõAdmin parkolhatja el!");
 
 						new Float:vinfo[5];
 
@@ -47414,14 +47413,14 @@ CMD:v(playerid, params[]) // jármû rendszer kezelés
    			    		SetVehicleVirtualWorld(vInfo[vid][vID],vInfo[vid][vVW]);
 
 						if(vInfo[vid][vTulajID] != PlayerInfo[playerid][pID] && Admin(playerid, 2))
-							SFM(playerid, COL_MKEK, "Sikeresen leparkoltad "#COL_MKEK"%s"#COL_FEHER" jármûvét!", JarmuTulaj(vid));
+							SFM(playerid, COL_MKEK, "Sikeresen leparkoltad "#COL_MKEK"%s"#COL_FEHER" járm?vét!", JarmuTulaj(vid));
 						else if(vInfo[vid][vTulajID] == PlayerInfo[playerid][pID])
-							SCM(playerid, COL_MKEK, "Sikeresen leparkoltad a jármûvet!");
+							SCM(playerid, COL_MKEK, "Sikeresen leparkoltad a járm?vet!");
 					} else
-						return SCM(playerid, COL_LRED, "Ezt a jármûvet nem parkolhatod le!");
+						return SCM(playerid, COL_LRED, "Ezt a járm?vet nem parkolhatod le!");
 				}
 			} else
-				return SCM(playerid, COL_LRED, "Nincs a közeledben jármû!");
+				return SCM(playerid, COL_LRED, "Nincs a közeledben járm?!");
 			return true;
 		}
 		else if(!strcmp(param, "lefoglal", false) || !strcmp(param, "lf", false))
@@ -47443,9 +47442,9 @@ CMD:v(playerid, params[]) // jármû rendszer kezelés
 				if(vid > 0)
 				{
 					if(!IsScripter(playerid) || (!IsScripter(playerid) && vInfo[vid][vInsert]))
-						AdminUzenet(COLOR_LIGHTRED, PlayerInfo[playerid][padmin], "FBI/SWAT %s lefoglalt egy %s típusú jármûvet! JármûID: %d[%d] | Tulaj: %s", JatekosNev(playerid), VehicleNames[vInfo[vid][vModel] - 400], car, vid, JarmuTulaj(vid));
+						AdminUzenet(COLOR_LIGHTRED, PlayerInfo[playerid][padmin], "FBI/SWAT %s lefoglalt egy %s típusú járm?vet! Járm?ID: %d[%d] | Tulaj: %s", JatekosNev(playerid), VehicleNames[vInfo[vid][vModel] - 400], car, vid, JarmuTulaj(vid));
 
-					SCM(playerid, COL_MKEK, "Jármû sikeresen lefoglalva!");
+					SCM(playerid, COL_MKEK, "Járm? sikeresen lefoglalva!");
 
 					if(id == NINCS)
 						PutPlayerInVehicle(playerid, car, 0);
@@ -47454,7 +47453,7 @@ CMD:v(playerid, params[]) // jármû rendszer kezelés
 					vInfo[vid][vMotorelinditva] = true;
 				}
 			} else
-				return SCM(playerid, COL_LRED, "Nincs jármû a közeledben!");
+				return SCM(playerid, COL_LRED, "Nincs járm? a közeledben!");
 			return true;
 		}
 		else if(!strcmp(param, "alefoglal", false) || !strcmp(param, "ale", false))
@@ -47473,9 +47472,9 @@ CMD:v(playerid, params[]) // jármû rendszer kezelés
 				if(vid > 0)
 				{
 					if(!IsScripter(playerid) || (!IsScripter(playerid) && vInfo[vid][vInsert]))
-						AdminUzenet(COLOR_LIGHTRED, PlayerInfo[playerid][padmin], "%s lefoglalt egy %s típusú jármûvet! JármûID: %d[%d] | Tulaj: %s", JatekosNev(playerid), VehicleNames[vInfo[vid][vModel] - 400], car, vid, JarmuTulaj(vid));
+						AdminUzenet(COLOR_LIGHTRED, PlayerInfo[playerid][padmin], "%s lefoglalt egy %s típusú járm?vet! Járm?ID: %d[%d] | Tulaj: %s", JatekosNev(playerid), VehicleNames[vInfo[vid][vModel] - 400], car, vid, JarmuTulaj(vid));
 
-					SCM(playerid, COL_MKEK, "Jármû sikeresen lefoglalva!");
+					SCM(playerid, COL_MKEK, "Járm? sikeresen lefoglalva!");
 
 					if(id == NINCS)
 						PutPlayerInVehicle(playerid, car, 0);
@@ -47484,7 +47483,7 @@ CMD:v(playerid, params[]) // jármû rendszer kezelés
 					vInfo[vid][vMotorelinditva] = true;
 				}
 			} else
-				return SCM(playerid, COL_LRED, "Nincs jármû a közeledben!");
+				return SCM(playerid, COL_LRED, "Nincs járm? a közeledben!");
 			return true;
 		}
 		else if(!strcmp(param, "töröl", true) || !strcmp(param, "torol", false))
@@ -47494,19 +47493,19 @@ CMD:v(playerid, params[]) // jármû rendszer kezelés
 
 			new car = NINCS;
 			car = GetClosestVehicle(playerid);
-			if(IsPlayerInAnyVehicle(playerid)) return SCM(playerid,COL_LRED,"Szállj ki a jármûbõl!");
+			if(IsPlayerInAnyVehicle(playerid)) return SCM(playerid,COL_LRED,"Szállj ki a járm?bõl!");
 			if(GetDistanceToVehicle(playerid, car) < 5.0)
 			{
 				new vid = JarmuID(car, playerid);
 				if(vid > 0)
 				{
 					if(!Admin(playerid, FOADMIN_SZINT) && vInfo[vid][vInsert])
-						return SCM(playerid, COL_LRED, "Megvehetõ vagy megvett jármûvet nem törölhetsz, csak is lehívottat!");
+						return SCM(playerid, COL_LRED, "Megvehetõ vagy megvett járm?vet nem törölhetsz, csak is lehívottat!");
 
 					if(vInfo[vid][vInsert])
-						AdminUzenet(COLOR_LIGHTRED,1, "%s törölt egy %s típusú jármûvet! JármûID: %d[%d] | Tulaj: %s", JatekosNev(playerid), VehicleNames[GetVehicleModel(car) - 400], car, vid, JarmuTulaj(vid));
+						AdminUzenet(COLOR_LIGHTRED,1, "%s törölt egy %s típusú járm?vet! Járm?ID: %d[%d] | Tulaj: %s", JatekosNev(playerid), VehicleNames[GetVehicleModel(car) - 400], car, vid, JarmuTulaj(vid));
 
-					SCM(playerid, COL_MKEK, "Jármû sikeresen törölve!");
+					SCM(playerid, COL_MKEK, "Járm? sikeresen törölve!");
 
 					JarmuNullazas(vid);
 
@@ -47523,7 +47522,7 @@ CMD:v(playerid, params[]) // jármû rendszer kezelés
 					}
 				}
 			} else
-				return SCM(playerid, COL_LRED, "Nincs jármû a közeledben!");
+				return SCM(playerid, COL_LRED, "Nincs járm? a közeledben!");
 			return true;
 		}
 		else if(!strcmp(param, "lámpa", true) || !strcmp(param, "lampa", false))
@@ -47536,12 +47535,12 @@ CMD:v(playerid, params[]) // jármû rendszer kezelés
 					if(GetJarmu(jarmu, KOCSI_LAMPA) == 1)
 					{
 						SetJarmu(jarmu, KOCSI_LAMPA, 0);
-						Cselekves(playerid, "lekapcsolta a jármû lámpáját", 1);
+						Cselekves(playerid, "lekapcsolta a járm? lámpáját", 1);
 					}
 					else
 					{
 						SetJarmu(jarmu, KOCSI_LAMPA, 1);
-						Cselekves(playerid, "felkapcsolta a jármû lámpáját", 1);
+						Cselekves(playerid, "felkapcsolta a járm? lámpáját", 1);
 					}
 				}
 			}
@@ -47590,14 +47589,14 @@ CMD:v(playerid, params[]) // jármû rendszer kezelés
 				{
 					if(GetJarmu(car, KOCSI_CSOMAGTARTO) == 1) return SCM(playerid,COL_LRED,"Már nyitva van!");
 					SetJarmu(car, KOCSI_CSOMAGTARTO, 1);
-					Cselekves(playerid, "kinyitotta a jármû csomagtartóját", 1);
+					Cselekves(playerid, "kinyitotta a járm? csomagtartóját", 1);
 					return 1;
 				}
 				if(egyezik(funk,"Zár"))
 				{
 					if(GetJarmu(car, KOCSI_CSOMAGTARTO) == 0) return SCM(playerid,COL_LRED,"Már zárva van!");
 					SetJarmu(car, KOCSI_CSOMAGTARTO, 0);
-					Cselekves(playerid, "becsukta a jármû csomagtartóját", 1);
+					Cselekves(playerid, "becsukta a járm? csomagtartóját", 1);
 					return 1;
 				}
 				if(egyezik(funk,"Enter"))
@@ -47673,34 +47672,34 @@ CMD:v(playerid, params[]) // jármû rendszer kezelés
 					vUpdate(vid, vuZarva);
 				}
 			} else
-				return SCM(playerid, COL_LRED, "Nincs jármû a közeledben!");
+				return SCM(playerid, COL_LRED, "Nincs járm? a közeledben!");
 			return true;
 		}
 		else if(!strcmp(param, "bérel", false) || !strcmp(param, "berel", false))
 		{
 			if(!PlayerInfo[playerid][pJarmuben])
-				return SCM(playerid, COL_LRED, "Jármûben kell ülnöd ha ki szeretnéd bérelni!");
+				return SCM(playerid, COL_LRED, "Járm?ben kell ülnöd ha ki szeretnéd bérelni!");
 
 			new id = PlayerInfo[playerid][pJarmuben];
 			if(vInfo[id][vMunka] != 100)
-				return SCM(playerid, COL_LRED, "Ez a jármû nem bérelhetõ!");
+				return SCM(playerid, COL_LRED, "Ez a járm? nem bérelhetõ!");
 
 			if(!vInfo[id][vBerelt])
 			{
 				if(PlayerInfo[playerid][ppenz] < vInfo[id][vAr])
-					return SFM(playerid, COL_LRED, "Nincs elegendõ készpénzed a jármû kibérléséhez! A bérlés összege "#COL_MKEK"%s"#COL_FEHER"$!", FN(vInfo[id][vAr], 0, ','));
+					return SFM(playerid, COL_LRED, "Nincs elegendõ készpénzed a járm? kibérléséhez! A bérlés összege "#COL_MKEK"%s"#COL_FEHER"$!", FN(vInfo[id][vAr], 0, ','));
 
 				GiveMoney(playerid,-vInfo[id][vAr]);
 				PlayerInfo[playerid][pBereltJarmu] = id;
 				vInfo[id][vBerelt] = true;
 
-				SFM(playerid, COL_MKEK, "Sikeresen kibéreltél egy "#COL_MKEK"%s"#COL_FEHER" típusú jármûvet "#COL_MKEK"%s"#COL_FEHER"$-ért! Vigyázz rá!", VehicleNames[vInfo[id][vModel] - 400], FN(vInfo[id][vAr], 0, ','));
+				SFM(playerid, COL_MKEK, "Sikeresen kibéreltél egy "#COL_MKEK"%s"#COL_FEHER" típusú járm?vet "#COL_MKEK"%s"#COL_FEHER"$-ért! Vigyázz rá!", VehicleNames[vInfo[id][vModel] - 400], FN(vInfo[id][vAr], 0, ','));
 				return true;
 
 			} else {
 
 				if(PlayerInfo[playerid][pBereltJarmu] != id)
-					return SCM(playerid, COL_LRED, "Ezt a jármûvet már bérli valaki, válassz másikat!");
+					return SCM(playerid, COL_LRED, "Ezt a járm?vet már bérli valaki, válassz másikat!");
 
 				if(!IsPlayerInRangeOfPoint(playerid, 20.0, vInfo[id][vPosx], vInfo[id][vPosy], vInfo[id][vPosz]))
 				{
@@ -47715,21 +47714,21 @@ CMD:v(playerid, params[]) // jármû rendszer kezelés
 				SetVehicleToRespawn(vInfo[ PlayerInfo[playerid][pBereltJarmu] ][vID]);
 				PlayerInfo[playerid][pBereltJarmu] = 0;
 
-				SCM(playerid, COL_MKEK, "Jármû bérlés visszamondva!");
+				SCM(playerid, COL_MKEK, "Járm? bérlés visszamondva!");
 			}
 			return true;
 		}
 		else if(!strcmp(param, "nev", false) || !strcmp(param, "név", false))
 		{
 			if(!IsScripter(playerid))
-				return SCM(playerid, COL_LRED, "Csak Scripter nevezheti át a jármûveke!");
+				return SCM(playerid, COL_LRED, "Csak Scripter nevezheti át a járm?veke!");
 
 			new id, nev[32];
 			if(sscanf(params, "{s[24]}ds[32]", id, nev))
-				return SCM(playerid, COL_MKEK, "Használat: /v név [Jármû Model] [Új név] | Jármû model számban értendõ!");
+				return SCM(playerid, COL_MKEK, "Használat: /v név [Járm? Model] [Új név] | Járm? model számban értendõ!");
 
 			if(id < 400 || id > 611)
-				return SCM(playerid, COL_LRED, "Hibás jármû model! 400 és 611 között kell, hogy legyen!");
+				return SCM(playerid, COL_LRED, "Hibás járm? model! 400 és 611 között kell, hogy legyen!");
 
 			id = (id - 400);
 
@@ -47737,7 +47736,7 @@ CMD:v(playerid, params[]) // jármû rendszer kezelés
 			if(strlen(JarmuAdat[id][jUjNev]) > 2) regi = JarmuAdat[id][jUjNev];
 			else regi = JarmuAdat[id][jNev];
 
-			SFM(playerid, COL_VZOLD, "Jármû név váltása sikeres! Régi: "#COL_MKEK"%s"#COL_FEHER" => Új: %s", regi, nev);
+			SFM(playerid, COL_VZOLD, "Járm? név váltása sikeres! Régi: "#COL_MKEK"%s"#COL_FEHER" => Új: %s", regi, nev);
 
 			JarmuAdat[id][jUjNev] = nev;
 			doQuery("UPDATE `"#MYSQL_JARMUADAT_TABLA"` SET ujnev = '%s' WHERE id = '%d'", nev, id);
@@ -47927,8 +47926,8 @@ CMD:haz(playerid, params[])
 		if(!oks)
 			return SCM(playerid, COL_LRED, "Cicaborsó, ez nem a te házad. Ne add már el :D");
 
-		SFM(playerid, COL_MKEK, "Felajánlottad, hogy eladod a See utca "#COL_MKEK"%d."#COL_FEHER" házad neki: "#COL_MKEK"%s"#COL_FEHER" | Ára: "#COL_MKEK"%s$", houseid, JatekosNev(jatekos, true), FN(penz, 0, ','));
-		SFM(jatekos, COL_MKEK, ""#COL_MKEK"%s"#COL_FEHER" felajánlotta neked, hogy eladja a See utca "#COL_MKEK"%d."#COL_FEHER" házát. | Ára: "#COL_MKEK"%s$", JatekosNev(playerid, true), houseid, FN(penz, 0, ','));
+		SFM(playerid, COL_MKEK, "Felajánlottad, hogy eladod a Soul utca "#COL_MKEK"%d."#COL_FEHER" házad neki: "#COL_MKEK"%s"#COL_FEHER" | Ára: "#COL_MKEK"%s$", houseid, JatekosNev(jatekos, true), FN(penz, 0, ','));
+		SFM(jatekos, COL_MKEK, ""#COL_MKEK"%s"#COL_FEHER" felajánlotta neked, hogy eladja a Soul utca "#COL_MKEK"%d."#COL_FEHER" házát. | Ára: "#COL_MKEK"%s$", JatekosNev(playerid, true), houseid, FN(penz, 0, ','));
 		SCM(jatekos, COL_MKEK, "Ha meg szeretnéd venni írd be, hogy "#COL_MKEK"/elfogad szerzõdés");
 		Cselekves(playerid, "átnyújtotta valakinek az adásvételi szerzõdést..");
 
@@ -48271,7 +48270,7 @@ CMD:frakcio(playerid, params[])///fr fegyver
 		nformat(fquery, 256, "INSERT INTO `"#MYSQL_FRAKCIO_TABLA"` (ID, FNev, Legalis) VALUES ('%d', '%s', '%d')", u, nev, FInfo[u][fLegalis]);
 		mysql_tquery(sql_ID, fquery, "", "");
 
-		SendFormatMessage(playerid, COLOR_MKEK, "Sikeresen létrehoztad a(z) %s nevû frakciót! [SQLID: %d | Típus: %s]", nev, u, FrakcioTipus( FInfo[u][fLegalis] ) );
+		SendFormatMessage(playerid, COLOR_MKEK, "Sikeresen létrehoztad a(z) %s nev? frakciót! [SQLID: %d | Típus: %s]", nev, u, FrakcioTipus( FInfo[u][fLegalis] ) );
 		return true;
 	}
 	else if(!strcmp(param, "töröl", true) || !strcmp(param, "torol", true))
@@ -48756,7 +48755,7 @@ CMD:gps(playerid, params[])
 	else if(!strcmp(params, "kocsim", true, 6))
 	{
 		if(!Adat_Num( playerid, ADAT_JARMU ))
-			return SCM(playerid, COL_LRED, "Neked nincs jármûved!");
+			return SCM(playerid, COL_LRED, "Neked nincs járm?ved!");
 
 		new db = 1;
 		sscanf(params, "{s[6]}D(1)", db);
@@ -48764,14 +48763,14 @@ CMD:gps(playerid, params[])
 			return SCM(playerid, COL_LRED, "Hibás érték! (1/2/3) (( /gps kocsim [Száma] ))");
 
 		if(PlayerInfo[playerid][pJarmuKulcs][db - 1] == NINCS || !vInfo[ PlayerInfo[playerid][pJarmuKulcs][db - 1] ][vHasznalva])
-			return SFM(playerid, COL_LRED, "Neked nincs "#COL_MKEK"%d."#COL_FEHER" számú jármûved!", db);
+			return SFM(playerid, COL_LRED, "Neked nincs "#COL_MKEK"%d."#COL_FEHER" számú járm?ved!", db);
 
 		new Float:pos[3];
 		GetVehiclePos(vInfo[ PlayerInfo[playerid][pJarmuKulcs][db - 1] ][vID], PosExt(pos));
 
 		PlayerInfo[playerid][pCP] = CP_GPS;
 		SetPlayerCheckpoint(playerid, PosExt(pos), 3);
-		SCM(playerid, COL_VZOLD, "Jármûved koordinátái megjelölve a GPS-en!");
+		SCM(playerid, COL_VZOLD, "Járm?ved koordinátái megjelölve a GPS-en!");
 		return true;
 	}
 	else if(!strcmp(params, "verseny", true, 7))
@@ -48977,9 +48976,9 @@ CMD:tog(playerid, params[])
 			return SCM(playerid, COL_LRED, "Te nem vagy SzuperAdmin!");
 
 		if((PlayerInfo[playerid][pTog][12] = true - PlayerInfo[playerid][pTog][12]))
-			SCM(playerid, COL_MKEK, "Törés kikapcsolva, a jármû már nem sebzõdik!");
+			SCM(playerid, COL_MKEK, "Törés kikapcsolva, a járm? már nem sebzõdik!");
 		else
-			SCM(playerid, COL_MKEK, "Törés bekapcsolva, a jármû ismét sebzõdik!");
+			SCM(playerid, COL_MKEK, "Törés bekapcsolva, a járm? ismét sebzõdik!");
 	}
 	else if(!strcmp(params, "alefoglal", true) || !strcmp(params, "ale", true))
 	{
@@ -48989,7 +48988,7 @@ CMD:tog(playerid, params[])
 		if((PlayerInfo[playerid][pTog][13] = true - PlayerInfo[playerid][pTog][13]))
 			SCM(playerid, COL_MKEK, "Alefoglal gyorsgomb kikapcsolva.");
 		else
-			SCM(playerid, COL_MKEK, "Alefoglal gyorsgomb bekapcsolva. | Gyorsgomb: H betû");
+			SCM(playerid, COL_MKEK, "Alefoglal gyorsgomb bekapcsolva. | Gyorsgomb: H bet?");
 	}
 	if(!strcmp(params, "ajtó", true) || !strcmp(params, "ajto", true))
 	{
@@ -49342,8 +49341,8 @@ CMD:verseny(playerid, params[])
 
 		Race[id][rCPdb] = cp;
 		Race[id][rStatusz] = 0;
-		AdminUzenet(COLOR_LIGHTRED, 1, "%s létrehozott egy %s nevû pályát %d ellenörzõponttal! | Indítókód: %s", JatekosNev(playerid), Race[id][rNev], cp, Race[id][rIndito]);
-		SFM(playerid, COL_VZOLD, "Sikeresen elmentetted a(z) "#COL_MKEK"%s"#COL_FEHER" nevû pályát! CP: %d/%d | Indítókód: "#COL_MKEK"%s", Race[id][rNev], cp, MAX_RACE_CP, Race[id][rIndito]);
+		AdminUzenet(COLOR_LIGHTRED, 1, "%s létrehozott egy %s nev? pályát %d ellenörzõponttal! | Indítókód: %s", JatekosNev(playerid), Race[id][rNev], cp, Race[id][rIndito]);
+		SFM(playerid, COL_VZOLD, "Sikeresen elmentetted a(z) "#COL_MKEK"%s"#COL_FEHER" nev? pályát! CP: %d/%d | Indítókód: "#COL_MKEK"%s", Race[id][rNev], cp, MAX_RACE_CP, Race[id][rIndito]);
 
 		PlayerRace[playerid][rEpites][0] = 0;
 		PlayerRace[playerid][rEpites][1] = 0;
@@ -49617,13 +49616,13 @@ CMD:oldcar(playerid, params[])
 			sscanf(params, "u", jatekos);
 			if(jatekos == INVALID_PLAYER_ID || !IsPlayerConnected(jatekos))	return SCM(playerid, COL_LRED, "Nincs ilyen játékos!");
 			id = PlayerInfo[jatekos][pJarmubenUlt];
-			if(!id) return SCM(playerid, COL_LRED, "Még nem ült jármûben!");
-			SFM(playerid, COL_MKEK, "Utoljára egy "#COL_MKEK"%s"#COL_FEHER" típusú jármûben ült melynek rendszáma: "#COL_MKEK"%d[%d]", VehicleNames[vInfo[id][vModel] - 400], vInfo[id][vID], id);
+			if(!id) return SCM(playerid, COL_LRED, "Még nem ült járm?ben!");
+			SFM(playerid, COL_MKEK, "Utoljára egy "#COL_MKEK"%s"#COL_FEHER" típusú járm?ben ült melynek rendszáma: "#COL_MKEK"%d[%d]", VehicleNames[vInfo[id][vModel] - 400], vInfo[id][vID], id);
 		}
 	}
 	id = PlayerInfo[jatekos][pJarmubenUlt];
-	if(!id) return SCM(playerid, COL_LRED, "Még nem ültél jármûben a csatlakozásod óta!");
-	SFM(playerid, COL_MKEK, "Utoljára egy "#COL_MKEK"%s"#COL_FEHER" típusú jármûben ültél melynek rendszáma: ""%d[%d]", VehicleNames[vInfo[id][vModel] - 400], vInfo[id][vID], id);
+	if(!id) return SCM(playerid, COL_LRED, "Még nem ültél járm?ben a csatlakozásod óta!");
+	SFM(playerid, COL_MKEK, "Utoljára egy "#COL_MKEK"%s"#COL_FEHER" típusú járm?ben ültél melynek rendszáma: ""%d[%d]", VehicleNames[vInfo[id][vModel] - 400], vInfo[id][vID], id);
 	return true;
 }
 CMD:zuhanok(playerid, params[])
@@ -49661,7 +49660,7 @@ CMD:aide(playerid, params[])
 
 CMD:lsttagok(playerid,params[])
 {
-    SendClientMessage(playerid,0xff1e00AA,"========== [ See Közlekedési Vállalat ] ==========");
+    SendClientMessage(playerid,0xff1e00AA,"========== [ Soul Közlekedési Vállalat ] ==========");
     foreach(Player,p)
     {
         if(Belepve(p) && PlayerInfo[p][pSKV] == 1)
@@ -49742,7 +49741,7 @@ CMD:taxiora(playerid,params[])
 	model = GetVehicleModel(veh);
 	
     new taxikocsi = TaxiLampa(playerid, false, true); 
-    if(model != 420 && !taxikocsi) return SCM(playerid,COL_MKEK,"Csak hivatalos taxi jelzésû jármûben használható!");
+    if(model != 420 && !taxikocsi) return SCM(playerid,COL_MKEK,"Csak hivatalos taxi jelzés? járm?ben használható!");
 	
 	new id;
 	if(sscanf(params,"u",id)) return SCM(playerid,COL_MKEK,"Használat: /taxióra [Játékos/ID]");
@@ -49771,7 +49770,7 @@ CMD:lstgov(playerid,params[])
 	if(PlayerInfo[playerid][pSKVrang] < 5) return SCM(playerid,COL_LRED,"Csak LST leader!");
 	new str[144];
 	if(strlen(params) < 10) return SCM(playerid,COL_LRED,"Minimum 10 karakter!");
-   	format(str, sizeof(str), "================== [ "#COL_VKEK"See Közlekedési Vállalat"#COL_FEHER" ] ==================");
+   	format(str, sizeof(str), "================== [ "#COL_VKEK"Soul Közlekedési Vállalat"#COL_FEHER" ] ==================");
 	SendClientMessageToAll(COLOR_YELLOW2, str);
 	format(str, sizeof(str), "%s %s: %s", SKVrangok(PlayerInfo[playerid][pSKVrang]), JatekosNev(playerid, true), params);
 	SendClientMessageToAll(COLOR_YELLOW2, str);
@@ -49854,7 +49853,7 @@ CMD:lst(playerid,params[])
 
     		new taxikocsi = TaxiLampa(playerid, false, true);
 
-    		if(model != 420 && !taxikocsi) return SCM(playerid,COL_MKEK,"Csak hivatalos jelzésû jármûben használható!");
+    		if(model != 420 && !taxikocsi) return SCM(playerid,COL_MKEK,"Csak hivatalos jelzés? járm?ben használható!");
     		
 			new fogadva = TaxiHivasFogadva(playerid);
 	        if(fogadva != NINCS) return SFM(playerid,COL_MKEK,"Te már elfogadtál egy hívást! Ha már nem szeretnél menni érte: /lst lemond %d", fogadva);
@@ -49880,7 +49879,7 @@ CMD:lst(playerid,params[])
 
     		new taxikocsi = TaxiLampa(playerid, false, true);
     		
-    		if(model != 420 && !taxikocsi) return SCM(playerid,COL_MKEK,"Csak hivatalos taxi jelzésû jármûben használható!");
+    		if(model != 420 && !taxikocsi) return SCM(playerid,COL_MKEK,"Csak hivatalos taxi jelzés? járm?ben használható!");
 			
 	        SendClientMessage(playerid, COLOR_WHITE, "======================== [ "#COL_MKEK"Híváslista"#COL_FEHER" ] ========================");
 			new szam;
@@ -50081,14 +50080,14 @@ CMD:m(playerid, params[])
 		return SCM(playerid, COL_LRED, "Most nem beszélhetsz!");
 
 	if(PlayerInfo[playerid][pFrakcio] != FRAKCIO_LSPD && PlayerInfo[playerid][pFrakcio] != FRAKCIO_KATONA && PlayerInfo[playerid][pFrakcio] != FRAKCIO_LAFD && PlayerInfo[playerid][pFrakcio] != FRAKCIO_FBI && !IsHitman(playerid))
-		return SCM(playerid, COL_LRED, "Te nem vagy se a rendõrség se a tûzoltóság tagja!");
+		return SCM(playerid, COL_LRED, "Te nem vagy se a rendõrség se a t?zoltóság tagja!");
 
 	if(!IsPlayerInAnyVehicle(playerid))
-		return SCM(playerid, COL_LRED, "Csak Rendõrségi és Tûzoltósági jármûben használhatod!");
+		return SCM(playerid, COL_LRED, "Csak Rendõrségi és T?zoltósági járm?ben használhatod!");
 
 	new munka = vInfo[ JarmuID( GetPlayerVehicleID(playerid), playerid ) ][vMunka];
 	if(munka != FRAKCIO_LSPD && munka != FRAKCIO_LAFD && munka != FRAKCIO_KATONA && munka != FRAKCIO_FBI)
-		return SCM(playerid, COL_LRED, "Csak Rendõrségi, Tûzoltósági, Katona és ATF jármûben használhatod!");
+		return SCM(playerid, COL_LRED, "Csak Rendõrségi, T?zoltósági, Katona és ATF járm?ben használhatod!");
 
 	if(isnull(params))
 	    return SCM(playerid, COL_MKEK, "Használat: /m [Megaphone]");
@@ -50218,7 +50217,7 @@ CMD:help(playerid, params[])
 		MK(playerid, COL_MKEK, "Úttisztító: /munka kezd,befejez");
 		
     if(IsJob(playerid, MUNKA_MOWER))
-		MK(playerid, COL_MKEK, "Fûnyíró: /munka kezd,befejez");
+		MK(playerid, COL_MKEK, "F?nyíró: /munka kezd,befejez");
 
 	if(IsJob(playerid, MUNKA_FEGYVER))
 		MK(playerid, COL_MKEK, "Fegyvermester: /vas /vasazas /készít");
@@ -50261,7 +50260,7 @@ CMD:help(playerid, params[])
 		case FRAKCIO_BRATVA: //9
 			SendFormatMessage(playerid, COLOR_WHITE, #COL_MKEK"%s:"#COL_FEHER" /r /rb /war /nevek /frakció", FInfo[fk][fNev]);
 		case FRAKCIO_SZERELO: //10
-			SendFormatMessage(playerid, COLOR_WHITE, #COL_MKEK"%s:"#COL_FEHER" /szerel [ jármû | számla ] /v tuning)", FInfo[fk][fNev]);
+			SendFormatMessage(playerid, COLOR_WHITE, #COL_MKEK"%s:"#COL_FEHER" /szerel [ járm? | számla ] /v tuning)", FInfo[fk][fNev]);
 		case FRAKCIO_IMPERIAL: //11
 			SendFormatMessage(playerid, COLOR_WHITE, #COL_MKEK"%s:"#COL_FEHER" /r /rb /war /nevek /frakció", FInfo[fk][fNev]);
 		case FRAKCIO_RIPORTER: //12
@@ -50371,7 +50370,7 @@ CMD:ah(playerid, params[])
 	}
 	if(Admin(playerid, FOADMIN_SZINT)) {
 		FAH(playerid, COL_GREEN, FOADMIN_SZINT, " /eladókocsik, /ajtó, /megtankol, /desync");
-		FAH(playerid, COL_GREEN, FOADMIN_SZINT, "/object, /telecsin, /teletorol, /pozmentes, /tûz, /oocki, /cég");
+		FAH(playerid, COL_GREEN, FOADMIN_SZINT, "/object, /telecsin, /teletorol, /pozmentes, /t?z, /oocki, /cég");
 		FAH(playerid, COL_GREEN, FOADMIN_SZINT, "/ujház, /terület, /fa, /széf, /inaktiv, /areport");
 		FAH(playerid, COL_GREEN, FOADMIN_SZINT, "/robbant, /agl, /zeró, /fuelcars, /noname, /gpscsin, /gpstorol");
 		FAH(playerid, COL_GREEN, FOADMIN_SZINT, "/újgarázs, /nullaz, /startlotto");
@@ -50631,15 +50630,15 @@ CMD:ap(playerid,params[])
 	else if(!strcmp(eparam,"berak",true))
 	{
 		new vid;
-		if(sscanf(params,"{s[32]}d",vid)) return SCM(playerid, COL_MKEK, "Használat: /ap berak [JármûID]");
-		else if(vid == INVALID_VEHICLE_ID) return SCM(playerid,COL_LRED,"Nincs ilyen jármû!");
+		if(sscanf(params,"{s[32]}d",vid)) return SCM(playerid, COL_MKEK, "Használat: /ap berak [Járm?ID]");
+		else if(vid == INVALID_VEHICLE_ID) return SCM(playerid,COL_LRED,"Nincs ilyen járm?!");
 		new veh;
 		veh = JarmuID(vid,playerid);
-		if(vInfo[veh][vApben] == 1) return SCM(playerid,COL_LRED,"Ez a jármû már APben van.");
+		if(vInfo[veh][vApben] == 1) return SCM(playerid,COL_LRED,"Ez a járm? már APben van.");
 		else {
 			vInfo[veh][vApben] = 1;
 			vUpdate(veh, vuApben);
-			AdminUzenet(COLOR_LIGHTRED,1,"%s AdminParkolóba rakott egy %s tipusú jármûvet. ID: %d",JatekosNev(playerid),VehicleNames[vInfo[veh][vModel] -400],vid);
+			AdminUzenet(COLOR_LIGHTRED,1,"%s AdminParkolóba rakott egy %s tipusú járm?vet. ID: %d",JatekosNev(playerid),VehicleNames[vInfo[veh][vModel] -400],vid);
 			SetVehicleVirtualWorld(vid,AP_VW);
 			SetVehicleToRespawn(vid);
 		}
@@ -50647,14 +50646,14 @@ CMD:ap(playerid,params[])
 	else if(!strcmp(eparam,"kiszed",true))
 	{
 		new vid;
-		if(sscanf(params,"{s[32]}d",vid)) return SCM(playerid, COL_MKEK, "Használat: /ap kiszed [JármûID]");
-		else if(vid == INVALID_VEHICLE_ID) return SCM(playerid,COL_LRED,"Nincs ilyen jármû!");
+		if(sscanf(params,"{s[32]}d",vid)) return SCM(playerid, COL_MKEK, "Használat: /ap kiszed [Járm?ID]");
+		else if(vid == INVALID_VEHICLE_ID) return SCM(playerid,COL_LRED,"Nincs ilyen járm?!");
 		new veh = JarmuID(vid,playerid);
-		if(vInfo[veh][vApben] == 0) return SCM(playerid,COL_LRED,"Ez a jármû nincs AP-ben.");
+		if(vInfo[veh][vApben] == 0) return SCM(playerid,COL_LRED,"Ez a járm? nincs AP-ben.");
 		else {
 			vInfo[veh][vApben] = 0;
 			vUpdate(veh, vuApben);
-			AdminUzenet(COLOR_LIGHTRED,1,"%s kivett az AdminParkolóból egy %s tipusú jármûvet. ID: %d",JatekosNev(playerid),VehicleNames[vInfo[veh][vModel] -400],vid);
+			AdminUzenet(COLOR_LIGHTRED,1,"%s kivett az AdminParkolóból egy %s tipusú járm?vet. ID: %d",JatekosNev(playerid),VehicleNames[vInfo[veh][vModel] -400],vid);
 			SetVehicleVirtualWorld(vid,0);
 			SetVehicleToRespawn(vid);
 		}
@@ -50666,12 +50665,12 @@ CMD:ap(playerid,params[])
 		{
 			if(vInfo[i][vApben])
 			{
-				format(lista, 128,"Jármû ID: %d - Model: %s - Tulajdonos: %s",vInfo[i][vID],VehicleNames[vInfo[i][vModel] - 400], vInfo[i][vTulaj]);
+				format(lista, 128,"Járm? ID: %d - Model: %s - Tulajdonos: %s",vInfo[i][vID],VehicleNames[vInfo[i][vModel] - 400], vInfo[i][vTulaj]);
 				SendClientMessage(playerid, COLOR_LBLUE, lista);
 				talalt++;
 			}
 		}
-		if(!talalt) return SCM(playerid,COL_LRED,"Jelenleg nincs admin által lefoglalt jármû!");
+		if(!talalt) return SCM(playerid,COL_LRED,"Jelenleg nincs admin által lefoglalt járm?!");
 	}
 	return 1;
 }
@@ -50940,7 +50939,7 @@ CMD:enged(playerid, params[])
 	return true;
 }
 
-//Tûz rendszer by Martin
+//T?z rendszer by Martin
 CMD:tuz(playerid, params[])
 {
 	if(!Admin(playerid, FOADMIN_SZINT) && PlayerInfo[playerid][pLeader] != FRAKCIO_LAFD)
@@ -50949,9 +50948,9 @@ CMD:tuz(playerid, params[])
 	if(isnull(params))
 	{
 		//if(PlayerInfo[playerid][pFrakcio] == FRAKCIO_LSFD && !Admin(playerid, SZUPER_SZINT))
-			//SCM(playerid, COL_MKEK, "Használat: /tûz [ Indít ]");
+			//SCM(playerid, COL_MKEK, "Használat: /t?z [ Indít ]");
 		//if(Admin(playerid, SZUPER_SZINT))
-		SCM(playerid, COL_MKEK, "Használat: /tûz [ Új / Töröl / Mutat / Go / Indít / Stop / Info ]");
+		SCM(playerid, COL_MKEK, "Használat: /t?z [ Új / Töröl / Mutat / Go / Indít / Stop / Info ]");
 		return true;
 	}
 
@@ -50966,28 +50965,28 @@ CMD:tuz(playerid, params[])
 			return SCM(playerid, COL_LRED, "Csak Leader és AlLeader indíthat akciót!");*/
 
 		if(ServerInfo[sTuzIdo][2] > gettime() && !IsScripter(playerid))
-			return SCM(playerid, COL_LRED, "Kevesebb mint 10 perce volt tûz, nem kell ilyen sûrûn gyakorolni...");
+			return SCM(playerid, COL_LRED, "Kevesebb mint 10 perce volt t?z, nem kell ilyen s?r?n gyakorolni...");
 
 		if(OnlineTagok(FRAKCIO_LAFD, true) < TUZ_MINTAG)
-			return SCM(playerid, COL_LRED, "Nincs elegendõ szolgálatban lévõ tûzoltó az akció indításához!");
+			return SCM(playerid, COL_LRED, "Nincs elegendõ szolgálatban lévõ t?zoltó az akció indításához!");
 
 		if(ServerInfo[sTuzVan])
 		{
-			SCM(playerid, COL_LRED, "Jelenleg van valahol tûz, így nem indíthatsz akciót!");
+			SCM(playerid, COL_LRED, "Jelenleg van valahol t?z, így nem indíthatsz akciót!");
 			return true;
 		}
 
 		ServerInfo[sTuzIdo][2] = (gettime() + (10 * 60));
-		SCM(playerid, COL_VZOLD, "Tûz akció indítása - Generálás");
+		SCM(playerid, COL_VZOLD, "T?z akció indítása - Generálás");
 		TuzGeneral( true );
 		return true;
 	}
 	else if((!strcmp(param, "info", false) || !strcmp(param, "infó", false)) && jog)
-		return SendFormatMessage(playerid, COLOR_WHITE, "Jelenleg %s"#COL_FEHER" tûz | Tûz idõ: "#COL_MKEK"%d"#COL_FEHER"mp | Következõ tûz várhatóan: "#COL_MKEK"%d"#COL_FEHER"mp", (ServerInfo[sTuzVan] ? (""#COL_VZOLD"van") : (""#COL_PIROS"nincs")), ServerInfo[sTuzIdo][0], ServerInfo[sTuzIdo][1]);
+		return SendFormatMessage(playerid, COLOR_WHITE, "Jelenleg %s"#COL_FEHER" t?z | T?z idõ: "#COL_MKEK"%d"#COL_FEHER"mp | Következõ t?z várhatóan: "#COL_MKEK"%d"#COL_FEHER"mp", (ServerInfo[sTuzVan] ? (""#COL_VZOLD"van") : (""#COL_PIROS"nincs")), ServerInfo[sTuzIdo][0], ServerInfo[sTuzIdo][1]);
 	else if(!strcmp(param, "stop", false) && jog)
 	{
 		if(!ServerInfo[sTuzVan])
-			return SCM(playerid, COL_LRED, "Jelenleg nincs tûz akció elindítva!");
+			return SCM(playerid, COL_LRED, "Jelenleg nincs t?z akció elindítva!");
 
 		TuzMuvelet( 4, playerid );
 	}
@@ -50996,12 +50995,12 @@ CMD:tuz(playerid, params[])
 		if(!Admin(playerid, FOADMIN_SZINT))
 			return SendClientMessage(playerid, COLOR_WHITE, NEM_HASZNALHATO);
 		if(extra == NINCS)
-			return SCM(playerid, COL_MKEK, "Használat: /tûz go [TûzID]");
+			return SCM(playerid, COL_MKEK, "Használat: /t?z go [T?zID]");
 		if(extra < 0 || extra >= TUZ_MAX_POZ || TuzPoz[extra][tPoz][0] == 0.0)
-			return SCM(playerid, COL_LRED, "Ez a Tûz ID nem létezik!");
+			return SCM(playerid, COL_LRED, "Ez a T?z ID nem létezik!");
 
 		SetPos(playerid, PosExt(TuzPoz[extra][tPoz]));
-		SCM(playerid, COL_MKEK, "Sikeresen teleportáltál a tûz pozíciójára! /tûz mutat");
+		SCM(playerid, COL_MKEK, "Sikeresen teleportáltál a t?z pozíciójára! /t?z mutat");
 	}
     else if((!strcmp(param, "uj", false) || !strcmp(param, "új", false)) && jog)
 	{
@@ -51021,9 +51020,9 @@ CMD:tuz(playerid, params[])
 		}
 
 		if(van != NINCS)
-			return SFM(playerid, COL_LRED, "A környéken már van lementve tûz pozíció! (ID: %d)", van);
+			return SFM(playerid, COL_LRED, "A környéken már van lementve t?z pozíció! (ID: %d)", van);
 		if(id == NINCS)
-			return SCM(playerid, COL_LRED, "Nincs több szabad tûz slot! Törölj néhányat mielõtt létrehoznál!");
+			return SCM(playerid, COL_LRED, "Nincs több szabad t?z slot! Törölj néhányat mielõtt létrehoznál!");
 
 		new Float:pos[3];
 		GetPlayerPos(playerid, PosExt(pos));
@@ -51033,7 +51032,7 @@ CMD:tuz(playerid, params[])
 		TuzPoz[id][tPoz][2] = pos[2];
 		TuzMuvelet(2, id);//mentés
 
-		SFM(playerid, COL_VZOLD, "Tûz pozíció létrehozva! ID: "#COL_MKEK"%d", id);
+		SFM(playerid, COL_VZOLD, "T?z pozíció létrehozva! ID: "#COL_MKEK"%d", id);
 
 		TuzPoz[id][tMapID] = CreateDynamicMapIcon(PosExt(TuzPoz[id][tPoz]), 36, 0, NINCS, NINCS, NINCS, TUZ_MUTAT_TAV);
 		Streamer_SetIntData( STREAMER_TYPE_MAP_ICON, TuzPoz[id][tMapID], E_STREAMER_STYLE, 3);//ez globál
@@ -51060,14 +51059,14 @@ CMD:tuz(playerid, params[])
 		}
 
 		if(van == NINCS)
-			return SCM(playerid, COL_LRED, "Ezen a helyen nincs lementett tûz pozíció!");
+			return SCM(playerid, COL_LRED, "Ezen a helyen nincs lementett t?z pozíció!");
 
 		TuzPoz[van][tPoz] = Float:{ 0.0, 0.0, 0.0 };
 
 		DestroyDynamicMapIcon( TuzPoz[van][tMapID] );
 		TuzPoz[van][tMapID] = 0;
 		TuzMuvelet(3, van);
-		SCM(playerid, COL_LRED, "Közeledben lévû tûz sikeresen törölve az adatbázisból!");
+		SCM(playerid, COL_LRED, "Közeledben lév? t?z sikeresen törölve az adatbázisból!");
 
 		if(PlayerInfo[playerid][pTuzMutat])
 			Streamer_Update(playerid);
@@ -51089,7 +51088,7 @@ CMD:tuz(playerid, params[])
 			}
 
 			Streamer_Update(playerid);
-			SCM(playerid, COL_MKEK, "Tûz pozíciók elrejtve!");
+			SCM(playerid, COL_MKEK, "T?z pozíciók elrejtve!");
 
 		} else {
 
@@ -51103,7 +51102,7 @@ CMD:tuz(playerid, params[])
 			}
 
 			Streamer_Update(playerid);
-			SCM(playerid, COL_MKEK, "Tûz pozíciók megjelölve a radaron!");
+			SCM(playerid, COL_MKEK, "T?z pozíciók megjelölve a radaron!");
 		}
 	}
 	return true;
@@ -51140,7 +51139,7 @@ CMD:damage(playerid, params[])
 		return SendClientMessage(playerid, COLOR_WHITE, NEM_HASZNALHATO);
 
 	if(!IsPlayerInAnyVehicle(playerid))
-		return SendClientMessage(playerid, COLOR_LIGHTRED, "Hiba: Nem vagy jármûben!");
+		return SendClientMessage(playerid, COLOR_LIGHTRED, "Hiba: Nem vagy járm?ben!");
 
 	new param[64];
 	if(sscanf(params, "s[64]{}", param))
@@ -51191,7 +51190,7 @@ CMD:damaged(playerid, params[])
 		return SendClientMessage(playerid, COLOR_WHITE, NEM_HASZNALHATO);
 
 	if(!IsPlayerInAnyVehicle(playerid))
-		return SendClientMessage(playerid, -1, "Nem vagy jármûben!");
+		return SendClientMessage(playerid, -1, "Nem vagy járm?ben!");
 
 	new panel, door, light, tire;
 
@@ -51298,9 +51297,9 @@ CMD:statisztika(playerid, params[])
 
 		SendClientMessage(playerid, COLOR_WHITE, "================= [ "#COL_MKEK"Szerver statisztika"#COL_FEHER" ] =================");
 		SendClientMessage(playerid, COLOR_YELLOW,"Betöltött objektum szám / definiált limit");
-		SendFormatMessage(playerid, COLOR_WHITE, "Házak: %d/%d | Jármûvek: %d/%d | Kapuk: %d/%d", hdb, MAX_HOUSE, Iter_Count(Jarmuvek), MAX_VEHICLES, kdb, MAX_KAPU);
+		SendFormatMessage(playerid, COLOR_WHITE, "Házak: %d/%d | Járm?vek: %d/%d | Kapuk: %d/%d", hdb, MAX_HOUSE, Iter_Count(Jarmuvek), MAX_VEHICLES, kdb, MAX_KAPU);
 		SendFormatMessage(playerid, COLOR_WHITE, "Teruletek: %d/%d | Ajtók: %d/%d | Frakciók: %d/%d", tdb, MAX_TERULET, adb, MAX_AJTO, fdb, MAX_FRAKCIO);
-		SendFormatMessage(playerid, COLOR_WHITE, "Tûz pozíciók: %d/%d | LiteSQL adatbázis: %s", tzdb, TUZ_MAX_POZ, (fexist(LSQL_ADATBAZIS) ? (""#COL_VZOLD"csatlakoztatva") : (""#COL_PIROS"lecsatolva")));
+		SendFormatMessage(playerid, COLOR_WHITE, "T?z pozíciók: %d/%d | LiteSQL adatbázis: %s", tzdb, TUZ_MAX_POZ, (fexist(LSQL_ADATBAZIS) ? (""#COL_VZOLD"csatlakoztatva") : (""#COL_PIROS"lecsatolva")));
 		SendFormatMessage(playerid, COLOR_WHITE, "Eldobott tárgyak: %d/%d | Hullák: %d/%d | NPC: %d/%d", dropdb, MAX_DROP, hulladb, MAX_HULLA, Iter_Count(Bot), MAX_PLAYERS);
 	}
 	else if(!strcmp(params, "streamer"))
@@ -51355,7 +51354,7 @@ CMD:jelszovaltas(playerid,params[])
 		mysql_tquery(sql_ID, string, "", "");
 		Adat_Update( playerid, ADAT_MINDEN );
 		SCM(playerid,COL_LRED,"Jelszóváltás sikeres!");
-	} else { SCM(playerid,COL_LRED,"Minimum 3 karakter, számokkal és betûkkel!"); }
+	} else { SCM(playerid,COL_LRED,"Minimum 3 karakter, számokkal és bet?kkel!"); }
 	return 1;
 }
 CMD:atm(playerid,params[])
@@ -51439,7 +51438,7 @@ CMD:bid(playerid, params[])
 		return SendClientMessage(playerid, COLOR_WHITE, NEM_HASZNALHATO);
 
 	if(isnull(params))
-		return SCM(playerid, COL_MKEK, "Használat: /bid [Azonosító] | 4 jegyû random azonosító");
+		return SCM(playerid, COL_MKEK, "Használat: /bid [Azonosító] | 4 jegy? random azonosító");
 
 	new jatekos = NINCS;
 	foreach(Player, i)
@@ -51683,17 +51682,17 @@ CMD:nevvaltas(playerid, params[])
 		if(newcheck != 1)
 		{
 			if(newcheck == -1)
-			    format(uzenet, sizeof(uzenet), "A névnek nagy betûvel kell kezdõdnie!");
+			    format(uzenet, sizeof(uzenet), "A névnek nagy bet?vel kell kezdõdnie!");
 			else if(newcheck == -2)
 			    format(uzenet, sizeof(uzenet), "A név nem tartalmazhat számokat!");
 		 	else if(newcheck == -3)
 			    format(uzenet, sizeof(uzenet), "A név nem tartalmazhat speciális karaktereket!");
 		    else if(newcheck == -4)
-			    format(uzenet, sizeof(uzenet), "A név elsõ betûi lehetnek csak nagy betûk!");
+			    format(uzenet, sizeof(uzenet), "A név elsõ bet?i lehetnek csak nagy bet?k!");
 		    else if(newcheck == -5)
 			    format(uzenet, sizeof(uzenet), "A név max. "#MAX_ALSOVONAS" alsóvonást tartalmazhat!");
 			else if(newcheck == -6)
-			    format(uzenet, sizeof(uzenet), "Az alsóvonás után nagy kezdõbetû kell!");
+			    format(uzenet, sizeof(uzenet), "Az alsóvonás után nagy kezdõbet? kell!");
 		    else if(newcheck == -7)
 			    format(uzenet, sizeof(uzenet), "A névnek legalább 2részbõl kell állnia! (Vezetéknév_Keresztnév)");
             else if(newcheck == -7)
@@ -51720,17 +51719,17 @@ CMD:knevvaltas(playerid, params[])
 		if(newcheck != 1)
 		{
 			if(newcheck == -1)
-			    format(uzenet, sizeof(uzenet), "A névnek nagy betûvel kell kezdõdnie!");
+			    format(uzenet, sizeof(uzenet), "A névnek nagy bet?vel kell kezdõdnie!");
 			else if(newcheck == -2)
 			    format(uzenet, sizeof(uzenet), "A név nem tartalmazhat számokat!");
 		 	else if(newcheck == -3)
 			    format(uzenet, sizeof(uzenet), "A név nem tartalmazhat speciális karaktereket!");
 		    else if(newcheck == -4)
-			    format(uzenet, sizeof(uzenet), "A név elsõ betûi lehetnek csak nagy betûk!");
+			    format(uzenet, sizeof(uzenet), "A név elsõ bet?i lehetnek csak nagy bet?k!");
 		    else if(newcheck == -5)
 			    format(uzenet, sizeof(uzenet), "A név max. "#MAX_ALSOVONAS" alsóvonást tartalmazhat!");
 			else if(newcheck == -6)
-			    format(uzenet, sizeof(uzenet), "Az alsóvonás után nagy kezdõbetû kell!");
+			    format(uzenet, sizeof(uzenet), "Az alsóvonás után nagy kezdõbet? kell!");
 		    else if(newcheck == -7)
 			    format(uzenet, sizeof(uzenet), "A névnek legalább 2részbõl kell állnia! (Vezetéknév_Keresztnév)");
             else if(newcheck == -7)
@@ -51767,7 +51766,7 @@ CMD:debug(playerid, params[])
 
 	if(isnull(params))
 	{
-		SCM(playerid, COL_MKEK, "Használat: /debug [update / whitelist / jarmû / aka / pb / pbspawn / arg / adatupdate / maxv / neon / sscanf / thaszon / UCP_Check]");
+		SCM(playerid, COL_MKEK, "Használat: /debug [update / whitelist / jarm? / aka / pb / pbspawn / arg / adatupdate / maxv / neon / sscanf / thaszon / UCP_Check]");
 		SCM(playerid, COL_MKEK, "Használat: /debug [StatMentes]");
 		return true;
 	}
@@ -51852,7 +51851,7 @@ CMD:debug(playerid, params[])
 	else if(!strcmp(param, "thaszon"))
 	{
 		TeruletHaszon( true );
-		SCM(playerid, COL_VZOLD, "Mûvelet futtatva!");
+		SCM(playerid, COL_VZOLD, "M?velet futtatva!");
 	}
 /*	else if(!strcmp(param, "hirdetes"))
 	{
@@ -51903,7 +51902,7 @@ CMD:debug(playerid, params[])
 				SetVehicleNeon(vid, extra);
 
 			default:
-				return SCM(playerid, COL_LRED, "Erre a jármû nem rakhatsz Neont!");
+				return SCM(playerid, COL_LRED, "Erre a járm? nem rakhatsz Neont!");
 		}
 
 		if(orok)
@@ -51912,7 +51911,7 @@ CMD:debug(playerid, params[])
 			vUpdate(vid, vuNeon);
 		}
 
-		SCM(playerid, COL_VZOLD, "Neon mûvelet futtatva!");
+		SCM(playerid, COL_VZOLD, "Neon m?velet futtatva!");
 		Streamer_Update(playerid);
 	}
 	else if(!strcmp(param, "sscanf"))
@@ -51934,13 +51933,13 @@ CMD:debug(playerid, params[])
 
 		if(PlayerInfo[jatekos][pPaintBall][0] == 0)
 		{
-			SCM(playerid, COL_VZOLD, "[DEBUG]: Mûvelet végrehajtva - PaintBall start");
+			SCM(playerid, COL_VZOLD, "[DEBUG]: M?velet végrehajtva - PaintBall start");
 			PaintBallMuvelet(jatekos, 1);
 			SpawnPlayer(jatekos);
 
 		} else {
 
-			SCM(playerid, COL_VZOLD, "[DEBUG]: Mûvelet végrehajtva - PaintBall stop");
+			SCM(playerid, COL_VZOLD, "[DEBUG]: M?velet végrehajtva - PaintBall stop");
 			PlayerInfo[jatekos][pPaintBall][0] = 0;
 			SpawnPlayer(jatekos);
 		}
@@ -52003,29 +52002,29 @@ CMD:debug(playerid, params[])
 	else if(!strcmp(param, "update"))
 	{
 		if(sscanf(params, "{s[24]}ud", jatekos, extra))
-			return SCM(playerid, COL_MKEK, "Használat: /debug update [Játékos] [Mit(0/1/2)] | 0 = Minden, 1 = Ház, 2 = Jármû");
+			return SCM(playerid, COL_MKEK, "Használat: /debug update [Játékos] [Mit(0/1/2)] | 0 = Minden, 1 = Ház, 2 = Járm?");
 
 		if((jatekos == INVALID_PLAYER_ID) || !IsPlayerConnected(jatekos) || IsPlayerNPC(jatekos))
 			return SendClientMessage(playerid, COLOR_LIGHTRED, "[Info]: Nincs ilyen játékos!");
 
 		if(extra != 0 && extra != 1 && extra != 2)
-			return SCM(playerid, COL_MKEK, "0 = Minden, 1 = Ház, 2 = Jármû");
+			return SCM(playerid, COL_MKEK, "0 = Minden, 1 = Ház, 2 = Járm?");
 
 		Adat_Update( jatekos, extra );
 		SCM(playerid, COL_MKEK, "Update futtatva!");
 	}
-	else if(!strcmp(param, "jarmu") || !strcmp(param, "jármû"))
+	else if(!strcmp(param, "jarmu") || !strcmp(param, "járm?"))
 	{
 		if(sscanf(params, "{s[24]}d", extra))
-			return SCM(playerid, COL_MKEK, "Használat: /debug jarmû [JármûID] | Jármû használati idejének nullázása");
+			return SCM(playerid, COL_MKEK, "Használat: /debug jarm? [Járm?ID] | Járm? használati idejének nullázása");
 
 		vInfo[ JarmuID(extra, playerid) ][vLastActive] = 0;
-		SFM(playerid, COL_MKEK, "JármûID: %d használati ideje nullázva!", extra);
+		SFM(playerid, COL_MKEK, "Járm?ID: %d használati ideje nullázva!", extra);
 	}
 	else if(!strcmp(param, "arg"))
 	{
 		if(sscanf(params, "{s[24]}d", extra))
-			return SCM(playerid, COL_MKEK, "Használat: /debug arg [JármûID(SQL)] | Jármû update argumentum teszt");
+			return SCM(playerid, COL_MKEK, "Használat: /debug arg [Járm?ID(SQL)] | Járm? update argumentum teszt");
 
 		vUpdate(extra, vuTulaj, vuHiba);
 		SCM(playerid, COL_MKEK, "Funkció futtatva!");
@@ -52094,7 +52093,7 @@ CMD:atankol(playerid, params[])
 	if(liter > MAX_Benzin[ vInfo[ biedf ][vModel] - 400 ] || liter < 0)
 		return SCM(playerid, COL_LRED, "Ebbe a jármube nem fér ennyi üzemanyag!");
 
-	AdminUzenet(COLOR_LIGHTRED, 1, "%s átállította egy %s típusú jármû üzemanyag szintjét! Régi: %.1f Új: %.1f | JármuID: %d[%d]", JatekosNev(playerid, false, true), VehicleNames[ vInfo[ biedf ][vModel] - 400 ], vInfo[ biedf ][vUzemanyag], float(liter), vInfo[ biedf ][vID], biedf);
+	AdminUzenet(COLOR_LIGHTRED, 1, "%s átállította egy %s típusú járm? üzemanyag szintjét! Régi: %.1f Új: %.1f | JármuID: %d[%d]", JatekosNev(playerid, false, true), VehicleNames[ vInfo[ biedf ][vModel] - 400 ], vInfo[ biedf ][vUzemanyag], float(liter), vInfo[ biedf ][vID], biedf);
 	vInfo[ biedf ][vUzemanyag] = float(liter);
 	return true;
 }
@@ -53127,7 +53126,7 @@ CMD:kapu(playerid, params[])
 			return SCM(playerid, COL_LRED, "Nincs ilyen kapu az adatbázisban!");
 
 		SetPos(playerid, Kapu[id][kPos], (Kapu[id][kPos] + 2), Kapu[id][kPos]);
-		SFM(playerid, COL_VZOLD, "Sikeresen teleportáltál a "#COL_MKEK"%s"#COL_FEHER" nevû kapuhoz!", Kapu[id][kNev]);
+		SFM(playerid, COL_VZOLD, "Sikeresen teleportáltál a "#COL_MKEK"%s"#COL_FEHER" nev? kapuhoz!", Kapu[id][kNev]);
 		return true;
 	}
 	else if(!strcmp(param, "kezelés", false) || !strcmp(param, "kezeles", false))
@@ -53183,9 +53182,9 @@ CMD:terulet(playerid, params[])
 		TeruletFrissites();
 
 		if(PlayerInfo[playerid][padmin])
-			AdminUzenet(COLOR_LIGHTRED, PlayerInfo[playerid][padmin], "%s átállította a(z) %s nevû terület tulaját erre: [%d]%s", JatekosNev(playerid), tInfo[tid][tNev], fid, FInfo[fid][fNev]);
+			AdminUzenet(COLOR_LIGHTRED, PlayerInfo[playerid][padmin], "%s átállította a(z) %s nev? terület tulaját erre: [%d]%s", JatekosNev(playerid), tInfo[tid][tNev], fid, FInfo[fid][fNev]);
 
-		SFM(playerid, COL_VZOLD, "%s nevû terület tulaja átállítva erre: [%d]%s", tInfo[tid][tNev], fid, FInfo[fid][fNev]);
+		SFM(playerid, COL_VZOLD, "%s nev? terület tulaja átállítva erre: [%d]%s", tInfo[tid][tNev], fid, FInfo[fid][fNev]);
 		return true;
 	}
 	else if(!strcmp(param, "kezelés", true) || !strcmp(param, "kezeles", true))
@@ -53244,9 +53243,9 @@ CMD:terulet(playerid, params[])
 			return SCM(playerid, COL_LRED, "Nincs ilyen terület!");
 
 		if(PlayerInfo[playerid][padmin])
-			AdminUzenet(COLOR_LIGHTRED, PlayerInfo[playerid][padmin], "%s törölte a(z) %s nevû területet!", JatekosNev(playerid), tInfo[id][tNev]);
+			AdminUzenet(COLOR_LIGHTRED, PlayerInfo[playerid][padmin], "%s törölte a(z) %s nev? területet!", JatekosNev(playerid), tInfo[id][tNev]);
 
-		SFM(playerid, COL_VZOLD, "%s nevû terület sikeresen törölve!", tInfo[id][tNev]);
+		SFM(playerid, COL_VZOLD, "%s nev? terület sikeresen törölve!", tInfo[id][tNev]);
 
 		tInfo[id][tVan] = false;
 		tInfo[id][tNev][0] = EOS;
@@ -53332,7 +53331,7 @@ CMD:terulet(playerid, params[])
 		tInfo[PlayerInfo[playerid][pTerulet]][tArea] = CreateDynamicRectangle(tInfo[PlayerInfo[playerid][pTerulet]][tMinPos][0], tInfo[PlayerInfo[playerid][pTerulet]][tMinPos][1], tInfo[PlayerInfo[playerid][pTerulet]][tMaxPos][0], tInfo[PlayerInfo[playerid][pTerulet]][tMaxPos][1]);
 
 		if(PlayerInfo[playerid][padmin])
-			AdminUzenet(COLOR_LIGHTRED, PlayerInfo[playerid][padmin], "%s létrehozott egy %s nevû területet!", JatekosNev(playerid), nev);
+			AdminUzenet(COLOR_LIGHTRED, PlayerInfo[playerid][padmin], "%s létrehozott egy %s nev? területet!", JatekosNev(playerid), nev);
 
 		SendClientMessage(playerid, COLOR_GREEN, "Terület létrehozásához használd a W-A-S-D gombokat! Mentéshez nyomd meg az ENTER gombot.");
 		return true;
@@ -53452,7 +53451,7 @@ CMD:ceg(playerid, params[])
 		CegInfo[u][cPickup] = CreateDynamicPickup(1239, 23, PosExt(CegInfo[u][cPosBe]), CegInfo[u][cVw][0], CegInfo[u][cInt][0], NINCS);
 
 		doQuery("INSERT INTO `"#MYSQL_CEGEK_TABLA"` (Id, Anev, Nev, Ar, PosBe, Vw, Inte) VALUES ('%d', '%s', '%s', '%d', '%f,%f,%f,%f', '%d,%d', '%d,%d')", u, aanev, nev, ar, PosExt(CegInfo[ u ][cPosBe]), CegInfo[ u ][cPosBe][3], CegInfo[u][cVw][0], CegInfo[u][cVw][1], CegInfo[u][cInt][0], CegInfo[u][cInt][1]);
-		SendFormatMessage(playerid, COLOR_MKEK, "Sikeresen létrehoztad a(z) %s nevû céget! [SQLID: %d | Ára: %s$]", nev, u, FN(ar, 0, ','));
+		SendFormatMessage(playerid, COLOR_MKEK, "Sikeresen létrehoztad a(z) %s nev? céget! [SQLID: %d | Ára: %s$]", nev, u, FN(ar, 0, ','));
 		return true;
 	}
 	else if(!strcmp(param, "bejárat", true) || !strcmp(param, "bejarat", true))
@@ -53676,7 +53675,7 @@ CMD:ceg(playerid, params[])
 		CegInfo[ id ][cTulajID] = PlayerInfo[playerid][pID];
 		Adat_Update( playerid, ADAT_CEG );
 		doQuery("UPDATE `"#MYSQL_CEGEK_TABLA"` SET Tulaj = '%s', TulajID = '%d' WHERE Id = '%d'", PlayerInfo[playerid][pNev], PlayerInfo[playerid][pID], id);
-		SendFormatMessage(playerid, COLOR_MKEK, "Sikeresen megvetted a(z) "#COL_MKEK"%s"#COL_FEHER" nevû céget! Ára: "#COL_MKEK"%s"#COL_FEHER"$", id, CegInfo[id][cNev], FN(CegInfo[id][cAr], 0, ','));
+		SendFormatMessage(playerid, COLOR_MKEK, "Sikeresen megvetted a(z) "#COL_MKEK"%s"#COL_FEHER" nev? céget! Ára: "#COL_MKEK"%s"#COL_FEHER"$", id, CegInfo[id][cNev], FN(CegInfo[id][cAr], 0, ','));
 		return true;
 	}
 	else if(!strcmp(param, "töröl", true) || !strcmp(param, "torol", true))
@@ -53697,7 +53696,7 @@ CMD:ceg(playerid, params[])
 		PlayerInfo[playerid][pMegerosites] = NINCS;
 		doQuery("DELETE FROM `"#MYSQL_CEGEK_TABLA"` WHERE Id = '%d'", id);
 
-		SendFormatMessage(playerid, COLOR_MKEK, "Sikeresen törölted a(z) "#COL_MKEK"%s"#COL_FEHER" nevû céget!", id, CegInfo[id][cNev]);
+		SendFormatMessage(playerid, COLOR_MKEK, "Sikeresen törölted a(z) "#COL_MKEK"%s"#COL_FEHER" nev? céget!", id, CegInfo[id][cNev]);
 		if(IsValidDynamicPickup( CegInfo[id][cPickup] )) DestroyDynamicPickup( CegInfo[id][cPickup] );
 		for(new i = NINCS; ++i != sizeof(CegInfo[]);) CegInfo[id][ceginfo:i] = EOS;
 		CegInfo[id][cVan] = false;
@@ -53805,8 +53804,8 @@ CMD:megtankol(playerid, params[])
 		}
 	}
 
-	AdminUzenet(COLOR_LIGHTRED, 1, "%s megtankolta az összes jármûvet!", JatekosNev(playerid));
-	SendClientMessage(playerid, COLOR_WHITE, "Minden jármû sikeresen megtankolva!");
+	AdminUzenet(COLOR_LIGHTRED, 1, "%s megtankolta az összes járm?vet!", JatekosNev(playerid));
+	SendClientMessage(playerid, COLOR_WHITE, "Minden járm? sikeresen megtankolva!");
 	return true;
 }
 
@@ -53895,7 +53894,7 @@ CMD:crs(playerid, params[])
 		else
 			car = GetPlayerVehicleID(playerid);
 
-		if(GetDistanceToVehicle(playerid, car) > 5.0)	return SCM(playerid, COL_MKEK, "Nincs a közeledben jármû! Lehetõségek: /crs [ JármûID / All ]");
+		if(GetDistanceToVehicle(playerid, car) > 5.0)	return SCM(playerid, COL_MKEK, "Nincs a közeledben járm?! Lehetõségek: /crs [ Járm?ID / All ]");
 	} else {
 		new param[24], extra = NINCS;
 		sscanf(params, "s[24]D(-1)", param, extra);
@@ -53908,17 +53907,17 @@ CMD:crs(playerid, params[])
 					return SCM(playerid, COL_MKEK, "Használat: /crs all [0/1] | 0 = Javítás nélkül, 1 = Javítás");
 
 				if(extra != 0 && extra != 1)
-					return SCM(playerid, COL_LRED, "Hibás érték! 0 = Jármûvek nem javulnak meg, 1 = Jármûvek megjavulnak");
+					return SCM(playerid, COL_LRED, "Hibás érték! 0 = Járm?vek nem javulnak meg, 1 = Járm?vek megjavulnak");
 
-				ServerInfo[sCarResi][0] = 30;// másodperc múlva jármû respawn
-				ServerInfo[sCarResi][1] = extra;// jármûvek javuljanak-e vagy sem
-				AdminUzenet(COLOR_LIGHTRED, 1, "%s elindította a jármû respawnt! Hátralévõ idõ: %dmp (Jármûvek %s)",JatekosNev(playerid), ServerInfo[sCarResi][0], (extra ? ("javulnak") : ("nem javulnak")));
+				ServerInfo[sCarResi][0] = 30;// másodperc múlva járm? respawn
+				ServerInfo[sCarResi][1] = extra;// járm?vek javuljanak-e vagy sem
+				AdminUzenet(COLOR_LIGHTRED, 1, "%s elindította a járm? respawnt! Hátralévõ idõ: %dmp (Járm?vek %s)",JatekosNev(playerid), ServerInfo[sCarResi][0], (extra ? ("javulnak") : ("nem javulnak")));
 				return true;
 			}
 		}
 		car = strval(param);
 		if(car < 1 || car > MAX_VEHICLES || !IsVehicleConnected(car))
-			return SCM(playerid, COL_LRED, "Ez a Jármû ID nincs spawnolva!");
+			return SCM(playerid, COL_LRED, "Ez a Járm? ID nincs spawnolva!");
 	}
 	new vid = JarmuID(car, playerid ), Float:HP;
 	GetVehicleHealth(car, HP);
@@ -53938,7 +53937,7 @@ CMD:crs(playerid, params[])
 		vInfo[vid][vElet] = 1000.0;
 		vehicleh[vInfo[vid][vID]] = 1000.0;
 	}
-	SendFormatMessage(playerid, COLOR_GREEN, "Respawnoltál egy %s típusú jármûvet! Tulaj: %s | JármûID: %d[%d]", VehicleNames[GetVehicleModel(car) - 400], JarmuTulaj(vid), car, vid);
+	SendFormatMessage(playerid, COLOR_GREEN, "Respawnoltál egy %s típusú járm?vet! Tulaj: %s | Járm?ID: %d[%d]", VehicleNames[GetVehicleModel(car) - 400], JarmuTulaj(vid), car, vid);
 	return true;
 }
 
@@ -53947,7 +53946,7 @@ CMD:flymode(playerid, params[])
 	#pragma unused params
     if(!Admin(playerid, 1)&& !PlayerInfo[playerid][pMapper])
         return SendClientMessage(playerid, COLOR_WHITE, NEM_HASZNALHATO);
-	if(IsPlayerInAnyVehicle(playerid))	return SCM(playerid, COL_LRED, "Jármûben nem használhatod!");
+	if(IsPlayerInAnyVehicle(playerid))	return SCM(playerid, COL_LRED, "Járm?ben nem használhatod!");
 	if(PlayerInfo[playerid][pTV][0] != NINCS)	return SCM(playerid, COL_LRED, "Megfigyelés közben nem használhatod!");
 	if(Bortonben(playerid))	return SCM(playerid, COL_LRED, "Börtönben nem használhatod!");
     if(GetPVarType(playerid, "FlyMode"))
@@ -54090,14 +54089,14 @@ CMD:flip(playerid, params[])//ah-ban
     if(!Admin(playerid, 2))
 	    return SendClientMessage(playerid, COLOR_WHITE, NEM_HASZNALHATO);
  	if(!IsPlayerInAnyVehicle(playerid))
-	    return SCM(playerid, COL_LRED, "Jármûben kell ülnöd!");
+	    return SCM(playerid, COL_LRED, "Járm?ben kell ülnöd!");
 
 	new currentveh;
 	new Float:angle;
 	currentveh = GetPlayerVehicleID(playerid);
 	GetVehicleZAngle(currentveh, angle);
 	SetVehicleZAngle(currentveh, angle);
-	SCM(playerid, COL_VZOLD, "Jármûved felállítva!");
+	SCM(playerid, COL_VZOLD, "Járm?ved felállítva!");
 	return true;
 }
 
@@ -54119,15 +54118,15 @@ CMD:vr(playerid, params[])//ah-ban
 			vInfo[vid][vElet] = 1000.0;
 			vUpdate(vid, vuElet);
 		}
-		AdminUzenet(COLOR_LIGHTRED, 1, "%s megjavította az összes jármûvet!", JatekosNev(playerid));
+		AdminUzenet(COLOR_LIGHTRED, 1, "%s megjavította az összes járm?vet!", JatekosNev(playerid));
 
 	} else {
 		new car = GetClosestVehicle(playerid);
 		if(GetDistanceToVehicle(playerid, car) > 5.0 && !IsPlayerInAnyVehicle(playerid))
-			return SCM(playerid, COL_LRED, "Nincs a közeledben jármû!");
+			return SCM(playerid, COL_LRED, "Nincs a közeledben járm?!");
 
 		SetHealth(playerid,MAX_HP);
-		SCM(playerid, COL_VZOLD, "Sikeresen megjavítottad a jármûvet!");
+		SCM(playerid, COL_VZOLD, "Sikeresen megjavítottad a járm?vet!");
 
 		new
 			v_id = 0,
@@ -54466,7 +54465,7 @@ CMD:ajto(playerid, params[])
 		    if(!strcmp(bevagyki, "be", true))
 		    {
 				if(sscanf(params, "{s[64]s[4]}s[32]dd", ajnev, freeze, jarmu))
-					return SCM(playerid, COL_MKEK, "Használat: /ajtó új be [Név vagy ID] [Freeze idõ (ms)] [jármû(0/1)]");
+					return SCM(playerid, COL_MKEK, "Használat: /ajtó új be [Név vagy ID] [Freeze idõ (ms)] [járm?(0/1)]");
 
 				if((strlen(ajnev) > 12) || (strlen(ajnev) < 1))
 					return SCM(playerid, COL_LRED, "Az ajtónak 1 és 12 karakter között kell lennie!");
@@ -54556,7 +54555,7 @@ CMD:ajto(playerid, params[])
 						mysql_tquery(sql_ID, query, "", "");
 						AdminUzenet(COLOR_LIGHTRED, PlayerInfo[playerid][padmin], "%s áthelyezett egy bejáratot! Neve: %s", JatekosNev(playerid), AjtoInfo[ajtoid][anev]);
 					}
-					SendFormatMessage(playerid, COLOR_GREEN, "Ajtó sikeresen létrehozva! Int: %d | VW: %d | Freeze: %d | Jármû: %d | [%d]%s", GetPlayerInterior(playerid), GetPlayerVirtualWorld(playerid), freeze, jarmu, ajtoid, AjtoInfo[ajtoid][anev]);
+					SendFormatMessage(playerid, COLOR_GREEN, "Ajtó sikeresen létrehozva! Int: %d | VW: %d | Freeze: %d | Járm?: %d | [%d]%s", GetPlayerInterior(playerid), GetPlayerVirtualWorld(playerid), freeze, jarmu, ajtoid, AjtoInfo[ajtoid][anev]);
 
 					return true;
 				}
@@ -54741,7 +54740,7 @@ CMD:ajto(playerid, params[])
 				SendClientMessage(playerid, COLOR_WHITE, "Legközelebbi bejárat adatai");
 				format(uzenet, sizeof(uzenet), "Ajtó neve: %s | ID: %d | Távolság: %2.f", AjtoInfo[kozeliajto][anev], kozeliajto, tav);
 				SendClientMessage(playerid, COLOR_WHITE, uzenet);
-				format(uzenet, sizeof(uzenet), "Jármûvet teleportál: %d | Freeze: %d | Int: %d | VW: %d", AjtoInfo[kozeliajto][ajarmu], AjtoInfo[kozeliajto][afreeze], AjtoInfo[kozeliajto][abeinterior], AjtoInfo[kozeliajto][abevw]);
+				format(uzenet, sizeof(uzenet), "Járm?vet teleportál: %d | Freeze: %d | Int: %d | VW: %d", AjtoInfo[kozeliajto][ajarmu], AjtoInfo[kozeliajto][afreeze], AjtoInfo[kozeliajto][abeinterior], AjtoInfo[kozeliajto][abevw]);
 				SendClientMessage(playerid, COLOR_WHITE, uzenet);
 			} else
 				SendClientMessage(playerid, COLOR_LIGHTBLUE, "Nincs a közelben ajtó!");
@@ -54815,7 +54814,7 @@ CMD:benzinkut(playerid, params[])
 		if(benzinkutid > 0)
 		{
 			if(BenzinkutLetezik(benzinkutnev) > 0)
-				return SCM(playerid, COL_LRED, "Már van ilyen nevû benzinkút!");
+				return SCM(playerid, COL_LRED, "Már van ilyen nev? benzinkút!");
 
 			new Float:playerposok[3];
 			GetPlayerPos(playerid, playerposok[0], playerposok[1], playerposok[2]);
@@ -54854,7 +54853,7 @@ CMD:benzinkut(playerid, params[])
 
 		new benzinkutid = BenzinkutLetezik(benzinkutnev);
 		if(!benzinkutid)
-			return SendFormatMessage(playerid, COLOR_LIGHTRED, "'%s' nevû benzinkút nem létezik!", benzinkutnev);
+			return SendFormatMessage(playerid, COLOR_LIGHTRED, "'%s' nev? benzinkút nem létezik!", benzinkutnev);
 
 		doQuery("DELETE FROM `"#MYSQL_BENZINKUTAK_TABLA"` WHERE id = '%d'", benzinkutid);
 
@@ -54869,7 +54868,7 @@ CMD:benzinkut(playerid, params[])
 		BenzinkutInfo[benzinkutid][bhasznalva] = false;
 		BenzinkutInfo[benzinkutid][bradius] = 0.0;
 		BenzinkutInfo[benzinkutid][blistitem] = -1;
-		SendFormatMessage(playerid, COLOR_WHITE, "'"#COL_VKEK"%s"#COL_FEHER"' nevû benzinkút sikeresen törölve!", benzinkutnev);
+		SendFormatMessage(playerid, COLOR_WHITE, "'"#COL_VKEK"%s"#COL_FEHER"' nev? benzinkút sikeresen törölve!", benzinkutnev);
 		return true;
 	}
 	else if(!strcmp(parameterek, "goto"))
@@ -54915,7 +54914,7 @@ CMD:benzinkut(playerid, params[])
 				if(sscanf(params, "{s[24]s[32]}d", dieselar))
 					return SendClientMessage(playerid, COLOR_WHITE, "Kivéve");
 				BenzinkutInfo[benzinkut][bdieselar] = 2;
-				SendFormatMessage(playerid, COLOR_WHITE, "'"#COL_VKEK"%s"#COL_FEHER"' nevû benzinkút diesel ára sikeresen beállítva "#COL_VKEK"%d"#COL_FEHER"-ra/-re!", BenzinkutInfo[benzinkut][bnev], dieselar);
+				SendFormatMessage(playerid, COLOR_WHITE, "'"#COL_VKEK"%s"#COL_FEHER"' nev? benzinkút diesel ára sikeresen beállítva "#COL_VKEK"%d"#COL_FEHER"-ra/-re!", BenzinkutInfo[benzinkut][bnev], dieselar);
 				return true;
 			}
 			else if(!strcmp(parameterek2, "benzinár") || !strcmp(parameterek2, "benzinar"))
@@ -54925,7 +54924,7 @@ CMD:benzinkut(playerid, params[])
 				if(sscanf(params, "{s[24]s[32]}d", benzinar))
 					return SendClientMessage(playerid, COLOR_WHITE, "Kivéve");
 				BenzinkutInfo[benzinkut][bbenzinar] = 2;
-				SendFormatMessage(playerid, COLOR_WHITE, "'"#COL_VKEK"%s"#COL_FEHER"' nevû benzinkút benzin ára sikeresen beállítva "#COL_VKEK"%d"#COL_FEHER"-ra/-re!", BenzinkutInfo[benzinkut][bnev], benzinar);
+				SendFormatMessage(playerid, COLOR_WHITE, "'"#COL_VKEK"%s"#COL_FEHER"' nev? benzinkút benzin ára sikeresen beállítva "#COL_VKEK"%d"#COL_FEHER"-ra/-re!", BenzinkutInfo[benzinkut][bnev], benzinar);
 				return true;
 			}
 			else if(!strcmp(parameterek2, "benzinmennyiség") || !strcmp(parameterek2, "benzinmennyiseg"))
@@ -54935,7 +54934,7 @@ CMD:benzinkut(playerid, params[])
 				if(sscanf(params, "{s[24]s[32]}f", mennyiseg))
 					return SendClientMessage(playerid, COLOR_WHITE, "Használat: /benzinkut szerkeszt benzinmennyiség [mennyiség]");
 				BenzinkutInfo[benzinkut][bbenzinmennyiseg] = mennyiseg;
-				SendFormatMessage(playerid, COLOR_WHITE, "'"#COL_VKEK"%s"#COL_FEHER"' nevû benzinkút benzin tartálya sikeresen beállítva "#COL_VKEK"%.1f"#COL_FEHER"-ra/-re!", BenzinkutInfo[benzinkut][bnev], mennyiseg);
+				SendFormatMessage(playerid, COLOR_WHITE, "'"#COL_VKEK"%s"#COL_FEHER"' nev? benzinkút benzin tartálya sikeresen beállítva "#COL_VKEK"%.1f"#COL_FEHER"-ra/-re!", BenzinkutInfo[benzinkut][bnev], mennyiseg);
 				return true;
 			}
 			else if(!strcmp(parameterek2, "dieselmennyiség") || !strcmp(parameterek2, "dieselmennyiseg"))
@@ -54946,7 +54945,7 @@ CMD:benzinkut(playerid, params[])
 					return SendClientMessage(playerid, COLOR_WHITE, "Használat: /benzinkut szerkeszt dieselmennyiség [mennyiség]");
 
 				BenzinkutInfo[benzinkut][bdieselmennyiseg] = mennyiseg;
-				SendFormatMessage(playerid, COLOR_WHITE, "'"#COL_VKEK"%s"#COL_FEHER"' nevû benzinkút diesel tartálya sikeresen beállítva "#COL_VKEK"%.1f"#COL_FEHER"-ra/-re!", BenzinkutInfo[benzinkut][bnev], mennyiseg);
+				SendFormatMessage(playerid, COLOR_WHITE, "'"#COL_VKEK"%s"#COL_FEHER"' nev? benzinkút diesel tartálya sikeresen beállítva "#COL_VKEK"%.1f"#COL_FEHER"-ra/-re!", BenzinkutInfo[benzinkut][bnev], mennyiseg);
 				return true;
 			}
 			else if(!strcmp(parameterek2, "radius"))
@@ -54956,7 +54955,7 @@ CMD:benzinkut(playerid, params[])
 				if(sscanf(params, "{s[24]s[32]}f", radius))
 					return SendClientMessage(playerid, COLOR_WHITE, "Használat: /benzinkut szerkeszt benzinmennyiség [mennyiség]");
 				BenzinkutInfo[benzinkut][bradius] = radius;
-				SendFormatMessage(playerid, COLOR_WHITE, "'"#COL_VKEK"%s"#COL_FEHER"' nevû benzinkút rádiusza sikeresen beállítva "#COL_VKEK"%f"#COL_FEHER"-ra/-re!", BenzinkutInfo[benzinkut][bnev], radius);
+				SendFormatMessage(playerid, COLOR_WHITE, "'"#COL_VKEK"%s"#COL_FEHER"' nev? benzinkút rádiusza sikeresen beállítva "#COL_VKEK"%f"#COL_FEHER"-ra/-re!", BenzinkutInfo[benzinkut][bnev], radius);
 				return true;
 			}
 		} else
@@ -55172,13 +55171,13 @@ CMD:eladokocsik(playerid, params[])// ah-ban
 	    return SendClientMessage(playerid, COLOR_WHITE, NEM_HASZNALHATO);
 
 	uzenet[0] = EOS;
-    SendClientMessage(playerid, COLOR_LIGHTBLUE, "================ Eladó jármûvek ================");
+    SendClientMessage(playerid, COLOR_LIGHTBLUE, "================ Eladó járm?vek ================");
 	foreach(Jarmuvek, h)
 	{
 		if(vInfo[h][vHasznalva] && !strcmp(vInfo[h][vTulaj], "Nincs_Tulaj") && vInfo[h][vMunka] == 0)
 		{
       		osszeselado++;
-      		ketto++; //Id formátum SQLID[JármûID]
+      		ketto++; //Id formátum SQLID[Járm?ID]
       		format(uzenet, sizeof(uzenet), "%s %d[%d] %s Ár: %d |", uzenet, vInfo[h][vID], h, VehicleNames[GetVehicleModel(vInfo[h][vID])-400], vInfo[h][vAr]);
 		}
 		if(ketto == MAX_PRINT)
@@ -55207,11 +55206,11 @@ CMD:inaktiv(playerid, params[])// ah-ban
 		SendClientMessage(playerid, COLOR_LIGHTRED, "UserCP => Inaktív értékek <= itt keress inaktív értékeket!");
 
 	if(isnull(params))
-		return SCM(playerid, COL_MKEK, "Használat: /inaktiv [ Jármû ]");
+		return SCM(playerid, COL_MKEK, "Használat: /inaktiv [ Járm? ]");
 
-	if(!strcmp(params, "jármû", true) || !strcmp(params, "jarmu", true))
+	if(!strcmp(params, "járm?", true) || !strcmp(params, "jarmu", true))
 	{
-		SendClientMessage(playerid, COLOR_LIGHTBLUE, "================ Inaktív jármûvek (30nap) ================");
+		SendClientMessage(playerid, COLOR_LIGHTBLUE, "================ Inaktív járm?vek (30nap) ================");
 		foreach(Jarmuvek, h)
 		{
 			if(!vInfo[h][vHasznalva] || vInfo[h][vMunka] != 0) continue;
@@ -55232,8 +55231,8 @@ CMD:inaktiv(playerid, params[])// ah-ban
 				SendClientMessage(playerid, COLOR_WHITE, str);
 		}
 		if(!osszeselado)
-			SendClientMessage(playerid, COLOR_WHITE, "Jelenleg nincs 30 napnál inaktívabb jármû!");
-		SendClientMessage(playerid, COLOR_LIGHTBLUE, "================ Inaktív jármûvek (30nap) ================");
+			SendClientMessage(playerid, COLOR_WHITE, "Jelenleg nincs 30 napnál inaktívabb járm?!");
+		SendClientMessage(playerid, COLOR_LIGHTBLUE, "================ Inaktív járm?vek (30nap) ================");
 	}
 	return true;
 }
@@ -55254,7 +55253,7 @@ CMD:eladohazak(playerid, params[])// ah-ban
 			if(HazInfo[h][hTulajID] == -1)
 			{
 				osszeselado++;
-				ketto++; //Id formátum SQLID[JármûID]
+				ketto++; //Id formátum SQLID[Járm?ID]
 				format(uzenet, sizeof(uzenet), "%s Házszám: %d | Ára: %s | Belsõ: %d ||| ", uzenet, h, FN( HazInfo[h][hazar], 0, ',' ), HazInfo[h][hInterior]);
 			}
 			if(ketto == MAX_PRINT)
@@ -55527,7 +55526,7 @@ CMD:ujkocsi(playerid, params[])//ah-ban
 	}
 
 	if(GetVehicleMType(idx) == RC || GetVehicleMType(idx) == TRAIN /*!TiltottJarmu(idx)*/ && !IsScripter(playerid))
-		return SCM(playerid, COL_LRED, "Ez a jármû tiltott!");
+		return SCM(playerid, COL_LRED, "Ez a járm? tiltott!");
 
 	GetPlayerPos(playerid, X, Y, Z);
 	GetPlayerFacingAngle(playerid, Angle);
@@ -55536,7 +55535,7 @@ CMD:ujkocsi(playerid, params[])//ah-ban
 
 	UjJarmu(idx, 0, ara, X, Y+2, Z, Angle, color1, color2, true);
 
-    AdminUzenet(COLOR_LIGHTRED, PlayerInfo[playerid][padmin], "%s lehívott egy %s tipusú eladó jármûvet | Ára: %s$", JatekosNev(playerid), VehicleNames[idx-400], FN(ara, 0, ','));
+    AdminUzenet(COLOR_LIGHTRED, PlayerInfo[playerid][padmin], "%s lehívott egy %s tipusú eladó járm?vet | Ára: %s$", JatekosNev(playerid), VehicleNames[idx-400], FN(ara, 0, ','));
 	return true;
 }
 
@@ -55559,7 +55558,7 @@ CMD:veh(playerid, params[])//ah-ban
 
 	new tipus = GetVehicleMType(idx);
 	if((tipus != CAR && tipus != BIKE && tipus != BOAT /*&& tipus != PLANE*/ && tipus != HELICOPTER/*!TiltottJarmu(idx)*/ && !IsScripter(playerid)) || tipus == RC)
-		return SCM(playerid, COL_LRED, "Ez a jármû tiltott!");
+		return SCM(playerid, COL_LRED, "Ez a járm? tiltott!");
 
 	GetPlayerPos(playerid, X, Y, Z);
 	GetPlayerFacingAngle(playerid, Angle);
@@ -55569,9 +55568,9 @@ CMD:veh(playerid, params[])//ah-ban
 	UjJarmu(idx, 0, 0, X, Y+2, Z, Angle, color1, color2, false);
 
 	if(!Admin(playerid, FOADMIN_SZINT))
-		AdminUzenet(COLOR_LIGHTRED, 1, "%s lehívott egy %s tipusú ideiglenes jármûvet!", JatekosNev(playerid), VehicleNames[idx-400]);
+		AdminUzenet(COLOR_LIGHTRED, 1, "%s lehívott egy %s tipusú ideiglenes járm?vet!", JatekosNev(playerid), VehicleNames[idx-400]);
 
-	SFM(playerid, COL_VZOLD, "Sikeresen lehívtál egy "#COL_MKEK"%s"#COL_FEHER" típusú ideiglenes jármûvet! Törléshez írd be: "#COL_MKEK"/v töröl", VehicleNames[idx-400]);
+	SFM(playerid, COL_VZOLD, "Sikeresen lehívtál egy "#COL_MKEK"%s"#COL_FEHER" típusú ideiglenes járm?vet! Törléshez írd be: "#COL_MKEK"/v töröl", VehicleNames[idx-400]);
 	return true;
 }
 CMD:mapper(playerid,params[])
@@ -55687,9 +55686,9 @@ CMD:destroycars(playerid, params[])
 	if(db)
 	{
 		if(!IsScripter(playerid))
-			AdminUzenet(COLOR_LIGHTRED, 1, "%s törölte az összes ideiglenesen lehívott jármûvet! Összesen: %ddb", JatekosNev(playerid), db);
+			AdminUzenet(COLOR_LIGHTRED, 1, "%s törölte az összes ideiglenesen lehívott járm?vet! Összesen: %ddb", JatekosNev(playerid), db);
 	} else
-		SCM(playerid, COL_LRED, "Jelenleg nincs ideiglenesen lehívott jármû!");
+		SCM(playerid, COL_LRED, "Jelenleg nincs ideiglenesen lehívott járm?!");
 	return true;
 }
 
@@ -55710,10 +55709,10 @@ CMD:ujmodel(playerid, params[])//ah-ban
 	}
 
 	if(GetVehicleMType(idx) == RC || GetVehicleMType(idx) == TRAIN /*!TiltottJarmu(idx)*/ && !IsScripter(playerid))
-		return SCM(playerid, COL_LRED, "Ez a jármû tiltott!");
+		return SCM(playerid, COL_LRED, "Ez a járm? tiltott!");
 
 	if(IsPlayerInAnyVehicle(playerid))
-		return SCM(playerid, COL_LRED, "Jármûben nem használhatod!");
+		return SCM(playerid, COL_LRED, "Járm?ben nem használhatod!");
 
 	new car = NINCS;
 	car = GetClosestVehicle(playerid);
@@ -55727,10 +55726,10 @@ CMD:ujmodel(playerid, params[])//ah-ban
 		GetVehicleZAngle(car, vinfo[4]);
 
 		if(!IsScripter(playerid) && vInfo[vid][vInsert])
-			AdminUzenet(COLOR_LIGHTRED,1, "%s átalakított egy %s típusú jármûvet erre: %s | JármûID: %d[%d] | Tulaj: %s", JatekosNev(playerid), VehicleNames[vInfo[vid][vModel]-400], VehicleNames[idx-400], vInfo[vid][vID], vid, JarmuTulaj(vid));
+			AdminUzenet(COLOR_LIGHTRED,1, "%s átalakított egy %s típusú járm?vet erre: %s | Járm?ID: %d[%d] | Tulaj: %s", JatekosNev(playerid), VehicleNames[vInfo[vid][vModel]-400], VehicleNames[idx-400], vInfo[vid][vID], vid, JarmuTulaj(vid));
 
-		AdminLog("Alakít: %s | %s -> %s | JármûID: %d[%d] | Tulaj: %s", JatekosNev(playerid), VehicleNames[vInfo[vid][vModel]-400], VehicleNames[idx-400], vInfo[vid][vID], vid, JarmuTulaj(vid));
-		SFM(playerid, COL_MKEK, "Jármû alakítás: %s -> %s | JámrûID: %d[%d] | Tulaj: %s", VehicleNames[vInfo[vid][vModel]-400], VehicleNames[idx-400], vInfo[vid][vID], vid, JarmuTulaj(vid));
+		AdminLog("Alakít: %s | %s -> %s | Járm?ID: %d[%d] | Tulaj: %s", JatekosNev(playerid), VehicleNames[vInfo[vid][vModel]-400], VehicleNames[idx-400], vInfo[vid][vID], vid, JarmuTulaj(vid));
+		SFM(playerid, COL_MKEK, "Járm? alakítás: %s -> %s | Jámr?ID: %d[%d] | Tulaj: %s", VehicleNames[vInfo[vid][vModel]-400], VehicleNames[idx-400], vInfo[vid][vID], vid, JarmuTulaj(vid));
 		vInfo[vid][vModel] = idx;
 		vInfo[vid][vElet] = vinfo[0];
 		vInfo[vid][vPosx] = vinfo[1];
@@ -55763,7 +55762,7 @@ CMD:ujmodel(playerid, params[])//ah-ban
 		LinkVehicleToInterior(vInfo[vid][vID], vInfo[vid][vInt]);
 		SetVehicleVirtualWorld(vInfo[vid][vID],vInfo[vid][vVW]);
 	} else
-		SCM(playerid, COL_LRED, "Nincs a közeledben jármû!");
+		SCM(playerid, COL_LRED, "Nincs a közeledben járm?!");
 	return true;
 }
 
@@ -55814,7 +55813,7 @@ CMD:admins(playerid, params[])
 			}
 		}
  	}
-	if(!online) format(string, 1024, #COL_LRED"Nincs online admin, de a DayRPG szeme "#COL_FEHER"mindent "#COL_LRED"lát!");
+	if(!online) format(string, 1024, #COL_LRED"Nincs online admin, de a SoulRPG szeme "#COL_FEHER"mindent "#COL_LRED"lát!");
 	
 	ShowPlayerDialog(playerid,DIALOG_NINCS,DIALOG_STYLE_MSGBOX,"Online Adminisztrátorok",string,"Ok","");
 	return true;
@@ -55954,11 +55953,11 @@ CMD:makeadmin(playerid, params[])//ah-ban
 	
 	PlayerInfo[player][pAS] = 0;
 	PlayerInfo[player][padmin] = level;
-	SendFormatMessage(player, COLOR_MKEK, "%s %s kinevezett téged %d szintû Adminná!", AdminRang(playerid), JatekosNev(playerid), level);
+	SendFormatMessage(player, COLOR_MKEK, "%s %s kinevezett téged %d szint? Adminná!", AdminRang(playerid), JatekosNev(playerid), level);
 	if((IsScripter(playerid) && (playerid != player || !IsScripter(player))) || !IsScripter(playerid))
-		AdminUzenet(COLOR_LIGHTRED, 1, "%s kinevezte %st %d szintû adminná!", JatekosNev(playerid), JatekosNev(player), level);
+		AdminUzenet(COLOR_LIGHTRED, 1, "%s kinevezte %st %d szint? adminná!", JatekosNev(playerid), JatekosNev(player), level);
 
-	SendFormatMessage(playerid, COLOR_MKEK, "Kinevezted %st %d szintû adminná!", JatekosNev(player), level);
+	SendFormatMessage(playerid, COLOR_MKEK, "Kinevezted %st %d szint? adminná!", JatekosNev(player), level);
 	SetReport(player);
 	
 	if(Admin(player,1))
@@ -56175,22 +56174,22 @@ CMD:kocsiba(playerid, params[])
 		return SendClientMessage(playerid, COLOR_WHITE, NEM_HASZNALHATO);
 
 	if(isnull(params))
-		return SCM(playerid, COL_MKEK, "Használat: /kocsiba [ JármûID ] | A szabad ülésbe ültet bele");
+		return SCM(playerid, COL_MKEK, "Használat: /kocsiba [ Járm?ID ] | A szabad ülésbe ültet bele");
 
 	new id = strval(params), slot;
 
 	if(!id || id > MAX_VEHICLES || !IsVehicleConnected(id))
-		return SCM(playerid, COL_LRED, "Nincs ilyen jármû!");
+		return SCM(playerid, COL_LRED, "Nincs ilyen járm?!");
 
 	if(IsSeatTaken(id, slot) != NINCS)
 	{
 		slot = 1;
 		if(IsSeatTaken(id, slot) != NINCS)
-			return SCM(playerid, COL_LRED, "Ebben a jármûben mint két ülés foglalt! Így nem szállhatsz bele!");
+			return SCM(playerid, COL_LRED, "Ebben a járm?ben mint két ülés foglalt! Így nem szállhatsz bele!");
 	}
 
 	PutPlayerInVehicle(playerid, id, slot);
-	SFM(playerid, COL_VZOLD, "Sikeresen beleteleportáltál a %d rendszámú jármûbe!", id);
+	SFM(playerid, COL_VZOLD, "Sikeresen beleteleportáltál a %d rendszámú járm?be!", id);
 	return true;
 }
 
@@ -56383,10 +56382,10 @@ CMD:getcar(playerid, params[])//ah-ban
 	if(sql == 1) jarmuid = vInfo[jarmuid][vID];
 
     if(!IsVehicleConnected(jarmuid))
-	    return SCM(playerid, COL_LRED, "Ez a jármû ID nincs spawnolva!");
+	    return SCM(playerid, COL_LRED, "Ez a járm? ID nincs spawnolva!");
 	new ckdid = JarmuID(jarmuid,playerid);
 	if(vInfo[ckdid][vApben] == 1)
-		return SCM(playerid,COL_LRED,"Ez a jármû AdminParkolóban van.");
+		return SCM(playerid,COL_LRED,"Ez a járm? AdminParkolóban van.");
 
 	GetPlayerPos(playerid, fPos[0], fPos[1], fPos[2]);
  	SetVehiclePos(jarmuid, fPos[0], fPos[1]+3, fPos[2]);
@@ -56396,7 +56395,7 @@ CMD:getcar(playerid, params[])//ah-ban
 
 	TuningBetolt(jarmuid);
 
- 	//AdminUzenet(COLOR_LIGHTRED, 1, "%s magához teleportált egy %s típusú jármûvet | JármuID: %d[%d]", JatekosNev(playerid), VehicleNames[GetVehicleModel(jarmuid)-400], jarmuid, vInfoID[jarmuid]);
+ 	//AdminUzenet(COLOR_LIGHTRED, 1, "%s magához teleportált egy %s típusú járm?vet | JármuID: %d[%d]", JatekosNev(playerid), VehicleNames[GetVehicleModel(jarmuid)-400], jarmuid, vInfoID[jarmuid]);
 	SFM(playerid, COL_MKEK, "Teleportálva: "#COL_MKEK"%s"#COL_FEHER"(%d) | JármuID: %d[%d] | Tulaj: "#COL_MKEK"%s", VehicleNames[mo - 400], mo, jarmuid, vInfoID[jarmuid], JarmuTulaj(vInfoID[jarmuid]));
 	return true;
 }
@@ -56413,11 +56412,11 @@ CMD:gotocar(playerid, params[])//ah-ban
 	if(sql == 1) jarmuid = vInfo[jarmuid][vID];
 
     if(!IsVehicleConnected(jarmuid))
-	    return SCM(playerid, COL_LRED, "Ez a jármû ID nincs spawnolva!");
+	    return SCM(playerid, COL_LRED, "Ez a járm? ID nincs spawnolva!");
 
 	new rid = JarmuID(jarmuid,playerid);
 	if(vInfo[rid][vApben] == 1)
-		return SCM(playerid,COL_LRED,"Ez a jármû AdminParkolóban van.");
+		return SCM(playerid,COL_LRED,"Ez a járm? AdminParkolóban van.");
 
 	new carint = GetVehicleInterior(jarmuid);
 	new carvw = GetVehicleVirtualWorld(jarmuid);
@@ -56677,9 +56676,9 @@ CMD:debugcrs(playerid,params[])
 		SetVehicleToRespawn(asd);
 	}
 	new astr[144];
-	format(astr,144,"%s debuggolja a jármûveket.",JatekosNev(playerid));
+	format(astr,144,"%s debuggolja a járm?veket.",JatekosNev(playerid));
 	AdminUzenetEx(COLOR_LIGHTRED,1,astr);
-	SendClientMessageToAll(COLOR_WHITE, ""#COL_MKEK"Felhívás:"#COL_FEHER" Debugból az összes jármû respawnolva!");
+	SendClientMessageToAll(COLOR_WHITE, ""#COL_MKEK"Felhívás:"#COL_FEHER" Debugból az összes járm? respawnolva!");
 	return 1;
 }
 CMD:villogo(playerid,params[])
@@ -56788,21 +56787,21 @@ timer keziTrafiIdozito[500](playerid)
 		new toler = TrafiSebTolerancia[playerid];
 		if(sebesseg < TrafiMinSebesseg[playerid] + toler)
 		{
-			SFM(playerid, COL_LRED, "A jármû sebessége: %d km/h", sebesseg);
+			SFM(playerid, COL_LRED, "A járm? sebessége: %d km/h", sebesseg);
 		    if(strlen(vInfo[vid][vRendszam]) < 4)
-				SFM(playerid, COL_LRED, "A jármû rendszáma: "#COL_MKEK"See-%d[%d]", kocsi, vid);
+				SFM(playerid, COL_LRED, "A járm? rendszáma: "#COL_MKEK"Soul-%d[%d]", kocsi, vid);
 			else
-			    SFM(playerid, COL_LRED, "A jármû rendszáma: "#COL_MKEK"%s ( %d[%d] )", kocsi, vid, vInfo[vid][vRendszam]);
+			    SFM(playerid, COL_LRED, "A járm? rendszáma: "#COL_MKEK"%s ( %d[%d] )", kocsi, vid, vInfo[vid][vRendszam]);
 			    
             SFM(i, COL_LRED, "Lassíts! A sebességed: %d km/h | Nem kaptál büntetést, mert a toleranciahatárt nem lépted át!", sebesseg);
 		}
 		else
 		{
-		    SFM(playerid, COL_LRED, "A jármû sebessége: %d km/h", sebesseg);
+		    SFM(playerid, COL_LRED, "A járm? sebessége: %d km/h", sebesseg);
 		    if(strlen(vInfo[vid][vRendszam]) < 4)
-				SFM(playerid, COL_LRED, "A jármû rendszáma: "#COL_MKEK"See-%d[%d]", kocsi, vid);
+				SFM(playerid, COL_LRED, "A járm? rendszáma: "#COL_MKEK"Soul-%d[%d]", kocsi, vid);
 			else
-			    SFM(playerid, COL_LRED, "A jármû rendszáma: "#COL_MKEK"%s ( %d[%d] )", kocsi, vid, vInfo[vid][vRendszam]);
+			    SFM(playerid, COL_LRED, "A járm? rendszáma: "#COL_MKEK"%s ( %d[%d] )", kocsi, vid, vInfo[vid][vRendszam]);
 			    
 			new kulonbseg = sebesseg - (TrafiMinSebesseg[playerid] + toler);
 			new bpontok = floatround(kulonbseg / 5, floatround_ceil);
@@ -57125,7 +57124,7 @@ CMD:smkocsi(playerid,params[])
 {
 	if(PlayerInfo[playerid][pSM] == 1 || IsAS(playerid) || Admin(playerid,1 || IsScripter(playerid)))
 	{
-	    if(IsPlayerInAnyVehicle(playerid)) return SCM(playerid,COL_LRED,"Jármûben nem hívhatsz le!");
+	    if(IsPlayerInAnyVehicle(playerid)) return SCM(playerid,COL_LRED,"Járm?ben nem hívhatsz le!");
 	    else {
 			PlayerInfo[playerid][pSMkocsi] = 1;
 			new Float:pos[4];
@@ -57136,7 +57135,7 @@ CMD:smkocsi(playerid,params[])
 			SetJarmu(smkocsiid[playerid],KOCSI_MOTOR,1);
 			SetJarmu(smkocsiid[playerid],KOCSI_LAMPA,1);
 			SetJarmu(smkocsiid[playerid],KOCSI_OBJECTIVE,1);
-			SCM(playerid,COL_MKEK,"Sikeresen lehívtad a jármûvet! Ha kiszállsz a kocsiból, törlõdik.");
+			SCM(playerid,COL_MKEK,"Sikeresen lehívtad a járm?vet! Ha kiszállsz a kocsiból, törlõdik.");
             AdminUzenet(COLOR_LIGHTRED,1,"%s lehívott egy körbevezetõ kocsit",JatekosNev(playerid));
 	    }
 	}
@@ -57203,7 +57202,7 @@ fpublic TuningFelrak(playerid, kocsi, komponens)
 	if(komponens >= 1008 && komponens <= 1010 && IsInvalidNosVehicle(kocsi) || !IsVehicleUpgradeCompatible(GetVehicleModel(kocsi), komponens))
 	{
 		if(Belepve(playerid) && playerid != NINCS)
-			SCM(playerid,COL_LRED,"Ez az alkatresz nem kompatibilis ezen jármû típussal!");
+			SCM(playerid,COL_LRED,"Ez az alkatresz nem kompatibilis ezen járm? típussal!");
 		return 1;
 	}
 	Tuningol[playerid] = 1;
@@ -62755,7 +62754,7 @@ fpublic UpdateCameras()
 						new vid = JarmuID(GetPlayerVehicleID(a), a);
 						PlayerInfo[a][pBszPenz] -= SpeedCameras[b][_fine] + Buntica;
 						new traffipaxID = SpeedCameras[b][_id];
-						format(string, sizeof(string), "**=[TRAFI]=**: A %d számú álló trafi bemérte %s %s típusú gépjármûvét: (%d km/h)-val",traffipaxID, VehicleNames[vInfo[vid][vModel] - 400],speed);
+						format(string, sizeof(string), "**=[TRAFI]=**: A %d számú álló trafi bemérte %s %s típusú gépjárm?vét: (%d km/h)-val",traffipaxID, VehicleNames[vInfo[vid][vModel] - 400],speed);
 						format(string, sizeof(string), "**=[TRAFI]=**: Rendszám: %d | Sebességtúllépés: %d km/h | Sebességkorlát: %d km/h | Büntetés: $%d", GetPlayerVehicleID(a),bszamolas,limit,SpeedCameras[b][_fine]);
 						FrakcioUzenet(COLOR_WHITE, FRAKCIO_LSPD, string);
 						SCM(a,COL_MKEK, "=====[ Traffipax ]=====");
@@ -62848,9 +62847,9 @@ stock UresKez(playerid, kezcheck = NINCS)
 		    case 'Ú': return 'U';
 
 		    case 'ü': return 'u';
-			case 'û': return 'u';
+			case '?': return 'u';
 		    case 'Ü': return 'U';
-			case 'Û': return 'U';
+			case '?': return 'U';
 
 		    case 'í': return 'i';
 		    case 'Í': return 'i';
