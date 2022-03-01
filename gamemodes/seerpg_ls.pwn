@@ -1,7 +1,8 @@
 /*
+	ekezet teszt: ÉÁ?P?ÚÖÜÓéá??úöüó
+	
 Timerek újraírva
 NE a SetTimerEx-t használd!
-
 */
 #define SAMPVER 374 //
 //==================//
