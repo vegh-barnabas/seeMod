@@ -1,6 +1,7 @@
 *.amx
 filterscripts/*.amx
 gamemodes/*.amx
+gamemodes/*.bak
 pawno/seerpg_*
 crashinfo.txt
 mysql_log.txt
