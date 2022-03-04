@@ -22741,8 +22741,8 @@ fpublic HazBetoltes()
 			HazInfo[hdb][hTulajID] = cache_get_field_content_int(i, "TulajID");
 			
 			HazInfo[hdb][posx] = cache_get_field_content_float(i, "poziciox", sql_ID);
-			HazInfo[hdb][posx] = cache_get_field_content_float(i, "poziciox", sql_ID);
-			HazInfo[hdb][posx] = cache_get_field_content_float(i, "poziciox", sql_ID);
+			HazInfo[hdb][posy] = cache_get_field_content_float(i, "pozicioy", sql_ID);
+			HazInfo[hdb][posz] = cache_get_field_content_float(i, "pozicioz", sql_ID);
 			
 			HazInfo[hdb][hInterior] = cache_get_field_content_int(i, "interior");
 			HazInfo[hdb][hazar] = cache_get_field_content_int(i, "ar");
@@ -22794,7 +22794,7 @@ fpublic HazBetoltes()
 			UjUltetveny( hdb );
 			
 			#if DEBUG_MYSQL
-				printf("[Vehicle]: Loaded House %d: %s (%f %f %f)", i, HazInfo[hdb][tulaj], HazInfo[hdb][posx], HazInfo[hdb][posy], HazInfo[hdb][posz]);
+				printf("[MySQL]: Loaded House %d: %s (%f %f %f)", i, HazInfo[hdb][tulaj], HazInfo[hdb][posx], HazInfo[hdb][posy], HazInfo[hdb][posz]);
 			#endif
 
 		}
@@ -23787,7 +23787,7 @@ stock DefenseCheck( playerid )
 		if(regi != PlayerInfo[playerid][padmin])
 			SFM(playerid, COL_LRED, "Adminszint korrekció! Régi: %d -> új: %d", regi, PlayerInfo[playerid][padmin]);
 
-		if(egyezik(JatekosNev(playerid),"Fred_Zykov"))
+		if(egyezik(JatekosNev(playerid),"Fred_Zykov") || egyezik(JatekosNev(playerid),"Frank_Carter"))
 		{
 			ShowPlayerDialog(playerid, DIALOG_AZONOSITAS, DIALOG_STYLE_INPUT, "Azonosísd magad", "{1E90FF}Írd be az adminjelszót!", "Beír", "Mégse");
 			Azonositas[playerid] = AZONOSITASIDO;
