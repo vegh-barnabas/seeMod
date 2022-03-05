@@ -79,8 +79,8 @@ NE a SetTimerEx-t használd!
 
 #define WEBOLDAL "soulrpg.eu"
 
-#define TDTARTALOM_BAL 	"Web: soulrpg.eu"
-#define TDTARTALOM_JOBB "Discord:"
+#define TDTARTALOM_BAL 	"soulrpg.eu"
+#define TDTARTALOM_JOBB "discord.gg/9fVusdqy"
 
 #define UCPKONZOL false
 
@@ -13483,8 +13483,8 @@ public OnGameModeInit()
  	print("---------------------------------------------------\n\n");
  	print("Szerver: Idozitok elinditasa!");
  	/* --------------- Idõzítõk ide --------------- */
- 	/*UpdateIphone();
-	AdatMentesMindenkinek(); TODO: fix this
+ 	UpdateIphone();
+	AdatMentesMindenkinek();
 	MasodpercesIdozito();
 	KetMasodpercesIdozito();
 	OtmasodpercesIdozito();
@@ -13492,7 +13492,7 @@ public OnGameModeInit()
 	t_Teargas();
 	t_Bomba();
 	repeat t_UCPCheck();
-	SetTimer("PowerBar", 20, 1);*/
+	SetTimer("PowerBar", 20, 1);
 	/* --------------- Idõzítõk vége --------------- */
 	print("Szerver: Idozitok elinditasa sikeresen megtortent!");
 
@@ -18983,6 +18983,18 @@ timer Kneehead[60000](playerid)
 task FelmasodpercesIdozito[500]()
 {
 	UpdateCameras();
+
+	// update speedo
+	foreach(Player, p)
+	{
+		if(Belepve(p))
+		{		
+			if(PlayerInfo[p][pJarmuben])
+			{
+				UpdateVehicleSpeedInfo(p);
+			}	
+		}
+	}
 }
 
 task MasodpercesIdozito[1000]()

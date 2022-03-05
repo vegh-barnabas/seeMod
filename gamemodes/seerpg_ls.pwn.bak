@@ -79,8 +79,8 @@ NE a SetTimerEx-t használd!
 
 #define WEBOLDAL "soulrpg.eu"
 
-#define TDTARTALOM_BAL 	"Web: soulrpg.eu"
-#define TDTARTALOM_JOBB "Discord:"
+#define TDTARTALOM_BAL 	"soulrpg.eu"
+#define TDTARTALOM_JOBB "discord.gg/9fVusdqy"
 
 #define UCPKONZOL false
 
@@ -13483,8 +13483,8 @@ public OnGameModeInit()
  	print("---------------------------------------------------\n\n");
  	print("Szerver: Idozitok elinditasa!");
  	/* --------------- Idõzítõk ide --------------- */
- 	/*UpdateIphone();
-	AdatMentesMindenkinek(); TODO: fix this
+ 	UpdateIphone();
+	AdatMentesMindenkinek();
 	MasodpercesIdozito();
 	KetMasodpercesIdozito();
 	OtmasodpercesIdozito();
@@ -13492,7 +13492,7 @@ public OnGameModeInit()
 	t_Teargas();
 	t_Bomba();
 	repeat t_UCPCheck();
-	SetTimer("PowerBar", 20, 1);*/
+	SetTimer("PowerBar", 20, 1);
 	/* --------------- Idõzítõk vége --------------- */
 	print("Szerver: Idozitok elinditasa sikeresen megtortent!");
 
@@ -18983,6 +18983,17 @@ timer Kneehead[60000](playerid)
 task FelmasodpercesIdozito[500]()
 {
 	UpdateCameras();
+
+	foreach(Player, p)
+	{
+		if(Belepve(p))
+		{		
+			if(PlayerInfo[p][pJarmuben])
+			{
+				UpdateVehicleSpeedInfo(p);
+			}	
+		}
+	}
 }
 
 task MasodpercesIdozito[1000]()
@@ -29170,7 +29181,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			if(injectCheck(inputtext))
 				return ShowPlayerDialog(playerid, DIALOG_LOGIN, DIALOG_STYLE_PASSWORD, "Bejelentkezés", #COL_LRED"Sajnáljuk! A rendszer injectálásra is használható karaktert észlelt a jelszavadban!\nKérlek válassz másik jelszót:", "Belépés", "Mégse");
 
-	        nformat(qry, 1024, "INSERT INTO `"#MYSQL_JATEKOS_TABLA"`(nev, jelszo, penz, admin, bankszamla, bankszamlaegyenleg, bankszamlapin, posx, posy, posz, angle) VALUES('%s', '%s', '1000', '0', '0', '0', '0', '0', '0', '0', '0')", returnName(playerid), MD5_Hash(inputtext));
+	        nformat(qry, 1024, "INSERT INTO `"#MYSQL_JATEKOS_TABLA"`(nev, jelszo, penz, admin, bankszamla, bankszamlaegyenleg, bankszamlapin, posx, posy, posz, angle) VALUES('%s', '%s', '50000', '0', '0', '0', '0', '0', '0', '0', '0')", returnName(playerid), MD5_Hash(inputtext));
 			//mysql_function_query(sql_ID, qry, false, "", "");
 			mysql_tquery(sql_ID, qry, "", "");
 
