@@ -22794,7 +22794,7 @@ fpublic HazBetoltes()
 			UjUltetveny( hdb );
 			
 			#if DEBUG_MYSQL
-				printf("[Vehicle]: Loaded House %d: %s (%f %f %f)", i, HazInfo[hdb][tulaj], HazInfo[hdb][posx], HazInfo[hdb][posy], HazInfo[hdb][posz]);
+				printf("[MySQL]: Loaded House %d: %s (%f %f %f)", i, HazInfo[hdb][tulaj], HazInfo[hdb][posx], HazInfo[hdb][posy], HazInfo[hdb][posz]);
 			#endif
 
 		}
@@ -30792,8 +30792,8 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					num++;
 				}
 			}
-            if((!melyik && (Munkak[ id ][2][0] > PlayerInfo[playerid][pExp][3])) || (melyik && (Munkak[ id ][2][0] > PlayerInfo[playerid][pExp][1])))
-				return SCM(playerid, COL_LRED, "Sajnálom, de ehhez a munkához még nincs elég tapasztalatod. Kérlek válassz másikat!");
+            /*if((!melyik && (Munkak[id][2][0] > PlayerInfo[playerid][pExp][3])) || (melyik && (Munkak[ id ][2][0] > PlayerInfo[playerid][pExp][1])))
+				return SCM(playerid, COL_LRED, "Sajnálom, de ehhez a munkához még nincs elég tapasztalatod. Kérlek válassz másikat!");*/
 
 			/*if(Munkak[ id ][0][0] == MUNKA_FEGYVER && FInfo[ PlayerInfo[playerid][pFrakcio] ][fLegalis] != FK_MAFFIA)
 				return SCM(playerid, COL_LRED, "Ezt a munkát csak Maffia tagjai vehetik fel!");
@@ -40846,9 +40846,11 @@ CMD:munka(playerid, params[])
 			if(Munkak[i][3][0] == id)
 			{
 				if(Munkak[i][2][0] <= PlayerInfo[playerid][pExp][1])
-					format(lista, sizeof(lista), "%s"#COL_VZOLD"%s [%d/%d]\n", lista, Munkak[i][1], (!id ? PlayerInfo[playerid][pExp][3] : PlayerInfo[playerid][pExp][1]), Munkak[i][2]);//fel tud venni, van elég tapasztalata
+					// format(lista, sizeof(lista), "%s"#COL_VZOLD"%s [%d/%d]\n", lista, Munkak[i][1], (!id ? PlayerInfo[playerid][pExp][3] : PlayerInfo[playerid][pExp][1]), Munkak[i][2]);//fel tud venni, van elég tapasztalata
+					// format(lista, sizeof(lista), "%s"#COL_VZOLD"%s [%d/%d]\n", lista, Munkak[i][1], (!id ? PlayerInfo[playerid][pExp][3] : PlayerInfo[playerid][pExp][1]), Munkak[i][2]);//fel tud venni, van elég tapasztalata
 				else
-					format(lista, sizeof(lista), "%s"#COL_LRED"%s [%d/%d]\n", lista, Munkak[i][1], (!id ? PlayerInfo[playerid][pExp][3] : PlayerInfo[playerid][pExp][1]), Munkak[i][2]);//nem tudja felvenni
+					// format(lista, sizeof(lista), "%s"#COL_LRED"%s [%d/%d]\n", lista, Munkak[i][1], (!id ? PlayerInfo[playerid][pExp][3] : PlayerInfo[playerid][pExp][1]), Munkak[i][2]);//nem tudja felvenni
+					format(lista, sizeof(lista), "%s"#COL_VZOLD"%s\n", lista, Munkak[i][1], (!id ? PlayerInfo[playerid][pExp][3] : PlayerInfo[playerid][pExp][1]), Munkak[i][2]);//nem tudja felvenni
 			}
 		}
 
