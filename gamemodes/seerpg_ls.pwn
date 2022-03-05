@@ -23571,16 +23571,18 @@ fpublic GPSBetoltes()
 	
 	if (rows)
 	{
-	    new gid;
 		for (new i = 0; i < rows; i++)
 		{
-			gid = cache_get_field_content_int(i, "id", sql_ID);
+			new gid = cache_get_field_content_int(i, "id", sql_ID);
 			GPSInfo[gid][gposx] = cache_get_field_content_float(i, "posx", sql_ID);
 			GPSInfo[gid][gposy] = cache_get_field_content_float(i, "posy", sql_ID);
 			GPSInfo[gid][gposz] = cache_get_field_content_float(i, "posz", sql_ID);
 			cache_get_field_content(i, "gnev", GPSInfo[gid][gnev]);
 			GPSInfo[gid][gHasznalva] = true;
-			gid++;
+			
+			#if DEBUG_MYSQL
+				printf("[GPS]: Loaded GPS %s (%d) - %f, %f, %f", GPSInfo[gid][gnev], gid, GPSInfo[gid][gposx], GPSInfo[gid][gposy], GPSInfo[gid][gposz]);
+			#endif
 		}
 	}
 	printf("[MySQL]: %d betöltött terület.", rows);
@@ -24369,8 +24371,8 @@ stock TextDrawBetoltes(playerid)
 	PlayerTextDrawAlignment(playerid, g_PlayerTextDraw[playerid][ptd_Info][1], 1);
 	PlayerTextDrawColor(playerid, g_PlayerTextDraw[playerid][ptd_Info][1], -1);
 	PlayerTextDrawSetShadow(playerid, g_PlayerTextDraw[playerid][ptd_Info][1], 0);
-	PlayerTextDrawSetOutline(playerid, g_PlayerTextDraw[playerid][ptd_Info][1], 5);
-	PlayerTextDrawBackgroundColor(playerid, g_PlayerTextDraw[playerid][ptd_Info][1], 512819010); // -1523963137
+	// PlayerTextDrawSetOutline(playerid, g_PlayerTextDraw[playerid][ptd_Info][1], 5);
+	// PlayerTextDrawBackgroundColor(playerid, g_PlayerTextDraw[playerid][ptd_Info][1], 512819010); // -1523963137
 	PlayerTextDrawFont(playerid, g_PlayerTextDraw[playerid][ptd_Info][1], 3);
 	PlayerTextDrawSetProportional(playerid, g_PlayerTextDraw[playerid][ptd_Info][1], 1);
 
@@ -24419,8 +24421,8 @@ stock TextDrawBetoltes(playerid)
 	PlayerTextDrawAlignment(playerid, g_PlayerTextDraw[playerid][ptd_Info][6], 1);
 	PlayerTextDrawColor(playerid, g_PlayerTextDraw[playerid][ptd_Info][6], -1);
 	PlayerTextDrawSetShadow(playerid, g_PlayerTextDraw[playerid][ptd_Info][6], 0);
-	PlayerTextDrawSetOutline(playerid, g_PlayerTextDraw[playerid][ptd_Info][6], 5);
-	PlayerTextDrawBackgroundColor(playerid, g_PlayerTextDraw[playerid][ptd_Info][6], 512819010); // 5439743
+	/// PlayerTextDrawSetOutline(playerid, g_PlayerTextDraw[playerid][ptd_Info][6], 5);
+	// PlayerTextDrawBackgroundColor(playerid, g_PlayerTextDraw[playerid][ptd_Info][6], 512819010); // 5439743
 	PlayerTextDrawFont(playerid, g_PlayerTextDraw[playerid][ptd_Info][6], 3);
 	PlayerTextDrawSetProportional(playerid, g_PlayerTextDraw[playerid][ptd_Info][6], 1);
 
@@ -29168,7 +29170,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			if(injectCheck(inputtext))
 				return ShowPlayerDialog(playerid, DIALOG_LOGIN, DIALOG_STYLE_PASSWORD, "Bejelentkezés", #COL_LRED"Sajnáljuk! A rendszer injectálásra is használható karaktert észlelt a jelszavadban!\nKérlek válassz másik jelszót:", "Belépés", "Mégse");
 
-	        nformat(qry, 1024, "INSERT INTO `"#MYSQL_JATEKOS_TABLA"`(nev, jelszo, penz, admin, bankszamla, bankszamlaegyenleg, bankszamlapin, posx, posy, posz, angle) VALUES('%s', '%s', '1000', '0', '0', '0', '0', '0', '0', '0', '0')", returnName(playerid), MD5_Hash(inputtext));
+	        nformat(qry, 1024, "INSERT INTO `"#MYSQL_JATEKOS_TABLA"`(nev, jelszo, penz, admin, bankszamla, bankszamlaegyenleg, bankszamlapin, posx, posy, posz, angle) VALUES('%s', '%s', '50000', '0', '0', '0', '0', '0', '0', '0', '0')", returnName(playerid), MD5_Hash(inputtext));
 			//mysql_function_query(sql_ID, qry, false, "", "");
 			mysql_tquery(sql_ID, qry, "", "");
 
@@ -48757,27 +48759,17 @@ CMD:gps(playerid, params[])
 	}
 	else if(!strcmp(params,"lista",true,3))
 	{
-		new
-			i = -1,
-			listitemid = 0,
-			gps[128],
-			gpsek[2048];
-
-		for(;++i < MAXGPS;)
+		new gps[128], gpsList[1024];
+		for(new i = 0; i < MAXGPS; i++)
 		{
 			if(GPSInfo[i][gHasznalva])
 			{
-				GPSInfo[i][listid] = listitemid;
-				if(PlayerInfo[playerid][padmin] >= FOADMIN_SZINT)
-					format(gps, sizeof(gps), "[%d] %s\n",i, GPSInfo[i][gnev]);
-				else
-					format(gps, sizeof(gps), "%s\n", GPSInfo[i][gnev]);
-
-				strins(gpsek, gps, strlen(gpsek));
-				listitemid++;
+				format(gps, sizeof(gps), "[%d] %s\n", i, GPSInfo[i][gnev]);
+				strins(gpsList, gps, strlen(gpsList));
 			}
 		}
-		ShowPlayerDialog(playerid, DIALOG_GPSEK, DIALOG_STYLE_LIST, "GPS System", gpsek, "Tervezés", "Mégse");
+		
+		ShowPlayerDialog(playerid, DIALOG_GPSEK, DIALOG_STYLE_LIST, "GPS System", gpsList, "Tervezés", "Mégse");
 		return true;
 	}
 	/*------------------------- Munkák vége ----------------------------*/
