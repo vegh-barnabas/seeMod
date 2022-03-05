@@ -95,7 +95,7 @@ NE a SetTimerEx-t használd!
 #define HAZI_SZERVER 0 //	FÕSZERVER(0) | LOCAL(1)
 #define NPC_KELL				0 // 1 = betölti 0 = nem - (FCNPS pluginos)
 #define MYSQL_HOST  	"mysqlgame.clans.hu"
-#define KELLDWAYNE // Fegyveres NPC
+// #define KELLDWAYNE // Fegyveres NPC
 
 #if HAZI_SZERVER == 0
 	#define MYSQL_USER  "soulrpg275"			//MySQL felhasználónév
@@ -7372,8 +7372,9 @@ stock IsRealAdmin(playerid)
 }
 stock IsLewis(playerid)
 {
-	if(egyezik("Fred_Zykov",JatekosNev(playerid, false, true)) || egyezik("Frank_Carter",JatekosNev(playerid,false,true)) || egyezik("",JatekosNev(playerid,false,true)) || Fonok[playerid] == 1 && Belepett[playerid])
+	if(egyezik("Fred_Zykov", JatekosNev(playerid, false)) || egyezik("Frank_Carter", JatekosNev(playerid, false)))
 		return true;
+		
 	return false;
 }
 stock PenzHozzaad(playerid, osszeg)

@@ -95,7 +95,7 @@ NE a SetTimerEx-t használd!
 #define HAZI_SZERVER 0 //	FÕSZERVER(0) | LOCAL(1)
 #define NPC_KELL				0 // 1 = betölti 0 = nem - (FCNPS pluginos)
 #define MYSQL_HOST  	"mysqlgame.clans.hu"
-#define KELLDWAYNE // Fegyveres NPC
+// #define KELLDWAYNE // Fegyveres NPC
 
 #if HAZI_SZERVER == 0
 	#define MYSQL_USER  "soulrpg275"			//MySQL felhasználónév
@@ -7372,7 +7372,7 @@ stock IsRealAdmin(playerid)
 }
 stock IsLewis(playerid)
 {
-	if(egyezik("Fred_Zykov",JatekosNev(playerid, false, true)) || egyezik("Frank_Carter",JatekosNev(playerid,false,true)) || egyezik("",JatekosNev(playerid,false,true)) || Fonok[playerid] == 1 && Belepett[playerid])
+	if(egyezik("Fred_Zykov", JatekosNev(playerid, false)) || egyezik("Frank_Carter", JatekosNev(playerid, false)))
 		return true;
 	return false;
 }
@@ -40847,7 +40847,7 @@ CMD:munka(playerid, params[])
 			{
 				if(Munkak[i][2][0] <= PlayerInfo[playerid][pExp][1])
 					// format(lista, sizeof(lista), "%s"#COL_VZOLD"%s [%d/%d]\n", lista, Munkak[i][1], (!id ? PlayerInfo[playerid][pExp][3] : PlayerInfo[playerid][pExp][1]), Munkak[i][2]);//fel tud venni, van elég tapasztalata
-					// format(lista, sizeof(lista), "%s"#COL_VZOLD"%s [%d/%d]\n", lista, Munkak[i][1], (!id ? PlayerInfo[playerid][pExp][3] : PlayerInfo[playerid][pExp][1]), Munkak[i][2]);//fel tud venni, van elég tapasztalata
+					format(lista, sizeof(lista), "%s"#COL_VZOLD"%s\n", lista, Munkak[i][1], (!id ? PlayerInfo[playerid][pExp][3] : PlayerInfo[playerid][pExp][1]), Munkak[i][2]);//fel tud venni, van elég tapasztalata
 				else
 					// format(lista, sizeof(lista), "%s"#COL_LRED"%s [%d/%d]\n", lista, Munkak[i][1], (!id ? PlayerInfo[playerid][pExp][3] : PlayerInfo[playerid][pExp][1]), Munkak[i][2]);//nem tudja felvenni
 					format(lista, sizeof(lista), "%s"#COL_VZOLD"%s\n", lista, Munkak[i][1], (!id ? PlayerInfo[playerid][pExp][3] : PlayerInfo[playerid][pExp][1]), Munkak[i][2]);//nem tudja felvenni
