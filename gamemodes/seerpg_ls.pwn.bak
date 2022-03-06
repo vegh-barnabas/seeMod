@@ -22667,7 +22667,7 @@ fpublic AjtoBetoltes()
 			new ajtoallapot = cache_get_field_content_int(i, "anyitva", sql_ID);
 			AjtoInfo[ajtoid][anyitva] = ajtoallapot ? true : false;
 			
-			new ajtojarmu = cache_get_field_content_int(i, "ajtojarmu", sql_ID);
+			new ajtojarmu = cache_get_field_content_int(i, "ajarmu", sql_ID);
 			AjtoInfo[ajtoid][ajarmu] = ajtojarmu ? true : false;
 			
 			AjtoInfo[ajtoid][abeinterior] = cache_get_field_content_int(i, "abeinterior", sql_ID);
@@ -29181,17 +29181,11 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	    {
 			if (!response) return false;
 			
-			new tid = -1;
-			for(new i = 0; i < MAXGPS && tid == -1; i++)
-			{
-				if(GPSInfo[i][gHasznalva] && i == listitem)
-				{
-					tid = i;
-				}
-			}
+			if(GPSInfo[listitem][gHasznalva]
+				return false;
 			
-			SetPlayerCheckpoint(playerid, GPSInfo[tid][gposx], GPSInfo[tid][gposy], GPSInfo[tid][gposz], 3.0);
-			SendFormatMessage(playerid, 0x1d92ffAA, "Sikeresen elindult a tervezés ide: "#COL_MKEK"%s", GPSInfo[tid][gnev]);
+			SetPlayerCheckpoint(playerid, GPSInfo[listitem][gposx], GPSInfo[listitem][gposy], GPSInfo[listitem][gposz], 3.0);
+			SendFormatMessage(playerid, 0x1d92ffAA, "Sikeresen elindult a tervezés ide: "#COL_MKEK"%s", GPSInfo[listitem][gnev]);
 	        return true;
 		}
 		case DIALOG_BENZINKUTAK:
@@ -30682,9 +30676,10 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				melyik = 0; //gyár
 			
 
-			new id, num = 0;
-			for(new i = 0; i < sizeof(Munkak); i++)
+			new i = NINCS, id, num = 0;
+			for(;++i < sizeof(Munkak);)
 			{
+				printf("%d munka", i);
 				if(Munkak[i][3][0] == melyik)
 				{
 					if(num == listitem)
@@ -43001,7 +42996,7 @@ CMD:duty(playerid, params[])
 	{
 		case FRAKCIO_LSPD: //rendõrség
 		{
-			if(!IsPlayerInRangeOfPoint(playerid, 10.0, 267.5132,119.1876,1004.6172) && !IsPlayerInRangeOfPoint(playerid, 5.0, 1862.3383,-1721.9015,1206.1860) && !IsPlayerInRangeOfPoint(playerid, 5.0, 197.1813,168.3225,1003.0234))//LSPD bázis duty hely
+			if(!IsPlayerInRangeOfPoint(playerid, 10.0, 230.0829,126.9752,1003.2188) && !IsPlayerInRangeOfPoint(playerid, 5.0, 218.7862,116.7647,999.0156) && !IsPlayerInRangeOfPoint(playerid, 5.0, 197.1813,168.3225,1003.0234))//LSPD bázis duty hely
    			{
 				SCM(playerid, COL_LRED, "Nem vagy az öltözõszekrényeknél!");
 				return true;
@@ -56578,7 +56573,7 @@ CMD:felszereles(playerid,params[])
 	if(PlayerInfo[playerid][pFrakcio] != FRAKCIO_LSPD)
 		return SendClientMessage(playerid, COLOR_WHITE, NEM_HASZNALHATO);
 
-	if(!IsPlayerInRangeOfPoint(playerid, 5.0, 267.5132,119.1876,1004.6172) && !IsPlayerInRangeOfPoint(playerid, 5.0, 267.768, 118.279, 1004.617))//LSPD bázis duty hely
+	if(!IsPlayerInRangeOfPoint(playerid, 5.0, 267.768, 118.279, 1004.617) && !IsPlayerInRangeOfPoint(playerid, 5.0, 267.768, 118.279, 1004.617))//LSPD bázis duty hely
 	{
 		SCM(playerid, COL_LRED, "Nem vagy az öltözõszekrényeknél!");
 		return true;
