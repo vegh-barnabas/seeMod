@@ -22029,10 +22029,10 @@ fpublic AdatBetoltes( playerid )
 		sscanf(str, "p<,>a<d>[8]", PlayerInfo[playerid][pAnimban]);
 		
         PlayerInfo[playerid][padmin] = cache_get_field_content_int(0, "admin", sql_ID);
-        cache_get_field_content(0, "pDNS", PlayerInfo[playerid][pDNS], sql_ID, 32);
+        cache_get_field_content(0, "pDNS", PlayerInfo[playerid][pDNS], sql_ID, 256);
         
 		PlayerInfo[playerid][pAS] = cache_get_field_content_int(0, "pAS", sql_ID);
-		cache_get_field_content(0, "pDefense", PlayerInfo[playerid][pDefense], sql_ID, 32);
+		cache_get_field_content(0, "pDefense", PlayerInfo[playerid][pDefense], sql_ID, 256);
         PlayerInfo[playerid][pBsz] = cache_get_field_content_int(0, "bankszamla", sql_ID);
 		PlayerInfo[playerid][pBszPenz] = cache_get_field_content_int(0, "bankszamlaegyenleg", sql_ID);
         PlayerInfo[playerid][pBszPin] = cache_get_field_content_int(0, "bankszamlapin", sql_ID);
@@ -30612,6 +30612,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		{
 			if(!PlayerInfo[playerid][pDefensed][1])
 			{
+				// todo: fix this
 				if(strcmp(PlayerInfo[playerid][pDefense], MD5_Hash(inputtext)) || !response || !strlen(inputtext))
 				{
 					if(Karakter_Ellenorzes(inputtext)) return ShowPlayerDialog(playerid, DIALOG_ADMIN, DIALOG_STYLE_INPUT, "Érvénytelen karakterek!", ""#COL_FEHER"Kérlek add meg az Admin jelszavad!", "Belépés", "Mégse");
@@ -32520,7 +32521,7 @@ fpublic FrakcioMentes()
 			if(FUpdates[fk][fuFizetes]) MySQLUpdateSTR(query, "Fizetesek", GetFractionPay(fk)); FUpdates[fk][fuFizetes] = false;
 			if(FUpdates[fk][fuTrafi]) MySQLUpdateINT(query, "Traffipax", FInfo[fk][fTrafi]); FUpdates[fk][fuTrafi] = false;
 			//if(FUpdates[fk][fuLimit])
-			MySQLUpdateINT(query, "fLimit", FInfo[fk][fLimit]); //FUpdates[fk][fuLimit] = false;
+			MySQLUpdateINT(query, "Limit", FInfo[fk][fLimit]); //FUpdates[fk][fuLimit] = false;
 
 			MySQLFinalUpdate(query, "ID", fk);
 		}
