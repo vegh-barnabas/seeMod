@@ -21613,9 +21613,9 @@ fpublic BanTorles(playerid)
 	if(nums)
 	{
 		new get[3][128], form[128];
-		cache_get_field_content(0, "Cim", 		get[0]);
-		cache_get_field_content(0, "Banolta", 	get[1]);
-		cache_get_field_content(0, "Oka", 		get[2]);
+		cache_get_field_content(0, "Cim", 		get[0], sql_ID);
+		cache_get_field_content(0, "Banolta", 	get[1], sql_ID);
+		cache_get_field_content(0, "Oka", 		get[2], sql_ID);
 
 		if(!strcmp(PlayerInfo[playerid][pNev], get[1]) || Admin(playerid, FOADMIN_SZINT))
 		{
@@ -21683,9 +21683,9 @@ fpublic BanCheck( playerid, muvelet )
 	{
 		new ido, banolta[MAX_PLAYER_NAME], oka[50], mikor[16], str[64];
 		ido = cache_get_field_content_int(0, "UIdo", sql_ID);
-		cache_get_field_content(0, "Banolta", banolta);
-		cache_get_field_content(0, "Oka", oka);
-		cache_get_field_content(0, "Mikor", mikor);
+		cache_get_field_content(0, "Banolta", banolta, sql_ID);
+		cache_get_field_content(0, "Oka", oka, sql_ID);
+		cache_get_field_content(0, "Mikor", mikor, sql_ID);
 
 		new mikor2 = floatround((0.0 + ido - gettime()) / 3600.0, floatround_round);
 		if((mikor2 > 0) || (ido == 0))
@@ -21873,7 +21873,7 @@ stock TuzMuvelet( muvelet = 1, idx = NINCS )
 				for(;++i < nums;)
 				{
 					id = cache_get_field_content_int(i, "Id", sql_ID);
-					cache_get_field_content(i, "Pos", pos);
+					cache_get_field_content(i, "Pos", pos, sql_ID);
 					sscanf(pos, "p<,>fff", PosExt(TuzPoz[id][tPoz]));
 
 					if(TuzPoz[id][tPoz][0] != 0.0)
@@ -21945,7 +21945,7 @@ fpublic AkaMuvelet(pid, id, muvelet)
 				new i = NINCS, uid, bool:val;
 				for(;++i < nums;)
 				{
-					//cache_get_field_content(i, "Nev", nev);
+					//cache_get_field_content(i, "Nev", nev, sql_ID);
 					uid = cache_get_field_content_int(i, "Uid", sql_ID);
 					/*if(strcmp(nev, JatekosNev(pid)))
 					{
@@ -21982,7 +21982,7 @@ fpublic AkaMuvelet(pid, id, muvelet)
 				new i = -1, szam;
 				for(;++i < nums;)
 				{
-					cache_get_field_content(i, "Nev", nev);
+					cache_get_field_content(i, "Nev", nev, sql_ID);
 					if(!egyezik(nev, JatekosNev(pid)))
 					{
 						if(!szam) format(str, sizeof(str), "%s", nev);
@@ -22012,7 +22012,7 @@ fpublic AdatBetoltes( playerid )
 	if(nums)
 	{
 		new toltenyek[64], fegyverek[64];
-		cache_get_field_content(0, "nev", PlayerInfo[playerid][pNev]);
+		cache_get_field_content(0, "nev", PlayerInfo[playerid][pNev], sql_ID, 32);
 	    PlayerInfo[playerid][pID] = cache_get_field_content_int(0, "id", sql_ID);
 
 		PlayerInfo[playerid][ppenz] = cache_get_field_content_int(0, "penz", sql_ID);
@@ -22025,14 +22025,14 @@ fpublic AdatBetoltes( playerid )
 		PlayerInfo[playerid][pJailIdo] = cache_get_field_content_int(0, "pJailIdo", sql_ID);
 		
 		str[0] = EOS;
-		cache_get_field_content(0, "pAnimban", str);
+		cache_get_field_content(0, "pAnimban", str, sql_ID);
 		sscanf(str, "p<,>a<d>[8]", PlayerInfo[playerid][pAnimban]);
 		
         PlayerInfo[playerid][padmin] = cache_get_field_content_int(0, "admin", sql_ID);
-        cache_get_field_content(0, "pDNS", PlayerInfo[playerid][pDNS]);
+        cache_get_field_content(0, "pDNS", PlayerInfo[playerid][pDNS], sql_ID, 32);
         
 		PlayerInfo[playerid][pAS] = cache_get_field_content_int(0, "pAS", sql_ID);
-		cache_get_field_content(0, "pDefense", PlayerInfo[playerid][pDefense]);
+		cache_get_field_content(0, "pDefense", PlayerInfo[playerid][pDefense], sql_ID, 32);
         PlayerInfo[playerid][pBsz] = cache_get_field_content_int(0, "bankszamla", sql_ID);
 		PlayerInfo[playerid][pBszPenz] = cache_get_field_content_int(0, "bankszamlaegyenleg", sql_ID);
         PlayerInfo[playerid][pBszPin] = cache_get_field_content_int(0, "bankszamlapin", sql_ID);
@@ -22049,8 +22049,8 @@ fpublic AdatBetoltes( playerid )
 		PlayerInfo[playerid][pszintlepeskell] = cache_get_field_content_int(0, "pszintlepeshez", sql_ID);
 		PlayerInfo[playerid][pHitman] = cache_get_field_content_int(0, "phitman", sql_ID);
 		PlayerInfo[playerid][pLeader] = cache_get_field_content_int(0, "pLeader", sql_ID);
-		cache_get_field_content(0, "pAdminNev", PlayerInfo[playerid][pAdminNev]);
-		cache_get_field_content(0, "pHitmanNev", PlayerInfo[playerid][pHitmanNev]);
+		cache_get_field_content(0, "pAdminNev", PlayerInfo[playerid][pAdminNev], sql_ID, 32);
+		cache_get_field_content(0, "pHitmanNev", PlayerInfo[playerid][pHitmanNev], sql_ID, 32);
 		PlayerInfo[playerid][pSWAT] = cache_get_field_content_int(0, "pSWAT", sql_ID);
 		PlayerInfo[playerid][pSWATRang] = cache_get_field_content_int(0, "pSWATRang", sql_ID);
 		PlayerInfo[playerid][pJarmuKolcson] = cache_get_field_content_int(0, "pJarmuKolcson", sql_ID);
@@ -22077,17 +22077,17 @@ fpublic AdatBetoltes( playerid )
 		PlayerInfo[playerid][phaz] = cache_get_field_content_int(0, "phaz", sql_ID);
 
 		fegyverek[0] = EOS;
-		cache_get_field_content(0, "pFegyverek", fegyverek);
+		cache_get_field_content(0, "pFegyverek", fegyverek, sql_ID);
 		sscanf(fegyverek, "p<,>a<d>[13]", PlayerInfo[playerid][pFegyverek]);
 
 		fegyverek[0] = EOS;
-		cache_get_field_content(0, "pToltenyek", toltenyek);
+		cache_get_field_content(0, "pToltenyek", toltenyek, sql_ID);
 		sscanf(toltenyek, "p<,>a<d>[13]", PlayerInfo[playerid][pToltenyek]);
 
 		//Mikor - int
 		//IP - str
 		str[0] = EOS;
-		cache_get_field_content(0, "pKorozes", str);
+		cache_get_field_content(0, "pKorozes", str, sql_ID);
 		sscanf(str, "p<|>is[24]s[24]s[64]", Korozes[playerid][krSzint], Korozes[playerid][krNev], Korozes[playerid][krKiadta], Korozes[playerid][krOka]);
 
 		PlayerInfo[playerid][pPremiumPont] = cache_get_field_content_int(0, "pPremiumPont", sql_ID);
@@ -22126,7 +22126,7 @@ fpublic AdatBetoltes( playerid )
 		PlayerInfo[playerid][pLottounix] = cache_get_field_content_int(0, "pLottounix", sql_ID);
 
 		str[0] = EOS;
-		cache_get_field_content(0, "pEngedely", str);
+		cache_get_field_content(0, "pEngedely", str, sql_ID);
 		sscanf(str, "p<,>a<d>["#MAX_ENGEDELY"]", PlayerInfo[playerid][pEngedely]);
 
 		PlayerInfo[playerid][pHatizsak] = cache_get_field_content_int(0, "pHatizsak", sql_ID);
@@ -22134,11 +22134,11 @@ fpublic AdatBetoltes( playerid )
 		PlayerInfo[playerid][pMaszk] = cache_get_field_content_int(0, "pMaszk", sql_ID);
 
 		str[0] = EOS;
-		cache_get_field_content(0, "BortonInfo", str);
+		cache_get_field_content(0, "BortonInfo", str, sql_ID);
 		sscanf(str, "p<|>s["#MAX_PLAYER_NAME"]s[64]", PlayerInfo[playerid][pJailAdta], PlayerInfo[playerid][pJailOk]);
 
 		str[0] = EOS;
-		cache_get_field_content(0, "pCuccok", str);//hol?
+		cache_get_field_content(0, "pCuccok", str, sql_ID);//hol?
 		sscanf(str, "p<,>a<d>["#MAX_BL_CUCC"]", PlayerInfo[playerid][pCuccok]);//Remélem tényleg ad neki default értéket :D
 
 		PlayerInfo[playerid][pSzemelyi] = cache_get_field_content_int(0, "pSzemelyi", sql_ID);
@@ -22147,7 +22147,7 @@ fpublic AdatBetoltes( playerid )
 
 		//PlayerInfo[kinek][pDrogAnyag]
 		str[0] = EOS;
-		cache_get_field_content(0, "pDrogAnyag", str);
+		cache_get_field_content(0, "pDrogAnyag", str, sql_ID);
 		sscanf(str, "p<,>a<d>[3]", PlayerInfo[playerid][pDrogAnyag]);
 
 		str[0]= EOS;
@@ -22171,7 +22171,7 @@ fpublic AdatBetoltes( playerid )
 		DivatInfo[SLOT_MASZK][playerid][dRotX],DivatInfo[SLOT_MASZK][playerid][dRotY],DivatInfo[SLOT_MASZK][playerid][dRotZ],DivatInfo[SLOT_MASZK][playerid][dScaleX],
 		DivatInfo[SLOT_MASZK][playerid][dScaleY],DivatInfo[SLOT_MASZK][playerid][dScaleZ],DivatInfo[SLOT_MASZK][playerid][dmodelid]);
 
-		cache_get_field_content(0,"pHazasodvaVele",PlayerInfo[playerid][pHazasodvaVele]);
+		cache_get_field_content(0,"pHazasodvaVele",PlayerInfo[playerid][pHazasodvaVele], 128);
 
 		str[0] = EOS;
 		cache_get_field_content(0,"pFegyvertVasarolt",str);
@@ -22200,8 +22200,8 @@ fpublic AdatBetoltes( playerid )
 		PlayerInfo[playerid][pEhseg] = cache_get_field_content_float(0, "pEhseg", sql_ID);
         PlayerInfo[playerid][pVizelet] = cache_get_field_content_float(0, "pVizelet", sql_ID);
         PlayerInfo[playerid][pBuntetoPontok] = cache_get_field_content_int(0, "pBuntetoPontok", sql_ID);
-        cache_get_field_content(0,"pUjjlenyomat",PlayerInfo[playerid][pUjjlenyomat]);
-        cache_get_field_content(0,"pCharLeiras",PlayerInfo[playerid][pCharLeiras]);
+        cache_get_field_content(0,"pUjjlenyomat",PlayerInfo[playerid][pUjjlenyomat], 128);
+        cache_get_field_content(0,"pCharLeiras",PlayerInfo[playerid][pCharLeiras], 128);
         
 		if(PlayerInfo[playerid][pVas] > P_MAX_VAS)
 			PlayerInfo[playerid][pVas] = P_MAX_VAS;
@@ -22719,7 +22719,7 @@ fpublic TuzBetoltes()
 		for(;++i < nums;)
 		{
 			id = cache_get_field_content_int(i, "Id", sql_ID);
-			cache_get_field_content(i, "Pos", pos);
+			cache_get_field_content(i, "Pos", pos, sql_ID);
 			sscanf(pos, "p<,>fff", PosExt(TuzPoz[id][tPoz]));
 
 			if(TuzPoz[id][tPoz][0] != 0.0)
@@ -23011,105 +23011,6 @@ fpublic AutomataBetoltes()
 	printf("Szerver: %d automata sikeresen betoltve!", nums);
 	return true;
 }
-/* TODO: remove this
-forward LoadFactions();
-public LoadFactions()
-{
-	print("[MySQL]: Loading factions...");
-
-	new rows = cache_num_rows();
-	
-	if (rows)
-	{
-		for (new i = 0; i < rows && i < MAX_FACTIONS; i++)
-		{
-			new tempInt;
-			
-			factionInfo[i][fID] = cache_get_field_content_int(i, "ID");
-			cache_get_field_content(i, "Name", factionInfo[i][fName], sql_ID, 32);
-			
-			cache_get_field_content(i, "Rank1", factionInfo[i][fRank1], sql_ID, 32);
-			cache_get_field_content(i, "Rank3", factionInfo[i][fRank3], sql_ID, 32);
-			cache_get_field_content(i, "Rank4", factionInfo[i][fRank4], sql_ID, 32);
-			cache_get_field_content(i, "Rank2", factionInfo[i][fRank2], sql_ID, 32);
-			cache_get_field_content(i, "Rank5", factionInfo[i][fRank5], sql_ID, 32);
-			cache_get_field_content(i, "Rank6", factionInfo[i][fRank6], sql_ID, 32);
-			cache_get_field_content(i, "Rank7", factionInfo[i][fRank7], sql_ID, 32);
-			cache_get_field_content(i, "Rank8", factionInfo[i][fRank8], sql_ID, 32);
-			cache_get_field_content(i, "Rank9", factionInfo[i][fRank9], sql_ID, 32);
-			cache_get_field_content(i, "Rank10", factionInfo[i][fRank10], sql_ID, 32);
-			cache_get_field_content(i, "Rank11", factionInfo[i][fRank11], sql_ID, 32);
-			cache_get_field_content(i, "Rank12", factionInfo[i][fRank12], sql_ID, 32);
-			cache_get_field_content(i, "Rank13", factionInfo[i][fRank13], sql_ID, 32);
-			cache_get_field_content(i, "Rank14", factionInfo[i][fRank14], sql_ID, 32);
-			cache_get_field_content(i, "Rank15", factionInfo[i][fRank15], sql_ID, 32);
-			cache_get_field_content(i, "Rank16", factionInfo[i][fRank16], sql_ID, 32);		
-			cache_get_field_content(i, "Rank16", factionInfo[i][fRank16], sql_ID, 32);			
-	
-			factionInfo[i][fMaxRank] = cache_get_field_content_int(i, "MaxRank", sql_ID);
-			
-			tempInt = cache_get_field_content_int(i, "IsLegal", sql_ID);
-			factionInfo[i][fIsLegal] = tempInt == 1 ? true : false;
-			
-			tempInt = cache_get_field_content_int(i, "SafeObject", sql_ID);
-			factionInfo[i][fHasSafe] = tempInt > 0 ? true : false;
-			factionInfo[i][fSafeObjectID] = tempInt;
-			
-			new safeStr[128];
-			cache_get_field_content(i, "SafePos", safeStr, sql_ID, 32);
-			sscanf(safeStr, "p<,>a<f>[3]", factionInfo[i][fSafePos]);
-			
-			cache_get_field_content(i, "SafeRot", safeStr, sql_ID, 32);
-			sscanf(safeStr, "p<,>a<f>[3]", factionInfo[i][fSafeRot]);
-			
-			factionInfo[i][fSafeRank] = cache_get_field_content_int(i, "SafeRank", sql_ID);
-			factionInfo[i][fMoney] = cache_get_field_content_int(i, "Money", sql_ID);
-			
-			factionInfo[i][fMaterial] = cache_get_field_content_int(i, "Material", sql_ID);
-			factionInfo[i][fCocaine] = cache_get_field_content_int(i, "Cocaine", sql_ID);
-			factionInfo[i][fMarijuana] = cache_get_field_content_int(i, "Marijuana", sql_ID);
-			
-			new weaponStr[256];
-			cache_get_field_content(i, "Weapons", weaponStr, sql_ID, 32);
-			sscanf(weaponStr, "p<,>a<d>[52]", factionInfo[i][fWeapon]);
-
-			cache_get_field_content(i, "Ammo", weaponStr, sql_ID, 32);
-			sscanf(weaponStr, "p<,>a<d>[52]", factionInfo[i][fAmmo]);
-
-			factionInfo[i][fVW] = cache_get_field_content_int(i, "VW", sql_ID);
-			factionInfo[i][fInt] = cache_get_field_content_int(i, "Interior", sql_ID);
-
-			new wageStr[256];
-			cache_get_field_content(i, "Wages", wageStr, sql_ID, 32);
-			sscanf(wageStr, "p<,>a<d>[16]", factionInfo[i][fWage]);
-			
-			new dutyStr[128];
-			cache_get_field_content(i, "DutyPos", dutyStr, sql_ID, 32);
-			sscanf(dutyStr, "p<,>a<d>[3]", factionInfo[i][fDutyPos]);
-			
-			tempInt = cache_get_field_content_int(i, "SpeedCam", sql_ID);
-			factionInfo[i][fSpeedCam] = tempInt == 1 ? true : false;
-			
-			// TODO: lastAttack
-
-			if(factionInfo[i][fHasSafe]) 
-			{
-				factionInfo[i][fSafeObjectID] = CreateDynamicObject(2332, factionInfo[i][fSafePos][0], factionInfo[i][fSafePos][1], factionInfo[i][fSafePos][2], factionInfo[i][fSafeRot][0], factionInfo[i][fSafeRot][1],  factionInfo[i][fSafeRot][2],  factionInfo[i][fVW],  factionInfo[i][fInt]);
-			}
-			
-			#if DEBUG_MYSQL
-				printf("[Faction]: Loaded faction %s - %d (%d)", factionInfo[i][fName], i, factionInfo[i][fID]);
-				printf("[Faction]: Ranks (1-8): %s, %s, %s, %s, %s, %s, %s, %s", factionInfo[i][fRank1], factionInfo[i][fRank2], factionInfo[i][fRank3], factionInfo[i][fRank4], factionInfo[i][fRank5], factionInfo[i][fRank6], factionInfo[i][fRank7], factionInfo[i][fRank8]);
-				printf("[Faction]: Ranks (9-16): %s, %s, %s, %s, %s, %s, %s, %s", factionInfo[i][fRank9], factionInfo[i][fRank10], factionInfo[i][fRank11], factionInfo[i][fRank12], factionInfo[i][fRank13], factionInfo[i][fRank14], factionInfo[i][fRank15], factionInfo[i][fRank16]);
-			#endif
-		}
-		
-		printf("[MySQL]: %d factions loaded.", rows);
-	}
-	else print("[MySQL]: No factions loaded.");
-	
-	return true;
-}*/
 
 fpublic FrakcioBetoltes()
 {
@@ -23215,7 +23116,7 @@ fpublic EldobottCuccokBetoltes()
 			dInfo[i][dTipus] = cache_get_field_content_int(i, "Tipus", sql_ID);
 			dInfo[i][dFegyver] = cache_get_field_content_int(i, "Fegyver", sql_ID);
 			dInfo[i][dErtek] = cache_get_field_content_int(i, "Ertek", sql_ID);
-			cache_get_field_content(i, "Pozicio", pos);
+			cache_get_field_content(i, "Pozicio", pos, sql_ID);
 			sscanf(pos, "p<,>a<f>[3]", dInfo[i][dPos]);
 			dInfo[i][dInt] = cache_get_field_content_int(i, "Int", sql_ID);
 			dInfo[i][dVirtual] = cache_get_field_content_int(i, "VW", sql_ID);
@@ -23267,13 +23168,13 @@ fpublic TeruletBetoltes()
 		for (new i = 0; i < rows; i++)
 		{
             tid = cache_get_field_content_int(i, "ID", sql_ID);
-			cache_get_field_content(i, "Nev", tInfo[tid][tNev]);
-			cache_get_field_content(i, "MinPos", pos);
+			cache_get_field_content(i, "Nev", tInfo[tid][tNev], sql_ID, 40);
+			cache_get_field_content(i, "MinPos", pos, sql_ID);
 			sscanf(pos, "p<,>a<f>[2]", tInfo[tid][tMinPos]);
-			cache_get_field_content(i, "MaxPos", pos);
+			cache_get_field_content(i, "MaxPos", pos, sql_ID);
 			sscanf(pos, "p<,>a<f>[2]", tInfo[tid][tMaxPos]);
 			tInfo[tid][tFrakcio] = cache_get_field_content_int(i, "Frakcio", sql_ID);
-			cache_get_field_content(i, "Haszon", pos);
+			cache_get_field_content(i, "Haszon", pos, sql_ID);
 			sscanf(pos, "p<,>a<d>[5]", tInfo[tid][tHaszon]);
 			tInfo[tid][tHaszonIdo] = cache_get_field_content_int(i, "HaszonIdo", sql_ID);
 			tInfo[tid][tVarakozasIdo] = cache_get_field_content_int(i, "VarakozasIdo", sql_ID);
@@ -23301,8 +23202,8 @@ fpublic JarmuadatBetoltes()
 	    for(;++i < nums;)
 	    {
 			id = cache_get_field_content_int(i, "id", sql_ID);
-			cache_get_field_content(i, "nev", JarmuAdat[id][jNev]);
-			cache_get_field_content(i, "ujnev", JarmuAdat[id][jUjNev]);
+			cache_get_field_content(i, "nev", JarmuAdat[id][jNev], sql_ID, 32);
+			cache_get_field_content(i, "ujnev", JarmuAdat[id][jUjNev], sql_ID, 32);
 			JarmuAdat[id][jAr] = cache_get_field_content_int(i, "ar", sql_ID);
 			JarmuAdat[id][jLophato] = cache_get_field_content_int(i, "lophato", sql_ID);
 		}
@@ -23475,10 +23376,10 @@ fpublic CegBetoltes( muvelet )
 				for(;++i < nums;)
 				{
 					cdb = cache_get_field_content_int(i, "Id", sql_ID);
-					cache_get_field_content(i, "ANev", CegInfo[cdb][cANev]);
-					cache_get_field_content(i, "Nev", CegInfo[cdb][cNev]);
+					cache_get_field_content(i, "ANev", CegInfo[cdb][cANev], sql_ID, 32);
+					cache_get_field_content(i, "Nev", CegInfo[cdb][cNev], sql_ID, 32);
 					CegInfo[cdb][cTipus] = cache_get_field_content_int(i, "Tipus", sql_ID);
-					cache_get_field_content(i, "Tulaj", CegInfo[cdb][cTulaj]);
+					cache_get_field_content(i, "Tulaj", CegInfo[cdb][cTulaj], sql_ID, 32);
 					CegInfo[cdb][cTulajID] = cache_get_field_content_int(i, "TulajID", sql_ID);
 					CegInfo[cdb][cFTulaj] = cache_get_field_content_int(i, "FTulaj", sql_ID);
 					CegInfo[cdb][cBelepo] = cache_get_field_content_int(i, "Belepo", sql_ID);
@@ -23486,19 +23387,19 @@ fpublic CegBetoltes( muvelet )
 					CegInfo[cdb][cAr] = cache_get_field_content_int(i, "Ar", sql_ID);
 
 					pos[0] = EOS;
-					cache_get_field_content(i, "PosBe", pos);
+					cache_get_field_content(i, "PosBe", pos, sql_ID);
 					sscanf(pos, "p<,>ffff", PosExt(CegInfo[cdb][cPosBe]), CegInfo[cdb][cPosBe][3]);
 
 					pos[0] = EOS;
-					cache_get_field_content(i, "PosKi", pos);
+					cache_get_field_content(i, "PosKi", pos, sql_ID);
 					sscanf(pos, "p<,>ffff", PosExt(CegInfo[cdb][cPosKi]), CegInfo[cdb][cPosKi][3]);
 
 					pos[0] = EOS;
-					cache_get_field_content(i, "Vw", pos);
+					cache_get_field_content(i, "Vw", pos, sql_ID);
 					sscanf(pos, "p<,>dd", CegInfo[cdb][cVw][0], CegInfo[cdb][cVw][1]);
 
 					pos[0] = EOS;
-					cache_get_field_content(i, "Inte", pos);
+					cache_get_field_content(i, "Inte", pos, sql_ID);
 					sscanf(pos, "p<,>dd", CegInfo[cdb][cInt][0], CegInfo[cdb][cInt][1]);
 
 					CegInfo[cdb][cPickup] = CreateDynamicPickup(1239, 23, PosExt(CegInfo[cdb][cPosBe]), CegInfo[cdb][cVw][0], CegInfo[cdb][cInt][0], NINCS);
@@ -23558,7 +23459,7 @@ fpublic BenzinkutBetoltes()
 		for(;++i < nums;)
 		{
 			bid = cache_get_field_content_int(i, "id", sql_ID);
-			cache_get_field_content(i, "bnev", BenzinkutInfo[bid][bnev]);
+			cache_get_field_content(i, "bnev", BenzinkutInfo[bid][bnev], sql_ID, 32);
 			BenzinkutInfo[bid][bposx] = cache_get_field_content_float(i, "bposx", sql_ID);
 			BenzinkutInfo[bid][bposy] = cache_get_field_content_float(i, "bposy", sql_ID);
 			BenzinkutInfo[bid][bposz] = cache_get_field_content_float(i, "bposz", sql_ID);
@@ -23586,14 +23487,14 @@ fpublic GPSBetoltes()
 		for (new i = 0; i < rows; i++)
 		{
 			new gid = cache_get_field_content_int(i, "id", sql_ID);
-			GPSInfo[gid][gposx] = cache_get_field_content_float(i, "posx", sql_ID);
-			GPSInfo[gid][gposy] = cache_get_field_content_float(i, "posy", sql_ID);
-			GPSInfo[gid][gposz] = cache_get_field_content_float(i, "posz", sql_ID);
-			cache_get_field_content(i, "gnev", GPSInfo[gid][gnev]);
-			GPSInfo[gid][gHasznalva] = true;
+			GPSInfo[i][gposx] = cache_get_field_content_float(i, "posx", sql_ID);
+			GPSInfo[i][gposy] = cache_get_field_content_float(i, "posy", sql_ID);
+			GPSInfo[i][gposz] = cache_get_field_content_float(i, "posz", sql_ID);
+			cache_get_field_content(i, "gnev", GPSInfo[i][gnev], sql_ID, 32);
+			GPSInfo[i][gHasznalva] = true;
 			
 			#if DEBUG_MYSQL
-				printf("[GPS]: Loaded GPS %s (%d) - %f, %f, %f", GPSInfo[gid][gnev], gid, GPSInfo[gid][gposx], GPSInfo[gid][gposy], GPSInfo[gid][gposz]);
+				printf("[GPS]: Loaded GPS %s (%d - %d) - %f, %f, %f", GPSInfo[i][gnev], gid, i, GPSInfo[i][gposx], GPSInfo[i][gposy], GPSInfo[i][gposz]);
 			#endif
 		}
 	}
@@ -23626,30 +23527,30 @@ fpublic KapuBetoltes()
 		for(;++i < nums;)
 		{
 			kid = cache_get_field_content_int(i, "ID", sql_ID);
-			cache_get_field_content(i, "Nev", Kapu[kid][kNev]);
+			cache_get_field_content(i, "Nev", Kapu[kid][kNev], sql_ID, 32);
 			Kapu[kid][kModel] = cache_get_field_content_int(i, "Model", sql_ID);
 			Kapu[kid][kTav] = cache_get_field_content_float(i, "Tav", sql_ID);
 			Kapu[kid][kSpeed] = cache_get_field_content_float(i, "Speed", sql_ID);
 
-			cache_get_field_content(i, "Pos", kapupos);
+			cache_get_field_content(i, "Pos", kapupos, sql_ID);
 			sscanf(kapupos, "p<,>fff", PosExt(Kapu[kid][kPos]));
 
-			cache_get_field_content(i, "NPos", kapupos);
+			cache_get_field_content(i, "NPos", kapupos, sql_ID);
 			sscanf(kapupos, "p<,>fff", PosExt(Kapu[kid][kNPos]));
 
-			cache_get_field_content(i, "NRPos", kapupos);
+			cache_get_field_content(i, "NRPos", kapupos, sql_ID);
 			sscanf(kapupos, "p<,>fff", PosExt(Kapu[kid][kNRPos]));
 
-			cache_get_field_content(i, "ZPos", kapupos);
+			cache_get_field_content(i, "ZPos", kapupos, sql_ID);
 			sscanf(kapupos, "p<,>fff", PosExt(Kapu[kid][kZPos]));
 
-			cache_get_field_content(i, "ZRPos", kapupos);
+			cache_get_field_content(i, "ZRPos", kapupos, sql_ID);
 			sscanf(kapupos, "p<,>fff", PosExt(Kapu[kid][kZRPos]));
 
 			if(Kapu[kid][kSpeed] <= 0.0) Kapu[kid][kMozgo] = false;
 			else Kapu[kid][kMozgo] = true;
 
-			cache_get_field_content(i, "Hasznalo", hasznalo);
+			cache_get_field_content(i, "Hasznalo", hasznalo, sql_ID);
 			sscanf(hasznalo, "p<,>a<d>["#MAX_KAPU_HASZNALO"]", Kapu[kid][kHasznalo]);
 
 			nyit = cache_get_field_content_int(i, "nyit", sql_ID);
@@ -24719,7 +24620,8 @@ timer OnPlayerUpdateEx[1000](playerid)
 		}
 	}
 	*/
-	/*if(GetPlayerSpecialAction(playerid) == SPECIAL_ACTION_USEJETPACK && PlayerInfo[playerid][pjetpack] == false)
+	/*
+	if(GetPlayerSpecialAction(playerid) == SPECIAL_ACTION_USEJETPACK && PlayerInfo[playerid][pjetpack] == false)
 		ServerBan(playerid, 0, "[Hack]Jetpack", NINCS, true, true, true);
 		
 	if(IsPlayerInAnyVehicle(playerid))
@@ -24737,15 +24639,15 @@ timer OnPlayerUpdateEx[1000](playerid)
    		}
 	}
 	new Float:Velocity[3];
-   //	GetPlayerVelocity(playerid, Velocity[0], Velocity[1], Velocity[2]);
-   // if (floatabs(Velocity[0]) > 1.1 || floatabs(Velocity[1]) > 1.1 || floatabs(Velocity[2]) > 1.1 )
+	GetPlayerVelocity(playerid, Velocity[0], Velocity[1], Velocity[2]);
+	if (floatabs(Velocity[0]) > 1.1 || floatabs(Velocity[1]) > 1.1 || floatabs(Velocity[2]) > 1.1 )
     {
-       // AdminUzenet(RED, 1, "[Cheat] [%d]%s cheat miatt kickelve!", playerid,JatekosNev(playerid));
-    //	Kick(playerid);
+       AdminUzenet(RED, 1, "[Cheat] [%d]%s cheat miatt kickelve!", playerid,JatekosNev(playerid));
+		Kick(playerid);
     }
 	GetPlayerHealth(playerid, PlayerInfo[playerid][pUjElet]);
 	GetPlayerArmour(playerid, PlayerInfo[playerid][pUjPancel]);
-	/*if(Lefagyasztva[playerid] == 1 || !Belepve(playerid))
+	if(Lefagyasztva[playerid] == 1 || !Belepve(playerid))
 	{
 	    if(GetPlayerSpeed(playerid) > 1)
 	    {
@@ -29277,21 +29179,17 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	    }
 	    case DIALOG_GPSEK:
 	    {
-			if(!response) return false;
-	        new GPSCiklus = -1, tid = 0;
-			for(;++GPSCiklus < MAXGPS;)
+			if (!response) return false;
+			
+			new tid = -1;
+			for(new i = 0; i < MAXGPS && tid == -1; i++)
 			{
-			    if(GPSInfo[GPSCiklus][gHasznalva] && GPSInfo[GPSCiklus][listid] == listitem)
-			    {
-			        tid = GPSCiklus;
-			        break;
-			    }
+				if(GPSInfo[i][gHasznalva] && i == listitem)
+				{
+					tid = i;
+				}
 			}
-			if(!strlen(GPSInfo[tid][gnev]))
-			{
-				SendClientMessage(playerid, 0xff6347AA, "Hiba történt a GPS betöltése során!");
-				return 1;
-			}
+			
 			SetPlayerCheckpoint(playerid, GPSInfo[tid][gposx], GPSInfo[tid][gposy], GPSInfo[tid][gposz], 3.0);
 			SendFormatMessage(playerid, 0x1d92ffAA, "Sikeresen elindult a tervezés ide: "#COL_MKEK"%s", GPSInfo[tid][gnev]);
 	        return true;
@@ -30774,24 +30672,15 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			if(!response)
 				return SCM(playerid, COL_MKEK, "További szép napot!");
 
-			new melyik = NINCS;
+			/* TODO: varoshazan is fel lehet venni illegal munkat es forditva */
+
+			new melyik;
 
 			if(IsPlayerInRangeOfPoint(playerid, 5.0, 1539.79, 1749.28, 10.83))
 				melyik = 1; //városháza
 			else if(IsPlayerInRangeOfPoint(playerid, 5.0, 2474.286, -2119.997, 14.756))
 				melyik = 0; //gyár
-
-   /*
-			//Munka define - Név, Szükséges tehetség pont - Legális? (1 = igen | 0 = nem)
-			new Munkak[ MAX_MUNKA ][4][20] =
-			{
-				{MUNKA_KAMION, 			"Kamionos", 	100, 		1},
-				{MUNKA_FAVAGO, 			"Favágó", 		50, 		1},
-				{MUNKA_KUKA, 			"Kukás", 		0, 			1},
-				{MUNKA_UTTISZTITO, 		"Úttisztító", 	0, 			1},
-				{MUNKA_FEGYVER,			"Fegyvermester",0,			0},
-				{MUNKA_FARMER,			"Farmer",		30,			1}
-			};*/
+			
 
 			new i = NINCS, id, num = 0;
 			for(;++i < sizeof(Munkak);)
@@ -30807,6 +30696,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					num++;
 				}
 			}
+			
             /*if((!melyik && (Munkak[id][2][0] > PlayerInfo[playerid][pExp][3])) || (melyik && (Munkak[ id ][2][0] > PlayerInfo[playerid][pExp][1])))
 				return SCM(playerid, COL_LRED, "Sajnálom, de ehhez a munkához még nincs elég tapasztalatod. Kérlek válassz másikat!");*/
 
@@ -33914,7 +33804,7 @@ fpublic TeleportBetoltes()
 			TPInfo[tid][tposy] = cache_get_field_content_float(i, "tposy", sql_ID);
 			TPInfo[tid][tposz] = cache_get_field_content_float(i, "tposz", sql_ID);
 			TPInfo[tid][tangle] = cache_get_field_content_float(i, "tangle", sql_ID);
-			cache_get_field_content(i, "tpnev", TPInfo[tid][tpnev]);
+			cache_get_field_content(i, "tpnev", TPInfo[tid][tpnev], sql_ID, 32);
 			TPInfo[tid][tinterior] = cache_get_field_content_int(i, "tinterior", sql_ID);
 			TPInfo[tid][tvw] = cache_get_field_content_int(i, "tvw", sql_ID);
 			TPInfo[tid][tphasznalva] = true;
@@ -34762,8 +34652,8 @@ fpublic preProcessing( playerid, process, extra, estr[], estr2[] )
 
 			if(nums)
 			{
-				cache_get_field_content(0, "Nev", Race[slot][rNev]);
-				cache_get_field_content(0, "Indito", Race[slot][rIndito]);
+				cache_get_field_content(0, "Nev", Race[slot][rNev], sql_ID, 32);
+				cache_get_field_content(0, "Indito", Race[slot][rIndito], sql_ID, 32);
 
 				new str[16], pos[40], db;
 
@@ -34773,7 +34663,7 @@ fpublic preProcessing( playerid, process, extra, estr[], estr2[] )
 					Race[slot][rPosy][i] = 0.0;
 					Race[slot][rPosz][i] = 0.0;
 
-					cache_get_field_content(0, (format(str, sizeof(str), "CP%d", (i + 1)), str), pos);
+					cache_get_field_content(0, (format(str, sizeof(str), "CP%d", (i + 1)), str), pos, sql_ID);
 					sscanf(pos, "p<,>fff", Race[slot][rPosx][i], Race[slot][rPosy][i], Race[slot][rPosz][i]);
 
 					if(Race[slot][rPosx][i] != 0.0 && strlen(pos))
@@ -34807,9 +34697,9 @@ fpublic preProcessing( playerid, process, extra, estr[], estr2[] )
 			if(nums)
 			{
 				new data[3][64];
-				cache_get_field_content(0, "Nev", data[0]);
-				cache_get_field_content(0, "Indito", data[1]);
-				cache_get_field_content(0, "Keszito", data[2]);
+				cache_get_field_content(0, "Nev", data[0], sql_ID, 32);
+				cache_get_field_content(0, "Indito", data[1], sql_ID, 32);
+				cache_get_field_content(0, "Keszito", data[2], sql_ID, 32);
 
 				SCM(playerid, COL_LRED, "Már létezik ilyen indítókóddal rendelkezõ pálya. Kérlek válassz másikat!");
 				SFM(playerid, COL_LRED, "Név: "#COL_MKEK"%s"#COL_FEHER" | Indítókód: "#COL_MKEK"%s"#COL_FEHER" | Készítõ: "#COL_MKEK"%s", data[0], data[1], data[2]);
@@ -54956,7 +54846,7 @@ CMD:vhspawn(playerid, params[])//ah-ban
 
 	AdminUzenet(COLOR_LIGHTRED, PlayerInfo[playerid][padmin], "%s városházára respawnolta %st", JatekosNev(playerid), JatekosNev(jatekos));
 	//SpawnPlayer(jatekos);
-	SetPos(jatekos, 1503.8801,-1770.6318,13.5433,4.1295, true);
+	SetPos(jatekos, 1478.3662, -1741.1390, 13.5469, 0.0, true);
 	SetVirtualWorld(jatekos, 0);
 	SetInterior(jatekos, 0);
 	PlayerInfo[jatekos][phaz] = NINCS;
@@ -61500,7 +61390,7 @@ fpublic HifiBetoltes()
 			HifiInfo[h][hRx] = cache_get_field_content_float(i, "RX", sql_ID);
 			HifiInfo[h][hRy] = cache_get_field_content_float(i, "RY", sql_ID);
 			HifiInfo[h][hRz] = cache_get_field_content_float(i, "RZ", sql_ID);
-			cache_get_field_content(i, "Lerako", HifiInfo[h][hLerako]);
+			cache_get_field_content(i, "Lerako", HifiInfo[h][hLerako], sql_ID, 32);
 			HifiInfo[h][hObject] = CreateDynamicObject(2226,HifiInfo[h][hX],HifiInfo[h][hY],HifiInfo[h][hZ],HifiInfo[h][hRx],HifiInfo[h][hRy],HifiInfo[h][hRz]);
 		}
 	}
@@ -62618,7 +62508,7 @@ fpublic LabelBetoltes()
 	    for(;++i < nums;)
 	    {
 			id = cache_get_field_content_int(i, "ID", sql_ID);
-			cache_get_field_content(i, "Text", LabelInfo[id][lText]);
+			cache_get_field_content(i, "Text", LabelInfo[id][lText], sql_ID, 128);
 			LabelInfo[id][lx] = cache_get_field_content_float(i, "X", sql_ID);
 			LabelInfo[id][ly] = cache_get_field_content_float(i, "Y", sql_ID);
 			LabelInfo[id][lz] = cache_get_field_content_float(i, "Z", sql_ID);
