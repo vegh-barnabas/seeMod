@@ -3594,7 +3594,7 @@ new BoltNevek[10][24] =
 
 new Float:RuhaBoltok[][boltInfo] =
 {
-	{207.0425, -129.4797, 1003.5078},
+	{204.1169,-159.4227,1000.5234},
 	{1098.1354,-1443.6396,15.7981} //Pláza ruhabolt
 };
 
@@ -4209,7 +4209,7 @@ new NemVontatoJarmu[] =
 	552,553,556,557,563,564,568,569,570,
 	571,572,573,574,577,578,581,582,583,
 	584,586,587,588,590,591,592,593,594,
-	595,601,603,606,607,608,609,610,611
+	595,601,603,606,608,609,610,611
 };
 
 new NemVontathatoJarmu[] =
@@ -4221,7 +4221,7 @@ new NemVontathatoJarmu[] =
 	509,510,511,512,513,519,520,521,522,
 	523,530,532,537,538,539,548,553,563,
 	564,569,570,577,581,584,586,590,591,
-	592,593,594,595,606,607,608,610,611
+	592,593,594,595,606,608,610,611
 };
 
 new PakolhatoJarmu[] =
@@ -4235,7 +4235,7 @@ new PakolhatoJarmu[] =
 	519,520,521,525,526,527,528,529,533,534,535,536,540,541,542,543,
 	545,546,547,548,549,550,551,552,552,554,555,556,557,558,559,560,
 	561,562,563,565,566,567,568,573,575,576,577,578,579,580,582,585,
-	587,588,589,592,593,595,596,597,598,599,600,601,602,603,604,605,
+	587,588,589,592,593,595,596,597,598,599,600,601,602,603,604,605,607,
 	609
 };
 
@@ -9333,7 +9333,7 @@ stock SzerverNev()
                 }
         } else
 		{
-			SendRconCommand("hostname « "#PREFIX" ~ Alpha »");
+			SendRconCommand("hostname  "#PREFIX" ");
         }
 
         return true;
@@ -10138,10 +10138,10 @@ stock TargyEldob(playerid, tipus, db)
 			dInfo[di][dHasznalva]	=	true;
 			dInfo[di][dTorlesiAzonosito] = Rand(100000,999999);
 
-		//	nformat(t, 128, #COL_SZURKE"[ "#COL_VKEK"%s "#COL_SZURKE"]\n"#COL_FEHER"Lõszer: "#COL_VKEK"%s\n"#COL_SZURKE"(( /felvesz ))", aWeaponNames[wid], FN(ammo, 0, ','));
+			nformat(t, 128, #COL_SZURKE"[ "#COL_VKEK"%s "#COL_SZURKE"]\n"#COL_FEHER"Lõszer: "#COL_VKEK"%s\n"#COL_SZURKE"(( /felvesz ))", aWeaponNames[wid], FN(ammo, 0, ','));
 
 			dInfo[di][dObject]	=	CreateDynamicObject(aWeaponModel[wid], ppos[0], ppos[1], ppos[2] - 1.0, 80.0, 0.0, random(360), dInfo[di][dVirtual], dInfo[di][dInt]);
-		//	dInfo[di][dText]	=	CreateDynamic3DTextLabel(t, COLOR_WHITE, ppos[0], ppos[1], ppos[2] - 0.3, 20.0, .worldid = dInfo[di][dVirtual], .interiorid = dInfo[di][dInt]);
+			dInfo[di][dText]	=	CreateDynamic3DTextLabel(t, COLOR_WHITE, ppos[0], ppos[1], ppos[2] - 0.3, 20.0, .worldid = dInfo[di][dVirtual], .interiorid = dInfo[di][dInt]);
 
 			new slot = GetGunSlot( PlayerInfo[playerid][pFegyver] );
 
@@ -12414,7 +12414,7 @@ stock Parancs_Alias()
 	ZCMD_Alias("o", 			"ooc");
 	ZCMD_Alias("s", 			"shout");
 	ZCMD_Alias("pickup", 		"p");
-	ZCMD_Alias("hangup", 		"h");
+	ZCMD_Alias("", 		"");
 	ZCMD_Alias("tankol", 		"fill");
 	ZCMD_Alias("szamla", 		"bsz");
 	ZCMD_Alias("szamla", 		"bankszamla");
@@ -13534,7 +13534,7 @@ public OnGameModeInit()
 	EnableStuntBonusForAll(0);
 	ManualVehicleEngineAndLights();
 	SetGameModeText(VERZIO);
-	SendRconCommand("mapname « - San Andreas - »");
+	SendRconCommand("mapname Los Santos ");
 	//ShowPlayerMarkers(0);
 	ShowNameTags(true);
 	SetNameTagDrawDistance(100.0);
@@ -20998,14 +20998,14 @@ public OnPlayerUpdate(playerid)
 	{
 		if (s0beitCheck[playerid][stage] == 1)
 		{
-            s0beitCheck[playerid][vehicleId] = CreateVehicle(457, 0.05, -0.43, 500.71, 0, 0, 0, -1);
+          //  s0beitCheck[playerid][vehicleId] = CreateVehicle(457, 0.05, -0.43, 500.71, 0, 0, 0, -1);
 
 		    if(s0beitCheck[playerid][vehicleId] != INVALID_VEHICLE_ID)
 		    {
-				ASSetVW(playerid);
+			//	ASSetVW(playerid);
 
-				SetVehicleVirtualWorld(s0beitCheck[playerid][vehicleId], GetPlayerVirtualWorld(playerid));
-		        PutPlayerInVehicle(playerid, s0beitCheck[playerid][vehicleId], 0);
+			//	SetVehicleVirtualWorld(s0beitCheck[playerid][vehicleId], GetPlayerVirtualWorld(playerid));
+		    //    PutPlayerInVehicle(playerid, s0beitCheck[playerid][vehicleId], 0);
 
 				s0beitCheck[playerid][stage] = 2;
 				//s0beitCheck[playerid][asTimer] = defer ASKickLagger(playerid);
@@ -22632,7 +22632,7 @@ fpublic CheckPlayer(playerid)
 		}
 		else
 		{
-			SendClientMessage(playerid, COLOR_LIGHTRED, "* Ez a karakter még nincs regisztrálva! Kérlek regisztrálj a http://"#WEBOLDAL"/ucp oldalon");
+			SendClientMessage(playerid, COLOR_LIGHTRED, "* Jelenleg ki van kapcsolva a regisztárció a szerverre! Érdeklõdj Discordon discord.gg/2aJZ2ZVy2y");
 			Kick(playerid);
 		}
 	}
@@ -24719,7 +24719,7 @@ timer OnPlayerUpdateEx[1000](playerid)
 		}
 	}
 	*/
-	if(GetPlayerSpecialAction(playerid) == SPECIAL_ACTION_USEJETPACK && PlayerInfo[playerid][pjetpack] == false)
+	/*if(GetPlayerSpecialAction(playerid) == SPECIAL_ACTION_USEJETPACK && PlayerInfo[playerid][pjetpack] == false)
 		ServerBan(playerid, 0, "[Hack]Jetpack", NINCS, true, true, true);
 		
 	if(IsPlayerInAnyVehicle(playerid))
@@ -24737,11 +24737,11 @@ timer OnPlayerUpdateEx[1000](playerid)
    		}
 	}
 	new Float:Velocity[3];
-   	GetPlayerVelocity(playerid, Velocity[0], Velocity[1], Velocity[2]);
-    if (floatabs(Velocity[0]) > 1.1 || floatabs(Velocity[1]) > 1.1 || floatabs(Velocity[2]) > 1.1 )
+   //	GetPlayerVelocity(playerid, Velocity[0], Velocity[1], Velocity[2]);
+   // if (floatabs(Velocity[0]) > 1.1 || floatabs(Velocity[1]) > 1.1 || floatabs(Velocity[2]) > 1.1 )
     {
-        AdminUzenet(RED, 1, "[Cheat] [%d]%s cheat miatt kickelve!", playerid,JatekosNev(playerid));
-    	Kick(playerid);
+       // AdminUzenet(RED, 1, "[Cheat] [%d]%s cheat miatt kickelve!", playerid,JatekosNev(playerid));
+    //	Kick(playerid);
     }
 	GetPlayerHealth(playerid, PlayerInfo[playerid][pUjElet]);
 	GetPlayerArmour(playerid, PlayerInfo[playerid][pUjPancel]);
@@ -30781,7 +30781,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			else if(IsPlayerInRangeOfPoint(playerid, 5.0, 2474.286, -2119.997, 14.756))
 				melyik = 0; //gyár
 
-			/*
+   /*
 			//Munka define - Név, Szükséges tehetség pont - Legális? (1 = igen | 0 = nem)
 			new Munkak[ MAX_MUNKA ][4][20] =
 			{
