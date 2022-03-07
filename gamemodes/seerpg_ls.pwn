@@ -112,16 +112,18 @@ NE a SetTimerEx-t használd!
 #endif
 
 #if HAZI_SZERVER == 0
-new Scripter[1][3][MAX_PLAYER_NAME] =
+new Scripter[2][3][MAX_PLAYER_NAME] =
 {
-    {"Fred_Zykov", 3, true}
+    {"Fred_Zykov", 3, true},
+    {"Frank_Carter", 3, true}
 };
 #endif
 
 #if HAZI_SZERVER == 1
 new Scripter[2][3][MAX_PLAYER_NAME] =
 {
-    {"Fred_Zykov", 3, true}
+    {"Fred_Zykov", 3, true},
+    {"Frank_Carter", 3, true}
 };
 #endif
 new TrafiBuntetheto[MAX_PLAYERS];
@@ -23069,7 +23071,15 @@ fpublic FrakcioBetoltes()
 			cache_get_field_content(i, "SzefRang", FInfo[fk][fSzefRang], sql_ID, 32);
 
 			new legalis = cache_get_field_content_int(i, "Legalis", sql_ID);
-			FInfo[fk][fLegalis] = legalis ? true : false;
+			
+			if(legalis == 2 || legalis == 3)
+			{
+				FInfo[fk][fLegalis] = false;
+			}
+			else
+			{
+			    FInfo[fk][fLegalis] = true;
+			}
 
 			new szefobject = cache_get_field_content_int(i, "SzefObject", sql_ID);
 			FInfo[fk][fSzefObject] = szefobject ? true : false;
@@ -23503,12 +23513,13 @@ fpublic GPSBetoltes()
 	print("[MYSQL]: GPS koordináták betöltése...");
 
 	new rows = cache_num_rows();
+	new gid = 0;
 	
 	if (rows)
 	{
 		for (new i = 0; i < rows; i++)
 		{
-			new gid = cache_get_field_content_int(i, "id", sql_ID);
+			gid = cache_get_field_content_int(i, "id", sql_ID);
 			GPSInfo[gid][gposx] = cache_get_field_content_float(i, "posx", sql_ID);
 			GPSInfo[gid][gposy] = cache_get_field_content_float(i, "posy", sql_ID);
 			GPSInfo[gid][gposz] = cache_get_field_content_float(i, "posz", sql_ID);
@@ -23518,9 +23529,11 @@ fpublic GPSBetoltes()
 			#if DEBUG_MYSQL
 				printf("[GPS]: Loaded GPS %s (%d - %d) - %f, %f, %f", GPSInfo[gid][gnev], gid, i, GPSInfo[gid][gposx], GPSInfo[gid][gposy], GPSInfo[gid][gposz]);
 			#endif
+
+			gid++;
 		}
 	}
-	printf("[MySQL]: %d betöltött terület.", rows);
+	printf("[MySQL]: %d betöltött GPS.", rows);
 	
 	return true;
 }
@@ -24966,7 +24979,6 @@ public OnPlayerSpawn(playerid)
 				break;
 			}
 		}
-		if(BankBotok[bankNPCID] == playerid)
 		{
 			SetPlayerPos(BankBotok[bankNPCID],  2308.553, -6.994, 22.819);
 			SetPlayerFacingAngle(BankBotok[bankNPCID], 178.0);
@@ -25008,7 +25020,7 @@ public OnPlayerSpawn(playerid)
 		    SetPos(playerid, 1483.7136,-1741.7975,13.5469, 0.236, true);
 		    SetInterior(playerid, 0);
 		    SetVirtualWorld(playerid, 0);
-		    
+
 		    PlayerInfo[playerid][pregisztracio] = 1;
 		}
 	 	else
@@ -27339,8 +27351,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				{
      				#define MAX_SKIN 312
 					new skinek[MAX_SKIN], num = 0;
-					new i = NINCS;
-					for(; ++i < MAX_SKIN;)
+					for(new i = 1; i < MAX_SKIN; i++)
 					{
 					    if(GetSkinGender(i) != PlayerInfo[playerid][pnem]) continue;
 					    if(!IsValidSkin(i)) continue;
@@ -27362,7 +27373,9 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						}
 						if(isfk) continue;
 						
-						skinek[num] = i, num++;
+						skinek[num] = i;
+						num++;
+						printf("Added skin ID %d to the panel", i);
 					}
 			     	ShowModelSelectionMenuEx(playerid, skinek, sizeof( skinek ), "", SKIN_VALASZTAS, .dialogBGcolor = 512819010, .previewBGcolor = 80);
 				}
@@ -29156,6 +29169,9 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 
 
 			nformat(queryr, 256, "UPDATE `"#MYSQL_JATEKOS_TABLA"` SET pszarmazas = '%d' WHERE nev = '%s'", listitem + 1, JatekosNev(playerid));
+			
+			nformat(queryr, 256, "UPDATE `"#MYSQL_JATEKOS_TABLA"` SET pszarmazas = '%d' WHERE nev = '%s'", listitem + 1, JatekosNev(playerid));
+			
 			//mysql_function_query(sql_ID, queryr, false, "", "");
 			mysql_tquery(sql_ID, queryr, "", "");
 			ShowPlayerDialog(playerid, DIALOG_LOGIN, DIALOG_STYLE_PASSWORD, "Bejelentkezés", #COL_FEHER"Kérlek írd be a lentebbi mezõbe a jelszót!", "Belépés", "Mégse");
@@ -29206,14 +29222,14 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			new id = -1;
 			for(new i = 0; i < MAXGPS && id == -1; i++)
 			{
-				if (GPSInfo[listitem][gnev] == GPSInfo[i][gnev])
+				if (GPSInfo[i][gHasznalva] && GPSInfo[i][listid] == listitem)
 				{
 					printf("Found GPS: %d - %d | %s - %s", listitem, i, GPSInfo[listitem][gnev], GPSInfo[i][gnev]);
 					id = i;
 				}
 			}
 			
-			if(id == -1)
+			if(id == -1 || !strlen(GPSInfo[id][gnev]))
 				return SCM(playerid, COL_LRED, "Hiba történt a GPS betöltése során!");
 			
 			if(!GPSInfo[id][gHasznalva])
@@ -29221,7 +29237,8 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			
 			SetPlayerCheckpoint(playerid, GPSInfo[id][gposx], GPSInfo[id][gposy], GPSInfo[id][gposz], 3.0);
 			SendFormatMessage(playerid, 0x1d92ffAA, "Sikeresen elindult a tervezés ide: "#COL_MKEK"%s", GPSInfo[id][gnev]);
-	        return true;
+
+			return true;
 		}
 		case DIALOG_BENZINKUTAK:
 		{
@@ -30702,25 +30719,24 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			if(!response)
 				return SCM(playerid, COL_MKEK, "További szép napot!");
 
-			/* TODO: varoshazan is fel lehet venni illegal munkat es forditva */
+			new melyik = -1;
 
-			new melyik;
-
-			if(IsPlayerInRangeOfPoint(playerid, 5.0, 1539.79, 1749.28, 10.83))
-				melyik = 1; //városháza
-			else if(IsPlayerInRangeOfPoint(playerid, 5.0, 2474.286, -2119.997, 14.756))
-				melyik = 0; //gyár
+			if(IsPlayerInRangeOfPoint(playerid, 5.0, -810.0902,1003.4346,-56.6087)) // vh
+				melyik = 1;
+			else if(IsPlayerInRangeOfPoint(playerid, 5.0, 2474.286, -2119.997, 14.756)) // gyár
+				melyik = 0;
 			
-
-			new i = NINCS, id, num = 0;
-			for(;++i < sizeof(Munkak);)
+			new id, num = 0;
+			for(new i = 0; i < sizeof(Munkak); i++)
 			{
-				printf("%d munka", i);
+				printf("%d munka, melyik %d", i, melyik);
 				if(Munkak[i][3][0] == melyik)
 				{
+					printf("munka id %d, loop %d, listitem %d, name %s", id, i, listitem, Munkak[id][1]);
 					if(num == listitem)
 					{
 						id = i;
+						printf("found munka id %d, loop %d, listitem %d, name %s", id, i, listitem, Munkak[id][1]);
 						break;
 					}
 
@@ -40772,8 +40788,9 @@ CMD:munka(playerid, params[])
 
 		PlayerInfo[playerid][pD_MunkaValt][1] = id;//illegál vagy legál meló*/
 
-		SCM(playerid, COL_MKEK, "Jelmagyarázat: "#COL_VZOLD"Zöld"#COL_FEHER" - Van hozzá elegendõ tapasztalatod");
-		SCM(playerid, COL_MKEK, "Jelmagyarázat: "#COL_LRED"Piros"#COL_FEHER" - Nincs hozzá elegendõ tapasztalatod");
+		/* TODO: még nem kell mert nincsenek pontok */
+		// SCM(playerid, COL_MKEK, "Jelmagyarázat: "#COL_VZOLD"Zöld"#COL_FEHER" - Van hozzá elegendõ tapasztalatod");
+		// SCM(playerid, COL_MKEK, "Jelmagyarázat: "#COL_LRED"Piros"#COL_FEHER" - Nincs hozzá elegendõ tapasztalatod");
 
 		////Munka define - Név, Szükséges tehetség pont - Legális? (1 = igen | 0 = nem)
 		new lista[512], i = NINCS;
@@ -48619,8 +48636,10 @@ CMD:war(playerid, params[])
 
 CMD:gps(playerid, params[])
 {
+	/*
 	if(!PlayerInfo[playerid][pCuccok][BL_GPS])
 		return SCM(playerid, COL_LRED, "Még nem vettél GPS-t!");
+	*/
 
 	if(dolgozik[playerid] == 1)
 	    return SCM(playerid,COL_LRED,"Jelenleg nem használhatod, elõször /munka befejez!");
@@ -48692,13 +48711,17 @@ CMD:gps(playerid, params[])
 	}
 	else if(!strcmp(params,"lista",true,3))
 	{
-		new gps[128], gpsList[1024];
+		new gps[128], gpsList[1024], listitemid = 0;
 		for(new i = 0; i < MAXGPS; i++)
 		{
 			if(GPSInfo[i][gHasznalva])
 			{
+				GPSInfo[i][listid] = listitemid;
+				
 				format(gps, sizeof(gps), "[%d] %s\n", i, GPSInfo[i][gnev]);
 				strins(gpsList, gps, strlen(gpsList));
+				
+				listitemid++;
 			}
 		}
 		
