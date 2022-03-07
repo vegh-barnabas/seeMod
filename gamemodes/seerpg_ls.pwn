@@ -18,6 +18,8 @@ NE a SetTimerEx-t használd!
 #include <YSI\y_timers>
 #include <a_samp>
 
+#include <android-check>
+
 #if defined MAX_PLAYERS
 	#undef MAX_PLAYERS
 #endif
@@ -2703,6 +2705,20 @@ stock LoadCollisions()
 	// Pole
 	PHY_CreateCylinder(2701.92, -1747.10, 0.3, _, _, 425.87);
 	PHY_CreateCylinder(2711.89, -1747.10, 0.3, _, _, 425.87);
+}
+
+public OnClientChecked(playerid, Client:type)
+{
+	if (type == CLIENT_TYPE_ANDROID)
+	{
+		SCM(playerid, COL_MKEK, "Android pluginok betoltese...");
+	}
+	else
+	{
+		SCM(playerid, COL_MKEK, "PC SAMP pluginok betöltése...");
+	}
+	
+	return true;
 }
 
 public PHY_OnObjectUpdate(objectid)
@@ -13489,6 +13505,7 @@ public OnGameModeInit()
 	KetMasodpercesIdozito();
 	OtmasodpercesIdozito();
 	FelmasodpercesIdozito();
+	TizedmasodpercesIdozito();
 	t_Teargas();
 	t_Bomba();
 	repeat t_UCPCheck();
@@ -18983,6 +19000,11 @@ timer Kneehead[60000](playerid)
 task FelmasodpercesIdozito[500]()
 {
 	UpdateCameras();
+}
+
+task TizedmasodpercesIdozito[100]()
+{
+	UpdateCameras();
 
 	// update speedo
 	foreach(Player, p)
@@ -22620,7 +22642,7 @@ fpublic CheckPlayer(playerid)
 
 	if(nums)
 	{
-	    format(uzenet, UZENET_SIZE, "Üdv újra a szerverünkön, "#COL_LRED"%s!\n"#COL_FEHER"Kérlek írd be a lentebbi mezõbe a jelszót!", JatekosNev(playerid));
+	    format(uzenet, UZENET_SIZE, ""#COL_FEHER"Üdv újra a szerverünkön, "#COL_LRED"%s!\n"#COL_FEHER"Kérlek írd be a lentebbi mezõbe a jelszót!", JatekosNev(playerid));
 	    
 		ShowPlayerDialog(playerid, DIALOG_LOGIN, DIALOG_STYLE_PASSWORD, "Bejelentkezés", uzenet, "Belépés", "Mégse");
 	}
@@ -23487,14 +23509,14 @@ fpublic GPSBetoltes()
 		for (new i = 0; i < rows; i++)
 		{
 			new gid = cache_get_field_content_int(i, "id", sql_ID);
-			GPSInfo[i][gposx] = cache_get_field_content_float(i, "posx", sql_ID);
-			GPSInfo[i][gposy] = cache_get_field_content_float(i, "posy", sql_ID);
-			GPSInfo[i][gposz] = cache_get_field_content_float(i, "posz", sql_ID);
-			cache_get_field_content(i, "gnev", GPSInfo[i][gnev], sql_ID, 32);
-			GPSInfo[i][gHasznalva] = true;
+			GPSInfo[gid][gposx] = cache_get_field_content_float(i, "posx", sql_ID);
+			GPSInfo[gid][gposy] = cache_get_field_content_float(i, "posy", sql_ID);
+			GPSInfo[gid][gposz] = cache_get_field_content_float(i, "posz", sql_ID);
+			cache_get_field_content(i, "gnev", GPSInfo[gid][gnev], sql_ID, 32);
+			GPSInfo[gid][gHasznalva] = true;
 			
 			#if DEBUG_MYSQL
-				printf("[GPS]: Loaded GPS %s (%d - %d) - %f, %f, %f", GPSInfo[i][gnev], gid, i, GPSInfo[i][gposx], GPSInfo[i][gposy], GPSInfo[i][gposz]);
+				printf("[GPS]: Loaded GPS %s (%d - %d) - %f, %f, %f", GPSInfo[gid][gnev], gid, i, GPSInfo[gid][gposx], GPSInfo[gid][gposy], GPSInfo[gid][gposz]);
 			#endif
 		}
 	}
@@ -29181,10 +29203,24 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	    {
 			if (!response) return false;
 			
-			if(GPSInfo[listitem][gHasznalva]) return false;
+			new id = -1;
+			for(new i = 0; i < MAXGPS && id == -1; i++)
+			{
+				if (GPSInfo[listitem][gnev] == GPSInfo[i][gnev])
+				{
+					printf("Found GPS: %d - %d | %s - %s", listitem, i, GPSInfo[listitem][gnev], GPSInfo[i][gnev]);
+					id = i;
+				}
+			}
 			
-			SetPlayerCheckpoint(playerid, GPSInfo[listitem][gposx], GPSInfo[listitem][gposy], GPSInfo[listitem][gposz], 3.0);
-			SendFormatMessage(playerid, 0x1d92ffAA, "Sikeresen elindult a tervezés ide: "#COL_MKEK"%s", GPSInfo[listitem][gnev]);
+			if(id == -1)
+				return SCM(playerid, COL_LRED, "Hiba történt a GPS betöltése során!");
+			
+			if(!GPSInfo[id][gHasznalva])
+				return SCM(playerid, COL_MKEK, "Ez a GPS pozíció inaktív, ide nem tudsz útvonalat tervezni.");
+			
+			SetPlayerCheckpoint(playerid, GPSInfo[id][gposx], GPSInfo[id][gposy], GPSInfo[id][gposz], 3.0);
+			SendFormatMessage(playerid, 0x1d92ffAA, "Sikeresen elindult a tervezés ide: "#COL_MKEK"%s", GPSInfo[id][gnev]);
 	        return true;
 		}
 		case DIALOG_BENZINKUTAK:
