@@ -1,8 +1,11 @@
-*.amx
 filterscripts/*.amx
+filterscripts/*.bak
+
 gamemodes/*.amx
 gamemodes/*.bak
-pawno/seerpg_*
+
+scriptfiles/Logok/**/*.log
+
 crashinfo.txt
 mysql_log.txt
 mysql_log.html
